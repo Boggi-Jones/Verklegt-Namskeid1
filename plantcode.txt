@@ -1,0 +1,25 @@
+Contract State Diagram:
+@startuml
+[*] --> ValidContract : New contract made
+ExpiredContract : Customer late at returning has to pay extra
+PaidContract : Can't be used in payment again
+DeletedContract : Gets removed from the system
+
+ValidContract -> ValidContract : Contract details changed
+ValidContract --> DeletedContract : Employee deletes a contract
+ValidContract --> ExpiredContract : Contract is late
+ValidContract --> PaidContract :  User pays the contract
+ExpiredContract --> PaidContract : User pays with extra payment
+PaidContract --> [*]
+DeletedContract --> [*]
+@enduml
+
+
+Vehicle State Diagram:
+@startuml
+[*] --> AvailableVehicle : New vehicle added to the fleet
+AvailableVehicle --> RentedVehicle : Rented out to a customer
+DamagedVehicle --> AvailableVehicle : Vehicle is fixed
+RentedVehicle --> DamagedVehicle : Customer wrecks the vehicle
+RentedVehicle --> AvailableVehicle : Customer returns the vehicle
+@enduml

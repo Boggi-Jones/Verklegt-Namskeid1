@@ -1,0 +1,50 @@
+STJÓRNANDI
+Veldu hvað þú vilt gera 0-7 (7 til að hætta)
+1. Sjá eins og starfsmaður REYKJAVÍK
+2. Sjá eins og starfsmaður áfangastað
+3. Uppfæra starfsmannaskrá
+4. Uppfæra áfangastaði
+5. Sjá yfirlit
+6. Uppfæra taxta
+7. Hætta
+
+Hvað viltu gera?
+3a. Skrá nýjan starfsmann
+3b. Breyta upplýsingum um núverandi starfsmann
+3c. Eyða núverandi starfsmann
+
+Hvað viltu gera?
+4a. Skrá nýjan áfangastað
+4b. Breyta upplýsingum um núverandi áfangastað
+4c. Eyða núverandi áfangastað
+
+Hvaða yfirlit viltu fá?
+5a. Tekjur á ákveðnu tímabili
+5b. Tekjur útibúa
+5c. Tegundir bíla
+5d. Nýting farartækja á hverjum stað
+5e. Reikningar
+
+
+STARFSMAÐUR REYKJAVÍK
+1. Skrá leigusamning
+2. Lista laus farartæki
+3. Lista alla leigusamninga
+4. Breyta núverandi leigusamning
+5. Ógilda leigusamning
+6. Prenta leigusamning
+7. Rukka leigjanda
+8. (Vildarkúnni)
+9. Hætta
+
+(8a. Skrá nýjan vildarkúnna)
+(8b. Enda vildarkúnnasamning)
+
+STARFSMAÐUR ÁFANGASTAÐ
+1. Nýskrá farartæki
+2. Uppfæra ástands farartækis
+3. Lista öll farartæki
+4. Lista alla leigusamninga
+5. Faratæki skilað
+6. Hætta
+
