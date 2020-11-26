@@ -14,6 +14,7 @@ PaidContract --> [*]
 DeletedContract --> [*]
 @enduml
 
+--------------------------------------------------------------------
 
 Vehicle State Diagram:
 @startuml
@@ -23,3 +24,91 @@ DamagedVehicle --> AvailableVehicle : Vehicle is fixed
 RentedVehicle --> DamagedVehicle : Customer wrecks the vehicle
 RentedVehicle --> AvailableVehicle : Customer returns the vehicle
 @enduml
+
+--------------------------------------------------------------------
+
+UI Class Diagram:
+@startuml
+class UIMain {
+Logic layer wrapper
+}
+
+UIMain : listobject()
+
+class EmployeesUI 
+class LocationUI 
+class FleetUI 
+class ContractUI 
+
+UIMain  <|-- EmployeesUI
+UIMain  <|-- LocationUI
+UIMain  <|-- FleetUI
+UIMain  <|-- ContractUI
+
+EmployeesUI : listobject(Employee)
+@enduml
+
+--------------------------------------------------------------------
+
+Logic Class Diagram:
+@startuml
+class LogicMain {
+Logic layer wrapper
+}
+
+
+
+class Employee {
+name
+id
+home adress
+home phone
+gsm phone
+email
+location
+role
+}
+class Vehicle {
+status
+type
+manufacturer
+condition
+age
+color
+number plate
+driving license
+}
+class Location {
+name of airport
+country
+opening hours
+phone number
+}
+class Customer {
+name
+id
+email
+gsm number
+home adress
+driving license
+returned late before
+}
+class Contracts {
+rate
+date
+duration
+country
+city
+name employee
+paid
+finalprice
+}
+Contracts : calculatefinalprice()
+
+
+
+Customer  <|-- Contracts
+Vehicle <|-- Contracts
+@enduml
+
+-------------------------------------------------------------------------
