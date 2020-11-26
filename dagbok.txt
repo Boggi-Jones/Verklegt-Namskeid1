@@ -25,4 +25,15 @@ hafi verið nokkuð góður og ákváðum líka að fara aftur í klasarit næst
 Færsla 1: Þar sem við kláruðum stöðurit í gær ákváðum við að reyna aftur við klasaritið þannig við ætlum
 að byrja á því í dag og sjá einfaldlega hvort að við höfum tíma fyrir fleira.
 
-Færsla 2:
+Færsla 2: Það gekk vel að klára klasaritið, þó það hafi verið tímafrekt, en í kringum 15 þá vorum við búnir.
+Byrjuðum þá á því að gera beinagrind fyrir wireframe hönnunina sem við ætlum þá að klára á morgun. Góður dagur.
+
+
+26/11/20
+Færsla 1: Markmið dagsins er að klára wireframe og happy path. Ætlum að vinna í því saman sem hópur
+
+Færsla 2: Rétt fyrir hádegi þá vorum við búnir með happy path-in út frá grunnhönnunarfrumgerðinni.
+Við ákvaðum þá að byrja að setja inn öll gögnin okkar frá síðustu dögum inn í skýrslu og þar með
+undirbúa skýrslugerðina. Það kom fljótleg aí ljós að það þyrfti að fara betur yfir notkurnatilvikin
+og kröfulistann þannig reist af deginum fór í það. 16.20 þá ákvaðum við að kalla þetta gott í dag
+og hlada áfram á morgun.
