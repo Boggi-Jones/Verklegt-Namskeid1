@@ -1,6 +1,6 @@
-Dagkbók f. vln1
+Dagkbók fyrir vln1
 
-23/11/20 - - - - - -
+23/11/20 - - - - - - - - - - - -
 Faersla 1: Ákváðum eftir fyrsta fyrirlestur að hafa fund klukkan 15.00. Hittumst allir þá og
 kynntum okkur, fórum yfir verkefnið og hver fyrstu skrefin okkar voru.
 
@@ -9,7 +9,8 @@ betur kröfurnar út frá verkefnalýsingunni. Vinnu fyrirkomulag var líka ákv
 byrja klukkan 09.00 á morgnanna og taka svo loka fund á hverjum virkum degi klukkan 16.30.
 
 
-24/11/20 - - - - - - 
+
+24/11/20 - - - - - - - - - - - -
 Færsla 1: Fórum yfir verkefni dagsins og svo hvað þyrfti að klárast fyrir lok viku.
 Verkefni dagsins:	Andri og Jón Steinar - Notkunartilvik (fyrri helmingur)
 			Skarphéðinn og Sölvi - Notkunartilvik (seinni helmingur)
@@ -21,7 +22,8 @@ stöðuritið sem við kláruðum 16.30. Að því loknu var haldinn fundur þar
 hafi verið nokkuð góður og ákváðum líka að fara aftur í klasarit næsta morgun eftir að hafa kynnt okkur aðeins betur klasaritin.
 
 
-25/11/20 - - - - - -
+
+25/11/20 - - - - - - - - - - - -
 Færsla 1: Þar sem við kláruðum stöðurit í gær ákváðum við að reyna aftur við klasaritið þannig við ætlum
 að byrja á því í dag og sjá einfaldlega hvort að við höfum tíma fyrir fleira.
 
@@ -29,7 +31,8 @@ Færsla 2: Það gekk vel að klára klasaritið, þó það hafi verið tímafr
 Byrjuðum þá á því að gera beinagrind fyrir wireframe hönnunina sem við ætlum þá að klára á morgun. Góður dagur.
 
 
-26/11/20
+
+26/11/20 - - - - - - - - - - - -
 Færsla 1: Markmið dagsins er að klára wireframe og happy path. Ætlum að vinna í því saman sem hópur
 
 Færsla 2: Rétt fyrir hádegi þá vorum við búnir með happy path-in út frá grunnhönnunarfrumgerðinni.
@@ -37,3 +40,18 @@ Við ákvaðum þá að byrja að setja inn öll gögnin okkar frá síðustu d�
 undirbúa skýrslugerðina. Það kom fljótleg aí ljós að það þyrfti að fara betur yfir notkurnatilvikin
 og kröfulistann þannig reist af deginum fór í það. 16.20 þá ákvaðum við að kalla þetta gott í dag
 og hlada áfram á morgun.
+
+
+
+27/11/20 - - - - - - - - - - - - 
+Færsla 1: Tókum upp þráðinn frá því í lok gærdagsins. Löguðum, sem hópur, notkunartilvikin og kröfulistan
+til að það samræmdist klasaritinu okkar og wireframe. Að því loknu ákváðum viðð að hefjast handa á að kl-
+ára skýrsluna og munum við vinna að því í sameiningu og taka svo stöðuna í hádeginu á hvað skal gera næst.
+
+Færsla 2: 
+
+
+
+
+
+
