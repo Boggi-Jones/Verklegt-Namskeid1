@@ -52,12 +52,46 @@ EmployeesUI : listobject(Employee)
 
 Logic Class Diagram:
 @startuml
-class LogicMain {
-Logic layer wrapper
+class LogicWrapper {
+DATA wrapper
 }
 
+class EmployeeLogic 
+class LocationLogic
+class VehicleLogic
+class ContractLogic
 
+EmployeeLogic : filteremployees()
+EmployeeLogic : removeemployee(id)
+EmployeeLogic : addemployee()
+EmployeeLogic : editemployeeinfo(id)
 
+LocationLogic : filtercountry()
+LocationLogic : addlocation()
+LocationLogic : removelocation()
+LocationLogic : editlocationinfo(name of airport)
+
+VehicleLogic : filtervehiclefleet()
+VehicleLogic : editvehicleinfo(number plate)
+VehicleLogic : registernewvehicle()
+VehicleLogic : editrate(type)
+
+ContractLogic : filtercontract()
+ContractLogic : makenewcontract()
+ContractLogic : editcontractinfo(id)
+ContractLogic : cancelcontract(id)
+ContractLogic : printcontract(id)
+ContractLogic : calculatefinalprice(id)
+
+LogicWrapper -- VehicleLogic
+LogicWrapper -- EmployeeLogic
+LogicWrapper -- ContractLogic
+LogicWrapper -- LocationLogic
+
+----------------------------------------------------------------------
+
+Models Class Diagram:
+@startuml
 class Employee {
 name
 id
@@ -71,12 +105,14 @@ role
 class Vehicle {
 status
 type
+rate
 manufacturer
 condition
 age
 color
 number plate
 driving license
+rentcounter
 }
 class Location {
 name of airport
@@ -92,9 +128,9 @@ gsm number
 home adress
 driving license
 returned late before
+loyalty customer
 }
 class Contracts {
-rate
 date
 duration
 country
@@ -103,12 +139,120 @@ name employee
 paid
 finalprice
 }
-Contracts : calculatefinalprice()
 
 
-
+Location <|-- Vehicle
 Customer  <|-- Contracts
 Vehicle <|-- Contracts
 @enduml
 
 -------------------------------------------------------------------------
+
+DATA Class Diagram:
+@startuml
+class DataWrapper{
+
+}
+
+class DataMain
+class VehicleData
+class LocationData
+class EmployeeData
+class ContractData
+class CustomerData
+
+DataWrapper -- DataMain
+DataMain <|-- VehicleData
+DataMain <|-- LocationData
+DataMain <|-- EmployeeData
+DataMain <|-- ContractData
+DataMain <|-- CustomerData
+@enduml
+
+---------------------------------------------------------------------------
+
+All Class Diagram(Holy Grail):
+@startuml
+class UIMain {
+Logic layer wrapper
+}
+
+UIMain : listobject()
+UIMain : addobject()
+
+class EmployeesUI 
+class LocationUI 
+class FleetUI 
+class ContractUI 
+
+UIMain  <|-- EmployeesUI
+UIMain  <|-- LocationUI
+UIMain  <|-- FleetUI
+UIMain  <|-- ContractUI
+
+EmployeesUI : listobject(Employee)
+
+EmployeesUI -- LogicWrapper
+LocationUI -- LogicWrapper
+FleetUI -- LogicWrapper
+ContractUI -- LogicWrapper
+
+class LogicWrapper {
+DATA wrapper
+}
+
+class EmployeeLogic 
+class LocationLogic
+class VehicleLogic
+class ContractLogic
+
+EmployeeLogic : filteremployees()
+EmployeeLogic : removeemployee(id)
+EmployeeLogic : addemployee()
+EmployeeLogic : editemployeeinfo(id)
+
+LocationLogic : filtercountry()
+LocationLogic : addlocation()
+LocationLogic : removelocation()
+LocationLogic : editlocationinfo(name of airport)
+
+VehicleLogic : filtervehiclefleet()
+VehicleLogic : editvehicleinfo(number plate)
+VehicleLogic : registernewvehicle()
+VehicleLogic : editrate(type)
+
+ContractLogic : filtercontract()
+ContractLogic : makenewcontract()
+ContractLogic : editcontractinfo(id)
+ContractLogic : cancelcontract(id)
+ContractLogic : printcontract(id)
+ContractLogic : calculatefinalprice(id)
+
+LogicWrapper -- VehicleLogic
+LogicWrapper -- EmployeeLogic
+LogicWrapper -- ContractLogic
+LogicWrapper -- LocationLogic
+
+VehicleLogic -- DataWrapper
+EmployeeLogic -- DataWrapper
+LocationLogic -- DataWrapper
+ContractLogic -- DataWrapper
+
+class DataWrapper{
+
+}
+
+class DataMain
+class VehicleData
+class LocationData
+class EmployeeData
+class ContractData
+class CustomerData
+
+DataWrapper -- DataMain
+DataMain <|-- VehicleData
+DataMain <|-- LocationData
+DataMain <|-- EmployeeData
+DataMain <|-- ContractData
+DataMain <|-- CustomerData
+@enduml
