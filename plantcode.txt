@@ -44,8 +44,6 @@ UIMain  <|-- EmployeesUI
 UIMain  <|-- LocationUI
 UIMain  <|-- FleetUI
 UIMain  <|-- ContractUI
-
-EmployeesUI : listobject(Employee)
 @enduml
 
 --------------------------------------------------------------------
@@ -154,19 +152,17 @@ class DataWrapper{
 
 }
 
-class DataMain
 class VehicleData
 class LocationData
 class EmployeeData
 class ContractData
 class CustomerData
 
-DataWrapper -- DataMain
-DataMain <|-- VehicleData
-DataMain <|-- LocationData
-DataMain <|-- EmployeeData
-DataMain <|-- ContractData
-DataMain <|-- CustomerData
+DataWrapper <|-- VehicleData
+DataWrapper <|-- LocationData
+DataWrapper <|-- EmployeeData
+DataWrapper <|-- ContractData
+DataWrapper <|-- CustomerData
 @enduml
 
 ---------------------------------------------------------------------------
@@ -189,8 +185,6 @@ UIMain  <|-- EmployeesUI
 UIMain  <|-- LocationUI
 UIMain  <|-- FleetUI
 UIMain  <|-- ContractUI
-
-EmployeesUI : listobject(Employee)
 
 EmployeesUI -- LogicWrapper
 LocationUI -- LogicWrapper
@@ -242,17 +236,15 @@ class DataWrapper{
 
 }
 
-class DataMain
 class VehicleData
 class LocationData
 class EmployeeData
 class ContractData
 class CustomerData
 
-DataWrapper -- DataMain
-DataMain <|-- VehicleData
-DataMain <|-- LocationData
-DataMain <|-- EmployeeData
-DataMain <|-- ContractData
-DataMain <|-- CustomerData
+DataWrapper <|-- VehicleData
+DataWrapper <|-- LocationData
+DataWrapper <|-- EmployeeData
+DataWrapper <|-- ContractData
+DataWrapper <|-- CustomerData
 @enduml
