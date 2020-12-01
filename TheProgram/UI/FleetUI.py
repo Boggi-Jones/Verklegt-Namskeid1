@@ -1,4 +1,4 @@
-class ContractUI():
+class FleetUI():
     def __init__(self):
         pass
 
