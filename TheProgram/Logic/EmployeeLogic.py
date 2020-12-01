@@ -1,3 +1,4 @@
+from Data.DataMain import DataMain
 class EmployeeLogic:
     def filteremployees(self, attribute, filter):
         pass
