@@ -44,7 +44,7 @@ choice: ''')
     def add_employee(self):
         add_menu = print('''----------- Add employee ------------------
         """Insert information"""
-Name:
+Name: 
 SSN:
 Home number:
 Smart phone:
