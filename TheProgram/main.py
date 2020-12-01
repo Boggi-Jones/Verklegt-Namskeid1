@@ -1,3 +1,3 @@
 from UI.UIMain import UIMain
 
-UIMain()
+UIMain().UILoop()
