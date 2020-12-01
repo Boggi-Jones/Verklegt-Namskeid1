@@ -1,13 +1,13 @@
 class EmployeeUI():
     def __init__(self):
-        pass
+        self.uimain = UIMain()
 
     def employee_loop(self):
-        ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá eþssu er hægt
+        ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá þessu er hægt
         að fara í "Manage employee, All employees o.s.frv." '''
 
         while True:
-            Employee_choice = input('''----------- Employee accounts -----------
+            employee_choice = input('''----------- Employee accounts -----------
 1. Manage employee
 2. All employees
 3. Search employee
@@ -15,17 +15,17 @@ b. <- Go back
 --------------------------------------------
 chocie: ''')
             if employee_choice == "1":
-                pass
+                manage_employee()
             elif employee_choice == "2":
-                pass
+                all_employees()
             elif employee_choice == "3":
-                pass
+                search_employees()
             elif employee_choice == "b":
-                UIMain()
+                self.uimain
             else:
                 ("Invalid entry")
 
-    def employee_manage(self):
+    def manage_employee(self):
         employee_options = input('''----------- Manage employee ------------------
 1. Add employee
 2. Remove employee
@@ -34,11 +34,11 @@ chocie: ''')
 choice: ''')
         while True:
             if employee_options == "1":
-                pass
+                add_employee()
             elif employee_options == "2":
-                pass
+                remove_employee()
             elif employee_options == "3":
-                pass
+                update_employee()
             else:
                 print("Invalid entry")
 
@@ -46,7 +46,7 @@ choice: ''')
         new_employee = []
         print('''----------- Add employee ------------------
         """Insert information"""
-Name: 
+Name:
 SSN:
 Home number:
 Smart phone:
