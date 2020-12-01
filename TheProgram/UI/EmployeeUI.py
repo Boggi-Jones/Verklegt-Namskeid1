@@ -21,9 +21,9 @@ chocie: ''')
             if employee_choice == "1":
                 manage_employee()
             elif employee_choice == "2":
-                all_employees()
+                get_all_employees()
             elif employee_choice == "3":
-                search_employees()
+                search_employee()
             elif employee_choice == "4":
                 self.uimain
             else:
@@ -105,8 +105,8 @@ Company role: {}
 
     def update_employee(self):
         find_employee = input("Enter employee name: ")
-        self.logic.employee(3, None, None, None)
-        MENU = ('''Name:
+        self.logic.employee(3, find_employee, None, None)
+        MENU = '''Name:
 SSN:
 Home number:
 Smart phone:
@@ -117,7 +117,15 @@ Company role:
 " Press 'Enter' to continue "
 
 <- Back
---------------------------------------------''')
-        for line, i in enumerate(MENU):
-            line += str(employee[i])
-            print(line)
+--------------------------------------------'''
+    
+    def get_all_employees(self):
+        results = self.logic.all_employees()
+        print("\nAll employees: ")
+        for employee in results:
+            print(employee)
+
+    def search_employee(self):
+        emp = input("Enter employee name: ")
+        result = self.logic.employee(0, emp, None)
+        print(result)
