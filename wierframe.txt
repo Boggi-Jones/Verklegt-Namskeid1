@@ -1,0 +1,11 @@
+---------welkominn NaN air ----------------
+Ýttu á nr. til að fara í ákveðna valmynd
+Ýttu á q til að hætta
+
+1. starfsmannabókhald
+2. flotinn
+3. flugvellir
+4. samningar
+q. Quit
+
+choice: 
