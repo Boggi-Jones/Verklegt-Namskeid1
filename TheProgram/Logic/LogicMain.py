@@ -9,7 +9,7 @@ class LogicMain:
         self.locationlogic = LocationLogic()
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
-        
+
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0:
             print("employee option 0")
