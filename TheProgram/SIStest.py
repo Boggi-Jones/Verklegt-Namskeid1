@@ -1,3 +1,5 @@
 from Logic.LogicMain import LogicMain
-
-LogicMain().employee(0, None, None, None)
+import os
+print(os.getcwd())
+for item in LogicMain().employee(0, "name", "Chuck Norris", None):
+    print(item)
