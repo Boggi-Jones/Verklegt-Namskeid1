@@ -7,11 +7,11 @@ class UIMain():
     def __init__(self):
         print("Welcome to NaN Air")
         self.Logic = LogicMain()
-        self.UILoop() 
+        self.UILoop()
 
     def UILoop(self):
         while True:
-            choice = Printmenu()
+            choice = print_menu()
             if choice == "1":
                 EmployeeUI()
             elif choice == "2":
@@ -27,8 +27,8 @@ class UIMain():
             else:
                 print("Invalid entry")
 
-    def Printmenu(self):
-        MENU = print('''# Veldu nr. til að fara áfram í valmynd 
+    def print_menu(self):
+        MENU_choice = input('''# Veldu nr. til að fara áfram í valmynd
 # Veldu "q" til að hætta
 #
 # 1. Employee accounts
@@ -38,6 +38,5 @@ class UIMain():
 # 5. Business reports
 # Q. Quit
 --------------------------------------------
-''')
-        choice = input("choice: ")
-        return choice
+# choice: ''')
+        return MENU_choice
