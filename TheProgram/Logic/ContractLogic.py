@@ -39,4 +39,4 @@ class ContractLogic:
 
     #DataMain.getlist("Contract")
     #def getlist(self, value):
-    #with open(f"Data/data/{value}.csv")
+        #with open(f"Data/data/{value}.csv")
