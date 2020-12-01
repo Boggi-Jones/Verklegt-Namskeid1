@@ -9,4 +9,4 @@ class Customer(object):
         self.returned_late_before = returned_late_before
 
     def __str__(self):
-        pass
+        return "{}, {}, {}, {}, {}, {}, {}".format(self.name, self.ssn, self.email, self.gsm_number, self.adress, self.driving_license, self.returned_late_before)

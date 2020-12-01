@@ -14,4 +14,4 @@ class vehicle(Location):
         self.rent_counter = rent_counter
     
     def __str__(self):
-        pass
+        return "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.status, self.type_of_vehicle, self.rate, self.manufacturer, self.condition, self.age, self.color, self.number_plate, self.driving_license, self.rent_counter, self.name_of_airport, self.country)

@@ -10,4 +10,4 @@ class Employee(object):
         self.role = role
 
     def __str__(self):
-        pass
+        return "{}, {}, {}, {}, {}, {}, {}, {}".format(self.name, self.ssn, self.adress, self.home_phone, self.gsm_phone, self.email, self.location, self.role)
