@@ -1,4 +1,3 @@
-from Data.DataMain import DataMain
 from Logic.EmployeeLogic import EmployeeLogic
 from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
@@ -6,64 +5,60 @@ from Logic.ContractLogic import ContractLogic
 
 class LogicMain:
     def __init__(self):
-        print("works")
-        self.data = DataMain()
         self.employeelogic = EmployeeLogic()
         self.locationlogic = LocationLogic()
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
-        print("works more")
         
-
-
-    def employee(self, option, filter, attribute):
+    def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0:
-            results = self.employeelogic.filteremployees(filter, attribute)
+            print("employee option 0")
+            results = self.employeelogic.filteremployees(filter_or_id, attribute)
         elif option == 1:
-            results = self.employeelogic.removeemployee(filter)
+            results = self.employeelogic.removeemployee(filter_or_id)
         elif option == 2:
-            results = self.employeelogic.addemployee()
+            results = self.employeelogic.addemployee(new_information)
         else:
-            results = self.employeelogic.editemployeeinfo()
+            results = self.employeelogic.editemployeeinfo(filter_or_id, attribute, new_information)
 
         return results
 
-    def location(self, option, filter = None):
+    def location(self, option, filter_or_id, attribute, new_information):
         if option == 0:
-            results = self.locationlogic.filtercountry(filter)
+            results = self.locationlogic.filtercountry(filter_or_id, attribute)
         elif option == 1:
-            results = self.locationlogic.addlocation()
+            results = self.locationlogic.addlocation(new_information)
         elif option == 2:
-            results = self.locationlogic.removelocation()
+            results = self.locationlogic.removelocation(filter_or_id)
         else:
-            results = self.locationlogic.editlocationinfo()
+            results = self.locationlogic.editlocationinfo(filter_or_id, attribute, new_information)
 
         return results
 
-    def vehicle(self, option, filter = None):
+    def vehicle(self, option, filter_or_id, attribute, new_information):
         if option == 0:
-            results = self.vehiclelogic.filtervehiclefleet()
+            results = self.vehiclelogic.filtervehiclefleet(filter_or_id, attribute)
         elif option == 1:
-            results = self.vehiclelogic.editvehicleinfo()
+            results = self.vehiclelogic.editvehicleinfo(filter_or_id, attribute, new_information)
         elif option == 2:
-            results = self.vehiclelogic.registernewvehicle()
+            results = self.vehiclelogic.registernewvehicle(new_information)
         else:
-            results = self.vehiclelogic.editrate()
+            results = self.vehiclelogic.editrate(filter_or_id, new_information)
 
         return results
 
-    def contract(self, option, filter = None):
+    def contract(self, option, filter_or_id, attribute, new_information):
         if option == 0:
-            results = self.contractlogic.filtercontract()
+            results = self.contractlogic.filtercontract(filter_or_id, attribute)
         elif option == 1:
-            results = self.contractlogic.makenewcontract()
+            results = self.contractlogic.makenewcontract(new_information)
         elif option == 2:
-            results = self.contractlogic.editcontractinfo()
+            results = self.contractlogic.editcontractinfo(filter_or_id, attribute, new_information)
         elif option == 3:
-            results = self.contractlogic.cancelcontract()
+            results = self.contractlogic.cancelcontract(filter_or_id)
         elif option == 4:
-            results = self.contractlogic.printcontract()
+            results = self.contractlogic.printcontract(filter_or_id)
         else:
-            results = self.contractlogic.calculatefinalprice()
+            results = self.contractlogic.calculatefinalprice(filter_or_id)
 
         return results
