@@ -6,4 +6,4 @@ class Location(object):
         self.phone_number = phone_number
     
     def __str__(self):
-        pass
+        return "{}, {}, {}, {}".format(self.name_of_airport, self.country, self.opening_hours, self.phone_number)

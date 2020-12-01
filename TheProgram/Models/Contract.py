@@ -13,3 +13,6 @@ class Contracts(Vehicle, Customer):
         self.employee_name = employee_name
         self.paid = paid
         self.final_price = final_price
+
+    def __str__(self):
+        return "{}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.date, self.duration, self.country, self.city, self.employee_name, self.paid, self.final_price, self.Vehicle, self.Customer)
