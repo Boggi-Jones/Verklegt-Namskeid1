@@ -9,5 +9,7 @@ class Employee(object):
         self.location = location
         self.role = role
 
+    def add_to_dict(self):
+        return {"name" : self.name, "ssn" : self.ssn, "adress" : self.adress, "home_phone": self.home_phone, "gsm_phone": self.gsm_phone, "email" : self.email, "location":self.location, "role": self.role}
     def __str__(self):
         return "{}, {}, {}, {}, {}, {}, {}, {}".format(self.name, self.ssn, self.adress, self.home_phone, self.gsm_phone, self.email, self.location, self.role)
