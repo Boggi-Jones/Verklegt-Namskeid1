@@ -1,6 +1,10 @@
+from UI.UIMain import UIMain
+from Logic.LogicMain import LogicMain
+
 class EmployeeUI():
     def __init__(self):
         self.uimain = UIMain()
+        self.logic = LogicMain()
 
     def employee_loop(self):
         ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá þessu er hægt
@@ -11,7 +15,7 @@ class EmployeeUI():
 1. Manage employee
 2. All employees
 3. Search employee
-b. <- Go back
+4. <- Go back
 --------------------------------------------
 chocie: ''')
             if employee_choice == "1":
@@ -20,7 +24,7 @@ chocie: ''')
                 all_employees()
             elif employee_choice == "3":
                 search_employees()
-            elif employee_choice == "b":
+            elif employee_choice == "4":
                 self.uimain
             else:
                 ("Invalid entry")
@@ -88,7 +92,7 @@ Company role: {}
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, company_role))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N").lower()
         if choice == "y":
-            fall(2, None, None, new_employee)
+            self.logic.employee(2, None, None, new_employee)
         else:
             return None
 
@@ -97,17 +101,11 @@ Company role: {}
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
         find_employee = input("Enter employee name: ")
-        employee = Logic.EmployeeLogic.filteremployees(find_employee)
-        if employee != None:
-            Logic.EmployeeLogic.removeemployee(employee)
-        else:
-            continue
+        self.logic.employee(1, find_employee, None, None)
 
     def update_employee(self):
         find_employee = input("Enter employee name: ")
-        employee = Logic.EmployeeLogic.filteremployees(find_employee)
-        if employee != None:
-            Logic.EmployeeLogic.editemployeeinfo(employee)
+        self.logic.employee(3, None, None, None)
         MENU = ('''Name:
 SSN:
 Home number:
