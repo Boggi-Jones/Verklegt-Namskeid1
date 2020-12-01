@@ -82,17 +82,44 @@ Email:        {}
 Homa address: {}
 Company role: {}
 
-" ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N "
+" Press 'Enter' to continue "
 
 <- Back
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, company_role))
+        choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N").lower()
         if choice == "y":
             fall(2, None, None, new_employee)
         else:
             return None
 
     def remove_employee(self):
-        pass
+        '''Takes employee name input from user, and compares it
+        to list of all employee. If name exists it will delete
+        if the user wishes to do so'''
+        find_employee = input("Enter employee name: ")
+        employee = Logic.EmployeeLogic.filteremployees(find_employee)
+        if employee != None:
+            Logic.EmployeeLogic.removeemployee(employee)
+        else:
+            continue
 
     def update_employee(self):
-        pass
+        find_employee = input("Enter employee name: ")
+        employee = Logic.EmployeeLogic.filteremployees(find_employee)
+        if employee != None:
+            Logic.EmployeeLogic.editemployeeinfo(employee)
+        MENU = ('''Name:
+SSN:
+Home number:
+Smart phone:
+Email:
+Homa address:
+Company role:
+
+" Press 'Enter' to continue "
+
+<- Back
+--------------------------------------------''')
+        for line, i in enumerate(MENU):
+            line += str(employee[i])
+            print(line)
