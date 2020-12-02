@@ -88,7 +88,6 @@ Company role: {}
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
-            break
         else:
             return None
 
