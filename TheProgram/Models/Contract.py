@@ -13,6 +13,12 @@ class Contracts(Vehicle, Customer):
         self.employee_name = employee_name
         self.paid = paid
         self.final_price = final_price
+    
+    def fieldnames(self):
+        return ["date", "durattion", "country", "city", "employee_name", "paid", "final_price", "vehicle", "customer"]
 
+    def add_to_dict(self):
+        return {"date" : self.date, "duration" : self.duration, "country" : self.country, "city": self.city, "employee_name": self.employee_name, "paid" : self.paid, "final_price":self.final_price, "vehicle": self.Vehicle, "customer": self.Customer}
+    
     def __str__(self):
         return "{}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.date, self.duration, self.country, self.city, self.employee_name, self.paid, self.final_price, self.Vehicle, self.Customer)
