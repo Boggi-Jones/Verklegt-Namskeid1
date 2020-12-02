@@ -1,6 +1,6 @@
 #from UI.ContractUI import ContractUI
 from UI.EmployeeUI import EmployeeUI
-#from UI.LocationUI import LocationUI
+from UI.LocationUI import LocationUI
 from UI.FleetUI import FleetUI
 from Logic.LogicMain import LogicMain
 
