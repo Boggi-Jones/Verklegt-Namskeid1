@@ -1,5 +1,7 @@
 import csv
 from Models.Employee import Employee
+from Models.Location import Location
+from Models.Vehicle import Vehicle
 
 class DataMain():
 
@@ -11,6 +13,12 @@ class DataMain():
                 if filename == "Employee":
                     emp = Employee(row["name"], row["ssn"], row["address"], row["home_phone"], row["gsm_phone"], row["email"], row["location"], row["role"])
                     retList.append(emp)
+                elif filename == "Location":
+                    loc = Location(row["name_of_airport"], row["country"], row["opening_hours"], row["phone_number"])
+                    retList.append(loc)
+                elif filename == "Vehicle":
+                    vehicle = Vehicle(row["status"], row["type_of_vehicle"], row["rate"], row["manufacturer"], row["condition"], row["age"], row["color"], row["number_plate"], row["driving_license"], row["rent_counter"], row["name_ofAirport"], row["country"])
+                    retList.append(vehicle)
         return retList
 
     def add_to_list(self, filename, value):

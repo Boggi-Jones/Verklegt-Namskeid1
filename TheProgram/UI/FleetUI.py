@@ -45,8 +45,6 @@ chocie: ''')
             elif edit_choice == "3":
                 self.update_vehicle_information()
             elif edit_choice == "4":
-                self.update_vehicle_condition()
-            elif edit_choice == "5":
                 break
             else:
                 ("Invalid entry")
@@ -75,9 +73,9 @@ Condition
             license_type = input("License: ")
             location = input("Location: ")
             rate = input("Rate: ")
-            condition = input("Condition")
+            condition = input("Condition: ")
             the_vehicle = Vehicle(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate, condition)
-
+#status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country
             print('''------------- Add Vehicle ----------------
         """Insert information"""
 Manufacturer:   {}
