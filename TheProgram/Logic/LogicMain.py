@@ -34,19 +34,21 @@ class LogicMain:
 
         return results
 
-    def vehicle(self, option, filter_or_id, attribute, new_information):
+    def vehicle(self, option, filter_id_number_plate_or_vehicle_type, attribute, new_vehicle_or_rate, current_rate):
         if option == 0:
-            results = self.vehiclelogic.filtervehiclefleet(filter_or_id, attribute)
+            results = self.vehiclelogic.filtervehiclefleet(filter_id_number_plate_or_vehicle_type, attribute)
         elif option == 1:
-            results = self.vehiclelogic.editvehicleinfo(filter_or_id, attribute, new_information)
+            results = self.vehiclelogic.editvehicleinfo(filter_id_number_plate_or_vehicle_type, attribute, new_vehicle_or_rate)
         elif option == 2:
-            results = self.vehiclelogic.registernewvehicle(new_information)
+            results = self.vehiclelogic.registernewvehicle(new_vehicle_or_rate)
+        elif option == 3:
+            results = self.vehiclelogic.remove_vehicle(filter_id_number_plate_or_vehicle_type)
         else:
-            results = self.vehiclelogic.editrate(filter_or_id, new_information)
+            results = self.vehiclelogic.editrate(filter_id_number_plate_or_vehicle_type, new_vehicle_or_rate, current_rate)
 
         return results
 
-    def contract(self, option, filter_or_id, attribute, new_information):
+    def contract(self, option, filter_or_id, attribute, new_information, vehicle_type):
         if option == 0:
             results = self.contractlogic.filtercontract(filter_or_id, attribute)
         elif option == 1:
@@ -58,6 +60,7 @@ class LogicMain:
         elif option == 4:
             results = self.contractlogic.printcontract(filter_or_id)
         else:
-            results = self.contractlogic.calculatefinalprice(filter_or_id)
+            list_of_vehicles_by_rate = self.vehiclelogicfilter(vehicle_type)
+            results = self.contractlogic.calculatefinalprice(filter_or_id, list_of_vehicles_by_rate)
 
         return results

@@ -31,7 +31,7 @@ chocie: ''')
                 ("Invalid entry")
 
     def manage_employee(self):
-        
+
         while True:
             employee_options = input('''----------- Manage employee ------------------
 1. Add employee
@@ -109,7 +109,7 @@ Company role: {}
         while True:
             find_employee = input("Enter employee SSN: ")
             attribute = input('''--------------------------------------------
- What attribute would you like to change: 
+ What attribute would you like to change:
 1. Address:
 2. Home phone:
 3. Smart phone:
@@ -119,7 +119,11 @@ Company role: {}
 
 --------------------------------------------
 choice(Enter the number): ''')
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> ef967dd9a798fa192464334cfd85a393c644b913
             if attribute == "1":
                 attribute = "address"
             elif attribute == "2":

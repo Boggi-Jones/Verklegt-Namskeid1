@@ -21,7 +21,7 @@ class UIMain():
  3. Rental Locations
  4. Contracts
  5. Business reports
- Q. Quit
+ q. Quit
 --------------------------------------------
  choice: ''').lower()
             if choice == "1":
@@ -29,8 +29,7 @@ class UIMain():
             elif choice == "2":
                 FleetUI().fleet_loop()
             elif choice == "3":
-                #LocationUI()
-                pass
+                LocationUI().location_loop()
             elif choice == "4":
                 #ContractUI()
                 pass
