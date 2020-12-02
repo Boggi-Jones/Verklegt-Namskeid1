@@ -85,7 +85,7 @@ Company role: {}
 
 <- Back
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, postal_code, company_role))
-        choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N").lower()
+        choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
             break
@@ -97,35 +97,38 @@ Company role: {}
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
         find_employee = input("Enter employee name: ")
-        employee = Logic.EmployeeLogic.filteremployees(find_employee)
-        if employee != None:
-            Logic.EmployeeLogic.removeemployee(employee)
-        else:
-            pass
+        self.logic.employee(1, find_employee, None, None)
+        print("Employee has been removed!")
 
     def update_employee(self):
-        find_employee = input("Enter employee name: ")
-        self.logic.employee(3, find_employee, None, None)
-        MENU = '''Name:
-SSN:
-Home number:
-Smart phone:
-Email:
-Homa address:
-Company role:
-
-" Press 'Enter' to continue "
+        find_employee = input("Enter employee SSN: ")
+        attribute = input('''What attribute would you like to change: 
+1. Name:
+2. SSN:
+3. Home number:
+4. Smart phone:
+5. Email:
+6. Homa address:
+7. Company role:
 
 <- Back
---------------------------------------------'''
-    
+--------------------------------------------
+chocie(Enter the number): ''')
+        new_info = input("Enter new information: ")
+        self.logic.employee(3, find_employee, attribute,  new_info)
+
+
     def get_all_employees(self):
-        results = self.logic.all_employees()
-        print("\nAll employees: ")
+        results = self.logic.employee(0, None, None, None)
+        print("\n------------ All employees ------------------")
         for employee in results:
             print(employee)
+        print("--------------------------------------------")
+
 
     def search_employee(self):
-        emp = input("Enter employee name: ")
-        result = self.logic.employee(0, emp, None)
-        print(result)
+        employee = input("Enter employee SSN: ")
+        result = self.logic.employee(0, employee, "ssn", None)
+        for emp in result:
+            print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", emp)
+        print("--------------------------------------------------")
