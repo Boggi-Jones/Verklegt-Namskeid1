@@ -101,7 +101,7 @@ Company role: {}
         if employee != None:
             Logic.EmployeeLogic.removeemployee(employee)
         else:
-            continue
+            pass
 
     def update_employee(self):
         find_employee = input("Enter employee name: ")

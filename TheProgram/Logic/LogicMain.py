@@ -12,7 +12,6 @@ class LogicMain:
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0:
-            print("employee option 0")
             results = self.employeelogic.filteremployees(filter_or_id, attribute)
         elif option == 1:
             results = self.employeelogic.removeemployee(filter_or_id)
