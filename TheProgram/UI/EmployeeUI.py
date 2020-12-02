@@ -31,7 +31,7 @@ chocie: ''')
                 ("Invalid entry")
 
     def manage_employee(self):
-        
+
         while True:
             employee_options = input('''----------- Manage employee ------------------
 1. Add employee
@@ -63,7 +63,7 @@ Email:
 Location:
 Company role:
 
---------------------------------------------''') # Þurfum að finna betri leið til að útfæra
+--------------------------------------------''')
         name = input("Name: ")
         ssn = input("SSN: ")
         address = input("Address: ")
@@ -86,6 +86,9 @@ Location:     {}
 Company role: {}
 
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
+        
+        
+        
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
@@ -106,7 +109,7 @@ Company role: {}
         while True:
             find_employee = input("Enter employee SSN: ")
             attribute = input('''--------------------------------------------
- What attribute would you like to change: 
+ What attribute would you like to change:
 1. Address:
 2. Home phone:
 3. Smart phone:
@@ -115,8 +118,12 @@ Company role: {}
 6. Company role:
 
 --------------------------------------------
-chocie(Enter the number): ''')
+choice(Enter the number): ''')
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> ef967dd9a798fa192464334cfd85a393c644b913
             if attribute == "1":
                 attribute = "address"
             elif attribute == "2":
@@ -132,8 +139,8 @@ chocie(Enter the number): ''')
             else:
                 print("Wrong input")
                 continue    
-            new_info = input("Enter new information: ")
-            self.logic.employee(3, find_employee, attribute,  new_info)
+            new_employee_info = input("Enter new information: ")
+            self.logic.employee(3, find_employee, attribute,  new_employee_info)
             break
 
 
