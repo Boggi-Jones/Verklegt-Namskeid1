@@ -127,7 +127,7 @@ chocie(Enter the number): ''')
 
     def search_employee(self):
         employee = input("Enter employee SSN: ")
-        result = self.logic.employee(0, employee, ssn, None)
+        result = self.logic.employee(0, employee, "ssn", None)
         for emp in result:
             print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", emp)
         print("--------------------------------------------------")
