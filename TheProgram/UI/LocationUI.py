@@ -11,7 +11,8 @@ class LocationUI():
             choice = input(""" -------Rental Location information ---------
  1. Edit rental location
  2. All locations
- 3. <-- Go back
+ 3. Search Location
+ 4. <-- Go back
 
 
 
@@ -25,6 +26,8 @@ class LocationUI():
             elif choice == "2":
                 self.all_locations()
             elif choice == "3":
+                self.search_location()
+            elif choice == "4":
                 break
             else:
                 print("Invalid choice!")
@@ -51,7 +54,7 @@ class LocationUI():
             elif choice == "4":
                 break
             else:
-                print("Invalid choice")
+                print("Invalid choice!")
 
     def add_location(self):
         print('''----------- Add location ------------------
@@ -141,3 +144,10 @@ chocie(Enter the number): ''')
         for location in results:
             print(location)
         print("-----------------------------------")
+
+    def search_location(self):
+        location = input("Enter airport name: ")
+        result = self.logic.location(0, location, "airport name", None)
+        for airport in result:
+            print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", airport)
+        print("--------------------------------------------------")
