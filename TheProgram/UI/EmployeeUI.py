@@ -31,7 +31,7 @@ chocie: ''')
                 ("Invalid entry")
 
     def manage_employee(self):
-        
+
         while True:
             employee_options = input('''----------- Manage employee ------------------
 1. Add employee
@@ -106,7 +106,7 @@ Company role: {}
         while True:
             find_employee = input("Enter employee SSN: ")
             attribute = input('''--------------------------------------------
- What attribute would you like to change: 
+ What attribute would you like to change:
 1. Address:
 2. Home phone:
 3. Smart phone:
@@ -115,8 +115,8 @@ Company role: {}
 6. Company role:
 
 --------------------------------------------
-chocie(Enter the number): ''')
-            
+choice(Enter the number): ''')
+
             if attribute == "1":
                 attribute = "address"
             elif attribute == "2":
@@ -131,7 +131,7 @@ chocie(Enter the number): ''')
                 attribute = "role"
             else:
                 print("Wrong input")
-                continue    
+                continue
             new_info = input("Enter new information: ")
             self.logic.employee(3, find_employee, attribute,  new_info)
             break
