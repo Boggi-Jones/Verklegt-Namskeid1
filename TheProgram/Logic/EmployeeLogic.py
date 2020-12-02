@@ -23,7 +23,7 @@ class EmployeeLogic:
         self.datamain.add_to_list(self.position, new_information)
 
     def editemployeeinfo(self, filter_or_id, attribute, new_information):
-        single_employee = self.datamain.getoneitem(self.position, filter_or_id)
+        single_employee = self.datamain.get_list(self.position, filter_or_id)
         single_employee.__setattr__(attribute, new_information)
         self.datamain.remove_item(self.position, filter_or_id)
         self.datamain.add_to_list(self.position, single_employee)

@@ -1,34 +1,18 @@
-from UI.ContractUI import ContractUI
+#from UI.ContractUI import ContractUI
 from UI.EmployeeUI import EmployeeUI
-from UI.LocationUI import LocationUI
-from UI.FleetUI import FleetUI
+#from UI.LocationUI import LocationUI
+#from UI.FleetUI import FleetUI
+from Logic.LogicMain import LogicMain
 
 class UIMain():
     def __init__(self):
         print("Welcome to NaN Air")
-        self.Logic = LogicMain()
+        self.logic = LogicMain()
         self.UILoop()
 
     def UILoop(self):
         while True:
-            choice = print_menu()
-            if choice == "1":
-                EmployeeUI()
-            elif choice == "2":
-                FleetUI()
-            elif choice == "3":
-                LocationUI()
-            elif choice == "4":
-                ContractUI()
-            elif choice == "5":
-                pass            # Þurfum að bæta við klasa
-            elif choice == "q":
-                break
-            else:
-                print("Invalid entry")
-
-    def print_menu(self):
-        MENU_choice = input('''# Veldu nr. til að fara áfram í valmynd
+            choice = input('''# Veldu nr. til að fara áfram í valmynd
 # Veldu "q" til að hætta
 #
 # 1. Employee accounts
@@ -39,4 +23,20 @@ class UIMain():
 # Q. Quit
 --------------------------------------------
 # choice: ''')
-        return MENU_choice
+            if choice == "1":
+                EmployeeUI().employee_loop()
+            elif choice == "2":
+                #FleetUI()
+                pass
+            elif choice == "3":
+                #LocationUI()
+                pass
+            elif choice == "4":
+                #ContractUI()
+                pass
+            elif choice == "5":
+                pass            # Þurfum að bæta við klasa
+            elif choice == "q":
+                break
+            else:
+                print("Invalid entry")

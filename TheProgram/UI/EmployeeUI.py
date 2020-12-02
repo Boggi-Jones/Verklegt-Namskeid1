@@ -1,6 +1,11 @@
+#from UI.UIMain import UIMain
+from Logic.LogicMain import LogicMain
+from Models.Employee import Employee
+
 class EmployeeUI():
     def __init__(self):
-        self.uimain = UIMain()
+        #self.uimain = UIMain()
+        self.logic = LogicMain()
 
     def employee_loop(self):
         ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá þessu er hægt
@@ -11,16 +16,16 @@ class EmployeeUI():
 1. Manage employee
 2. All employees
 3. Search employee
-b. <- Go back
+4. <- Go back
 --------------------------------------------
 chocie: ''')
             if employee_choice == "1":
-                manage_employee()
+                self.manage_employee()
             elif employee_choice == "2":
-                all_employees()
+                self.get_all_employees()
             elif employee_choice == "3":
-                search_employees()
-            elif employee_choice == "b":
+                self.search_employee()
+            elif employee_choice == "4":
                 self.uimain
             else:
                 ("Invalid entry")
@@ -34,16 +39,15 @@ chocie: ''')
 choice: ''')
         while True:
             if employee_options == "1":
-                add_employee()
+                self.add_employee()
             elif employee_options == "2":
-                remove_employee()
+                self.remove_employee()
             elif employee_options == "3":
-                update_employee()
+                self.update_employee()
             else:
                 print("Invalid entry")
 
     def add_employee(self):
-        new_employee = []
         print('''----------- Add employee ------------------
         """Insert information"""
 Name:
@@ -65,12 +69,7 @@ Company role:
         email = input("Email: ")
         home_address = input("Home address: ")
         company_role = input("Company role: ")
-        new_employee.append(name)
-        new_employee.append(ssn)
-        new_employee.append(home_phone)
-        new_employee.append(smart_phone)
-        new_employee.append(home_address)
-        new_employee.append(company_role)
+        Employee(name, ssn, home_phone, smart_phone, email, home_address, company_role)
 
         print('''----------- Add employee ------------------
         """Insert information"""
@@ -88,7 +87,7 @@ Company role: {}
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, company_role))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N").lower()
         if choice == "y":
-            fall(2, None, None, new_employee)
+            self.logic.employee(2, None, None, new_employee)
         else:
             return None
 
@@ -105,10 +104,8 @@ Company role: {}
 
     def update_employee(self):
         find_employee = input("Enter employee name: ")
-        employee = Logic.EmployeeLogic.filteremployees(find_employee)
-        if employee != None:
-            Logic.EmployeeLogic.editemployeeinfo(employee)
-        MENU = ('''Name:
+        self.logic.employee(3, find_employee, None, None)
+        MENU = '''Name:
 SSN:
 Home number:
 Smart phone:
@@ -119,7 +116,15 @@ Company role:
 " Press 'Enter' to continue "
 
 <- Back
---------------------------------------------''')
-        for line, i in enumerate(MENU):
-            line += str(employee[i])
-            print(line)
+--------------------------------------------'''
+    
+    def get_all_employees(self):
+        results = self.logic.all_employees()
+        print("\nAll employees: ")
+        for employee in results:
+            print(employee)
+
+    def search_employee(self):
+        emp = input("Enter employee name: ")
+        result = self.logic.employee(0, emp, None)
+        print(result)
