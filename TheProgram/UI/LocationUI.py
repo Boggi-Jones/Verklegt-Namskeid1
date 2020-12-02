@@ -1,4 +1,4 @@
-#from UI.UIMain import UIMain
+from Models.ModelsMain import Location
 from Logic.LogicMain import LogicMain
 from Models.Location import Location
 
@@ -9,22 +9,24 @@ class LocationUI():
 
     def location_loop(self):
         while True:
-            choice = input("""# -------Rental Location information ---------
-# 1. Edit rental location
-# 2. All locations
-#
-#
-#
-#
-#
-# <- Back
-# Choice:__
-# --------------------------------------------""")
+            choice = input(""" -------Rental Location information ---------
+ 1. Edit rental location
+ 2. All locations
+ 3. <-- Go back
+
+
+
+
+
+ --------------------------------------------
+ choice: """)
 
             if choice == "1":
                 self.edit_location()
             elif choice == "2":
                 self.all_locations()
+            elif choice == "3":
+                break
             else:
                 print("Invalid choice!")
 
@@ -34,13 +36,12 @@ class LocationUI():
  1. Add location
  2. Remove location
  3. Update location information
- 4. Go Back
+ 4. <-- Go Back
 
 
 
- <- Back
- Choice:__
- --------------------------------------------''')
+ --------------------------------------------
+ choice: ''')
 
             if choice == "1":
                 self.add_location()
@@ -92,19 +93,19 @@ Phone number:            {}
 
 
 
- <- Back
+
  --------------------------------------------""")
         choice = input("""# ------- Remove location ---------
-# Enter location name: {}
-#
-#
-# |Are you sure you want to remove this location?|
-# | Y/N:__ |
-#
-#
-#
-# <- Back
-# --------------------------------------------""".format(location_name)).lower()
+ Enter location name: {}
+
+
+ |Are you sure you want to remove this location?|
+ | Y/N:__ |
+
+
+
+
+ --------------------------------------------""".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
             print("{} has been removed!".format(location_name))
