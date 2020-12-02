@@ -5,7 +5,8 @@ class EmployeeLogic:
         self.datamain = DataMain()
         self.position = "Employee"
 
-    def filteremployees(self, filter_or_id, attribute):
+    def filteremployees(self, filter, attribute):
+        '''Takes in a filter and attribute '''
         list_of_employees = self.datamain.get_list(self.position)
         retlist = []
         if filter_or_id != None:

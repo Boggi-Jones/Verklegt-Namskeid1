@@ -119,11 +119,7 @@ Company role: {}
 
 --------------------------------------------
 choice(Enter the number): ''')
-<<<<<<< HEAD
             
-=======
-
->>>>>>> ef967dd9a798fa192464334cfd85a393c644b913
             if attribute == "1":
                 attribute = "address"
             elif attribute == "2":

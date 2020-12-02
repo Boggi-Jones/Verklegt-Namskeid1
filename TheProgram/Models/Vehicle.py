@@ -1,4 +1,4 @@
-from Location import Location
+from Models.Location import Location
 class Vehicle(Location):
     def __init__(self, status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country):
         super().__init__(name_of_airport, country)

@@ -1,7 +1,8 @@
 #from UI.UIMain import UIMain
 from Logic.LogicMain import LogicMain
+from Models.Location import Location
 
-class UILocation():
+class LocationUI():
     def __init__(self):
         self.logic = LogicMain()
         #self.ui = UIMain()
@@ -56,31 +57,28 @@ class UILocation():
         print('''----------- Add location ------------------
         """Insert information"""
 Country:
-Location:
 Airport Name(city):
 Opening hours:
 Phone number:
 
 --------------------------------------------''') # Þurfum að finna betri leið til að útfæra
         country = input("Country: ")
-        location = input("Location: ")
         airport_name = input("Airport name: ")
         opening_hours = input("Opening hours: ")
         phone_number = input("Phone number: ")
-        the_location = Location(country, location, airport_name, opening_hours, phone_number)
+        the_location = Location(airport_name, country, opening_hours, phone_number)
 
         print('''----------- Add employee ------------------
         """Insert information"""
 Country:                 {}
-Location:                {}
 Airport name(city):      {}
 Opening hours:           {}
 Phone number:            {}
 
---------------------------------------------'''.format(country, location, airport_name, opening_hours, phone_number))
+--------------------------------------------'''.format(airport_name, country, opening_hours, phone_number))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
-            self.logic.location(2, None, None, the_location)
+            self.logic.location(1, None, None, the_location)
         elif choice =="n":
             return
         else:
@@ -127,9 +125,9 @@ Phone number:            {}
 chocie(Enter the number): ''')
 
             if attribute == "1":
-                attribute = "opening hours"
+                attribute = "opening_hours"
             elif attribute == "2":
-                attribute = "phone number"
+                attribute = "phone_number"
             else:
                 print("Wrong input")
                 continue
@@ -138,7 +136,7 @@ chocie(Enter the number): ''')
             break
 
     def all_locations(self):
-        results = self.logic.all_locations(0, None, None, None)
+        results = self.logic.location(0, None, None, None)
         print("\n------- All locations ---------- ")
         for location in results:
             print(location)
