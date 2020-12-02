@@ -84,7 +84,7 @@ Postal code:  {}
 Company role: {}
 
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, postal_code, company_role))
-        choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
+        choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ".lower())
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
         elif choice =="n":
