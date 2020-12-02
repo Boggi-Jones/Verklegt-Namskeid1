@@ -5,7 +5,7 @@ class EmployeeLogic:
         self.datamain = DataMain()
         self.position = "Employee"
 
-    def filteremployees(self, attribute, filter_or_id):
+    def filteremployees(self, filter_or_id, attribute):
         list_of_employees = self.datamain.get_list(self.position)
         retlist = []
         if filter_or_id != None:
@@ -17,13 +17,18 @@ class EmployeeLogic:
             return list_of_employees
 
     def removeemployee(self, filter_or_id):
-        self.datamain.remove_item(self.position, filter_or_id)
+        list_of_employees = self.filteremployees(None, None)
+        for emp in list_of_employees:
+            if emp.__getattribute__("ssn") == filter_or_id:
+                list_of_employees.remove(emp)
+        self.datamain.overwrite(self.position, list_of_employees)
 
     def addemployee(self, new_information):
         self.datamain.add_to_list(self.position, new_information)
 
     def editemployeeinfo(self, filter_or_id, attribute, new_information):
-        single_employee = self.datamain.get_list(self.position, filter_or_id)
-        single_employee.__setattr__(attribute, new_information)
-        self.datamain.remove_item(self.position, filter_or_id)
-        self.datamain.add_to_list(self.position, single_employee)
+        single_employee = self.filteremployees(filter_or_id, "ssn")
+        for emp in single_employee:
+            emp.__setattr__("ssn", new_information)
+            self.removeemployee(filter_or_id)
+            self.addemployee(emp)

@@ -3,7 +3,7 @@ from Customer import Customer
 
 
 class Contracts(Vehicle, Customer):
-    def __init__(self, date, duration, country, city, employee_name, paid, final_price, Vehicle = Vehicle(), Customer = Customer() ):
+    def __init__(self, date, duration, country, city, employee_name, paid, final_price, Vehicle, Customer):
         self.Vehicle = Vehicle
         self.Customer = Customer
         self.date = date

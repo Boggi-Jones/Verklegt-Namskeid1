@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 name,ssn,adress,home_phone,gsm_phone,email,location,role
+=======
+name,ssn,address,home_phone,gsm_phone,email,location,role
+h,h,h,h,h,h,h,h
+f,r,f,f,f,f,f,f
+g,t,g,g,g,g,g,g
+>>>>>>> 8b0a88fa69ebb7624f54fa1193502b54a46f1061
