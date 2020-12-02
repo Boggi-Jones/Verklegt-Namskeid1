@@ -1,31 +1,35 @@
+from UI.UIMain import UIMain
+from Logic.LogicMain import LogicMain
+
 class EmployeeUI():
     def __init__(self):
-        pass
+        self.uimain = UIMain()
+        self.logic = LogicMain()
 
     def employee_loop(self):
-        ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá eþssu er hægt
+        ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá þessu er hægt
         að fara í "Manage employee, All employees o.s.frv." '''
 
         while True:
-            Employee_choice = input('''----------- Employee accounts -----------
+            employee_choice = input('''----------- Employee accounts -----------
 1. Manage employee
 2. All employees
 3. Search employee
-b. <- Go back
+4. <- Go back
 --------------------------------------------
 chocie: ''')
             if employee_choice == "1":
-                pass
+                manage_employee()
             elif employee_choice == "2":
-                pass
+                get_all_employees()
             elif employee_choice == "3":
-                pass
-            elif employee_choice == "b":
-                UIMain()
+                search_employee()
+            elif employee_choice == "4":
+                self.uimain
             else:
                 ("Invalid entry")
 
-    def employee_manage(self):
+    def manage_employee(self):
         employee_options = input('''----------- Manage employee ------------------
 1. Add employee
 2. Remove employee
@@ -34,11 +38,11 @@ chocie: ''')
 choice: ''')
         while True:
             if employee_options == "1":
-                pass
+                add_employee()
             elif employee_options == "2":
-                pass
+                remove_employee()
             elif employee_options == "3":
-                pass
+                update_employee()
             else:
                 print("Invalid entry")
 
@@ -46,7 +50,7 @@ choice: ''')
         new_employee = []
         print('''----------- Add employee ------------------
         """Insert information"""
-Name: 
+Name:
 SSN:
 Home number:
 Smart phone:
@@ -88,7 +92,7 @@ Company role: {}
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, company_role))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N").lower()
         if choice == "y":
-            fall(2, None, None, new_employee)
+            self.logic.employee(2, None, None, new_employee)
         else:
             return None
 
@@ -97,18 +101,12 @@ Company role: {}
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
         find_employee = input("Enter employee name: ")
-        employee = Logic.EmployeeLogic.filteremployees(find_employee)
-        if employee != None:
-            Logic.EmployeeLogic.removeemployee(employee)
-        else:
-            continue
+        self.logic.employee(1, find_employee, None, None)
 
     def update_employee(self):
         find_employee = input("Enter employee name: ")
-        employee = Logic.EmployeeLogic.filteremployees(find_employee)
-        if employee != None:
-            Logic.EmployeeLogic.editemployeeinfo(employee)
-        MENU = ('''Name:
+        self.logic.employee(3, find_employee, None, None)
+        MENU = '''Name:
 SSN:
 Home number:
 Smart phone:
@@ -119,7 +117,15 @@ Company role:
 " Press 'Enter' to continue "
 
 <- Back
---------------------------------------------''')
-        for line, i in enumerate(MENU):
-            line += str(employee[i])
-            print(line)
+--------------------------------------------'''
+    
+    def get_all_employees(self):
+        results = self.logic.all_employees()
+        print("\nAll employees: ")
+        for employee in results:
+            print(employee)
+
+    def search_employee(self):
+        emp = input("Enter employee name: ")
+        result = self.logic.employee(0, emp, None)
+        print(result)
