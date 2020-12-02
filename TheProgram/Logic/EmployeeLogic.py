@@ -29,6 +29,6 @@ class EmployeeLogic:
     def editemployeeinfo(self, filter_or_id, attribute, new_information):
         single_employee = self.filteremployees(filter_or_id, "ssn")
         for emp in single_employee:
-            emp.__setattr__("ssn", new_information)
+            emp.__setattr__(attribute, new_information)
             self.removeemployee(filter_or_id)
             self.addemployee(emp)

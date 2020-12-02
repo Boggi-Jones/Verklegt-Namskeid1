@@ -31,14 +31,15 @@ chocie: ''')
                 ("Invalid entry")
 
     def manage_employee(self):
-        employee_options = input('''----------- Manage employee ------------------
+        
+        while True:
+            employee_options = input('''----------- Manage employee ------------------
 1. Add employee
 2. Remove employee
 3. Update employee information
 4. <- Go back
 --------------------------------------------
 choice: ''')
-        while True:
             if employee_options == "1":
                 self.add_employee()
             elif employee_options == "2":
@@ -55,40 +56,41 @@ choice: ''')
         """Insert information"""
 Name:
 SSN:
-Home number:
+Address:
+Home phone:
 Smart phone:
 Email:
-Homa address:
+Location:
 Company role:
 
 --------------------------------------------''') # Þurfum að finna betri leið til að útfæra
         name = input("Name: ")
         ssn = input("SSN: ")
-        home_phone = input("Home number: ")
+        address = input("Address: ")
+        home_phone = input("Home phone: ")
         smart_phone = input("Smart phone: ")
         email = input("Email: ")
-        home_address = input("Home address: ")
-        postal_code = input("Postal code: ")
-        company_role = input("Company role: ")
-        the_employee = Employee(name, home_address, postal_code, ssn, home_phone, smart_phone, email, company_role)
+        location = input("Location: ")
+        role = input("Company role: ")
+        the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
 
         print('''----------- Add employee ------------------
         """Insert information"""
 Name:         {}
 SSN:          {}
-Home number:  {}
+Address:      {}
+Home phone:   {}
 Smart phone:  {}
 Email:        {}
-Home address: {}
-Postal code:  {}
+Location:     {}
 Company role: {}
 
---------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, postal_code, company_role))
+--------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
         elif choice =="n":
-            self.manage_employee()
+            return
         else:
             return None
 
@@ -101,21 +103,38 @@ Company role: {}
         print("Employee has been removed!")
 
     def update_employee(self):
-        find_employee = input("Enter employee SSN: ")
-        attribute = input('''--------------------------------------------
+        while True:
+            find_employee = input("Enter employee SSN: ")
+            attribute = input('''--------------------------------------------
  What attribute would you like to change: 
- 1. Name:
- 2. SSN:
- 3. Home number:
- 4. Smart phone:
- 5. Email:
- 6. Homa address:
- 7. Company role:
+1. Address:
+2. Home phone:
+3. Smart phone:
+4. Email:
+5. Location:
+6. Company role:
 
 --------------------------------------------
 chocie(Enter the number): ''')
-        new_info = input("Enter new information: ")
-        self.logic.employee(3, find_employee, attribute,  new_info)
+            
+            if attribute == "1":
+                attribute = "address"
+            elif attribute == "2":
+                attribute = "home_phone"
+            elif attribute == "3":
+                attribute = "gsm_phone"
+            elif attribute == "4":
+                attribute = "email"
+            elif attribute == "5":
+                attribute = "location"
+            elif attribute == "6":
+                attribute = "role"
+            else:
+                print("Wrong input")
+                continue    
+            new_info = input("Enter new information: ")
+            self.logic.employee(3, find_employee, attribute,  new_info)
+            break
 
 
     def get_all_employees(self):
