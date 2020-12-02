@@ -29,7 +29,8 @@ class UIMain():
             elif choice == "2":
                 FleetUI().fleet_loop()
             elif choice == "3":
-                LocationUI().location_loop()
+                #LocationUI().location_loop()
+                pass
             elif choice == "4":
                 #ContractUI()
                 pass

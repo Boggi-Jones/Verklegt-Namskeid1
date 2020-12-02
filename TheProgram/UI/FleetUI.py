@@ -2,7 +2,6 @@
 from Logic.LogicMain import LogicMain
 from Models.Vehicle import Vehicle
 
-
 class FleetUI():
     def __init__(self):
         #self.uimain = UIMain()
@@ -65,6 +64,7 @@ Color:
 License:
 Location:
 Rate:
+Condition
 --------------------------------------------''')     
             manufacturer = input("Manufacturer: ")
             model = input("Model: ")
@@ -75,7 +75,8 @@ Rate:
             license_type = input("License: ")
             location = input("Location: ")
             rate = input("Rate: ")
-            the_vehicle = Vehicle(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate)
+            condition = input("Condition")
+            the_vehicle = Vehicle(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate, condition)
 
             print('''------------- Add Vehicle ----------------
         """Insert information"""
@@ -88,7 +89,8 @@ Color:          {}
 License:        {}
 Location:       {}
 Rate:           {}
---------------------------------------------'''.format(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate))
+Condition:      {}
+--------------------------------------------'''.format(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate, condition))
             add_choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
@@ -119,6 +121,7 @@ Rate:           {}
 7. License:
 8. Location:
 9. Rate:
+10. Condition
 --------------------------------------------
 choice(Enter the number): ''')
             
@@ -140,15 +143,14 @@ choice(Enter the number): ''')
                 attribute = "Location"
             elif attribute == "9":
                 attribute = "Rate"
+            elif attribute == "10":
+                attribute = "Condition"
             else:
                 print("Wrong input")
                 continue    
             new_vehicle_info = input("Enter new information: ")
             self.logic.vehicle(3, find_vehicle, attribute,  new_vehicle_info)
             break
-
-    def update_vehicle_condition(self):
-        pass
 
     def all_vehicles(self):
         get_all = self.logic.vehicle(0, None, None, None)
