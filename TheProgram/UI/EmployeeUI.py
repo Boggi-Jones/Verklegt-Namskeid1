@@ -1,10 +1,10 @@
-#from UI.UIMain import UIMain
+#from UI.UIMain import UILoop
 from Logic.LogicMain import LogicMain
 from Models.Employee import Employee
 
 class EmployeeUI():
     def __init__(self):
-        #self.uimain = UIMain()
+        #self.uiloop = UILoop()
         self.logic = LogicMain()
 
     def employee_loop(self):
@@ -26,7 +26,7 @@ chocie: ''')
             elif employee_choice == "3":
                 self.search_employee()
             elif employee_choice == "4":
-                self.uimain
+                break
             else:
                 ("Invalid entry")
 
@@ -35,6 +35,7 @@ chocie: ''')
 1. Add employee
 2. Remove employee
 3. Update employee information
+4. <- Go back
 --------------------------------------------
 choice: ''')
         while True:
@@ -44,7 +45,7 @@ choice: ''')
                 self.remove_employee()
             elif employee_options == "3":
                 self.update_employee()
-            elif employee_options == "b":
+            elif employee_options == "4":
                 break
             else:
                 print("Invalid entry")
@@ -60,7 +61,6 @@ Email:
 Homa address:
 Company role:
 
-<- Back
 --------------------------------------------''') # Þurfum að finna betri leið til að útfæra
         name = input("Name: ")
         ssn = input("SSN: ")
@@ -83,11 +83,12 @@ Home address: {}
 Postal code:  {}
 Company role: {}
 
-<- Back
 --------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, postal_code, company_role))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
+        elif choice =="n":
+            self.manage_employee()
         else:
             return None
 
@@ -101,16 +102,16 @@ Company role: {}
 
     def update_employee(self):
         find_employee = input("Enter employee SSN: ")
-        attribute = input('''What attribute would you like to change: 
-1. Name:
-2. SSN:
-3. Home number:
-4. Smart phone:
-5. Email:
-6. Homa address:
-7. Company role:
+        attribute = input('''--------------------------------------------
+ What attribute would you like to change: 
+ 1. Name:
+ 2. SSN:
+ 3. Home number:
+ 4. Smart phone:
+ 5. Email:
+ 6. Homa address:
+ 7. Company role:
 
-<- Back
 --------------------------------------------
 chocie(Enter the number): ''')
         new_info = input("Enter new information: ")

@@ -12,17 +12,18 @@ class UIMain():
 
     def UILoop(self):
         while True:
-            choice = input('''# Veldu nr. til að fara áfram í valmynd
-# Veldu "q" til að hætta
-#
-# 1. Employee accounts
-# 2. Manage vehicle fleet
-# 3. Rental Locations
-# 4. Contracts
-# 5. Business reports
-# Q. Quit
+            choice = input(''' --------------------------------------------
+ "Veldu nr. til að fara áfram í valmynd"
+ "Veldu "q" til að hætta"
+
+ 1. Employee accounts
+ 2. Manage vehicle fleet
+ 3. Rental Locations
+ 4. Contracts
+ 5. Business reports
+ Q. Quit
 --------------------------------------------
-# choice: ''')
+ choice: ''')
             if choice == "1":
                 EmployeeUI().employee_loop()
             elif choice == "2":
