@@ -53,42 +53,48 @@ chocie: ''')
         while True:
             print('''------------- Add Vehicle ------------------
 ------------ Insert Information ------------
-Manufacturer:
-Model:
-Type:
 Status:
-Year:
-Color:
-License:
-Location:
+Vehicle type:
 Rate:
-Condition
---------------------------------------------''')     
-            manufacturer = input("Manufacturer: ")
-            model = input("Model: ")
-            vehicle_type = input("Type: ")
-            statues = input("Status: ")
-            year = input("Year: ")
-            color = input("Color: ")
-            license_type = input("License: ")
-            location = input("Location: ")
+Manufacturer:
+Condition:
+Model year:
+Color:
+Number plate:
+Required license:
+Rent:
+Airport:
+Country:
+--------------------------------------------''')
+            status = input("Status: ")
+            type_of_vehicle = input("Vehicle type: ")
             rate = input("Rate: ")
+            manufacturer = input("Manufacturer: ")
             condition = input("Condition: ")
-            the_vehicle = Vehicle(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate, condition)
-#status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country
+            age = input("Model year: ")
+            color = input("Color: ")
+            number_plate = input("Number plate: ")
+            driving_license = input("License required: ")
+            rent_counter = input("Rent: ")
+            name_of_airport = input("Airport: ")
+            country = input("Country: ")
+            the_vehicle = Vehicle(status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country)
+
             print('''------------- Add Vehicle ----------------
         """Insert information"""
-Manufacturer:   {}
-Model:          {}
-Type:           {}
-Status:         {}
-Year:           {}
-Color:          {}
-License:        {}
-Location:       {}
-Rate:           {}
-Condition:      {}
---------------------------------------------'''.format(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate, condition))
+Status:             {}
+Vehicle type:       {}
+Rate:               {}
+Manufacturer:       {}
+Condition:          {}
+Model year:         {}
+Color:              {}
+Number plate:       {}
+Required license:   {}
+Rent:               {}
+Airport:            {}
+Country:            {}
+--------------------------------------------'''.format(status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country))
             add_choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
