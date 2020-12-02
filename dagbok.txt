@@ -71,5 +71,7 @@ og við tökum upp þráðinn aftur á morgun klukkan 09.00.
 
 
 02/12/20 - - - - - - - - - - - - 
+Færsla 1: Við byrjuðum fundinn á því að reyna að keyra forritið markvisst í gegnum ákveðið "Path". Það tók sinn
+en við létum það ganga. SVo héldum við áfram með sama verkaskipti og síðustu tvo daga.
 
- 
+Færsla 2: 
