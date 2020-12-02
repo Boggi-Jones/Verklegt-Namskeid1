@@ -8,7 +8,7 @@ class DataMain():
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if filename == "Employee":
-                    emp = Employee(row["name"], row["ssn"], row["address"], row["home_phone"], row["gsm_phone"], row["email"], row["location"], row["role"])
+                    emp = Employee(row["name"], row["ssn"], row["adress"], row["home_phone"], row["gsm_phone"], row["email"], row["location"], row["role"])
                     retList.append(emp)
         return retList
 
