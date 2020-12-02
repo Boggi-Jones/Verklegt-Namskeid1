@@ -44,6 +44,8 @@ choice: ''')
                 self.remove_employee()
             elif employee_options == "3":
                 self.update_employee()
+            elif employee_options == "b":
+                break
             else:
                 print("Invalid entry")
 
@@ -58,8 +60,6 @@ Email:
 Homa address:
 Company role:
 
-" ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N "
-
 <- Back
 --------------------------------------------''') # Þurfum að finna betri leið til að útfæra
         name = input("Name: ")
@@ -68,8 +68,9 @@ Company role:
         smart_phone = input("Smart phone: ")
         email = input("Email: ")
         home_address = input("Home address: ")
+        postal_code = input("Postal code: ")
         company_role = input("Company role: ")
-        Employee(name, ssn, home_phone, smart_phone, email, home_address, company_role)
+        the_employee = Employee(name, home_address, postal_code, ssn, home_phone, smart_phone, email, company_role)
 
         print('''----------- Add employee ------------------
         """Insert information"""
@@ -78,16 +79,15 @@ SSN:          {}
 Home number:  {}
 Smart phone:  {}
 Email:        {}
-Homa address: {}
+Home address: {}
+Postal code:  {}
 Company role: {}
 
-" Press 'Enter' to continue "
-
 <- Back
---------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, company_role))
+--------------------------------------------'''.format(name, ssn, home_phone, smart_phone, email, home_address, postal_code, company_role))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N").lower()
         if choice == "y":
-            self.logic.employee(2, None, None, new_employee)
+            self.logic.employee(2, None, None, the_employee)
         else:
             return None
 
