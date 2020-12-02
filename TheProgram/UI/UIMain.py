@@ -1,7 +1,7 @@
 #from UI.ContractUI import ContractUI
 from UI.EmployeeUI import EmployeeUI
 #from UI.LocationUI import LocationUI
-#from UI.FleetUI import FleetUI
+from UI.FleetUI import FleetUI
 from Logic.LogicMain import LogicMain
 
 class UIMain():
@@ -23,12 +23,11 @@ class UIMain():
  5. Business reports
  Q. Quit
 --------------------------------------------
- choice: ''')
+ choice: ''').lower()
             if choice == "1":
                 EmployeeUI().employee_loop()
             elif choice == "2":
-                #FleetUI()
-                pass
+                FleetUI().fleet_loop()
             elif choice == "3":
                 #LocationUI()
                 pass

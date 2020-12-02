@@ -63,7 +63,7 @@ Email:
 Location:
 Company role:
 
---------------------------------------------''') # Þurfum að finna betri leið til að útfæra
+--------------------------------------------''')
         name = input("Name: ")
         ssn = input("SSN: ")
         address = input("Address: ")
@@ -86,6 +86,9 @@ Location:     {}
 Company role: {}
 
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
+        
+        
+        
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
@@ -115,7 +118,7 @@ Company role: {}
 6. Company role:
 
 --------------------------------------------
-chocie(Enter the number): ''')
+choice(Enter the number): ''')
             
             if attribute == "1":
                 attribute = "address"
@@ -132,8 +135,8 @@ chocie(Enter the number): ''')
             else:
                 print("Wrong input")
                 continue    
-            new_info = input("Enter new information: ")
-            self.logic.employee(3, find_employee, attribute,  new_info)
+            new_employee_info = input("Enter new information: ")
+            self.logic.employee(3, find_employee, attribute,  new_employee_info)
             break
 
 
