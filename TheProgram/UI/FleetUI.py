@@ -76,7 +76,7 @@ Rate:
             location = input("Location: ")
             rate = input("Rate: ")
             the_vehicle = Vehicle(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate)
-
+status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country
             print('''------------- Add Vehicle ----------------
         """Insert information"""
 Manufacturer:   {}

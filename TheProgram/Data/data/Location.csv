@@ -1,4 +1,4 @@
-name,ssn,address,home_phone,gsm_phone,email,location,role
+name_of_airport,country,opening_hours,phone_number
 f,f,f,f
 r,r,r,r
 t,t,t,t
