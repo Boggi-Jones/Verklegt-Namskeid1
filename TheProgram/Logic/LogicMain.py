@@ -2,6 +2,7 @@ from Logic.EmployeeLogic import EmployeeLogic
 from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
 from Logic.ContractLogic import ContractLogic
+from Logic.CustomerLogic import CustomerLogic
 
 class LogicMain:
     def __init__(self):
@@ -9,6 +10,7 @@ class LogicMain:
         self.locationlogic = LocationLogic()
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
+        self.customerlogic = CustomerLogic()
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0:
@@ -59,8 +61,17 @@ class LogicMain:
             results = self.contractlogic.cancelcontract(filter_or_id)
         elif option == 4:
             results = self.contractlogic.printcontract(filter_or_id)
+        elif option == 5:
+            vehicle_class = self.vehicle(0, attribute, "number_plate", None)
+            results = self.contractlogic.checklicense(filter_or_id, vehicle_class)
         else:
             list_of_vehicles_by_rate = self.vehiclelogicfilter(vehicle_type)
             results = self.contractlogic.calculatefinalprice(filter_or_id, list_of_vehicles_by_rate)
 
         return results
+
+    def customer(self, option, ssn_or_customer_class):
+        if option == 0:
+            results = self.customerlogic.get_customer_with_id(ssn_or_customer_class)
+        else:
+            results = self.customerlogic.add_customer_to_the_system(ssn_or_customer_class)

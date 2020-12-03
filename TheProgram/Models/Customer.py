@@ -10,6 +10,7 @@ class Customer(object):
 
     def fieldnames(self):
         return ["name", "ssn", "email", "gsm_number", "address" , "driving_license", "return_late_before"]
+        
     def add_to_dict(self):
         return {"name" : self.name, "ssn" : self.ssn, "email" : self.email, "gsm_number": self.gsm_number, "address" : self.address,  "driving_license":self.driving_license, "returned_late_before": self.returned_late_before}
     

@@ -1,6 +1,6 @@
 UI:
 Enter customer SSN:
-ssn_value = logic.filtercustomer(ssn)
+ssn_value = logic.customer(0, ssn)
 
 if ssn_value == None:
 	#Býr til customer class
