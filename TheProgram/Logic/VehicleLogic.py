@@ -43,16 +43,6 @@ class VehicleLogic:
             self.remove_vehicle(filter_or_id)
             self.registernewvehicle(vehicle)
 
-    def remove_vehicle_by_type(self, vehicle_type):
-        # Vehicle is specified using the attribute "vehicle typ" using a for loop that iterates through the list of vehicles
-        # After vehicle has been identified, it is then removed from the list
-        # New list without the vehicle then overwrites the old list without the removed vehicle.
-        list_of_vehicles = self.filtervehiclefleet(None, None)
-        for vehicle in list_of_vehicles:
-            if vehicle.__getattribute__("vehicle_type") == vehicle_type:
-                list_of_vehicles.remove(vehicle)
-        self.datamain.overwrite(self.position, list_of_vehicles)
-
     def editrate(self, vehicle_type, current_rate, new_rate):
         # Cretes a list of vehicle by using information from type of vehicle
         # New rate is set by using a for loop
@@ -62,6 +52,6 @@ class VehicleLogic:
         list_of_vehicles = self.filtervehiclefleet(vehicle_type, "type_of_vehicle")
         for vehicle in list_of_vehicles:
             vehicle.__setattr__("rate", new_rate)
-        self.remove_vehicle_by_type(vehicle_type)
-        self.registernewvehicle(list_of_vehicles)
+            self.remove_vehicle(vehicle)
+            self.registernewvehicle(vehicle)
         return list_of_vehicles
