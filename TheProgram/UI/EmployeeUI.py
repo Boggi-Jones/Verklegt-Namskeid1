@@ -119,7 +119,7 @@ Company role: {}
 
 --------------------------------------------
 choice(Enter the number): ''')
-            
+
             if attribute == "1":
                 attribute = "address"
             elif attribute == "2":
@@ -139,14 +139,12 @@ choice(Enter the number): ''')
             self.logic.employee(3, find_employee, attribute,  new_employee_info)
             break
 
-
     def get_all_employees(self):
         results = self.logic.employee(0, None, None, None)
         print("\n------------ All employees ------------------")
         for employee in results:
             print(employee)
         print("--------------------------------------------")
-
 
     def search_employee(self):
         employee = input("Enter employee SSN: ")

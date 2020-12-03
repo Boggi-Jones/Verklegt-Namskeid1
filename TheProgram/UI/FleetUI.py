@@ -2,7 +2,6 @@
 from Logic.LogicMain import LogicMain
 from Models.Vehicle import Vehicle
 
-
 class FleetUI():
     def __init__(self):
         #self.uimain = UIMain()
@@ -46,8 +45,6 @@ chocie: ''')
             elif edit_choice == "3":
                 self.update_vehicle_information()
             elif edit_choice == "4":
-                self.update_vehicle_condition()
-            elif edit_choice == "5":
                 break
             else:
                 ("Invalid entry")
@@ -56,39 +53,48 @@ chocie: ''')
         while True:
             print('''------------- Add Vehicle ------------------
 ------------ Insert Information ------------
-Manufacturer:
-Model:
-Type:
 Status:
-Year:
-Color:
-License:
-Location:
+Vehicle type:
 Rate:
---------------------------------------------''')     
-            manufacturer = input("Manufacturer: ")
-            model = input("Model: ")
-            vehicle_type = input("Type: ")
-            statues = input("Status: ")
-            year = input("Year: ")
-            color = input("Color: ")
-            license_type = input("License: ")
-            location = input("Location: ")
+Manufacturer:
+Condition:
+Model year:
+Color:
+Number plate:
+Required license:
+Rent:
+Airport:
+Country:
+--------------------------------------------''')
+            status = input("Status: ")
+            type_of_vehicle = input("Vehicle type: ")
             rate = input("Rate: ")
-            the_vehicle = Vehicle(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate)
-status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country
+            manufacturer = input("Manufacturer: ")
+            condition = input("Condition: ")
+            age = input("Model year: ")
+            color = input("Color: ")
+            number_plate = input("Number plate: ")
+            driving_license = input("License required: ")
+            rent_counter = input("Rent: ")
+            name_of_airport = input("Airport: ")
+            country = input("Country: ")
+            the_vehicle = Vehicle(status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country)
+
             print('''------------- Add Vehicle ----------------
         """Insert information"""
-Manufacturer:   {}
-Model:          {}
-Type:           {}
-Status:         {}
-Year:           {}
-Color:          {}
-License:        {}
-Location:       {}
-Rate:           {}
---------------------------------------------'''.format(manufacturer, model, vehicle_type, statues, year, color, license_type, location, rate))
+Status:             {}
+Vehicle type:       {}
+Rate:               {}
+Manufacturer:       {}
+Condition:          {}
+Model year:         {}
+Color:              {}
+Number plate:       {}
+Required license:   {}
+Rent:               {}
+Airport:            {}
+Country:            {}
+--------------------------------------------'''.format(status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country))
             add_choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
@@ -119,6 +125,7 @@ Rate:           {}
 7. License:
 8. Location:
 9. Rate:
+10. Condition
 --------------------------------------------
 choice(Enter the number): ''')
             
@@ -140,15 +147,14 @@ choice(Enter the number): ''')
                 attribute = "Location"
             elif attribute == "9":
                 attribute = "Rate"
+            elif attribute == "10":
+                attribute = "Condition"
             else:
                 print("Wrong input")
                 continue    
             new_vehicle_info = input("Enter new information: ")
             self.logic.vehicle(3, find_vehicle, attribute,  new_vehicle_info)
             break
-
-    def update_vehicle_condition(self):
-        pass
 
     def all_vehicles(self):
         get_all = self.logic.vehicle(0, None, None, None)
