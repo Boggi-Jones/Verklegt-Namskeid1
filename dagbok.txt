@@ -79,4 +79,5 @@ emma á morgun.
 
 
 03/12/20 - - - - - - - - - - - -
-Færsla 1: 
+Færsla 1: Við fórum yfir hvað þyrfti að laga til að láta forritið ganga fyrir tvö "path" sem við vorum búnir að
+búa til. Skiptum okkur upp í verkefni samkvæmt venjulegri verkaskipti sem við höfum. Tökum stöðuna aftur í hádeginu.
