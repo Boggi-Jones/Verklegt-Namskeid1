@@ -81,3 +81,11 @@ emma á morgun.
 03/12/20 - - - - - - - - - - - -
 Færsla 1: Við fórum yfir hvað þyrfti að laga til að láta forritið ganga fyrir tvö "path" sem við vorum búnir að
 búa til. Skiptum okkur upp í verkefni samkvæmt venjulegri verkaskipti sem við höfum. Tökum stöðuna aftur í hádeginu.
+
+Færsla 2: Hættum klukkan 16.00 eftir að hafa klárað "Happy path" fyrir contracts. Með því er grunnurinn kominn að
+A kröfunum okkar. Það á klárlega eftir að pússa það til en þetta virkar allt amk þannig höldum áfram að byggja ofan
+á það.
+
+
+
+
