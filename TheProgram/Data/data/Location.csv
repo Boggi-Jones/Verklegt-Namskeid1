@@ -1,1 +1,3 @@
-airport_name,country,opening_hours,phone_number
+name_of_airport,country,opening_hours,phone_number
+f,f,f,f
+r,r,r,r
