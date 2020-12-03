@@ -147,7 +147,7 @@ chocie(Enter the number): ''')
 
     def search_location(self):
         location = input("Enter airport name: ")
-        result = self.logic.location(0, location, "airport name", None)
+        result = self.logic.location(0, location, "name_of_airport", None)
         for airport in result:
             print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", airport)
         print("--------------------------------------------------")

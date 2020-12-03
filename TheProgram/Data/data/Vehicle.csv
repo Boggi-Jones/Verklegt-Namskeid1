@@ -21,3 +21,4 @@ Forward," 		FWD-ZK125H"," 			Medium road"," 	OK"," 		2019","		Blue","		Drivers l
 Colorado," 		Pontoon Boat"," 		Light water"," 	OK","			    2019","		Green"," 		None","                        Thorshavn","","","",""
 A2extreem,"		Powerboard","			Light winter","	OK","			    2018","		Black","		None","                        Nuuk","","","",""
 Torpedo,"			3500","				Light water","		OK"," 	2019","		White"," 		Diving licence","              Thorshavn","","","",""
+status,type_of_vehicle,rate,manufacturer,condition,age,color,number_plate,driving_license,rent_counter,name_of_airport,country

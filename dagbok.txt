@@ -74,4 +74,10 @@ og við tökum upp þráðinn aftur á morgun klukkan 09.00.
 Færsla 1: Við byrjuðum fundinn á því að reyna að keyra forritið markvisst í gegnum ákveðið "Path". Það tók sinn
 en við létum það ganga. SVo héldum við áfram með sama verkaskipti og síðustu tvo daga.
 
-Færsla 2: 
+Færsla 2: Í lok dags voru "happy path" fyrir Fleet og Locations nánast tilbúin. Það verður sennilega klárað sn-
+emma á morgun.
+
+
+03/12/20 - - - - - - - - - - - -
+Færsla 1: Við fórum yfir hvað þyrfti að laga til að láta forritið ganga fyrir tvö "path" sem við vorum búnir að
+búa til. Skiptum okkur upp í verkefni samkvæmt venjulegri verkaskipti sem við höfum. Tökum stöðuna aftur í hádeginu.

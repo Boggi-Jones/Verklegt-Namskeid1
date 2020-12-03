@@ -1,4 +1,3 @@
 name,ssn,address,home_phone,gsm_phone,email,location,role
 f,r,f,f,f,f,f,f
-h,h,h,h,h,h,i,h
-g,u,g,g,g,g,w,g
+g,g,g,g,,g,g,g

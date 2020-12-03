@@ -1,0 +1,29 @@
+UI:
+Enter customer SSN:
+ssn_value = logic.filtercustomer(ssn)
+
+if ssn_value == None:
+	#Býr til customer class
+
+Prints customer and asks if everything is correct?Y/N
+
+vehicle_type = What vehicle type would the customer want?
+
+list_of_vehicles = logic.vehicle(0, vehicle_type, "vehicle_type", None, None)
+
+for vehicle in list_of_vehicles:
+	print(vehicle)
+
+number_plate = Enter the number plate of the chosen vehicle: 
+
+vehicle_class = logic.contract.checklicense(tala, ssn_value, number_plate)
+
+if vehicle_class == None:
+	Choose another vehicle:
+	#needs to go back to the list
+else:
+	break
+
+Fær allar upplæysingar fyrir contract
+contract = Contract(date, duration, country, city, employee_name, paid, final_price, vehicle_class, ssn_value)
+logic.contract(1, None, None, contract, None)
