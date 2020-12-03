@@ -34,17 +34,17 @@ class LogicMain:
 
         return results
 
-    def vehicle(self, option, filter_id_number_plate_or_vehicle_type, attribute, new_vehicle_or_rate, current_rate):
+    def vehicle(self, option, filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate):
         if option == 0:
-            results = self.vehiclelogic.filtervehiclefleet(filter_id_number_plate_or_vehicle_type, attribute)
+            results = self.vehiclelogic.filtervehiclefleet(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate)
         elif option == 1:
-            results = self.vehiclelogic.editvehicleinfo(filter_id_number_plate_or_vehicle_type, attribute, new_vehicle_or_rate)
+            results = self.vehiclelogic.editvehicleinfo(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
         elif option == 2:
             results = self.vehiclelogic.registernewvehicle(new_vehicle_or_rate)
         elif option == 3:
             results = self.vehiclelogic.remove_vehicle(filter_id_number_plate_or_vehicle_type)
         else:
-            results = self.vehiclelogic.editrate(filter_id_number_plate_or_vehicle_type, new_vehicle_or_rate, current_rate)
+            results = self.vehiclelogic.editrate(filter_id_number_plate_or_vehicle_type, new_vehicle_or_rate, attribute_or_current_rate)
 
         return results
 
