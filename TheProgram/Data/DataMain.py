@@ -2,6 +2,8 @@ import csv
 from Models.Employee import Employee
 from Models.Location import Location
 from Models.Vehicle import Vehicle
+from Models.Contract import Contract
+from Models.customer import Customer
 
 class DataMain():
 
@@ -19,6 +21,12 @@ class DataMain():
                 elif filename == "Vehicle":
                     vehicle = Vehicle(row["status"], row["type_of_vehicle"], row["rate"], row["manufacturer"], row["condition"], row["age"], row["color"], row["number_plate"], row["driving_license"], row["rent_counter"], row["name_of_airport"], row["country"])
                     retList.append(vehicle)
+                elif filename == "Contaract":
+                    vehicle = Contract(row["data"], row["duration"], row["country"], row["city"], row["employee_name"], row["paid"], row["final_price"], row["Vehicle"], row["Customer"])
+                    retList.append(vehicle)
+                elif filename == "Customer":
+                    vehicle = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["drivin_license"], row["returned_late_before"], row["Vehicle"], row["Customer"])
+                    retList.append(vehicle)
         return retList
         
     def add_to_list(self, filename, value):
@@ -27,7 +35,7 @@ class DataMain():
             writer.writerow(value.add_to_dict())
         csvfile.close()
 
-    def overwrite(self, filename, list_of_items):
+    def overwrite(self, filename, list_of_items, fieldname):
         with open(f"Data/data/{filename}.csv","w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = list(list_of_items[0].__dict__.keys()))
             writer.writeheader()
