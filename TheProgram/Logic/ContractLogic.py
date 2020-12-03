@@ -36,6 +36,11 @@ class ContractLogic:
     def printcontract(self, filter_or_id):
         return self.filtercontract(filter_or_id, "ssn")
 
+    def checklicense(customer_class, vehicle_class):
+        if customer_class.__getattribute__("driving_license") in vehicle_class.__getattribute__("driving_license"):
+            return vehicle_class
+
+
     def calculatefinalprice(self, list_of_vehicles_by_type, duration):
         for vehicle in list_of_vehicles_by_type:
             rate = vehicle.rate
