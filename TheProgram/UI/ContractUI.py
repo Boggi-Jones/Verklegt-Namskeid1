@@ -35,18 +35,36 @@ class ContractUI():
             else:
                 print("Invalid choice!")
 
+    def get_contract(self):
+        ssn = input("Enter customer SSN: ")
+        ssn_val = self.logic.filtercustomer(ssn)
+        if ssn_val == None:
+            #búa til customer
+
     def add_contract(self):
         print('''----------- Add contract ------------------
         """Insert information"""
-Date:
-Duration:
-Country:
-City:
-Employee name:
-Paid:
-Final price:
+"""Contract Information"""
+ Rental location:
+ Creation of contract date:
+ Employee who made contract:
+ Pick up date:
+ Drop of date:
 
---------------------------------------------''') # Þurfum að finna betri leið til að útfæra
+"""Customer Information"""
+ Customer id:
+ Name:
+ SSN:
+ Phone:
+ Email:
+ Address:
+ Drivers license:
+
+ """Vehicle Information"""
+ Plate number:
+
+
+--------------------------------------------''')
         date = input("Date: ")
         duration = input("Duration: ")
         country = input("Country: ")
@@ -82,7 +100,7 @@ Employee name:          {}
 
  --------------------------------------------""")
         choice = input("""# ------- Remove contract ---------
- Enter contract name: {}
+ Enter recipiants name of contract: {}
 
 
  |Are you sure you want to remove this contract?|
@@ -105,12 +123,21 @@ Employee name:          {}
             find_contract = input("Enter contract recipient: ")
             attribute = input('''--------------------------------------------
  What attribute would you like to change:
-1. Date:
-2. Duration:
-3. Paid:
+"""Contract information"""
+ 1. Rental location:
+ 2. Pick up date:
+ 3. Drop off date:
+
+"""Customer Information"""
+ 4. Phone:
+ 5. Email:
+ 6. Address:
+
+"""Vehicle Information"""
+ 7. Plate number:
 
 --------------------------------------------
-chocie(Enter the number): ''')
+choice(Enter the number): ''')
 
             if attribute == "1":
                 attribute = "date"
@@ -133,5 +160,52 @@ chocie(Enter the number): ''')
         print("-----------------------------------")
 
     def print_contract(self):
+        customer_id = input("""------------- Print contract --------------
+
+ Enter customer id:
+
+
+
+
+ --------------------------------------------
+ ID: """)
+        print("""------------- Print contract --------------
+#
+# Enter customer id: 603-67-67
+#
+# """Contract information"""
+# Rental location:
+# Creation of contract date:
+# Employee who made contract:
+# Pick up date:
+# Drop off date:
+#
+# """Customer information"""
+# Name:
+# SSN:
+# Phone:
+# Email:
+# Address:
+# Drivers license
+#
+# """Vehicle Information"""
+# Manufacturer:
+# Type:
+# Color:
+# Model
+# Plate number:
+# Vehicle rate:
+#
+#
+#
+# """Total cost"""
+#
+# ______________ $
+#
+#
+#
+# <- Back
+# Choice:__
+# -------------------------------------------""")
 
     def charge_contact(self):
