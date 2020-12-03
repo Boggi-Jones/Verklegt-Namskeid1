@@ -1,5 +1,6 @@
 from Logic.LogicMain import LogicMain
 from Models.Contract import Contracts
+from Models.Customer import Customer
 
 class ContractUI():
     def __init__(self):
@@ -35,24 +36,59 @@ class ContractUI():
             else:
                 print("Invalid choice!")
 
-    def get_contract(self):
+    def the_customer(self):
         ssn = input("Enter customer SSN: ")
         ssn_val = self.logic.filtercustomer(ssn)
         if ssn_val == None:
-            #búa til customer
+            name = input("Name: ")
+            ssn = input("SSN: ")
+            email = input("Email: ")
+            gsm_phone = input("Phone: ")
+            address = input("Address: ")
+            drivers_license = input("Drivers license: ")
+            return_late_before = input("Returned late before: ")
+            new_customer = Customer(name, ssn, phone, email, drivers_license)
+        customer = input("""------ Customer information -----
+        Name:                   {}
+        SSN:                    {}
+        Email:                  {}
+        Phone number:           {}
+        Address:                {}
+        Drivers license:        {}
+        Returned late before:   {}
+        Is everything correct ? ( Y / N )
+        """.format(name, ssn, email, gsm_phone, address, drivers_license, return_late_before)).lower
+        if customer == "y":
+            add_customer
+        else:
+            return
+        vehicle_type = input("What type of vehicle does the customer want?")
+        list_of_vehicles = self.logic.vehicle(0, vehicle_type, "vehicle type", None, None)
+        for vehicle in list_of_vehicles:
+            print(vehicle)
+        number_plate = input("Enter the number plate of the chosen vehicle: ")
+        vehicle_class = logic.contract.checklicense(tala, ssn_val, number_plate)
+        if vehicle_class == None:
+            print("Choose another vehicle, this one is occupied")
+            number_plate = input("Enter the number plate of the chosen vehicle: ")
+        else:
+            break
+
+        contract = Contracts(date, duration, country, city, employee_name, paid, final_price, vehicle_class, ssn_val)
 
     def add_contract(self):
         print('''----------- Add contract ------------------
         """Insert information"""
 """Contract Information"""
- Rental location:
- Creation of contract date:
- Employee who made contract:
- Pick up date:
- Drop of date:
+ Date:
+ Duration:
+ Country:
+ City:
+ Employee name:
+ Paid:
+ Final price:
 
 """Customer Information"""
- Customer id:
  Name:
  SSN:
  Phone:
@@ -61,6 +97,7 @@ class ContractUI():
  Drivers license:
 
  """Vehicle Information"""
+ #vehicle class...:
  Plate number:
 
 
