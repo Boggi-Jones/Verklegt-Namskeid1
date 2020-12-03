@@ -41,8 +41,7 @@ class ContractLogic:
             return vehicle_class
 
 
-    def calculatefinalprice(self, list_of_vehicles_by_type, duration):
-        for vehicle in list_of_vehicles_by_type:
-            rate = vehicle.rate
+    def calculatefinalprice(self, duration, vehicle_class):
+        rate = vehicle_class.__getattribute__("rate")
         total = duration * rate
         return total

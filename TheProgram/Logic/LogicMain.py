@@ -65,8 +65,7 @@ class LogicMain:
             vehicle_class = self.vehicle(0, attribute, "number_plate", None)
             results = self.contractlogic.checklicense(filter_or_id, vehicle_class)
         else:
-            list_of_vehicles_by_rate = self.vehiclelogicfilter(vehicle_type)
-            results = self.contractlogic.calculatefinalprice(filter_or_id, list_of_vehicles_by_rate)
+            results = self.contractlogic.calculatefinalprice(filter_or_id, vehicle_type)
 
         return results
 

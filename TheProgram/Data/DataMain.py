@@ -25,8 +25,8 @@ class DataMain():
                     contract = Contracts(row["data"], row["duration"], row["country"], row["city"], row["employee_name"], row["paid"], row["final_price"], row["Vehicle"], row["Customer"])
                     retList.append(contract)
                 elif filename == "Customer":
-                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["drivin_license"], row["returned_late_before"], row["Vehicle"], row["Customer"])
-                    retList.append(custoomer)
+                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["drivin_license"], row["returned_late_before"])
+                    retList.append(customer)
         return retList
         
     def add_to_list(self, filename, value):
