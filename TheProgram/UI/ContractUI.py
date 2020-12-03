@@ -80,14 +80,15 @@ class ContractUI():
         print('''----------- Add contract ------------------
         """Insert information"""
 """Contract Information"""
- Rental location:
- Creation of contract date:
- Employee who made contract:
- Pick up date:
- Drop of date:
+ Date:
+ Duration:
+ Country:
+ City:
+ Employee name:
+ Paid:
+ Final price:
 
 """Customer Information"""
- Customer id:
  Name:
  SSN:
  Phone:
@@ -96,6 +97,7 @@ class ContractUI():
  Drivers license:
 
  """Vehicle Information"""
+ #vehicle class...:
  Plate number:
 
 
