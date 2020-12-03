@@ -29,7 +29,7 @@ class DataMain():
 
     def overwrite(self, filename, list_of_items):
         with open(f"Data/data/{filename}.csv","w", newline="", encoding="utf-8") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames = list(list_of_items[0]__dict__.keys())
+            writer = csv.DictWriter(csvfile, fieldnames = list(list_of_items[0].__dict__.keys()))
             writer.writeheader()
             for i in list_of_items:                
                 writer.writerow(i.add_to_dict())
