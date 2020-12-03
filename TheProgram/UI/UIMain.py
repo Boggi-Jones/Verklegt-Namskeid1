@@ -1,4 +1,4 @@
-#from UI.ContractUI import ContractUI
+from UI.ContractUI import ContractUI
 from UI.EmployeeUI import EmployeeUI
 from UI.LocationUI import LocationUI
 from UI.FleetUI import FleetUI
@@ -32,8 +32,7 @@ class UIMain():
             elif choice == "3":
                 LocationUI().location_loop()
             elif choice == "4":
-                #ContractUI()
-                pass
+                ContractUI().contract_loop()
             elif choice == "5":
                 pass            # Þurfum að bæta við klasa
             elif choice == "q":

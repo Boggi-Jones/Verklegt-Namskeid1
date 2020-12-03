@@ -9,9 +9,9 @@ class FleetUI():
 
     def fleet_loop(self):
         ''' Skv. wireframe. Valmynd fyrir UIFleet - klasann. Út frá þessu er hægt
-        að fara í "Manage employee, All employees o.s.frv." '''
+        að fara í "Manmodel_year employee, All employees o.s.frv." '''
         while True:
-            fleet_choice = input('''----------- Manage vehicle fleet ------------
+            fleet_choice = input('''----------- Manmodel_year vehicle fleet ------------
 1. Edit vehicle
 2. All vehicles
 3. <- Go back 
@@ -55,6 +55,7 @@ chocie: ''')
 ------------ Insert Information ------------
 Status:
 Vehicle type:
+Model:
 Rate:
 Manufacturer:
 Condition:
@@ -64,21 +65,20 @@ Number plate:
 Required license:
 Rent:
 Airport:
-Country:
 --------------------------------------------''')
             status = input("Status: ")
             type_of_vehicle = input("Vehicle type: ")
+            model = input("Model: ")
             rate = input("Rate: ")
             manufacturer = input("Manufacturer: ")
             condition = input("Condition: ")
-            age = input("Model year: ")
+            model_year = input("Model year: ")
             color = input("Color: ")
             number_plate = input("Number plate: ")
             driving_license = input("License required: ")
             rent_counter = input("Rent: ")
             name_of_airport = input("Airport: ")
-            country = input("Country: ")
-            the_vehicle = Vehicle(status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country)
+            the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
 
             print('''------------- Add Vehicle ----------------
         """Insert information"""
@@ -93,11 +93,11 @@ Number plate:       {}
 Required license:   {}
 Rent:               {}
 Airport:            {}
-Country:            {}
---------------------------------------------'''.format(status, type_of_vehicle, rate, manufacturer, condition, age, color, number_plate, driving_license, rent_counter, name_of_airport, country))
+--------------------------------------------'''.format(status, type_of_vehicle, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
             add_choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
+                break
             elif add_choice =="n":
                 return
             else:
@@ -127,7 +127,6 @@ Country:            {}
 9. Required license:
 10. Rent:
 11. Airport:
-12. Country:
 --------------------------------------------
 choice(Enter the number): ''')
             
@@ -153,8 +152,6 @@ choice(Enter the number): ''')
                 attribute = "Rent"
             elif attribute == "11":
                 attribute = "Airport"
-            elif attribute == "12":
-                attribute = "Country"
             else:
                 print("Wrong input")
                 continue    

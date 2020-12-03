@@ -6,7 +6,7 @@ from Models.Contract import Contracts
 from Models.Customer import Customer
 
 import os
-os.chdir("TheProgram/Data/data")
+
 
 class DataMain():
 
@@ -22,13 +22,13 @@ class DataMain():
                     loc = Location(row["name_of_airport"], row["country"], row["opening_hours"], row["phone_number"])
                     retList.append(loc)
                 elif filename == "Vehicle":
-                    vehicle = Vehicle(row["status"], row["type_of_vehicle"], row["model"], row["rate"], row["manufacturer"], row["condition"], row["age"], row["color"], row["number_plate"], row["driving_license"], row["rent_counter"], row["name_of_airport"], row["country"])
+                    vehicle = Vehicle(row["status"], row["type_of_vehicle"], row["model"], row["rate"], row["manufacturer"], row["condition"], row["model_year"], row["color"], row["number_plate"], row["driving_license"], row["rent_counter"], row["name_of_airport"])
                     retList.append(vehicle)
-                elif filename == "Contaract":
-                    contract = Contracts(row["data"], row["duration"], row["country"], row["city"], row["employee_name"], row["paid"], row["final_price"], row["Vehicle"], row["Customer"])
+                elif filename == "Contract":
+                    contract = Contracts(row["data"], row["duration"], row["name_of_airport"], row["employee_name"], row["paid"], row["final_price"], row["number_plate"], row["ssn"])
                     retList.append(contract)
                 elif filename == "Customer":
-                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["driving_license"], row["returned_late_before"], row["Vehicle"], row["Customer"])
+                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["driving_license"], row["returned_late_before"])
                     retList.append(customer)
         return retList
         
@@ -38,7 +38,7 @@ class DataMain():
             writer.writerow(value.add_to_dict())
         csvfile.close()
 
-    def overwrite(self, filename, list_of_items, fieldname):
+    def overwrite(self, filename, list_of_items):
         with open(f"Data/data/{filename}.csv","w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = list(list_of_items[0].__dict__.keys()))
             writer.writeheader()

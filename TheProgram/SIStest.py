@@ -1,4 +1,6 @@
 from Models.Employee import Employee
 #emp = Employee(f,f,f,f,f,f,f,f)
-emp = Employee("f","f","f","f","f","f","f","f")
-print(list(emp.__dict__.keys()))
+tala = None
+far = 1
+tala = far
+print(tala)
