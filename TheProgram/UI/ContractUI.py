@@ -123,8 +123,7 @@ class ContractUI():
         paid = "not"
         final_price = self.logic.contract(6, duration, None, None, vehicle_class)
         the_contract = Contracts(date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class.ssn)
-        print('''----------- Print contract ------------------
-        """Insert information"""
+        print('''----------- Contract information ------------------
 Date:                   {}
 Duration:               {}
 Name of airport:        {}
@@ -142,7 +141,7 @@ Final price:            {}
 
     def remove_contract(self):
         contract_name = input(""" ------- Remove contract ---------
- Enter contract name: <- Insert contract name
+ Enter contractholder name: <- Insert contract name
 
 
 
@@ -151,7 +150,7 @@ Final price:            {}
 
  --------------------------------------------""")
         choice = input("""# ------- Remove contract ---------
- Enter recipiants name of contract: {}
+ Contractholder: {}
 
 
  |Are you sure you want to remove this contract?|
@@ -211,7 +210,41 @@ choice(Enter the number): ''')
         print("-----------------------------------")
 
     def print_contract(self):
-        pass
+        customer_id = print(''' ------------- Print contract --------------
+
+ """Contract Information"""
+ Date:
+ Duration:
+ Country:
+ City:
+ Employee name:
+ Paid:
+ Final price:
+
+"""Customer Information"""
+ Name:
+ SSN:
+ Phone:
+ Email:
+ Address:
+ Drivers license:
+
+ """Vehicle Information"""
+ Manufacturer:
+ Type:
+ Color:
+ Model
+ Plate number:
+ Vehicle rate:
+
+ """Total cost"""
+ Cost:
+ 
+ Enter Customer ID: ''')
+
+        printable_customer = self.logic.contract(4, customer_id, None, None)
+        for item in printable_customer:
+            print(item)
 
     def charge_contact(self):
         pass
