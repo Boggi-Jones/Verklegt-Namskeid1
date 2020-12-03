@@ -1,5 +1,5 @@
-from Vehicle import Vehicle
-from Customer import Customer
+from Models.Vehicle import Vehicle
+from Models.Customer import Customer
 
 
 class Contracts(Vehicle, Customer):
