@@ -116,39 +116,45 @@ Country:            {}
             find_vehicle = input("Enter employee SSN: ")
             attribute = input('''--------------------------------------------
  What attribute would you like to change: 
-1. Manufacturer:
-2. Model:
-3. Type:
-4. Status:
-5. Year:
-6. Color:
-7. License:
-8. Location:
-9. Rate:
-10. Condition
+1. Status:
+2. Vehicle type:
+3. Rate:
+4. Manufacturer:
+5. Condition:
+6. Model year:
+7. Color:
+8. Number plate:
+9. Required license:
+10. Rent:
+11. Airport:
+12. Country:
 --------------------------------------------
 choice(Enter the number): ''')
             
             if attribute == "1":
-                attribute = "Manufacturer"
-            elif attribute == "2":
-                attribute = "Model"
-            elif attribute == "3":
-                attribute = "Type"
-            elif attribute == "4":
                 attribute = "Status"
-            elif attribute == "5":
-                attribute = "Year"
-            elif attribute == "6":
-                attribute = "Color"
-            elif attribute == "7":
-                attribute = "License"
-            elif attribute == "8":
-                attribute = "Location"
-            elif attribute == "9":
+            elif attribute == "2":
+                attribute = "Vehicle type"
+            elif attribute == "3":
                 attribute = "Rate"
-            elif attribute == "10":
+            elif attribute == "4":
+                attribute = "Manufacturer"
+            elif attribute == "5":
                 attribute = "Condition"
+            elif attribute == "6":
+                attribute = "Model year"
+            elif attribute == "7":
+                attribute = "Color"
+            elif attribute == "8":
+                attribute = "Number plate"
+            elif attribute == "9":
+                attribute = "Required license"
+            elif attribute == "10":
+                attribute = "Rent"
+            elif attribute == "11":
+                attribute = "Airport"
+            elif attribute == "12":
+                attribute = "Country"
             else:
                 print("Wrong input")
                 continue    
