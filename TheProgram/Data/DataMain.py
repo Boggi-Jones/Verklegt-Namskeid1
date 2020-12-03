@@ -28,7 +28,7 @@ class DataMain():
                     contract = Contracts(row["data"], row["duration"], row["country"], row["city"], row["employee_name"], row["paid"], row["final_price"], row["Vehicle"], row["Customer"])
                     retList.append(contract)
                 elif filename == "Customer":
-                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["drivin_license"], row["returned_late_before"], row["Vehicle"], row["Customer"])
+                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["driving_license"], row["returned_late_before"], row["Vehicle"], row["Customer"])
                     retList.append(customer)
         return retList
         
