@@ -66,10 +66,10 @@ Phone number:
 
 --------------------------------------------''') # Þurfum að finna betri leið til að útfæra
         country = input("Country: ")
-        airport_name = input("Airport name: ")
+        name_of_airport = input("Airport name: ")
         opening_hours = input("Opening hours: ")
         phone_number = input("Phone number: ")
-        the_location = Location(airport_name, country, opening_hours, phone_number)
+        the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
         print('''----------- Add employee ------------------
         """Insert information"""
@@ -78,7 +78,7 @@ Airport name(city):      {}
 Opening hours:           {}
 Phone number:            {}
 
---------------------------------------------'''.format(airport_name, country, opening_hours, phone_number))
+--------------------------------------------'''.format(name_of_airport, country, opening_hours, phone_number))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.location(1, None, None, the_location)

@@ -5,6 +5,9 @@ from Models.Vehicle import Vehicle
 from Models.Contract import Contracts
 from Models.Customer import Customer
 
+import os
+os.chdir("TheProgram/Data/data")
+
 class DataMain():
 
     def get_list(self, filename):
@@ -25,7 +28,7 @@ class DataMain():
                     contract = Contracts(row["data"], row["duration"], row["country"], row["city"], row["employee_name"], row["paid"], row["final_price"], row["Vehicle"], row["Customer"])
                     retList.append(contract)
                 elif filename == "Customer":
-                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["drivin_license"], row["returned_late_before"])
+                    customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["driving_license"], row["returned_late_before"], row["Vehicle"], row["Customer"])
                     retList.append(customer)
         return retList
         
