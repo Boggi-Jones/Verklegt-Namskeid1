@@ -75,7 +75,7 @@ class EmployeeUI():
         print(''' -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     | 
  -----------------------------------------------------------------------------
- | "Insert the following information"                                        |
+ |            Insert the following information                               |
  |                                                                           |
  | Name:                                                                     |
  | SSN:                                                                      |
@@ -99,16 +99,16 @@ class EmployeeUI():
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
 
         print('''----------- Add employee ------------------
-        """Insert information"""
-Name:         {}
-SSN:          {}
-Address:      {}
-Home phone:   {}
-Smart phone:  {}
-Email:        {}
-Location:     {}
-Company role: {}
-
+|        """Insert information"""          |
+|Name:         {:25s}   |
+|SSN:          {:25s}   |
+|Address:      {:25s}   |
+|Home phone:   {:25s}   |
+|Smart phone:  {:25s}   |
+|Email:        {:25s}   |
+|Location:     {:25s}   |
+|Company role: {:25s}   |
+|                                          |
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
         
         

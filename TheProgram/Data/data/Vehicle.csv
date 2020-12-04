@@ -2,3 +2,6 @@ status,type_of_vehicle,model,rate,manufacturer,condition,model_year,color,number
 g,g,g,2,g,g,g,g,g,abc,g,g
 i,i,i,3,i,i,i,i,i,a,i,i
 a,a,a,a,a,a,a,a,a,a,a,a
+x,x,x,x,x,x,x,x,x,x,x,x
+z,z,z,z,z,z,z,z,fire,a,z,z
+q,q,q,q,q,q,q,q,ICE,a,q,q
