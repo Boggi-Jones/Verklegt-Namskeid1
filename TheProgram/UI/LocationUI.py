@@ -72,7 +72,7 @@ class LocationUI():
         print(''' -----------------------------------------------------------------------------
  | -> -> Edit rental location -> Add location                                | 
  -----------------------------------------------------------------------------
- | "Insert the following information"                                |
+ | "Insert the following information"                                        |
  |                                                                           |
  | Country:                                                                  |
  | Airport Name(city):                                                       |
@@ -97,10 +97,10 @@ class LocationUI():
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
- | Country:             {}                                                   |
- | Airport Name(city):  {}                                                   |
- | Opening hours:       {}                                                   |
- | Phone number:        {}                                                   |
+ | Country:             {:25s}                            |
+ | Airport Name(city):  {:25s}                            |
+ | Opening hours:       {:25s}                            |
+ | Phone number:        {:25s}                            |
  |                                                                           |
  |                                                                           |
  |                                                                           |
@@ -138,13 +138,13 @@ class LocationUI():
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
- | Enter location name: {}                                                   |
+ | Enter location name: {:25s}                            |
  |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
- | Are you sure you want to remove this location?                            |                                                                       |
+ | Are you sure you want to remove this location?                            |                                                                       
  | Y/N:__                                                                    |
  |                                                                           |
  |                                                                           |
@@ -192,3 +192,5 @@ class LocationUI():
         for airport in result:
             print("\n--------------- Location Result: -----------------","\n" "Location information: ", airport)
         print("--------------------------------------------------")
+
+    
