@@ -237,10 +237,6 @@ class FleetUI():
  |  -> Manage vehicles -> All vehicles                                       |
  -----------------------------------------------------------------------------''')
         for vehicle in get_all:
-<<<<<<< HEAD
-            print(" | {:.30>} | ".format(str(vehicle))
-=======
             print(" | {:40s} | ".format(str(vehicle)))
->>>>>>> bf6baee7f085eaf032ab657e09bf52dd79b56dd3
         print("-----------------------------------------------------------------------------")
         input(" | Press enter to continue ")

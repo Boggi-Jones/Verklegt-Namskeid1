@@ -12,7 +12,7 @@ class EmployeeUI():
         að fara í "Manage employee, All employees o.s.frv." '''
 
         while True:
-            employee_choice = input(''' -----------------------------------------------------------------------------
+            employee_choice = input('''\n -----------------------------------------------------------------------------
  | Welcome to NaN Air  -> Employee accounts                                  |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
@@ -43,7 +43,7 @@ class EmployeeUI():
 
     def manage_employee(self):
         while True:
-            employee_options = input(''' -----------------------------------------------------------------------------
+            employee_options = input('''\n -----------------------------------------------------------------------------
  | -> Employee accounts -> Manage employee                                   |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
@@ -73,7 +73,7 @@ class EmployeeUI():
                 input("Push enter to continue")
 
     def add_employee(self):
-        print(''' -----------------------------------------------------------------------------
+        print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
  |            Insert the following information                               |
@@ -99,27 +99,57 @@ class EmployeeUI():
         role = input(" | Company role: ")
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
 
-        print('''----------- Add employee ------------------
-|        "New employee information"        |
-|Name:         {:25s}   |
-|SSN:          {:25s}   |
-|Address:      {:25s}   |
-|Home phone:   {:25s}   |
-|Smart phone:  {:25s}   |
-|Email:        {:25s}   |
-|Location:     {:25s}   |
-|Company role: {:25s}   |
-|                                          |
---------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
-        input("Push enter to continue")
+        print('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     |
+ -----------------------------------------------------------------------------
+|                      "New employee information"                            |
+|Name:         {:40s}   |
+|SSN:          {:40s}   |
+|Address:      {:40s}   |
+|Home phone:   {:40s}   |
+|Smart phone:  {:40s}   |
+|Email:        {:40s}   |
+|Location:     {:40s}   |
+|Company role: {:40s}   |
+|                                                                            |
+-----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
+        input(" | Push 'Enter' to continue")
 
 
 
-        choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
+        choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
-            input("Press any key to continue: ")
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     |
+ -----------------------------------------------------------------------------
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|               "New employee has been added to the system:                  |
+|                               {}                                           |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+-----------------------------------------------------------------------------'''.format(name))
+        input(" | Push 'Enter' to continue")
         elif choice =="n":
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     |
+ -----------------------------------------------------------------------------
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|             "New employee has not been added to the system:                |
+|                                   {}                                       |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+-----------------------------------------------------------------------------'''.format(name))
             return
         else:
             return None
@@ -130,13 +160,25 @@ class EmployeeUI():
         if the user wishes to do so'''
         find_employee = input("Enter employee ssn: ")
         self.logic.employee(1, find_employee, None, None)
-        print("Employee has been removed!")
+        choice = input(" | Are you sure you want to remove {} ? (Y / N): )".format(find_employee)).lower()
+        if choice == "y":
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Remove employee                                     |
+ -----------------------------------------------------------------------------
+ |                      Employee '{}' has been removed!                           |'''.format(find_employee))
+            input(" | Press 'Enter' to continue")
+        elif choice == "n":
+            print(" | '{}' has not been removed.".format(find_employee))
+            input(" | Press 'Enter' to continue")
+            return
+        else:
+            return None
 
     def update_employee(self):
         while True:
             find_employee = input("Enter employee SSN: ")
-            attribute = input(''' -----------------------------------------------------------------------------
- | -> -> Manage employee -> Updaate employee                                 |
+            attribute = input('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Update employee                                  |
  -----------------------------------------------------------------------------
  | "Select attribute you would like to change"                               |
  |                                                                           |
@@ -151,7 +193,7 @@ class EmployeeUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Choice(Enter the number): ''')
+ | Choice: ''')
 
             if attribute == "1":
                 attribute = "address"
@@ -168,20 +210,25 @@ class EmployeeUI():
             else:
                 print("Wrong input")
                 continue
-            new_employee_info = input("Enter new information: ")
+            new_employee_info = input(" | Enter new information: ")
             self.logic.employee(3, find_employee, attribute,  new_employee_info)
             break
 
     def get_all_employees(self):
         results = self.logic.employee(0, None, None, None)
-        print("\n------------------------------------------------------------------------------ \n|                                All Employees                               |")
+        print("""\n------------------------------------------------------------------------------
+        | -> -> Manage employee -> All Employees                                  |  """)
         for employee in results:
             print("|  {:25s}                                                 |".format(str(employee)))
         print("------------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue")
 
     def search_employee(self):
-        employee = input("Enter employee SSN: ")
+        employee = input(" | Enter employee SSN: ")
         result = self.logic.employee(0, employee, "ssn", None)
+        print("""\n------------------------------------------------------------------------------
+        | -> -> Manage employee -> Search Employee                                  |  """)
         for emp in result:
             print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", emp)
         print("--------------------------------------------------")
+        input(" | Press 'Enter' to continue")
