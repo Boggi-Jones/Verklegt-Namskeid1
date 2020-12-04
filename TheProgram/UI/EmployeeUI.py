@@ -13,7 +13,7 @@ class EmployeeUI():
 
         while True:
             employee_choice = input(''' -----------------------------------------------------------------------------
- | Welcome to NaN Air  -> Employee accounts                                  | 
+ | Welcome to NaN Air  -> Employee accounts                                  |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
  | "Choose "4" to go back"                                                   |
@@ -41,10 +41,9 @@ class EmployeeUI():
                 ("Invalid entry")
 
     def manage_employee(self):
-
         while True:
             employee_options = input(''' -----------------------------------------------------------------------------
- | -> Employee accounts -> Manage employee                                   | 
+ | -> Employee accounts -> Manage employee                                   |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
  | "Choose "4" to go back"                                                   |
@@ -73,7 +72,7 @@ class EmployeeUI():
 
     def add_employee(self):
         print(''' -----------------------------------------------------------------------------
- | -> -> Manage employee -> Add employee                                     | 
+ | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
  |            Insert the following information                               |
  |                                                                           |
@@ -110,12 +109,13 @@ class EmployeeUI():
 |Company role: {:25s}   |
 |                                          |
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
-        
-        
-        
+
+
+
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
+            input("Press any key to continue: ")
         elif choice =="n":
             return
         else:
@@ -125,7 +125,7 @@ class EmployeeUI():
         '''Takes employee name input from user, and compares it
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
-        find_employee = input("Enter employee name: ")
+        find_employee = input("Enter employee ssn: ")
         self.logic.employee(1, find_employee, None, None)
         print("Employee has been removed!")
 
@@ -133,7 +133,7 @@ class EmployeeUI():
         while True:
             find_employee = input("Enter employee SSN: ")
             attribute = input(''' -----------------------------------------------------------------------------
- | -> -> Manage employee -> Updaate employee                                 | 
+ | -> -> Manage employee -> Updaate employee                                 |
  -----------------------------------------------------------------------------
  | "Select attribute you would like to change"                               |
  |                                                                           |
@@ -164,17 +164,17 @@ class EmployeeUI():
                 attribute = "role"
             else:
                 print("Wrong input")
-                continue    
+                continue
             new_employee_info = input("Enter new information: ")
             self.logic.employee(3, find_employee, attribute,  new_employee_info)
             break
 
     def get_all_employees(self):
         results = self.logic.employee(0, None, None, None)
-        print("\n------------ All employees ------------------")
+        print("\n------------------------------------------------------------------------------ \n|                                All Employees                               |")
         for employee in results:
-            print(employee)
-        print("--------------------------------------------")
+            print("|  {:25s}                                                 |".format(str(employee)))
+        print("------------------------------------------------------------------------------")
 
     def search_employee(self):
         employee = input("Enter employee SSN: ")
