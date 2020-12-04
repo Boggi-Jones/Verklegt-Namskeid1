@@ -9,7 +9,7 @@ class LocationUI():
     def location_loop(self):
         while True:
             choice = input("""  -----------------------------------------------------------------------------
- | Welcome to NaN Air -> Rental Location information                         | 
+ | Welcome to NaN Air -> Rental Location information                         |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
  | "Choose "4" to Go back"                                                   |
@@ -40,7 +40,7 @@ class LocationUI():
     def edit_location(self):
         while True:
             choice = input(''' -----------------------------------------------------------------------------
- | -> Rental Location information -> Edit rental location                    | 
+ | -> Rental Location information -> Edit rental location                    |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
  | "Choose "4" to Go back"                                                   |
@@ -70,7 +70,7 @@ class LocationUI():
 
     def add_location(self):
         print(''' -----------------------------------------------------------------------------
- | -> -> Edit rental location -> Add location                                | 
+ | -> -> Edit rental location -> Add location                                |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                |
  |                                                                           |
@@ -93,7 +93,7 @@ class LocationUI():
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
         print(''' ------------------------------
- | ------- Add employee ------- |
+ | ------- Add country ------- |
  |   """Insert information"""   |
  | Country:                 {}  |
  | Airport name(city):      {}  |

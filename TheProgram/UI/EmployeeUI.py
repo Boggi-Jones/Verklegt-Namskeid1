@@ -13,7 +13,7 @@ class EmployeeUI():
 
         while True:
             employee_choice = input(''' -----------------------------------------------------------------------------
- | Welcome to NaN Air  -> Employee accounts                                  | 
+ | Welcome to NaN Air  -> Employee accounts                                  |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
  | "Choose "4" to go back"                                                   |
@@ -41,10 +41,9 @@ class EmployeeUI():
                 ("Invalid entry")
 
     def manage_employee(self):
-
         while True:
             employee_options = input(''' -----------------------------------------------------------------------------
- | -> Employee accounts -> Manage employee                                   | 
+ | -> Employee accounts -> Manage employee                                   |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
  | "Choose "4" to go back"                                                   |
@@ -73,7 +72,7 @@ class EmployeeUI():
 
     def add_employee(self):
         print(''' -----------------------------------------------------------------------------
- | -> -> Manage employee -> Add employee                                     | 
+ | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
@@ -110,12 +109,13 @@ Location:     {}
 Company role: {}
 
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
-        
-        
-        
+
+
+
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.employee(2, None, None, the_employee)
+            input("Press any key to continue: ")
         elif choice =="n":
             return
         else:
@@ -158,7 +158,7 @@ choice(Enter the number): ''')
                 attribute = "role"
             else:
                 print("Wrong input")
-                continue    
+                continue
             new_employee_info = input("Enter new information: ")
             self.logic.employee(3, find_employee, attribute,  new_employee_info)
             break
@@ -169,6 +169,7 @@ choice(Enter the number): ''')
         for employee in results:
             print(employee)
         print("--------------------------------------------")
+        input("Press any key to continue: ")
 
     def search_employee(self):
         employee = input("Enter employee SSN: ")

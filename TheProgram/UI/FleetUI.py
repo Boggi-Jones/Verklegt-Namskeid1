@@ -1,20 +1,17 @@
-#from UI.UIMain import UIMain
 from Logic.LogicMain import LogicMain
 from Models.Vehicle import Vehicle
 
 class FleetUI():
     def __init__(self):
-        #self.uimain = UIMain()
         self.logic = LogicMain()
 
     def fleet_loop(self):
-        ''' Skv. wireframe. Valmynd fyrir UIFleet - klasann. Út frá þessu er hægt
-        að fara í "Manmodel_year employee, All employees o.s.frv." '''
+        ''' Main menu for the vehicle class '''
         while True:
-            fleet_choice = input('''----------- Manmodel_year vehicle fleet ------------
+            fleet_choice = input('''----------- Manage vehicle fleet ------------
 1. Edit vehicle
 2. All vehicles
-3. <- Go back 
+3. <- Go back
 
 --------------------------------------------
 chocie: ''')
@@ -48,7 +45,7 @@ chocie: ''')
                 break
             else:
                 ("Invalid entry")
-    
+
     def add_vehicle(self):
         while True:
             print('''------------- Add Vehicle ------------------
@@ -115,7 +112,7 @@ Airport:            {}
         while True:
             find_vehicle = input("Enter employee SSN: ")
             attribute = input('''--------------------------------------------
- What attribute would you like to change: 
+ What attribute would you like to change:
 1. Status:
 2. Vehicle type:
 3. Rate:
@@ -129,7 +126,7 @@ Airport:            {}
 11. Airport:
 --------------------------------------------
 choice(Enter the number): ''')
-            
+
             if attribute == "1":
                 attribute = "Status"
             elif attribute == "2":
@@ -154,7 +151,7 @@ choice(Enter the number): ''')
                 attribute = "Airport"
             else:
                 print("Wrong input")
-                continue    
+                continue
             new_vehicle_info = input("Enter new information: ")
             self.logic.vehicle(3, find_vehicle, attribute,  new_vehicle_info)
             break
