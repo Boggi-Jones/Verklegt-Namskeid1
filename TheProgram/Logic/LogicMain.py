@@ -66,8 +66,10 @@ class LogicMain:
             new_vehicle = self.vehiclelogic.filtervehiclefleet(new_information, attribute)
             if new_vehicle[0].status == "available":
                 self.vehiclelogic.editvehicleinfo(filter_or_id, "status", "available")
-                self.vehiclelogic.editvehicleinfo(new_information, "status", "rented")
+                the_vehicle = self.vehiclelogic.editvehicleinfo(new_information, "status", "rented")
                 results = self.contractlogic.editcontractinfo(filter_or_id, attribute, new_information)
+                total_price = self.contractlogic.calculatefinalprice(results.duration, the_vehicle)
+                results = self.contractlogic.editcontractinfo(filter_or_id, "final_price", total_price)
             else:
                 return False
 
@@ -79,7 +81,9 @@ class LogicMain:
     def customer(self, option, ssn_or_customer_class, attribute, new_information):
         if option == 0:
             results = self.customerlogic.get_customer_with_id(ssn_or_customer_class)
-        else:
+        elif option == 1:
             results = self.customerlogic.add_customer_to_the_system(ssn_or_customer_class)
+        else:
+            results = self.customerlogic.edit_customer(ssn_or_customer_class, attribute, new_information)
 
         return results

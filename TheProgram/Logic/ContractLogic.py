@@ -41,10 +41,10 @@ class ContractLogic:
         # Single contract is created from the filtercontract function using the ssn attribute
         # Single contract is then updated with new information with cancel contract and make new contract funtions
         single_contract = self.filtercontract(filter_or_id, "ssn")
-        for contract in single_contract:
-            single_contract.__setattr__(attribute, new_information)
-            self.cancelcontract(filter_or_id)
-            self.makenewcontract(contract)
+        single_contract[0].__setattr__(attribute, new_information)
+        self.cancelcontract(filter_or_id)
+        self.makenewcontract(single_contract[0])
+        return single_contract[0]
 
     def checklicense(self, customer_class, vehicle_class):
         # After user chooses vehicle
@@ -59,7 +59,6 @@ class ContractLogic:
         # Variable called rate is created using the rate attribute from vehicle function
         # Total price is than calculated by multiplying duration ( total days rented ) with rate
         # Final price is returned
-        for vehicle in vehicle_class:
-            rate = vehicle.__getattribute__("rate")
-            total = int(duration) * int(rate)
+        rate = vehicle_class[0].rate
+        total = int(duration) * int(rate)
         return total
