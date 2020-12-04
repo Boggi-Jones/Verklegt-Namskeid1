@@ -20,3 +20,6 @@ class CustomerLogic:
     def add_customer_to_the_system(self, customer_class):
         # Customer is then added to list
         self.datamain.add_to_list(self.position, customer_class)
+
+    def edit_customer(self, ssn, attribute, new_information):
+        pass

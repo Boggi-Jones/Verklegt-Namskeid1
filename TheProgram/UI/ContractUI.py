@@ -206,10 +206,10 @@ choice(Enter the number): ''')
             if attribute == (1 or 2):
                 if attribute == 1:
                     attribute = "date"
-                else attribute == 2:
+                else:
                     attribute = "duration"
                 new_info = input("Enter new information: ")
-                changed_info = self.logic.contract(2, find_contract, attribute, new_info, None)
+                finished_product = self.logic.contract(2, find_contract, attribute, new_info, None)
             elif attribute < 7 and attribute > 2: 
                 if attribute == 3:
                     attribute = "phone_number"
@@ -220,7 +220,7 @@ choice(Enter the number): ''')
                 else:
                     attribute = "driving_license"
                 new_info = input("Enter new information: ")
-                changed_info = self.logic.customer(3, find_contract, attribute, new_info)
+                finished_product = self.logic.customer(3, find_contract, attribute, new_info)
             elif attribute == 7:
                 attribute = "number_plate"
                 vehicle_type = input("What type of vehicle does the customer want? ")
@@ -229,7 +229,7 @@ choice(Enter the number): ''')
                     print(vehicle)
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
                 while True:
-                    vehicle_class = self.logic.contract(4, ssn_val, number_plate, None, None)
+                    vehicle_class = self.logic.contract(4, find_contract, number_plate, None, None)
                     if vehicle_class == None:
                         print("You don't have the required license for this vehicle.")
                         number_plate = input("Enter the number plate of the chosen vehicle: ")
@@ -246,10 +246,13 @@ choice(Enter the number): ''')
                         if choice == "y":
                             break
                 
+                finished_product = self.logic.contract(5, the_contract[0].number_plate, "number_plate", number_plate, None)
 
             else:
                 print("Wrong input")
                 continue
+            
+            print(finished_product)
             break
 
     def all_contracts(self):
