@@ -25,3 +25,6 @@ name,ssn,email,gsm_number,address,driving_license,returned_late_before
 k,k,k,k,k,a,k
 name,ssn,email,gsm_number,address,driving_license,returned_late_before
 c,c,c,c,c,a,g
+t,t,t,t,t,a,no
+j,j,j,j,j,a,no
+ff,f,f,f,f,a,no
