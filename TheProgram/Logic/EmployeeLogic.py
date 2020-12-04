@@ -32,7 +32,7 @@ class EmployeeLogic:
                 list_of_employees.remove(emp)
         self.datamain.overwrite(self.position, list_of_employees)
 
-    def addemployee(self, new_information)
+    def addemployee(self, new_information):
         # New employee is added to list
         self.datamain.add_to_list(self.position, new_information)
 
