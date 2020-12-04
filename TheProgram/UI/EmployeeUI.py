@@ -38,7 +38,8 @@ class EmployeeUI():
             elif employee_choice == "4":
                 break
             else:
-                ("Invalid entry")
+                print("Invalid entry")
+                input("Push enter to continue")
 
     def manage_employee(self):
         while True:
@@ -69,6 +70,7 @@ class EmployeeUI():
                 break
             else:
                 print("Invalid entry")
+                input("Push enter to continue")
 
     def add_employee(self):
         print(''' -----------------------------------------------------------------------------
@@ -87,18 +89,18 @@ class EmployeeUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-        name = input("Name: ")
-        ssn = input("SSN: ")
-        address = input("Address: ")
-        home_phone = input("Home phone: ")
-        smart_phone = input("Smart phone: ")
-        email = input("Email: ")
-        location = input("Location: ")
-        role = input("Company role: ")
+        name = input(" | Name: ")
+        ssn = input(" | SSN: ")
+        address = input(" | Address: ")
+        home_phone = input(" | Home phone: ")
+        smart_phone = input(" | Smart phone: ")
+        email = input(" | Email: ")
+        location = input(" | Location: ")
+        role = input(" | Company role: ")
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
 
         print('''----------- Add employee ------------------
-|        """Insert information"""          |
+|        "New employee information"        |
 |Name:         {:25s}   |
 |SSN:          {:25s}   |
 |Address:      {:25s}   |
@@ -109,6 +111,7 @@ class EmployeeUI():
 |Company role: {:25s}   |
 |                                          |
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
+        input("Push enter to continue")
 
 
 
