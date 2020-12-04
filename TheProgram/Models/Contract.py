@@ -10,7 +10,7 @@ class Contracts:
         self.final_price = final_price
     
     def fieldnames(self):
-        return ["date", "duration", "name_of_airport", "city", "employee_name", "paid", "final_price", "number_plate", "ssn"]
+        return ["date", "duration", "name_of_airport", "employee_name", "paid", "final_price", "number_plate", "ssn"]
 
     def add_to_dict(self):
         return {"date" : self.date, "duration" : self.duration, "name_of_airport" : self.name_of_airport, "employee_name": self.employee_name, "paid" : self.paid, "final_price":self.final_price, "number_plate": self.number_plate, "ssn": self.ssn}

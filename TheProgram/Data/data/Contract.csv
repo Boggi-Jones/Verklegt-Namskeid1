@@ -1,2 +1,3 @@
-date,duration,name_of_airport,city,employee_name,paid,final_price,number_plate,ssn
-24,14,Kef,,Nob,not,98,s,c
+number_plate,ssn,date,duration,name_of_airport,employee_name,paid,final_price
+g,j,25,100,Rey,ja,not,200
+43,31,Rey,No,not,62,g,f

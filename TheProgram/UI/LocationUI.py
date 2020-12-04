@@ -183,7 +183,7 @@ class LocationUI():
         results = self.logic.location(0, None, None, None)
         print("\n------- All locations ---------- ")
         for location in results:
-            print("|  ", location + "  |")
+            print("|  " , location , "  |")
         print("-----------------------------------")
 
     def search_location(self):

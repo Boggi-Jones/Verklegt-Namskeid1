@@ -161,7 +161,7 @@ Final price:            {}
 
  --------------------------------------------""".format(contract_name)).lower()
         if choice == "y":
-            self.logic.contract(2, contract_name, None, None)
+            self.logic.contract(3, contract_name, None, None, None)
             print("{} has been removed!".format(contract_name))
         elif choice == "n":
             return
