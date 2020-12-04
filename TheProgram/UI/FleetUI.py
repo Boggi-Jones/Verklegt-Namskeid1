@@ -1,23 +1,30 @@
-#from UI.UIMain import UIMain
 from Logic.LogicMain import LogicMain
 from Models.Vehicle import Vehicle
 
 class FleetUI():
     def __init__(self):
-        #self.uimain = UIMain()
         self.logic = LogicMain()
 
     def fleet_loop(self):
-        ''' Skv. wireframe. Valmynd fyrir UIFleet - klasann. Út frá þessu er hægt
-        að fara í "Manmodel_year employee, All employees o.s.frv." '''
+        ''' Here we go from the main menu to the main menu for the Vehicles '''
         while True:
-            fleet_choice = input('''----------- Manmodel_year vehicle fleet ------------
-1. Edit vehicle
-2. All vehicles
-3. <- Go back 
-
---------------------------------------------
-chocie: ''')
+            fleet_choice = input(''' -----------------------------------------------------------------------------
+ | Welcome to NaN Air -> Manage vehicles                                     | 
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "3" to go back"                                                   |
+ |                                                                           |
+ | 1. Edit vehicle                                                           |
+ | 2. All vehicles                                                           |
+ | 3. <- Go back                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''')
             if fleet_choice == "1":
                 self.edit_vehicle()
             elif fleet_choice == "2":
@@ -25,19 +32,45 @@ chocie: ''')
             elif fleet_choice == "3":
                 break
             else:
-                ("Invalid entry")
+                print(''' -----------------------------------------------------------------------------
+ | Welcome to NaN Air -> Manage vehicles                                     | 
+ -----------------------------------------------------------------------------
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                              "Invalid entry"                              |
+ |                       "You need to choose one of the                      |
+ |                         correct options available"                        |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------''')
+                input(" | Press any key to continue: ")
 
     def edit_vehicle(self):
         while True:
-            edit_choice = input('''----------- Edit Vehicle ------------------
-1. Add vehicle
-2. Remove vehicle
-3. Update vehicle information
-4. Update Vehicle condition
-5. <- Go back
-
---------------------------------------------
-chocie: ''')
+            edit_choice = input(''' -----------------------------------------------------------------------------
+ | -> Manage vehicles -> Edit vehicles                                       | 
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "4" to go back"                                                   |
+ |                                                                           |
+ | 1. Add vehicle                                                            |
+ | 2. Remove vehicle                                                         |
+ | 3. Update vehicle information                                             |
+ | 4. <- Go back                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''')
             if edit_choice == "1":
                 self.add_vehicle()
             elif edit_choice == "2":
@@ -47,54 +80,74 @@ chocie: ''')
             elif edit_choice == "4":
                 break
             else:
-                ("Invalid entry")
-    
+                print(''' -----------------------------------------------------------------------------
+ | Welcome to NaN Air -> Manage vehicles                                     | 
+ -----------------------------------------------------------------------------
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                              "Invalid entry"                              |
+ |                       "You need to choose one of the                      |
+ |                         correct options available"                        |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------''')
+                input(" | Press any key to continue: ")
     def add_vehicle(self):
         while True:
-            print('''------------- Add Vehicle ------------------
------------- Insert Information ------------
-Status:
-Vehicle type:
-Model:
-Rate:
-Manufacturer:
-Condition:
-Model year:
-Color:
-Number plate:
-Required license:
-Rent:
-Airport:
---------------------------------------------''')
-            status = input("Status: ")
-            type_of_vehicle = input("Vehicle type: ")
-            model = input("Model: ")
-            rate = input("Rate: ")
-            manufacturer = input("Manufacturer: ")
-            condition = input("Condition: ")
-            model_year = input("Model year: ")
-            color = input("Color: ")
-            number_plate = input("Number plate: ")
-            driving_license = input("License required: ")
-            rent_counter = input("Rent: ")
-            name_of_airport = input("Airport: ")
+            print(''' -----------------------------------------------------------------------------
+ | -> -> Edit vehicles -> Add vehicle                                        | 
+ -----------------------------------------------------------------------------
+ | "Insert Information"                                                      |
+ | Status:                                                                   |
+ | Vehicle type:                                                             |
+ | Model:                                                                    |
+ | Rate:                                                                     |
+ | Manufacturer:                                                             |
+ | Condition:                                                                |
+ | Model year:                                                               |
+ | Color:                                                                    |
+ | Number plate:                                                             |
+ | Required license:                                                         |
+ | Rent:                                                                     |
+ | Airport:                                                                  |
+ -----------------------------------------------------------------------------''')
+            status = input(" | Status: ")
+            type_of_vehicle = input(" | Vehicle type: ")
+            model = input(" | Model: ")
+            rate = input(" | Rate: ")
+            manufacturer = input(" | Manufacturer: ")
+            condition = input(" | Condition: ")
+            model_year = input(" | Model year: ")
+            color = input(" | Color: ")
+            number_plate = input(" | Number plate: ")
+            driving_license = input(" | License required: ")
+            rent_counter = input(" | Rent: ")
+            name_of_airport = input(" | Airport: ")
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
 
-            print('''------------- Add Vehicle ----------------
-        """Insert information"""
-Status:             {}
-Vehicle type:       {}
-Rate:               {}
-Manufacturer:       {}
-Condition:          {}
-Model year:         {}
-Color:              {}
-Number plate:       {}
-Required license:   {}
-Rent:               {}
-Airport:            {}
---------------------------------------------'''.format(status, type_of_vehicle, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
-            add_choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
+            print(''' -----------------------------------------------------------------------------
+ | -> -> Edit vehicles -> Add vehicle                                        | 
+ -----------------------------------------------------------------------------
+ |                                                                           |
+ | Status:              {}                                                   |
+ | Vehicle type:        {}                                                   |
+ | Model:               {}                                                   |
+ | Rate:                {}                                                   |
+ | Manufacturer:        {}                                                   |
+ | Condition:           {}                                                   |
+ | Model year:          {}                                                   |
+ | Color:               {}                                                   |
+ | Number plate:        {}                                                   |
+ | Required license:    {}                                                   |
+ | Rent:                {}                                                   |
+ | Airport:             {}                                                   |
+ -----------------------------------------------------------------------------'''.format(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
+            add_choice = input(" | Do you want to save and continue (Y / N) : ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
                 break
