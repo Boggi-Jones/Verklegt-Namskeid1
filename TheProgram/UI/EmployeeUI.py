@@ -76,7 +76,7 @@ class EmployeeUI():
         print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
- |            Insert the following information                               |
+ |"Insert information"                                                       |
  |                                                                           |
  | Name:                                                                     |
  | SSN:                                                                      |
@@ -102,23 +102,23 @@ class EmployeeUI():
         print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
-|                      "New employee information"                            |
-|Name:         {:40s}   |
-|SSN:          {:40s}   |
-|Address:      {:40s}   |
-|Home phone:   {:40s}   |
-|Smart phone:  {:40s}   |
-|Email:        {:40s}   |
-|Location:     {:40s}   |
-|Company role: {:40s}   |
-|                                                                            |
------------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
+ |                      "New employee information"                           |
+ |Name:         {:.40s}   |                                                  
+ |SSN:          {:.40s}   |
+ |Address:      {:.40s}   |
+ |Home phone:   {:.40s}   |
+ |Smart phone:  {:.40s}   |
+ |Email:        {:.40s}   |
+ |Location:     {:.40s}   |
+ |Company role: {:.40s}   |
+ |                                                                            |
+ -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
         input(" | Push 'Enter' to continue")
 
 
 
-        choice = input(" | Do you want to save and continue? (Y / N): ").lower()
-        if choice == "y":
+        add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
+        if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
@@ -134,8 +134,8 @@ class EmployeeUI():
 |                                                                            |
 |                                                                            |
 -----------------------------------------------------------------------------'''.format(name))
-        input(" | Push 'Enter' to continue")
-        elif choice =="n":
+        input(" | Press 'Enter' to continue")
+        if add_choice == "n":
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
@@ -158,14 +158,14 @@ class EmployeeUI():
         '''Takes employee name input from user, and compares it
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
-        find_employee = input("Enter employee ssn: ")
+        find_employee = input(" | Enter employee ssn: ")
         self.logic.employee(1, find_employee, None, None)
-        choice = input(" | Are you sure you want to remove {} ? (Y / N): )".format(find_employee)).lower()
+        choice = input(" | Are you sure you want to remove {} ? (Y / N): ".format(find_employee)).lower()
         if choice == "y":
             print('''\n -----------------------------------------------------------------------------
- | -> -> Manage employee -> Remove employee                                     |
+ | -> -> Manage employee -> Remove employee                                  |
  -----------------------------------------------------------------------------
- |                      Employee '{}' has been removed!                           |'''.format(find_employee))
+ |                      Employee '{}' has been removed!                      |'''.format(find_employee))
             input(" | Press 'Enter' to continue")
         elif choice == "n":
             print(" | '{}' has not been removed.".format(find_employee))
@@ -176,7 +176,7 @@ class EmployeeUI():
 
     def update_employee(self):
         while True:
-            find_employee = input("Enter employee SSN: ")
+            find_employee = input(" | Enter employee SSN: ")
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Update employee                                  |
  -----------------------------------------------------------------------------
@@ -226,9 +226,9 @@ class EmployeeUI():
     def search_employee(self):
         employee = input(" | Enter employee SSN: ")
         result = self.logic.employee(0, employee, "ssn", None)
-        print("""\n------------------------------------------------------------------------------
-        | -> -> Manage employee -> Search Employee                                  |  """)
+        print("""\n ------------------------------------------------------------------------------
+| -> -> Manage employee -> Search Employee                                  |  """)
         for emp in result:
-            print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", emp)
+            print("\n --------------- Employee Result: -----------------","\n" "Employee information: ", emp)
         print("--------------------------------------------------")
         input(" | Press 'Enter' to continue")
