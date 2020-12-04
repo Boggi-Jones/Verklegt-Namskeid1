@@ -8,7 +8,7 @@ class LocationUI():
 
     def location_loop(self):
         while True:
-            choice = input("""  -----------------------------------------------------------------------------
+            choice = input(""" -----------------------------------------------------------------------------
  | Welcome to NaN Air -> Rental Location information                         |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
@@ -72,7 +72,7 @@ class LocationUI():
         print(''' -----------------------------------------------------------------------------
  | -> -> Edit rental location -> Add location                                |
  -----------------------------------------------------------------------------
- | "Insert the following information"                                |
+ | "Insert the following information"                                        |
  |                                                                           |
  | Country:                                                                  |
  | Airport Name(city):                                                       |
@@ -92,14 +92,22 @@ class LocationUI():
         phone_number = input("Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
-        print(''' ------------------------------
- | ------- Add country ------- |
- |   """Insert information"""   |
- | Country:                 {}  |
- | Airport name(city):      {}  |
- | Opening hours:           {}  |
- | Phone number:            {}  |
-  ------------------------------'''.format(name_of_airport, country, opening_hours, phone_number))
+        print(''' -----------------------------------------------------------------------------
+ | -> -> -> Add location -> Add location                                     |
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                        |
+ |                                                                           |
+ | Country:             {:25s}                            |
+ | Airport Name(city):  {:25s}                            |
+ | Opening hours:       {:25s}                            |
+ | Phone number:        {:25s}                            |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------'''.format(name_of_airport, country, opening_hours, phone_number))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.location(1, None, None, the_location)
@@ -109,23 +117,38 @@ class LocationUI():
             return None
 
     def remove_location(self):
-        location_name = input(""" ----------------------------------------------
- | ------------- Remove location -------------  |
- | Enter location name: <- Insert location name |
- |                                              |
- |                                              |
- |                                              |
- |                                              |
-  ----------------------------------------------""")
-        choice = input(""" -------------------------------------------------
- | --------------- Remove location --------------- |
- | Enter location name: {}                         |
- |                                                 |
- |                                                 |
- | Are you sure you want to remove this location?  |
- | Y/N:__                                          |
- |                                                 |
-  -------------------------------------------------""".format(location_name)).lower()
+        location_name = input("""  -----------------------------------------------------------------------------
+ | -> -> -> -> Add Location -> Remove location                               |
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                        |
+ |                                                                           |
+ | Enter location name:                                                      |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------""")
+        choice = input(""" -----------------------------------------------------------------------------
+ | -> -> -> -> Add employee -> Remove location                               |
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                        |
+ |                                                                           |
+ | Enter location name: {:25s}                            |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ | Are you sure you want to remove this location?                            |
+ | Y/N:__                                                                    |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------""".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
             print("{} has been removed!".format(location_name))
@@ -160,12 +183,13 @@ class LocationUI():
         results = self.logic.location(0, None, None, None)
         print("\n------- All locations ---------- ")
         for location in results:
-            print("|  ", location + "  |")
+            print("|  " , location , "  |")
         print("-----------------------------------")
 
     def search_location(self):
         location = input("Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
         for airport in result:
-            print("\n--------------- Employee Result: -----------------","\n" "Employee information: ", airport)
+            print("\n--------------- Location Result: -----------------","\n" "Location information: ", airport)
         print("--------------------------------------------------")
+

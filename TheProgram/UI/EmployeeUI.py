@@ -74,7 +74,7 @@ class EmployeeUI():
         print(''' -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
- | "Insert the following information"                                        |
+ |            Insert the following information                               |
  |                                                                           |
  | Name:                                                                     |
  | SSN:                                                                      |
@@ -98,16 +98,16 @@ class EmployeeUI():
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
 
         print('''----------- Add employee ------------------
-        """Insert information"""
-Name:         {}
-SSN:          {}
-Address:      {}
-Home phone:   {}
-Smart phone:  {}
-Email:        {}
-Location:     {}
-Company role: {}
-
+|        """Insert information"""          |
+|Name:         {:25s}   |
+|SSN:          {:25s}   |
+|Address:      {:25s}   |
+|Home phone:   {:25s}   |
+|Smart phone:  {:25s}   |
+|Email:        {:25s}   |
+|Location:     {:25s}   |
+|Company role: {:25s}   |
+|                                          |
 --------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
 
 
@@ -125,24 +125,30 @@ Company role: {}
         '''Takes employee name input from user, and compares it
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
-        find_employee = input("Enter employee name: ")
+        find_employee = input("Enter employee ssn: ")
         self.logic.employee(1, find_employee, None, None)
         print("Employee has been removed!")
 
     def update_employee(self):
         while True:
             find_employee = input("Enter employee SSN: ")
-            attribute = input('''--------------------------------------------
- What attribute would you like to change:
-1. Address:
-2. Home phone:
-3. Smart phone:
-4. Email:
-5. Location:
-6. Company role:
-
---------------------------------------------
-choice(Enter the number): ''')
+            attribute = input(''' -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Updaate employee                                 |
+ -----------------------------------------------------------------------------
+ | "Select attribute you would like to change"                               |
+ |                                                                           |
+ | 1. Address:                                                               |
+ | 2. Home phone:                                                            |
+ | 3. Smart phone:                                                           |
+ | 4. Email:                                                                 |
+ | 5. Location:                                                              |
+ | 6. Company role:                                                          |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice(Enter the number): ''')
 
             if attribute == "1":
                 attribute = "address"
@@ -165,11 +171,10 @@ choice(Enter the number): ''')
 
     def get_all_employees(self):
         results = self.logic.employee(0, None, None, None)
-        print("\n------------ All employees ------------------")
+        print("\n------------------------------------------------------------------------------ \n|                                All Employees                               |")
         for employee in results:
-            print(employee)
-        print("--------------------------------------------")
-        input("Press any key to continue: ")
+            print("|  {:25s}                                                 |".format(str(employee)))
+        print("------------------------------------------------------------------------------")
 
     def search_employee(self):
         employee = input("Enter employee SSN: ")

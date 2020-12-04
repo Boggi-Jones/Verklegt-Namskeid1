@@ -1,4 +1,7 @@
 status,type_of_vehicle,model,rate,manufacturer,condition,model_year,color,number_plate,driving_license,rent_counter,name_of_airport
 g,g,g,2,g,g,g,g,g,abc,g,g
 i,i,i,3,i,i,i,i,i,a,i,i
-You,Family car,Yaris,12,Toyota,Wrecked,2010,Gold,AK 345,abc,0,Kef
+a,a,a,a,a,a,a,a,a,a,a,a
+x,x,x,x,x,x,x,x,x,x,x,x
+z,z,z,z,z,z,z,z,fire,a,z,z
+q,q,q,q,q,q,q,q,ICE,a,q,q

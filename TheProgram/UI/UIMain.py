@@ -18,7 +18,7 @@ class UIMain():
  | "Choose "q" to quit"                                                      |
  |                                                                           |
  | 1. Employee accounts                                                      |
- | 2. Manage vehicle fleet                                                   |
+ | 2. Manage vehicles                                                        |
  | 3. Rental Locations                                                       |
  | 4. Contracts                                                              |
  | 5. Business reports                                                       |
