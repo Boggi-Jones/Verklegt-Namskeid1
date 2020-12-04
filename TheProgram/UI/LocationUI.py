@@ -92,14 +92,22 @@ class LocationUI():
         phone_number = input("Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
-        print(''' ------------------------------
- | ------- Add employee ------- |
- |   """Insert information"""   |
- | Country:                 {}  |
- | Airport name(city):      {}  |
- | Opening hours:           {}  |
- | Phone number:            {}  |
-  ------------------------------'''.format(name_of_airport, country, opening_hours, phone_number))
+        print('''  -----------------------------------------------------------------------------
+ | -> -> -> Add location -> Add employee                                     | 
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                        |
+ |                                                                           |
+ | Country:             {}                                                   |
+ | Airport Name(city):  {}                                                   |
+ | Opening hours:       {}                                                   |
+ | Phone number:        {}                                                   |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------'''.format(name_of_airport, country, opening_hours, phone_number))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.location(1, None, None, the_location)
@@ -117,15 +125,23 @@ class LocationUI():
  |                                              |
  |                                              |
   ----------------------------------------------""")
-        choice = input(""" -------------------------------------------------
- | --------------- Remove location --------------- |
- | Enter location name: {}                         |
- |                                                 |
- |                                                 |
- | Are you sure you want to remove this location?  |
- | Y/N:__                                          |
- |                                                 |
-  -------------------------------------------------""".format(location_name)).lower()
+        choice = input(""" -----------------------------------------------------------------------------
+ | -> -> -> -> Add employee -> Remove location                               | 
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                        |
+ |                                                                           |
+ | Enter location name:                                                      |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                            |                                              |
+ | Are you sure you want to remove this location?                            |                                                                       |
+ | Y/N:__                                                                    |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice:""".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
             print("{} has been removed!".format(location_name))
