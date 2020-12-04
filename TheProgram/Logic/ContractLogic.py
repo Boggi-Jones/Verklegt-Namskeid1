@@ -27,9 +27,11 @@ class ContractLogic:
         # List of contract is then overwritten with updated list
         list_of_contracts = self.filtercontract(None, None)
         for contract in list_of_contracts:
-            if contract.__getattribute__("ssn") == filter_or_id:
+            if contract.ssn == filter_or_id:
+                the_removed_contract = contract
                 list_of_contracts.remove(contract)
-        self.datamain.overwrite(self.position, list_of_contracts)
+                self.datamain.overwrite(self.position, list_of_contracts)
+                return the_removed_contract
 
     def makenewcontract(self, new_information):
         # New contract is added to list
@@ -39,22 +41,17 @@ class ContractLogic:
         # Single contract is created from the filtercontract function using the ssn attribute
         # Single contract is then updated with new information with cancel contract and make new contract funtions
         single_contract = self.filtercontract(filter_or_id, "ssn")
-        for contract in single_contract:
-            single_contract.__setattr__(attribute, new_information)
-            self.cancelcontract(filter_or_id)
-            self.makenewcontract(contract)
-
-    def printcontract(self, filter_or_id):
-        # Contrac is identified using the filter contract funtion and SSN attribute funtion
-        return self.filtercontract(filter_or_id, "ssn")
+        single_contract[0].__setattr__(attribute, new_information)
+        self.cancelcontract(filter_or_id)
+        self.makenewcontract(single_contract[0])
+        return single_contract[0]
 
     def checklicense(self, customer_class, vehicle_class):
         # After user chooses vehicle
         # Driver license attribute is compared to vehicle driving license attribute
         # Vehicle class is then returned
-        for vehicle in vehicle_class:
-            if customer_class.__getattribute__("driving_license") in vehicle.__getattribute__("driving_license"):
-                return vehicle_class
+        if customer_class.driving_license in vehicle_class[0].driving_license:
+            return vehicle_class
 
 
     def calculatefinalprice(self, duration, vehicle_class):
@@ -62,7 +59,6 @@ class ContractLogic:
         # Variable called rate is created using the rate attribute from vehicle function
         # Total price is than calculated by multiplying duration ( total days rented ) with rate
         # Final price is returned
-        for vehicle in vehicle_class:
-            rate = vehicle.__getattribute__("rate")
-            total = int(duration) * int(rate)
+        rate = vehicle_class[0].rate
+        total = int(duration) * int(rate)
         return total

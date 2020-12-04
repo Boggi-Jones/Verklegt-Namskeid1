@@ -81,41 +81,27 @@ class ContractUI():
             print(vehicle)
         number_plate = input("Enter the number plate of the chosen vehicle: ")
         while True:
-            vehicle_class = self.logic.contract(5, ssn_val, number_plate, None, None)
+            vehicle_class = self.logic.contract(4, ssn_val, number_plate, None, None)
             if vehicle_class == None:
                 print("You don't have the required license for this vehicle.")
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
             else:
-                break
+                choice = input("""------ You have chosen this car -----
+        Type:             {}
+        Model:            {}
+        Rate:             {}
+        Manufacturer:     {}
+        Model year:       {}
+        Color:            {}
+        Is everything correct ? ( Y / N )
+            """.format(vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color)).lower()
+                if choice == "y":
+                    break
+
         return ssn_val, vehicle_class
 
     def add_contract(self):
         customer_class, vehicle_class = self.the_customer()
-        print('''----------- Add contract ------------------
-        """Insert information"""
-"""Contract Information"""
- Date:
- Duration:
- Country:
- City:
- Employee name:
- Paid:
- Final price:
-
-"""Customer Information"""
- Name:
- SSN:
- Phone:
- Email:
- Address:
- Drivers license:
-
- """Vehicle Information"""
- #vehicle class...:
- Plate number:
-
-
---------------------------------------------''')
         date = input("Date: ")
         duration = input("Duration: ")
         name_of_airport = input("Airport: ")
@@ -130,7 +116,23 @@ Name of airport:        {}
 Employee name:          {}
 Final price:            {}
 
---------------------------------------------'''.format(date, duration, name_of_airport, employee_name, final_price))
+------ Customer information -----
+        Name:                   {}
+        SSN:                    {}
+        Email:                  {}
+        Phone number:           {}
+        Address:                {}
+        Drivers license:        {}
+        Returned late before:   {}
+
+------ Vehicle information -----
+        Type:             {}
+        Model:            {}
+        Rate:             {}
+        Manufacturer:     {}
+        Model year:       {}
+        Color:            {}        
+--------------------------------------------'''.format(date, duration, name_of_airport, employee_name, final_price, customer_class.name, customer_class.ssn, customer_class.email, customer_class.phone_number, customer_class.address, customer_class.driving_license, customer_class.returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, None)
@@ -161,8 +163,8 @@ Final price:            {}
 
  --------------------------------------------""".format(contract_name)).lower()
         if choice == "y":
-            self.logic.contract(3, contract_name, None, None, None)
-            print("{} has been removed!".format(contract_name))
+            the_removed_contract = self.logic.contract(3, contract_name, None, None, None)
+            print("{} has been removed!".format(the_removed_contract))
         elif choice == "n":
             return
         else:
@@ -170,40 +172,91 @@ Final price:            {}
 
     def update_contract(self):
         while True:
-            find_contract = input("Enter contract recipient: ")
+            find_contract = input("Enter the contacts ssn: ")
+            the_contract = self.logic.contract(0, filter_or_id, "ssn", None)
+            print(the_contract)
+            choice = input("Is this the correct contract? Y/N").lower()
+            if choice == "n":
+                continue
+
             attribute = input('''--------------------------------------------
  What attribute would you like to change:
 """Contract information"""
- 1. Rental location:
- 2. Pick up date:
- 3. Drop off date:
+ 1. Pick up date:
+ 2. Drop off date:
 
 """Customer Information"""
- 4. Phone:
- 5. Email:
- 6. Address:
+ 3. Phone:
+ 4. Email:
+ 5. Address:
+ 6. Driving license:
 
 """Vehicle Information"""
- 7. Plate number:
+ 7. Choose another vehicle:
 
 --------------------------------------------
 choice(Enter the number): ''')
 
-            if attribute == "1":
-                attribute = "date"
-            elif attribute == "2":
-                attribute = "duration"
-            elif attribute == "3":
-                attribute = "paid"
+            try:
+                attribute = int(attribute)
+            except ValueError:
+                print("Wrong input")
+                continue
+            
+            if attribute == (1 or 2):
+                if attribute == 1:
+                    attribute = "date"
+                else:
+                    attribute = "duration"
+                new_info = input("Enter new information: ")
+                finished_product = self.logic.contract(2, find_contract, attribute, new_info, None)
+            elif attribute < 7 and attribute > 2: 
+                if attribute == 3:
+                    attribute = "phone_number"
+                elif attribute == 4:
+                    attribute = "email"
+                elif attribute == 5:
+                    attribute = "address"
+                else:
+                    attribute = "driving_license"
+                new_info = input("Enter new information: ")
+                finished_product = self.logic.customer(3, find_contract, attribute, new_info)
+            elif attribute == 7:
+                attribute = "number_plate"
+                vehicle_type = input("What type of vehicle does the customer want? ")
+                list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
+                for vehicle in list_of_vehicles:
+                    print(vehicle)
+                number_plate = input("Enter the number plate of the chosen vehicle: ")
+                while True:
+                    vehicle_class = self.logic.contract(4, find_contract, number_plate, None, None)
+                    if vehicle_class == None:
+                        print("You don't have the required license for this vehicle.")
+                        number_plate = input("Enter the number plate of the chosen vehicle: ")
+                    else:
+                        choice = input("""------ You have chosen this car -----
+        Type:             {}
+        Model:            {}
+        Rate:             {}
+        Manufacturer:     {}
+        Model year:       {}
+        Color:            {}
+        Is everything correct ? ( Y / N )
+            """.format(vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color)).lower()
+                        if choice == "y":
+                            break
+                
+                finished_product = self.logic.contract(5, the_contract[0].number_plate, "number_plate", number_plate, None)
+
             else:
                 print("Wrong input")
                 continue
-            new_info = input("Enter new information: ")
-            self.logic.contract(3, find_contract, attribute,  new_info)
+            
+            print(finished_product)
             break
 
     def all_contracts(self):
-        results = self.logic.contract(0, None, None, None)
+        results = self.logic.contract(0, None, None, None, None)
         print("\n------- All locations ---------- ")
         for contract in results:
             print(contract)
