@@ -69,15 +69,23 @@ class LocationUI():
                 print("Invalid choice!")
 
     def add_location(self):
-        print(''' ------------------------------
- | ------- Add location ------- |
- |    """Insert information"""  |
- |                              |
- | Country:                     |
- | Airport Name(city):          |
- | Opening hours:               |
- | Phone number:                |
-  ------------------------------ ''') # Þurfum að finna betri leið til að útfæra
+        print(''' -----------------------------------------------------------------------------
+ | -> -> Edit rental location -> Add location                                | 
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                |
+ |                                                                           |
+ | Country:                                                                  |
+ | Airport Name(city):                                                       |
+ | Opening hours:                                                            |
+ | Phone number:                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''') # Þurfum að finna betri leið til að útfæra
         country = input("Country: ")
         name_of_airport = input("Airport name: ")
         opening_hours = input("Opening hours: ")
