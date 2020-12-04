@@ -1,13 +1,13 @@
 class Contracts:
     def __init__(self, date, duration, name_of_airport, employee_name, paid, final_price, number_plate, ssn):
-        self.number_plate = number_plate
-        self.ssn = ssn
         self.date = date
         self.duration = duration
         self.name_of_airport = name_of_airport
         self.employee_name = employee_name
         self.paid = paid
         self.final_price = final_price
+        self.number_plate = number_plate
+        self.ssn = ssn
     
     def fieldnames(self):
         return ["date", "duration", "name_of_airport", "employee_name", "paid", "final_price", "number_plate", "ssn"]

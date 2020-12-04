@@ -59,8 +59,8 @@ class ContractUI():
         Is everything correct ? ( Y / N )
             """.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
             if choice == "y":
-                self.logic.customer(1, new_customer)
-                ssn_val = new_customer      
+                self.logic.customer(1, new_customer, None, None)
+                ssn_val = [new_customer]      
             else:
                 return None, None
         else:
@@ -81,7 +81,7 @@ class ContractUI():
             print(vehicle)
         number_plate = input("Enter the number plate of the chosen vehicle: ")
         while True:
-            vehicle_class = self.logic.contract(4, ssn_val, number_plate, None, None)
+            vehicle_class = self.logic.contract(4, ssn_val[0], number_plate, None, None)
             if vehicle_class == None:
                 print("You don't have the required license for this vehicle.")
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
@@ -207,7 +207,7 @@ choice(Enter the number): ''')
                 print("Wrong input")
                 continue
             
-            if attribute == (1 or 2):
+            if attribute == 1 or attribute == 2:
                 if attribute == 1:
                     attribute = "date"
                 else:
@@ -233,7 +233,7 @@ choice(Enter the number): ''')
                     print(vehicle)
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
                 while True:
-                    vehicle_class = self.logic.contract(4, find_contract, number_plate, None, None)
+                    vehicle_class = self.logic.contract(4, the_contract[0], number_plate, None, None)
                     if vehicle_class == None:
                         print("You don't have the required license for this vehicle.")
                         number_plate = input("Enter the number plate of the chosen vehicle: ")
