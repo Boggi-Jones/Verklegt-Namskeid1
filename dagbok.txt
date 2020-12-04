@@ -92,3 +92,8 @@ Færsla 1: Fórum yfir kerfið. Ákváðum að skipta á milli okkar verkum upp 
 		Skarphéðinn og Sölvu vinna áfram í Logic.contracts
 		Allir hinir fara í UI
 
+Færsal 2: Héldum fund klukkan 15.30 þar sem við fórum yfir öll happy path, þau voru meira og minna komin og 
+þ.a.l. eru A kröfurnar komnar ásamt nokkrum B kröfum. UI er líka komið langt þannig förum sáttir inn í helgina.
+
+
+

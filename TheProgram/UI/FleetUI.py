@@ -183,7 +183,7 @@ class FleetUI():
 
     def update_vehicle_information(self):
         while True:
-            find_vehicle = input(" | Enter employee SSN: ")
+            find_vehicle = input(" | Enter vehicle plate number: ")
             attribute = input(''' -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Update vehicle information                         | 
  -----------------------------------------------------------------------------
@@ -237,6 +237,6 @@ class FleetUI():
  |  -> Manage vehicles -> All vehicles                                       | 
  -----------------------------------------------------------------------------''')
         for vehicle in get_all:
-            print(" | {:.30>} | ".format(vehicle))
+            print(" | {:.30>} | ".format(str(vehicle))
         print("-----------------------------------------------------------------------------")
         input(" | Press enter to continue ")
