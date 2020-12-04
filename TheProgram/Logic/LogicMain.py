@@ -80,9 +80,11 @@ class LogicMain:
 
     def customer(self, option, ssn_or_customer_class, attribute, new_information):
         if option == 0:
-            results = self.customerlogic.get_customer_with_id(ssn_or_customer_class)
+            results = self.customerlogic.get_list_of_customers(ssn_or_customer_class, attribute)
         elif option == 1:
             results = self.customerlogic.add_customer_to_the_system(ssn_or_customer_class)
+        elif option == 2:
+            results = self.customerlogic.remove_customer(ssn_or_customer_class)
         else:
             results = self.customerlogic.edit_customer(ssn_or_customer_class, attribute, new_information)
 

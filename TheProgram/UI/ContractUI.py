@@ -38,16 +38,16 @@ class ContractUI():
 
     def the_customer(self):
         ssn = input("Enter customer SSN: ")
-        ssn_val = self.logic.customer(0, ssn)
-        if ssn_val == None:
+        ssn_val = self.logic.customer(0, ssn, "ssn", None)
+        if ssn_val == []:
             name = input("Name: ")
             ssn = input("SSN: ")
             email = input("Email: ")
             gsm_number = input("Phone: ")
             address = input("Address: ")
-            drivers_license = input("Drivers license: ")
-            return_late_before = input("Returned late before: ")
-            new_customer = Customer(name, ssn, email, gsm_number, address, drivers_license, return_late_before)
+            driving_license = input("Drivers license: ")
+            returned_late_before = input("Returned late before: ")
+            new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
             choice = input("""------ Customer information -----
         Name:                   {}
         SSN:                    {}
@@ -57,7 +57,7 @@ class ContractUI():
         Drivers license:        {}
         Returned late before:   {}
         Is everything correct ? ( Y / N )
-            """.format(name, ssn, email, gsm_number, address, drivers_license, return_late_before)).lower()
+            """.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
             if choice == "y":
                 self.logic.customer(1, new_customer)
                 ssn_val = new_customer      
@@ -73,7 +73,7 @@ class ContractUI():
         Drivers license:        {}
         Returned late before:   {}
         Is everything correct ? ( Y / N )
-            """.format(ssn_val.name, ssn_val.ssn, ssn_val.email, ssn_val.gsm_number, ssn_val.address, ssn_val.drivers_license, ssn_val.return_late_before)).lower()
+            """.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
         
         vehicle_type = input("What type of vehicle does the customer want? ")
         list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
@@ -108,7 +108,7 @@ class ContractUI():
         employee_name = input("Employee name: ")
         paid = "not"
         final_price = self.logic.contract(6, duration, None, None, vehicle_class)
-        the_contract = Contracts(date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class.ssn)
+        the_contract = Contracts(date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
         print('''----------- Contract information ------------------
 Date:                   {}
 Duration:               {}
@@ -132,7 +132,7 @@ Final price:            {}
         Manufacturer:     {}
         Model year:       {}
         Color:            {}        
---------------------------------------------'''.format(date, duration, name_of_airport, employee_name, final_price, customer_class.name, customer_class.ssn, customer_class.email, customer_class.phone_number, customer_class.address, customer_class.driving_license, customer_class.returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
+--------------------------------------------'''.format(date, duration, name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, None)
@@ -173,8 +173,12 @@ Final price:            {}
     def update_contract(self):
         while True:
             find_contract = input("Enter the contacts ssn: ")
-            the_contract = self.logic.contract(0, filter_or_id, "ssn", None)
-            print(the_contract)
+            the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
+            try:
+                print(the_contract[0])
+            except IndexError:
+                print("Contract not found, try again")
+                continue
             choice = input("Is this the correct contract? Y/N").lower()
             if choice == "n":
                 continue
