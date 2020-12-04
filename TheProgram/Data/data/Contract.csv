@@ -1,1 +1,2 @@
-number_plate,ssn,date,duration,name_of_airport,employee_name,paid,final_price
+date,duration,name_of_airport,employee_name,paid,final_price,number_plate,ssn
+12/12/2020,14,Keflavik,Guðmundur,not,28,g,234543-4567
