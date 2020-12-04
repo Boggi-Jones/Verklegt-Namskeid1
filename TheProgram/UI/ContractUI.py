@@ -207,7 +207,7 @@ choice(Enter the number): ''')
                 print("Wrong input")
                 continue
             
-            if attribute == (1 or 2):
+            if attribute == 1 or attribute == 2:
                 if attribute == 1:
                     attribute = "date"
                 else:
