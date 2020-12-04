@@ -28,7 +28,7 @@ class EmployeeLogic:
         # List of employees is then overwritten with updated list
         list_of_employees = self.filteremployees(None, None)
         for emp in list_of_employees:
-            if emp.__getattribute__("ssn") == filter_or_id:
+            if emp.ssn == filter_or_id:
                 list_of_employees.remove(emp)
         self.datamain.overwrite(self.position, list_of_employees)
 
