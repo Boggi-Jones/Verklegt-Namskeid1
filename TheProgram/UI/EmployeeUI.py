@@ -125,7 +125,7 @@ class EmployeeUI():
         '''Takes employee name input from user, and compares it
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
-        find_employee = input("Enter employee name: ")
+        find_employee = input("Enter employee ssn: ")
         self.logic.employee(1, find_employee, None, None)
         print("Employee has been removed!")
 
@@ -171,10 +171,10 @@ class EmployeeUI():
 
     def get_all_employees(self):
         results = self.logic.employee(0, None, None, None)
-        print("\n------------ All employees ------------------")
+        print("\n------------------------------------------------------------------------------ \n|                                All Employees                               |")
         for employee in results:
-            print(employee)
-        print("--------------------------------------------")
+            print("|  {:25s}                                                 |".format(str(employee)))
+        print("------------------------------------------------------------------------------")
 
     def search_employee(self):
         employee = input("Enter employee SSN: ")
