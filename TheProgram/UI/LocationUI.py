@@ -8,7 +8,7 @@ class LocationUI():
 
     def location_loop(self):
         while True:
-            choice = input(""" -----------------------------------------------------------------------------
+            choice = input("""\n -----------------------------------------------------------------------------
  | Welcome to NaN Air -> Rental Location information                         |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
@@ -39,7 +39,7 @@ class LocationUI():
 
     def edit_location(self):
         while True:
-            choice = input(''' -----------------------------------------------------------------------------
+            choice = input('''\n -----------------------------------------------------------------------------
  | -> Rental Location information -> Edit rental location                    |
  -----------------------------------------------------------------------------
  | "Choose number to continue to next window"                                |
@@ -69,7 +69,7 @@ class LocationUI():
                 print("Invalid choice!")
 
     def add_location(self):
-        print(''' -----------------------------------------------------------------------------
+        print('''\n -----------------------------------------------------------------------------
  | -> -> Edit rental location -> Add location                                |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
@@ -92,7 +92,7 @@ class LocationUI():
         phone_number = input("Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
-        print(''' -----------------------------------------------------------------------------
+        print('''\n -----------------------------------------------------------------------------
  | -> -> -> Add location -> Add location                                     |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
@@ -117,7 +117,7 @@ class LocationUI():
             return None
 
     def remove_location(self):
-        location_name = input("""  -----------------------------------------------------------------------------
+        location_name = input("""\n  -----------------------------------------------------------------------------
  | -> -> -> -> Add Location -> Remove location                               |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
@@ -133,7 +133,7 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------""")
-        choice = input(""" -----------------------------------------------------------------------------
+        choice = input("""\n -----------------------------------------------------------------------------
  | -> -> -> -> Add employee -> Remove location                               |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
@@ -160,7 +160,7 @@ class LocationUI():
     def update_location(self):
         while True:
             find_location = input("Enter airport name: ")
-            attribute = input('''--------------------------------------------
+            attribute = input('''\n --------------------------------------------
  | What attribute would you like to change:   |
  | 1. Opening hours:                          |
  | 2. Phone number:                           |
@@ -181,7 +181,7 @@ class LocationUI():
 
     def all_locations(self):
         results = self.logic.location(0, None, None, None)
-        print("\n------- All locations ---------- ")
+        print("\n ------- All locations ---------- ")
         for location in results:
             print("|  " , location , "  |")
         print("-----------------------------------")
