@@ -19,9 +19,11 @@ class ContractLogic:
     def cancelcontract(self, filter_or_id):
         list_of_contracts = self.filtercontract(None, None)
         for contract in list_of_contracts:
-            if contract.__getattribute__("ssn") == filter_or_id:
+            if contract.ssn == filter_or_id:
+                the_removed_contract = contract
                 list_of_contracts.remove(contract)
-        self.datamain.overwrite(self.position, list_of_contracts)
+                self.datamain.overwrite(self.position, list_of_contracts)
+                return the_removed_contract
 
     def makenewcontract(self, new_information):
         self.datamain.add_to_list(self.position, new_information)
@@ -33,14 +35,9 @@ class ContractLogic:
             self.cancelcontract(filter_or_id)
             self.makenewcontract(contract)
 
-    def printcontract(self, filter_or_id):
-        return self.filtercontract(filter_or_id, "ssn")
-
     def checklicense(self, customer_class, vehicle_class):
-        for vehicle in vehicle_class:
-            if customer_class.__getattribute__("driving_license") in vehicle.__getattribute__("driving_license"):
-                return vehicle_class
-
+        if customer_class.driving_license in vehicle_class[0].driving_license:
+            return vehicle_class
 
     def calculatefinalprice(self, duration, vehicle_class):
         for vehicle in vehicle_class:

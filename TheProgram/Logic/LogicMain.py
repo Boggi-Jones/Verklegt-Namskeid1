@@ -60,17 +60,26 @@ class LogicMain:
         elif option == 3:
             results = self.contractlogic.cancelcontract(filter_or_id)
         elif option == 4:
-            results = self.contractlogic.printcontract(filter_or_id)
-        elif option == 5:
             vehicle_class = self.vehicle(0, attribute, "number_plate", None)
             results = self.contractlogic.checklicense(filter_or_id, vehicle_class)
+        elif option == 5:
+            new_vehicle = self.vehiclelogic.filtervehiclefleet(new_information, attribute)
+            if new_vehicle[0].status == "available":
+                self.vehiclelogic.editvehicleinfo(filter_or_id, "status", "available")
+                self.vehiclelogic.editvehicleinfo(new_information, "status", "rented")
+                results = self.contractlogic.editcontractinfo(filter_or_id, attribute, new_information)
+            else:
+                return False
+
         else:
             results = self.contractlogic.calculatefinalprice(filter_or_id, vehicle_type)
 
         return results
 
-    def customer(self, option, ssn_or_customer_class):
+    def customer(self, option, ssn_or_customer_class, attribute, new_information):
         if option == 0:
             results = self.customerlogic.get_customer_with_id(ssn_or_customer_class)
         else:
             results = self.customerlogic.add_customer_to_the_system(ssn_or_customer_class)
+
+        return results
