@@ -12,13 +12,23 @@ class EmployeeUI():
         að fara í "Manage employee, All employees o.s.frv." '''
 
         while True:
-            employee_choice = input('''----------- Employee accounts -----------
-1. Manage employee
-2. All employees
-3. Search employee
-4. <- Go back
---------------------------------------------
-chocie: ''')
+            employee_choice = input(''' -----------------------------------------------------------------------------
+ | Welcome to NaN Air  -> Employee accounts                                  | 
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "4" to go back"                                                   |
+ |                                                                           |
+ | 1. Manage employee                                                        |
+ | 2. All employees                                                          |
+ | 3. Search employee                                                        |
+ | 4. <- Go back                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''')
             if employee_choice == "1":
                 self.manage_employee()
             elif employee_choice == "2":
@@ -33,13 +43,23 @@ chocie: ''')
     def manage_employee(self):
 
         while True:
-            employee_options = input('''----------- Manage employee ------------------
-1. Add employee
-2. Remove employee
-3. Update employee information
-4. <- Go back
---------------------------------------------
-choice: ''')
+            employee_options = input(''' -----------------------------------------------------------------------------
+ | -> Employee accounts -> Manage employee                                   | 
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "4" to go back"                                                   |
+ |                                                                           |
+ | 1. Add employee                                                           |
+ | 2. Remove employee                                                        |
+ | 3. Update employee information                                            |
+ | 4. <- Go back                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''')
             if employee_options == "1":
                 self.add_employee()
             elif employee_options == "2":
@@ -52,18 +72,22 @@ choice: ''')
                 print("Invalid entry")
 
     def add_employee(self):
-        print('''----------- Add employee ------------------
-        """Insert information"""
-Name:
-SSN:
-Address:
-Home phone:
-Smart phone:
-Email:
-Location:
-Company role:
-
---------------------------------------------''')
+        print(''' -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     | 
+ -----------------------------------------------------------------------------
+ | "Insert the following information"                                        |
+ |                                                                           |
+ | Name:                                                                     |
+ | SSN:                                                                      |
+ | Address:                                                                  |
+ | Home phone:                                                               |
+ | Smart phone:                                                              |
+ | Email:                                                                    |
+ | Location:                                                                 |
+ | Company role:                                                             |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------''')
         name = input("Name: ")
         ssn = input("SSN: ")
         address = input("Address: ")

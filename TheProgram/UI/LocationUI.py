@@ -8,14 +8,23 @@ class LocationUI():
 
     def location_loop(self):
         while True:
-            choice = input(""" ----------------------------------
- |-- Rental Location information -- |
- | 1. Edit rental location          |
- | 2. All locations                 |
- | 3. Search Location               |
- | 4. <-- Go back                   |
-  ----------------------------------
- choice: """)
+            choice = input("""  -----------------------------------------------------------------------------
+ | Welcome to NaN Air -> Rental Location information                         | 
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "4" to Go back"                                                   |
+ |                                                                           |
+ | 1. Edit rental location                                                   |
+ | 2. All locations                                                          |
+ | 3. Search Location                                                        |
+ | 4. <- Go back                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: """)
 
             if choice == "1":
                 self.edit_location()
@@ -30,14 +39,23 @@ class LocationUI():
 
     def edit_location(self):
         while True:
-            choice = input(''' ----------------------------------
- | ----- Edit rental location ----- |
- | 1. Add location                  |
- | 2. Remove location               |
- | 3. Update location information   |
- | 4. <-- Go Back                   |
-  ----------------------------------
- choice: ''')
+            choice = input(''' -----------------------------------------------------------------------------
+ | -> Rental Location information -> Edit rental location                    | 
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "4" to Go back"                                                   |
+ |                                                                           |
+ | 1. Add location                                                           |
+ | 2. Remove location                                                        |
+ | 3. Update location information                                            |
+ | 4. <- Go Back                                                             |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''')
 
             if choice == "1":
                 self.add_location()
