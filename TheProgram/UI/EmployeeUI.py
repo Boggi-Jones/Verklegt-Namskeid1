@@ -132,17 +132,23 @@ Company role: {}
     def update_employee(self):
         while True:
             find_employee = input("Enter employee SSN: ")
-            attribute = input('''--------------------------------------------
- What attribute would you like to change:
-1. Address:
-2. Home phone:
-3. Smart phone:
-4. Email:
-5. Location:
-6. Company role:
-
---------------------------------------------
-choice(Enter the number): ''')
+            attribute = input(''' -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Updaate employee                                 | 
+ -----------------------------------------------------------------------------
+ | "Select attribute you would like to change"                               |
+ |                                                                           |
+ | 1. Address:                                                               |
+ | 2. Home phone:                                                            |
+ | 3. Smart phone:                                                           |
+ | 4. Email:                                                                 |
+ | 5. Location:                                                              |
+ | 6. Company role:                                                          |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice(Enter the number): ''')
 
             if attribute == "1":
                 attribute = "address"

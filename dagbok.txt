@@ -87,5 +87,8 @@ A kröfunum okkar. Það á klárlega eftir að pússa það til en þetta virka
 á það.
 
 
-
+04/12/20 - - - - - - - - - - - -
+Færsla 1: Fórum yfir kerfið. Ákváðum að skipta á milli okkar verkum upp á nýtt.
+		Skarphéðinn og Sölvu vinna áfram í Logic.contracts
+		Allir hinir fara í UI
 
