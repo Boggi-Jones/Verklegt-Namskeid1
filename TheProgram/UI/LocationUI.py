@@ -84,12 +84,11 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- -----------------------------------------------------------------------------
- | Choice: ''') # Þurfum að finna betri leið til að útfæra
-        country = input("Country: ")
-        name_of_airport = input("Airport name: ")
-        opening_hours = input("Opening hours: ")
-        phone_number = input("Phone number: ")
+ -----------------------------------------------------------------------------''')
+        country = input(" | Country: ")
+        name_of_airport = input(" | Airport name: ")
+        opening_hours = input(" | Opening hours: ")
+        phone_number = input(" | Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
         print('''\n -----------------------------------------------------------------------------
@@ -122,7 +121,6 @@ class LocationUI():
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
- | Enter location name:                                                      |
  |                                                                           |
  |                                                                           |
  |                                                                           |
@@ -132,7 +130,9 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- -----------------------------------------------------------------------------""")
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ Enter location name: """)
         choice = input("""\n -----------------------------------------------------------------------------
  | -> -> -> -> Add employee -> Remove location                               |
  -----------------------------------------------------------------------------

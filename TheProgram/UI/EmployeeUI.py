@@ -126,8 +126,8 @@ class EmployeeUI():
 |                                                                            |
 |                                                                            |
 |                                                                            |
-|               "New employee has been added to the system:                  |
-|                               {}                                           |
+|                New employee has been added to the system:                  |
+|                {}                                                          |
 |                                                                            |
 |                                                                            |
 |                                                                            |
