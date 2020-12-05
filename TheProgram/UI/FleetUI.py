@@ -196,15 +196,16 @@ class FleetUI():
  | "Select attribute would you like to change: "                             |
  | 1. Status:                                                                |
  | 2. Vehicle type:                                                          |
- | 3. Rate:                                                                  |
- | 4. Manufacturer:                                                          |
- | 5. Condition:                                                             |
- | 6. Model year:                                                            |
- | 7. Color:                                                                 |
- | 8. Number plate:                                                          |
- | 9. Required license:                                                      |
- | 10. Rent:                                                                 |
- | 11. Airport:                                                              |
+ | 3. Model:                                                                 |
+ | 4. Rate:                                                                  |
+ | 5. Manufacturer:                                                          |
+ | 6. Condition:                                                             |
+ | 7. Model year:                                                            |
+ | 8. Color:                                                                 |
+ | 9. Number plate:                                                          |
+ | 10. Required license:                                                      |
+ | 11. Rent:                                                                 |
+ | 12. Airport:                                                              |
  -----------------------------------------------------------------------------
  | choice: ''')
 
@@ -213,22 +214,24 @@ class FleetUI():
             elif attribute == "2":
                 attribute = "Vehicle type"
             elif attribute == "3":
-                attribute = "Rate"
+                attribute = "Model"
             elif attribute == "4":
-                attribute = "Manufacturer"
+                attribute = "Rate"
             elif attribute == "5":
-                attribute = "Condition"
+                attribute = "Manufacturer"
             elif attribute == "6":
-                attribute = "Model year"
+                attribute = "Condition"
             elif attribute == "7":
-                attribute = "Color"
+                attribute = "Model year"
             elif attribute == "8":
-                attribute = "Number plate"
+                attribute = "Color"
             elif attribute == "9":
-                attribute = "Required license"
+                attribute = "Number plate"
             elif attribute == "10":
-                attribute = "Rent"
+                attribute = "Required license"
             elif attribute == "11":
+                attribute = "Rent"
+            elif attribute == "12":
                 attribute = "Airport"
             else:
                 print("Wrong input")
