@@ -103,15 +103,15 @@ class EmployeeUI():
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
  |                      "New employee information"                           |
- |Name:         {:.40s}   |                                                  
- |SSN:          {:.40s}   |
- |Address:      {:.40s}   |
- |Home phone:   {:.40s}   |
- |Smart phone:  {:.40s}   |
- |Email:        {:.40s}   |
- |Location:     {:.40s}   |
- |Company role: {:.40s}   |
- |                                                                            |
+ |Name:         {:58s}   |                                                  
+ |SSN:          {:58s}   |
+ |Address:      {:58s}   |
+ |Home phone:   {:58s}   |
+ |Smart phone:  {:58s}   |
+ |Email:        {:58s}   |
+ |Location:     {:58s}   | 
+ |Company role: {:58s}   |
+ |                                                                           |
  -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
         input(" | Push 'Enter' to continue")
 
@@ -126,31 +126,30 @@ class EmployeeUI():
 |                                                                            |
 |                                                                            |
 |                                                                            |
-|                New employee has been added to the system:                  |
-|                {}                                                          |
+|                "{}" has been added to the system:{:27s}|              
 |                                                                            |
 |                                                                            |
 |                                                                            |
 |                                                                            |
 |                                                                            |
------------------------------------------------------------------------------'''.format(name))
-        input(" | Press 'Enter' to continue")
-        if add_choice == "n":
+|                                                                            |
+------------------------------------------------------------------------------'''.format(name, ""))
+        elif add_choice == "n":
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
 |                                                                            |
 |                                                                            |
 |                                                                            |
-|             "New employee has not been added to the system:                |
-|                                   {}                                       |
+|               "{}" has not been added to the system:{:24}|
 |                                                                            |
 |                                                                            |
 |                                                                            |
 |                                                                            |
 |                                                                            |
------------------------------------------------------------------------------'''.format(name))
-            return
+|                                                                            |
+------------------------------------------------------------------------------'''.format(name, ""))
+            input(" | Press 'Enter' to continue")
         else:
             return None
 
@@ -159,9 +158,9 @@ class EmployeeUI():
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
         find_employee = input(" | Enter employee ssn: ")
-        self.logic.employee(1, find_employee, None, None)
         choice = input(" | Are you sure you want to remove {} ? (Y / N): ".format(find_employee)).lower()
         if choice == "y":
+            self.logic.employee(1, find_employee, None, None)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                  |
  -----------------------------------------------------------------------------
