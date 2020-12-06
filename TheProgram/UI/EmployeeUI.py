@@ -164,10 +164,33 @@ class EmployeeUI():
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                  |
  -----------------------------------------------------------------------------
- |                      Employee '{}' has been removed!                      |'''.format(find_employee))
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                "{}" has been removed from the system:{:27s}|              
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+------------------------------------------------------------------------------'''.format(find_employee, ""))
             input(" | Press 'Enter' to continue")
         elif choice == "n":
-            print(" | '{}' has not been removed.".format(find_employee))
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Remove employee                                  |
+ -----------------------------------------------------------------------------
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                "{}" has not been removed from the system:{:23s}|              
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+------------------------------------------------------------------------------'''.format(find_employee, ""))
             input(" | Press 'Enter' to continue")
             return
         else:
@@ -211,6 +234,23 @@ class EmployeeUI():
                 continue
             new_employee_info = input(" | Enter new information: ")
             self.logic.employee(3, find_employee, attribute,  new_employee_info)
+            #print('''\n -----------------------------------------------------------------------------
+ #| -> -> Manage employee -> Update employee                                  |
+ #-----------------------------------------------------------------------------
+ #| "Updated employee information"                                            |
+ #|                                                                           |
+ #| 1. Address:             {}                                                |
+ #| 2. Home phone:          {}                                                |
+ #| 3. Smart phone:         {}                                                |
+ #| 4. Email:               {}                                                |
+ #| 5. Location:            {}                                                |
+ #| 6. Company role:        {}                                                |
+ #|                                                                           |
+ #|                                                                           |
+ #|                                                                           |
+ #|                                                                           |
+ #-----------------------------------------------------------------------------
+ #| Choice: ''')
             break
 
     def get_all_employees(self):

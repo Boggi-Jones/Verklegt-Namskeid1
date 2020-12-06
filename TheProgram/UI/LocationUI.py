@@ -134,7 +134,7 @@ class LocationUI():
  -----------------------------------------------------------------------------
  Enter location name: """)
         choice = input("""\n -----------------------------------------------------------------------------
- | -> -> -> -> Add employee -> Remove location                               |
+ | -> -> -> -> Add location -> Remove location                               |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
@@ -148,11 +148,39 @@ class LocationUI():
  | Y/N:__                                                                    |
  |                                                                           |
  |                                                                           |
- -----------------------------------------------------------------------------""".format(location_name)).lower()
+ -----------------------------------------------------------------------------
+ | Are you sure you want to remove this location? (Y / N): """.format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
-            print("{} has been removed!".format(location_name))
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> -> -> Add Location -> Remove location                               |
+ -----------------------------------------------------------------------------
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                "{}" has been removed from the system:{:27s}|              
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+------------------------------------------------------------------------------'''.format(location_name, ""))
         elif choice == "n":
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> -> -> Add Location -> Remove location                               |
+ -----------------------------------------------------------------------------
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                "{}" has been removed from the system:{:27s}|              
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+|                                                                            |
+------------------------------------------------------------------------------'''.format(location_name, ""))
             return
         else:
             return None

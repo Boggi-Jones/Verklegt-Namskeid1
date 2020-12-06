@@ -139,12 +139,12 @@ class FleetUI():
  | Rate:                {:40s}      |
  | Manufacturer:        {:40s}      |
  | Condition:           {:40s}      |
- | Model year:          {:40s}                                                   |
- | Color:               {:40s}                                                   |
- | Number plate:        {:40s}                                                   |
- | Required license:    {:40s}                                                   |
- | Rent:                {:40s}                                                   |
- | Airport:             {:40s}                                                   |
+ | Model year:          {:40s}      |
+ | Color:               {:40s}      |
+ | Number plate:        {:40s}      |
+ | Required license:    {:40s}      |
+ | Rent:                {:40s}      |
+ | Airport:             {:40s}      |
  -----------------------------------------------------------------------------'''.format(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
             add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
             if add_choice == "y":
