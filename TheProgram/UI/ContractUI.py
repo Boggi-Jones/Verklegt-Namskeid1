@@ -8,16 +8,23 @@ class ContractUI():
 
     def contract_loop(self):
         while True:
-            choice = input("""# --------------- Contracts -------------------
- 1. Add contract
- 2. Remove contract
- 3. Update contract information
- 4. See all contracts
- 5. Print contract
- 6. Charge contract
- 7. <-- Go Back
-
-    choice: """)
+            choice = input('''\n -----------------------------------------------------------------------------
+ | Welcome to NaN Air  -> Contracts                                          |
+ -----------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                |
+ | "Choose "4" to go back"                                                   |
+ |                                                                           |
+ | 1. Add contract                                                           |
+ | 2. Remove contract                                                        |
+ | 3. Update contract information                                            |
+ | 4. See all contracts                                                      |
+ | 5. Print contract                                                         |
+ | 6. Charge contract                                                        |
+ | 7 <- Go Back                                                              |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ | Choice: ''')
 
             if choice == "1":
                 self.add_contract()
@@ -37,44 +44,53 @@ class ContractUI():
                 print("Invalid choice!")
 
     def the_customer(self):
-        ssn = input("Enter customer SSN: ")
+        ssn = input(" | Enter customer SSN: ")
         ssn_val = self.logic.customer(0, ssn, "ssn", None)
         if ssn_val == []:
-            name = input("Name: ")
-            ssn = input("SSN: ")
-            email = input("Email: ")
-            gsm_number = input("Phone: ")
-            address = input("Address: ")
-            driving_license = input("Drivers license: ")
-            returned_late_before = input("Returned late before: ")
+            name = input(" | Name: ")
+            ssn = input(" | SSN: ")
+            email = input(" | Email: ")
+            gsm_number = input(" | Phone: ")
+            address = input(" | Address: ")
+            driving_license = input(" | Drivers license: ")
+            returned_late_before = input(" | Returned late before: ")
             new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
-            choice = input("""------ Customer information -----
-        Name:                   {}
-        SSN:                    {}
-        Email:                  {}
-        Phone number:           {}
-        Address:                {}
-        Drivers license:        {}
-        Returned late before:   {}
-        Is everything correct ? ( Y / N )
-            """.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
+            choice = input('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     |
+ -----------------------------------------------------------------------------
+ |                      "Customer information"                           |
+ |Name:        {:59s}   |                                                  
+ |SSN:         {:59s}   |
+ |Email:       {:59s}   |
+ |Cell phone:  {:59s}   |
+ |Address:     {:59s}   |
+ |License:     {:59s}   |
+ |Late before: {:59s}   | 
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------'''.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
+            choice = input(" | Is the information correct (Y / N)? ")
             if choice == "y":
                 self.logic.customer(1, new_customer, None, None)
                 ssn_val = [new_customer]      
             else:
                 return None, None
         else:
-            choice = input("""------ Customer information -----
-        Name:                   {}
-        SSN:                    {}
-        Email:                  {}
-        Phone number:           {}
-        Address:                {}
-        Drivers license:        {}
-        Returned late before:   {}
-        Is everything correct ? ( Y / N )
-            """.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
-        
+            choice = input("""\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     |
+ -----------------------------------------------------------------------------
+ |                      "New customer information"                           |
+ |Name:        {:59s}   |                                                  
+ |SSN:         {:59s}   |
+ |Email:       {:59s}   |
+ |Cell phone:  {:59s}   |
+ |Address:     {:59s}   |
+ |License:     {:59s}   |
+ |Late before: {:59s}   | 
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------""".format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
+            input("Is everything correct (Y / N)? ")
         vehicle_type = input("What type of vehicle does the customer want? ")
         list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
         for vehicle in list_of_vehicles:
@@ -261,10 +277,14 @@ choice(Enter the number): ''')
 
     def all_contracts(self):
         results = self.logic.contract(0, None, None, None, None)
-        print("\n------- All locations ---------- ")
+        print('''\n ---------------------------------------------------------------------------------------------------------------------------------
+ | -> Contracts -> All Contracts                                                                                        |
+ ---------------------------------------------------------------------------------------------------------------------------------
+ |  Date:         | Number:        | Location:      | Name:  | ?:     | Email:             | Location:  | Role:     |''')
         for contract in results:
-            print(contract)
-        print("-----------------------------------")
+            print(''' |  {}|'''.format(str(contract)))
+        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue")
 
     def print_contract(self):
         customer_id = print(''' ------------- Print contract --------------
