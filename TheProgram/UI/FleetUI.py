@@ -164,7 +164,7 @@ class FleetUI():
         find_vehicle = input(" | Enter vehicle plate number: ")
         remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
         if remove_choice == "y":
-            self.logic.vehicle(1, find_vehicle, None, None)
+            self.logic.vehicle(3, find_vehicle, None, None)
             print('''\n -----------------------------------------------------------------------------
  | -> Manage vehicles -> Remove vehicle                                      |
  -----------------------------------------------------------------------------
@@ -237,7 +237,7 @@ class FleetUI():
                 print("Wrong input")
                 continue
             new_vehicle_info = input(" | Enter new information: ")
-            self.logic.vehicle(3, find_vehicle, attribute,  new_vehicle_info)
+            self.logic.vehicle(1, find_vehicle, attribute,  new_vehicle_info)
             break
 
     def all_vehicles(self):

@@ -54,6 +54,7 @@ class LogicMain:
         if option == 0:
             results = self.contractlogic.filtercontract(filter_or_id, attribute)
         elif option == 1:
+            self.vehiclelogic.editvehicleinfo(vehicle_type[0].number_plate, "status", "rented")
             results = self.contractlogic.makenewcontract(new_information)
         elif option == 2:
             results = self.contractlogic.editcontractinfo(filter_or_id, attribute, new_information)
@@ -87,5 +88,21 @@ class LogicMain:
             results = self.customerlogic.remove_customer(ssn_or_customer_class)
         else:
             results = self.customerlogic.edit_customer(ssn_or_customer_class, attribute, new_information)
+
+        return results
+
+    def input_checking(self, option, user_input):
+        if option == 0:
+            
+        elif option == 1:
+            
+        elif option == 2:
+            
+        elif option == 3:
+            
+        elif option == 4:
+            
+        elif option == 5:
+            
 
         return results
