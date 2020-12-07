@@ -193,38 +193,39 @@ class LocationUI():
  | -> -> Edit Location -> Update location                                     |
  |                                                                            |
  | What attribute would you like to change:                                   |
- | 1. Opening hours:           {:.23s}                     |
- | 2. Phone number:            {:.23s}                     |
+ | 1. Opening hours:           {:26s}                     |
+ | 2. Phone number:            {:26s}                     |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
   ------------------------------------------------------------------------------
- | Choice: ''').format(the_airport[0].opening_hours, the_airport[0].phone_number)
+ | Choice: '''.format(the_airport[0].opening_hours, the_airport[0].phone_number))
 
             if attribute == "1":
                 attribute = "opening_hours"
             elif attribute == "2":
                 attribute = "phone_number"
             else:
-                print("Wrong input")
+                print(" | Wrong input")
                 continue
-            new_info = input("Enter new information: ")
+            new_info = input(" | Enter new information: ")
             updated_airport = self.logic.location(3, find_location, attribute,  new_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
  |                                                                            |
  | "New info"                                                                 |
- | 1. Aiport name:        {:23s}                     |
- | 2. Country:            {:23s}                     |
- | 3. Opening hours:      {:23s}                     |
- | 4. Phone number:       {:23s}                     |
+ | 1. Aiport name:        {:30s}                     |
+ | 2. Country:            {:30s}                     |
+ | 3. Opening hours:      {:30s}                     |
+ | 4. Phone number:       {:30s}                     |
  |                                                                            |
  |                                                                            |
  |                                                                            |
   ------------------------------------------------------------------------------
-  ''').format(updated_airport.name_of_airport, updated_airport.country, updated_airport.opening_hours, updated_airport.phone_number)
+  '''.format(updated_airport.name_of_airport, updated_airport.country, updated_airport.opening_hours, updated_airport.phone_number))
+            input(" | Press 'Enter' to continue")
             break
 
     def all_locations(self):
