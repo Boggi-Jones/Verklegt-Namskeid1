@@ -158,7 +158,13 @@ class FleetUI():
         '''Takes vehicle name input from user, and compares it
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
-        find_vehicle = input(" | Enter vehicle plate number: ").upper()
+        while True:
+            find_vehicle = input(" | Enter vehicle plate number: ").upper()
+            chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
+            if chosen_vehicle == []:
+                print(" | No vehicle with this number plate")
+            else:
+                break
         remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
         if remove_choice == "y":
             self.logic.vehicle(3, find_vehicle, None, None)
@@ -187,6 +193,10 @@ class FleetUI():
     def update_vehicle_information(self):
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
+            chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
+            if chosen_vehicle == []:
+                print(" | No vehicle with this number plate")
+                continue
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Update vehicle information                         |
  -----------------------------------------------------------------------------
@@ -207,34 +217,51 @@ class FleetUI():
  | choice: ''')
 
             if attribute == "1":
-                attribute = "Status"
+                attribute = "status"
             elif attribute == "2":
-                attribute = "Vehicle type"
+                attribute = "type_of_vehicle"
             elif attribute == "3":
-                attribute = "Model"
+                attribute = "model"
             elif attribute == "4":
-                attribute = "Rate"
+                attribute = "rate"
             elif attribute == "5":
-                attribute = "Manufacturer"
+                attribute = "manufacturer"
             elif attribute == "6":
-                attribute = "Condition"
+                attribute = "condition"
             elif attribute == "7":
-                attribute = "Model year"
+                attribute = "model_year"
             elif attribute == "8":
-                attribute = "Color"
+                attribute = "color"
             elif attribute == "9":
-                attribute = "Number plate"
+                attribute = "number_plate"
             elif attribute == "10":
-                attribute = "Required license"
+                attribute = "driving_license"
             elif attribute == "11":
-                attribute = "Rent"
+                attribute = "rent_counter"
             elif attribute == "12":
-                attribute = "Airport"
+                attribute = "name_of_airport"
             else:
                 print("Wrong input")
                 continue
             new_vehicle_info = input(" | Enter new information: ")
             self.logic.vehicle(1, find_vehicle, attribute,  new_vehicle_info)
+            print('''\n -----------------------------------------------------------------------------
+ | -> Manage vehicles -> Remove vehicle                                      |
+ -----------------------------------------------------------------------------
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                       "Vehicle {:6s} has been updated"                   |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------'''.format(find_vehicle))
+            input(" | Press 'Enter' to continue ")
             break
 
     def all_vehicles(self):
