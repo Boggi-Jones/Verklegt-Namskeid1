@@ -96,4 +96,10 @@ Færsal 2: Héldum fund klukkan 15.30 þar sem við fórum yfir öll happy path,
 þ.a.l. eru A kröfurnar komnar ásamt nokkrum B kröfum. UI er líka komið langt þannig förum sáttir inn í helgina.
 
 
+07/12/20 - - - - - - - - - - - -
+Færsla 1: Skiptum okkur í tvo hópa. Annars hópurinn fór að gera "villu-check" á input hjá notendum á meðan hinn
+hópurinn hélt áfram að gera UI-ið. Það var einnig sett plan fyrir vikuna. Öll forritun yrði kláruð fyrir hádegi á
+fimmt og eftir það yrði skírslan klárauð ásamt myndbandinu.
+
+
 
