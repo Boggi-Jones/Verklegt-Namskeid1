@@ -120,8 +120,8 @@ class FleetUI():
             condition = "Good"
             model_year = input(" | Model year: ")
             color = input(" | Color: ")
-            number_plate = input(" | Number plate: ")
-            driving_license = input(" | License required: ").upper()
+            number_plate = input(" | Number plate: ").upper()
+            driving_license = input(" | License required: ")
             rent_counter = "0"
             name_of_airport = input(" | Airport: ").capitalize()
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
@@ -158,7 +158,7 @@ class FleetUI():
         '''Takes vehicle name input from user, and compares it
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
-        find_vehicle = input(" | Enter vehicle plate number: ")
+        find_vehicle = input(" | Enter vehicle plate number: ").upper()
         remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
         if remove_choice == "y":
             self.logic.vehicle(3, find_vehicle, None, None)
@@ -170,8 +170,8 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                       "Vehicle has been removed"                          |
- |                       {:.25s}                                             |
+ |                       "Vehicle {:6s} has been removed"                   |
+ |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
