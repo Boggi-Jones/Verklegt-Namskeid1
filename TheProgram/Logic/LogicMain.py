@@ -93,16 +93,16 @@ class LogicMain:
 
     def input_checking(self, option, user_input):
         if option == 0:
-            
+            pass            
         elif option == 1:
-            
+            pass
         elif option == 2:
-            
+            pass
         elif option == 3:
-            
+            pass
         elif option == 4:
-            
+            pass
         elif option == 5:
-            
+            pass
 
-        return results
+        return 
