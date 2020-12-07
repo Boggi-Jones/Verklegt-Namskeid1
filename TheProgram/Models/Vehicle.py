@@ -1,5 +1,5 @@
 class Vehicle():
-    def __init__(self, status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport):
+    def __init__(self, status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter , name_of_airport):
         self.status = status
         self.type_of_vehicle = type_of_vehicle
         self.model = model
@@ -21,4 +21,4 @@ class Vehicle():
     
     
     def __str__(self):
-        return "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.status, self.type_of_vehicle, self.model, self.rate, self.manufacturer, self.condition, self.model_year, self.color, self.number_plate, self.driving_license, self.rent_counter, self.name_of_airport)
+        return "{:^13s}| {:^16s}|{:^12s}|{:^6s}|{:^14s}|{:^11s}|{:^12s}|{:^7s}|{:^14s}|{:^17s}|{:^14s}|{:^16s}".format(self.status, self.type_of_vehicle, self.model, self.rate, self.manufacturer, self.condition, self.model_year, self.color, self.number_plate, self.driving_license, self.rent_counter, self.name_of_airport)
