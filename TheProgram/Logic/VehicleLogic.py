@@ -26,7 +26,7 @@ class VehicleLogic:
         for vehicle in list_of_vehicles:
             if vehicle.__getattribute__("number_plate") == filter_or_id:
                 list_of_vehicles.remove(vehicle)
-        self.datamain.overwrite(self.position, list_of_vehicles)
+        self.datamain.overwrite(self.position, list_of_vehicles) 
 
     def registernewvehicle(self, new_information):
         #self explanitory?
@@ -42,6 +42,8 @@ class VehicleLogic:
             vehicle.__setattr__(attribute, new_information)
             self.remove_vehicle(filter_or_id)
             self.registernewvehicle(vehicle)
+
+        return single_vehicle[0]
 
     def editrate(self, vehicle_type, current_rate, new_rate):
         # Cretes a list of vehicle by using information from type of vehicle
