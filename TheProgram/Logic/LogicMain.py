@@ -92,17 +92,35 @@ class LogicMain:
         return results
 
     def input_checking(self, option, user_input):
-        if option == 0:
-            pass            
-        elif option == 1:
+        if option == 0: #Email checking
+            #if "@" in user_input and "." is in user_input:
+                return True            
+        elif option == 1: #SSN checking
+            if len(user_input) == 11 and user_input[6] == "-":
+                return True
+        elif option == 2: #Phone checking
+            if len(user_input) == 7 and user_input.isdigit():
+                return True
+        elif option == 3: #Company role
+            if user_input == "ceo" or user_input == "fleet" or user_input == "base":
+                return True
+        elif option == 4: #Driving license
+            if user_input == " ":
+                return
+        elif option == 5: #Yes or no
+            if user_input == "yes" or user_input == "no":
+                return True
+        elif option == 6: #Date **/**/****
+            seperator_list = [2, 5]
+            for char in user_input:
+                return
+        elif option == 7: #Duration
             pass
-        elif option == 2:
+        elif option == 8: # Model year
             pass
-        elif option == 3:
+        elif option == 9: #Opening hours
             pass
-        elif option == 4:
-            pass
-        elif option == 5:
+        else: #Number plate
             pass
 
-        return 
+        return False
