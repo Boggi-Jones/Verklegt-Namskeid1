@@ -102,49 +102,46 @@ class FleetUI():
  | -> -> Edit vehicles -> Add vehicle                                        |
  -----------------------------------------------------------------------------
  | "Insert Information"                                                      |
- | Available:                                                                |
  | Vehicle type:                                                             |
  | Model:                                                                    |
  | Rate:                                                                     |
  | Manufacturer:                                                             |
- | Condition:                                                                |
  | Model year:                                                               |
  | Color:                                                                    |
  | Number plate:                                                             |
  | Required license:                                                         |
- | Rent:                                                                     |
  | Airport:                                                                  |
  -----------------------------------------------------------------------------''')
-            status = input(" | Available: ")
+            status = "available"
             type_of_vehicle = input(" | Vehicle type: ")
             model = input(" | Model: ")
             rate = input(" | Rate: ")
             manufacturer = input(" | Manufacturer: ")
-            condition = input(" | Condition: ")
+            condition = "Good"
             model_year = input(" | Model year: ")
             color = input(" | Color: ")
-            number_plate = input(" | Number plate: ")
+            number_plate = input(" | Number plate: ").upper()
             driving_license = input(" | License required: ")
-            rent_counter = input(" | Rent: ")
-            name_of_airport = input(" | Airport: ")
+            rent_counter = "0"
+            name_of_airport = input(" | Airport: ").capitalize()
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
 
             print('''\n -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Add vehicle                                        |
  -----------------------------------------------------------------------------
  |                                                                           |
- | Available:           {:40s}      |
- | Vehicle type:        {:40s}      |
- | Model:               {:40s}      |
- | Rate:                {:40s}      |
- | Manufacturer:        {:40s}      |
- | Condition:           {:40s}      |
- | Model year:          {:40s}      |
- | Color:               {:40s}      |
- | Number plate:        {:40s}      |
- | Required license:    {:40s}      |
- | Rent:                {:40s}      |
- | Airport:             {:40s}      |
+ | Available:           {:40s}             |
+ | Vehicle type:        {:40s}             |
+ | Model:               {:40s}             |
+ | Rate:                {:40s}             |
+ | Manufacturer:        {:40s}             |
+ | Condition:           {:40s}             |
+ | Model year:          {:40s}             |
+ | Color:               {:40s}             |
+ | Number plate:        {:40s}             |
+ | Required license:    {:40s}             |
+ | Rent:                {:40s}             |
+ | Airport:             {:40s}             |
  -----------------------------------------------------------------------------'''.format(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
             add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
             if add_choice == "y":
@@ -161,7 +158,7 @@ class FleetUI():
         '''Takes vehicle name input from user, and compares it
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
-        find_vehicle = input(" | Enter vehicle plate number: ")
+        find_vehicle = input(" | Enter vehicle plate number: ").upper()
         remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
         if remove_choice == "y":
             self.logic.vehicle(3, find_vehicle, None, None)
@@ -173,8 +170,8 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                       "Vehicle has been removed"                          |
- |                       {:.25s}                                             |
+ |                       "Vehicle {:6s} has been removed"                   |
+ |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
@@ -189,7 +186,7 @@ class FleetUI():
 
     def update_vehicle_information(self):
         while True:
-            find_vehicle = input(" | Enter vehicle plate number: ")
+            find_vehicle = input(" | Enter vehicle plate number: ").upper()
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Update vehicle information                         |
  -----------------------------------------------------------------------------
@@ -203,7 +200,7 @@ class FleetUI():
  | 7. Model year:                                                            |
  | 8. Color:                                                                 |
  | 9. Number plate:                                                          |
- | 10. Required license:                                                      |
+ | 10. Required license:                                                     |
  | 11. Rent:                                                                 |
  | 12. Airport:                                                              |
  -----------------------------------------------------------------------------
@@ -242,10 +239,13 @@ class FleetUI():
 
     def all_vehicles(self):
         get_all = self.logic.vehicle(0, None, None, None)
-        print('''\n -----------------------------------------------------------------------------
- |  -> Manage vehicles -> All vehicles                                       |
- -----------------------------------------------------------------------------''')
+        print('''\n ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ |  -> Manage vehicles -> All vehicles                                                                                                                                  |
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport | 
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
+ 
         for vehicle in get_all:
             print(" | {:40s} | ".format(str(vehicle)))
-        print("-----------------------------------------------------------------------------")
+        print(" ------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")
