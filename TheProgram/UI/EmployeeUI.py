@@ -255,19 +255,33 @@ class EmployeeUI():
 
     def get_all_employees(self):
         results = self.logic.employee(0, None, None, None)
-        print("""\n------------------------------------------------------------------------------
-        | -> -> Manage employee -> All Employees                                  |  """)
+        print("""\n ------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                     |
+ ------------------------------------------------------------------------------
+ |  Name, SSN, Address, Home number, Phone number, Email, Location, Role      |""")
         for employee in results:
-            print("|  {:25s}                                                 |".format(str(employee)))
-        print("------------------------------------------------------------------------------")
+            print(''' |  {:25s}                                                 |'''.format(str(employee)))
+        print(" ------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
 
     def search_employee(self):
         employee = input(" | Enter employee SSN: ")
         result = self.logic.employee(0, employee, "ssn", None)
-        print("""\n ------------------------------------------------------------------------------
-| -> -> Manage employee -> Search Employee                                  |  """)
+        print("""\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Search Employee                                  |
+ -----------------------------------------------------------------------------""")
         for emp in result:
-            print("\n --------------- Employee Result: -----------------","\n" "Employee information: ", emp)
-        print("--------------------------------------------------")
-        input(" | Press 'Enter' to continue")
+            print(" | Employee information: ", emp, '''
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ ----------------------------------------------------------------------------- ''')
+        input(" | Press 'Enter' to continue") 

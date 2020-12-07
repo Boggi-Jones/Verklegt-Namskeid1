@@ -92,7 +92,7 @@ class LocationUI():
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
         print('''\n -----------------------------------------------------------------------------
- | -> -> -> Add location -> Add location                                     |
+ | -> -> Edit location -> Add location                                     |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
@@ -117,7 +117,7 @@ class LocationUI():
 
     def remove_location(self):
         location_name = input("""\n  -----------------------------------------------------------------------------
- | -> -> -> -> Add Location -> Remove location                               |
+ | -> -> Edit Location -> Remove location                               |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
@@ -134,7 +134,7 @@ class LocationUI():
  -----------------------------------------------------------------------------
  Enter location name: """)
         choice = input("""\n -----------------------------------------------------------------------------
- | -> -> -> -> Add location -> Remove location                               |
+ | -> -> Edit location -> Remove location                               |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
@@ -153,7 +153,7 @@ class LocationUI():
         if choice == "y":
             self.logic.location(2, location_name, None, None)
             print('''\n -----------------------------------------------------------------------------
- | -> -> -> -> Add Location -> Remove location                               |
+ | -> -> Edit Location -> Remove location                               |
  -----------------------------------------------------------------------------
 |                                                                            |
 |                                                                            |
@@ -168,7 +168,7 @@ class LocationUI():
 ------------------------------------------------------------------------------'''.format(location_name, ""))
         elif choice == "n":
             print('''\n -----------------------------------------------------------------------------
- | -> -> -> -> Add Location -> Remove location                               |
+ | -> -> Edit Location -> Remove location                               |
  -----------------------------------------------------------------------------
 |                                                                            |
 |                                                                            |
@@ -187,7 +187,7 @@ class LocationUI():
 
     def update_location(self):
         while True:
-            find_location = input("Enter airport name: ")
+            find_location = input(" | Enter airport name: ")
             attribute = input('''\n --------------------------------------------
  | What attribute would you like to change:   |
  | 1. Opening hours:                          |
@@ -209,14 +209,36 @@ class LocationUI():
 
     def all_locations(self):
         results = self.logic.location(0, None, None, None)
-        print("\n ------- All locations ---------- ")
+        print('''\n -----------------------------------------------------------------------------
+ | Rental Locations -> All location                                          |
+ -----------------------------------------------------------------------------''')
         for location in results:
-            print("|  " , location , "  |")
-        print("-----------------------------------")
+            print(" |  " , location , "  |")
+        print(" -----------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue")
+
 
     def search_location(self):
-        location = input("Enter airport name: ")
+        location = input(" | Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
+        print("""\n -----------------------------------------------------------------------------
+ | Rental Location information -> Search location                            |
+ -----------------------------------------------------------------------------""")
+        for airport in result:
+            print(" | Location information: ", airport, '''
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ ----------------------------------------------------------------------------- ''')
+        input(" | Press 'Enter' to continue ") 
         for airport in result:
             print("\n--------------- Location Result: -----------------","\n" "Location information: ", airport)
         print("--------------------------------------------------")
