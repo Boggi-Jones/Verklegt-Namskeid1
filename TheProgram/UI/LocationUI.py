@@ -166,6 +166,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(location_name, ""))
+            input("Press 'Enter' to continue")
         elif choice == "n":
             print('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Remove location                                     |
@@ -181,6 +182,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(location_name, ""))
+            input("Press 'Enter' to continue")
             return
         else:
             return None
@@ -200,7 +202,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
-  ------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------
  | Choice: '''.format(the_airport[0].opening_hours, the_airport[0].phone_number))
 
             if attribute == "1":
@@ -216,10 +218,10 @@ class LocationUI():
  | -> -> Edit Location -> Update location                                     |
  |                                                                            |
  | "New info"                                                                 |
- | 1. Aiport name:        {:30s}                     |
- | 2. Country:            {:30s}                     |
- | 3. Opening hours:      {:30s}                     |
- | 4. Phone number:       {:30s}                     |
+ | 1. Aiport name:        {:31s}                     |
+ | 2. Country:            {:31s}                     |
+ | 3. Opening hours:      {:31s}                     |
+ | 4. Phone number:       {:31s}                     |
  |                                                                            |
  |                                                                            |
  |                                                                            |
