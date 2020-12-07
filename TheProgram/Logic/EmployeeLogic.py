@@ -45,3 +45,5 @@ class EmployeeLogic:
             emp.__setattr__(attribute, new_information)
             self.removeemployee(filter_or_id)
             self.addemployee(emp)
+
+        return single_employee[0]

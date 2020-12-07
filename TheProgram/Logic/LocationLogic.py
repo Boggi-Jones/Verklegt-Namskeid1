@@ -45,3 +45,5 @@ class LocationLogic:
             location.__setattr__(attribute, new_information)
             self.removelocation(filter_or_id)
             self.addlocation(location)
+
+        return single_location[0]
