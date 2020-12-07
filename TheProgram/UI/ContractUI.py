@@ -58,35 +58,39 @@ class ContractUI():
             choice = input('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
- |                      "New employee information"                           |
- |Name:         {:58s}   |                                                  
- |SSN:          {:58s}   |
- |Address:      {:58s}   |
- |Home phone:   {:58s}   |
- |Smart phone:  {:58s}   |
- |Email:        {:58s}   |
- |Location:     {:58s}   | 
+ |                      "Customer information"                           |
+ |Name:        {:59s}   |                                                  
+ |SSN:         {:59s}   |
+ |Email:       {:59s}   |
+ |Cell phone:  {:59s}   |
+ |Address:     {:59s}   |
+ |License:     {:59s}   |
+ |Late before: {:59s}   | 
  |                                                                           |
  |                                                                           |
- -----------------------------------------------------------------------------
-            '''.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
+ -----------------------------------------------------------------------------'''.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
+            choice = input(" | Is the information correct (Y / N)? ")
             if choice == "y":
                 self.logic.customer(1, new_customer, None, None)
                 ssn_val = [new_customer]      
             else:
                 return None, None
         else:
-            choice = input("""------ Customer information -----
-        Name:                   {}
-        SSN:                    {}
-        Email:                  {}
-        Phone number:           {}
-        Address:                {}
-        Drivers license:        {}
-        Returned late before:   {}
-        Is everything correct ? ( Y / N )
-            """.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
-        
+            choice = input("""\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                     |
+ -----------------------------------------------------------------------------
+ |                      "New customer information"                           |
+ |Name:        {:59s}   |                                                  
+ |SSN:         {:59s}   |
+ |Email:       {:59s}   |
+ |Cell phone:  {:59s}   |
+ |Address:     {:59s}   |
+ |License:     {:59s}   |
+ |Late before: {:59s}   | 
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------""".format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
+            input("Is everything correct (Y / N)? ")
         vehicle_type = input("What type of vehicle does the customer want? ")
         list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
         for vehicle in list_of_vehicles:
@@ -273,10 +277,14 @@ choice(Enter the number): ''')
 
     def all_contracts(self):
         results = self.logic.contract(0, None, None, None, None)
-        print("\n------- All locations ---------- ")
+        print('''\n ---------------------------------------------------------------------------------------------------------------------------------
+ | -> Contracts -> All Contracts                                                                                        |
+ ---------------------------------------------------------------------------------------------------------------------------------
+ |  Date:         | Number:        | Location:      | Name:  | ?:     | Email:             | Location:  | Role:     |''')
         for contract in results:
-            print(contract)
-        print("-----------------------------------")
+            print(''' |  {}|'''.format(str(contract)))
+        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue")
 
     def print_contract(self):
         customer_id = print(''' ------------- Print contract --------------
