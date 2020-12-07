@@ -11,22 +11,22 @@ class UIMain():
 
     def UILoop(self):
         while True:
-            choice = input('''\n -----------------------------------------------------------------------------
- |                             Welcome to NaN Air                            | 
- -----------------------------------------------------------------------------
- | "Choose number to continue to next window"                                |
- | "Choose "q" to quit"                                                      |
- |                                                                           |
- | 1. Employee accounts                                                      |
- | 2. Manage vehicles                                                        |
- | 3. Rental Locations                                                       |
- | 4. Contracts                                                              |
- | 5. Business reports                                                       |
- | q. Quit                                                                   |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- -----------------------------------------------------------------------------
+            choice = input('''\n ---------------------------------------------------------------------------------------------------------------------
+ |                             Welcome to NaN Air                                                                    | 
+ ---------------------------------------------------------------------------------------------------------------------
+ | "Choose number to continue to next window"                                                                        |
+ | "Choose "q" to quit"                                                                                              |
+ |                                                                                                                   |
+ | 1. Employee accounts                                                                                              |
+ | 2. Manage vehicles                                                                                                |
+ | 3. Rental Locations                                                                                               |
+ | 4. Contracts                                                                                                      |
+ | 5. Business reports                                                                                               |
+ | q. Quit                                                                                                           |
+ |                                                                                                                   |
+ |                                                                                                                   |
+ |                                                                                                                   |
+ ---------------------------------------------------------------------------------------------------------------------
  | Choice: ''').lower()
             if choice == "1":
                 EmployeeUI().employee_loop()

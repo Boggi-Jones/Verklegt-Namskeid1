@@ -1,5 +1,9 @@
 name_of_airport,country,opening_hours,phone_number
 þórshöfn,færeyjar,18:00,5761850
 reykjavík,iceland,18:00 - 21:00,5715583
-nuuk,greenland,18:00 - 3:00,8943242
 egilstaðir,iceland,08:00 - 23:00,4718932
+<<<<<<< HEAD
+nuuk,greenland,12:00 - 23:00,8943242
+=======
+nuuk,greenland,1:00 - 2:00,1112223
+>>>>>>> 7ae574d72bd3591e0445234d4d2cb1554922bb58
