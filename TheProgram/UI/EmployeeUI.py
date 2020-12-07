@@ -103,13 +103,13 @@ class EmployeeUI():
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
  |                      "New employee information"                           |
- |Name:         {:58s}   |                                                  
+ |Name:         {:58s}   |
  |SSN:          {:58s}   |
  |Address:      {:58s}   |
  |Home phone:   {:58s}   |
  |Smart phone:  {:58s}   |
  |Email:        {:58s}   |
- |Location:     {:58s}   | 
+ |Location:     {:58s}   |
  |Company role: {:58s}   |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
@@ -122,18 +122,19 @@ class EmployeeUI():
             self.logic.employee(2, None, None, the_employee)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
- -----------------------------------------------------------------------------
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                "{}" has been added to the system:{:27s}|              
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-------------------------------------------------------------------------------'''.format(name, ""))
+ ------------------------------------------------------------------------------
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                "{}" has been added to the system:{:27s}|
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(name, ""))
+            input(" | Push 'Enter' to continue")
         elif add_choice == "n":
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
@@ -158,23 +159,23 @@ class EmployeeUI():
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
         find_employee = input(" | Enter employee ssn: ")
-        choice = input(" | Are you sure you want to remove {} ? (Y / N): ".format(find_employee)).lower()
+        choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(find_employee)).lower()
         if choice == "y":
             self.logic.employee(1, find_employee, None, None)
-            print('''\n -----------------------------------------------------------------------------
- | -> -> Manage employee -> Remove employee                                  |
- -----------------------------------------------------------------------------
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                "{}" has been removed from the system:{:27s}|              
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-------------------------------------------------------------------------------'''.format(find_employee, ""))
+            print('''\n ------------------------------------------------------------------------------
+ | -> -> Manage employee -> Remove employee                                   |
+ ------------------------------------------------------------------------------
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                "{}" has been removed from the system:{:23s}|
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(find_employee, ""))
             input(" | Press 'Enter' to continue")
         elif choice == "n":
             print('''\n -----------------------------------------------------------------------------
@@ -183,7 +184,7 @@ class EmployeeUI():
 |                                                                            |
 |                                                                            |
 |                                                                            |
-|                "{}" has not been removed from the system:{:23s}|              
+|                "{}" has not been removed from the system:{:20s}|
 |                                                                            |
 |                                                                            |
 |                                                                            |
@@ -199,23 +200,24 @@ class EmployeeUI():
     def update_employee(self):
         while True:
             find_employee = input(" | Enter employee SSN: ")
+            the_employee = self.logic.employee(0, find_employee, "ssn", None)
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Update employee                                  |
  -----------------------------------------------------------------------------
  | "Select attribute you would like to change"                               |
  |                                                                           |
- | 1. Address:                                                               |
- | 2. Home phone:                                                            |
- | 3. Smart phone:                                                           |
- | 4. Email:                                                                 |
- | 5. Location:                                                              |
- | 6. Company role:                                                          |
+ | 1. Address:           {}                                                  |
+ | 2. Home phone:        {}                                                  |
+ | 3. Smart phone:       {}                                                  |
+ | 4. Email:             {}                                                  |
+ | 5. Location:          {}                                                  |
+ | 6. Company role:      {}                                                  |
  |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Choice: ''')
+ | Choice: '''.format(the_employee[0].address, the_employee[0].home_phone, the_employee[0].gsm_phone, the_employee[0].email, the_employee[0].location, the_employee[0].role))
 
             if attribute == "1":
                 attribute = "address"
@@ -233,24 +235,25 @@ class EmployeeUI():
                 print("Wrong input")
                 continue
             new_employee_info = input(" | Enter new information: ")
-            self.logic.employee(3, find_employee, attribute,  new_employee_info)
-            #print('''\n -----------------------------------------------------------------------------
- #| -> -> Manage employee -> Update employee                                  |
- #-----------------------------------------------------------------------------
- #| "Updated employee information"                                            |
- #|                                                                           |
- #| 1. Address:             {}                                                |
- #| 2. Home phone:          {}                                                |
- #| 3. Smart phone:         {}                                                |
- #| 4. Email:               {}                                                |
- #| 5. Location:            {}                                                |
- #| 6. Company role:        {}                                                |
- #|                                                                           |
- #|                                                                           |
- #|                                                                           |
- #|                                                                           |
- #-----------------------------------------------------------------------------
- #| Choice: ''')
+            updated_employee = self.logic.employee(3, find_employee, attribute,  new_employee_info)
+            print('''\n -----------------------------------------------------------------------------
+ | -> -> Manage employee -> Update employee                                  |
+ -----------------------------------------------------------------------------
+ | "Updated employee information"                                            |
+ |                                                                           |
+ | 1. Address:             {:31s}|
+ | 2. Home phone:          {:31s}|
+ | 3. Smart phone:         {:31s}|
+ | 4. Email:               {:31s}|
+ | 5. Location:            {:31s}|
+ | 6. Company role:        {:31s}|
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------
+ |'''.format(updated_employee.address, updated_employee.home_phone, updated_employee.gsm_phone, updated_employee.email, updated_employee.location, updated_employee.role))
+            input("Press 'Enter' to continue")
             break
 
     def get_all_employees(self):
@@ -272,17 +275,17 @@ class EmployeeUI():
  | -> -> Manage employee -> Search Employee                                  |
  -----------------------------------------------------------------------------""")
         for emp in result:
-            print(" | Employee information: ", emp, '''
+            print(''' | 'Employee information'                                                    |
+ | Name:         {:54s}      |
+ | SNN:          {:54s}      |
+ | Address:      {:54s}      |
+ | Home number:  {:54s}      |
+ | Cell number:  {:54s}      |
+ | Email:        {:54s}      |
+ | Location:     {:54s}      |
+ | Company role: {:54s}      |
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- ----------------------------------------------------------------------------- ''')
-        input(" | Press 'Enter' to continue") 
+ ----------------------------------------------------------------------------- '''.format(emp.name, emp.ssn, emp.address, emp.home_phone, emp.gsm_phone, emp.email, emp.location, emp.role))
+        input(" | Press 'Enter' to continue")
