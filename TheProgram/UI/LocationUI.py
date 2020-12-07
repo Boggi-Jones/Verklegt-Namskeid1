@@ -134,7 +134,7 @@ class LocationUI():
  -----------------------------------------------------------------------------
  Enter location name: """)
         choice = input("""\n -----------------------------------------------------------------------------
- | -> -> Edit location -> Remove location                               |
+ | -> -> Edit location -> Remove location                                    |
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
@@ -144,8 +144,8 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- | Are you sure you want to remove this location?                            |
- | Y/N:__                                                                    |
+ |                                                                           |
+ |                                                                           |
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
