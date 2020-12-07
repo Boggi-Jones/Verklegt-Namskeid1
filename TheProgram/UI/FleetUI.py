@@ -143,14 +143,43 @@ class FleetUI():
  | Rent:                {:40s}             |
  | Airport:             {:40s}             |
  -----------------------------------------------------------------------------'''.format(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
+            input(" | Push 'Enter' to continue")
+
             add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
-                print(''' | Vehicle '{}' has been added to the fleet'''.format(number_plate))
+                print('''\n -----------------------------------------------------------------------------
+ | -> -> Edit vehicles -> Add vehicle                                         |
+ ------------------------------------------------------------------------------
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                Vehicle "{}" has been added to the fleet:{:20s}|
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(number_plate, ""))
                 input(" | Press 'Enter' to continue")
                 break
             elif add_choice == "n":
-                return
+                print('''\n -----------------------------------------------------------------------------
+ | -> -> Edit vehicles -> Add vehicle                                         |
+ ------------------------------------------------------------------------------
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                Vehicle "{}" has not been added to the fleet:{:16s}|
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(number_plate, ""))
+                input("Press 'Enter' to continue")
             else:
                 return None
 
@@ -186,7 +215,22 @@ class FleetUI():
  -----------------------------------------------------------------------------'''.format(find_vehicle))
             input(" | Press 'Enter' to continue ")
         elif remove_choice == "n":
-            print(" | '{}' has not been removed.".format(find_vehicle))
+            print('''\n -----------------------------------------------------------------------------
+ | -> Manage vehicles -> Remove vehicle                                      |
+ -----------------------------------------------------------------------------
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                       "Vehicle {:6s} has not been removed"               |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------'''.format(find_vehicle))
         else:
             return None
 
@@ -269,9 +313,9 @@ class FleetUI():
         print('''\n ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  |  -> Manage vehicles -> All vehicles                                                                                                                                  |
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport | 
+ |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport |
   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
- 
+
         for vehicle in get_all:
             print(" | {:40s} | ".format(str(vehicle)))
         print(" ------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
