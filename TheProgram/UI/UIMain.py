@@ -41,4 +41,4 @@ class UIMain():
             elif choice == "q":
                 break
             else:
-                print("Invalid entry")
+                print(" | Invalid entry")

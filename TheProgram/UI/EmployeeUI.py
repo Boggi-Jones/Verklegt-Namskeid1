@@ -38,8 +38,8 @@ class EmployeeUI():
             elif employee_choice == "4":
                 break
             else:
-                print("Invalid entry")
-                input("Push enter to continue")
+                print(" | Invalid entry")
+                input(" | Push enter to continue")
 
     def manage_employee(self):
         while True:
@@ -69,8 +69,8 @@ class EmployeeUI():
             elif employee_options == "4":
                 break
             else:
-                print("Invalid entry")
-                input("Push enter to continue")
+                print(" | Invalid entry")
+                input(" | Push enter to continue")
 
     def add_employee(self):
         print('''\n -----------------------------------------------------------------------------
@@ -90,28 +90,42 @@ class EmployeeUI():
  |                                                                           |
  -----------------------------------------------------------------------------''')
         name = input(" | Name: ")
+        while self.logic.input_checking(10, name) == False:
+            print(" | Name can only have letters: 'Jon Jonsson' ")
+            name = input(" | Name: ")
+
         ssn = input(" | SSN: ")
         while self.logic.input_checking(1, ssn) == False:
             print(" | SSN must be in the correct format: '123456-1234' ")
             ssn = input(" | SSN: ")
+
         address = input(" | Address: ")
+
         home_phone = input(" | Home phone: ")
         while self.logic.input_checking(2, home_phone) == False:
             print(" | Home phone must be in the correct format: '1234567' ")
             home_phone = input(" | Home phone: ")
         smart_phone = input(" | Smart phone: ")
+
         while self.logic.input_checking(2, smart_phone) == False:
             print(" | Smart phone must be in the correct format: '1234567' ")
             smart_phone = input(" | Smart phone: ")
         email = input(" | Email: ")
+
         while self.logic.input_checking(0, email) == False:
             print(" | Email must be in the correct format: 'name@name.is' ")
             email = input(" | Email: ")
+
         location = input(" | Location: ")
+        while self.logic.input_checking(10, name) == False:
+            print(" | Name can only have letters: 'Jon Jonsson' ")
+            name = input(" | Name: ")
+        
         role = input(" | Company role: ")
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
             role = input(" | Company role: ")
+
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
 
         print('''\n -----------------------------------------------------------------------------
@@ -135,8 +149,8 @@ class EmployeeUI():
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
-            print('''\n -----------------------------------------------------------------------------
- | -> -> Manage employee -> Add employee                                     |
+            print('''\n ------------------------------------------------------------------------------
+ | -> -> Manage employee -> Add employee                                      |
  ------------------------------------------------------------------------------
  |                                                                            |
  |                                                                            |
@@ -174,6 +188,19 @@ class EmployeeUI():
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
         find_employee = input(" | Enter employee ssn: ")
+
+        while True:
+            find_employee = input(" | Enter employee SSN: ")
+        while self.logic.input_checking(1, find_employee) == False:
+            print(" | SSN must be in the correct format: '123456-1234' ")
+            find_employee = input(" | Enter employee SSN: ")
+        result = self.logic.employee(0, find_employee, "ssn", None)
+        if result == []:
+            print(" | Employee with SSN: '{}' does not exist".format(find_employee))
+        else:
+            find_employee = input(" | Enter employee SSN: ")
+
+
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(find_employee)).lower()
         if choice == "y":
             self.logic.employee(1, find_employee, None, None)
@@ -262,6 +289,8 @@ class EmployeeUI():
             elif attribute == "5":
                 attribute = "location"
                 new_employee_info = input(" | Enter new information: ")
+                while self.logic.input_checking(10, new_employee_info) == False:
+                    print(" | Locations must only contain letters: 'Place' ")
 
             elif attribute == "6":
                 attribute = "role"
@@ -270,7 +299,7 @@ class EmployeeUI():
                     print(" | company role is either 'ceo', 'fleet' or 'base'!")
 
             else:
-                print("Wrong input")
+                print(" | Wrong input")
                 continue
 
             #new_employee_info = input(" | Enter new information: ")
@@ -308,9 +337,15 @@ class EmployeeUI():
 
     def search_employee(self):
         employee = input(" | Enter employee SSN: ")
+
         while self.logic.input_checking(1, employee) == False:
             print(" | SSN must be in the correct format: '123456-1234' ")
-            employee = input(" | SSN: ")
+            employee = input(" | Enter employee SSN: ")
+        result = self.logic.employee(0, employee, "ssn", None)
+        if result == []:
+            print(" | Employee with SSN: '{}' does not exist".format(employee))
+            employee = input(" | Enter employee SSN: ")
+
         result = self.logic.employee(0, employee, "ssn", None)
         print("""\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Search Employee                                  |
