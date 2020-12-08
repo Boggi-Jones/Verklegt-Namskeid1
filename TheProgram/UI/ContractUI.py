@@ -280,45 +280,61 @@ choice(Enter the number): ''')
         print('''\n ---------------------------------------------------------------------------------------------------------------------------------
  | -> Contracts -> All Contracts                                                                                        |
  ---------------------------------------------------------------------------------------------------------------------------------
- |  Date:         | Number:        | Location:      | Name:  | ?:     | Email:             | Location:  | Role:     |''')
+ |     Date      |    Duration     |   Name of airport    |  Employee name  |  Paid  |     Final price       |  Number plate  |  ssn  |''')
         for contract in results:
             print(''' |  {}|'''.format(str(contract)))
         print(" ---------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
+        # name_of_airport,employee_name,paid,final_price,number_plate,ssn
 
     def print_contract(self):
-        customer_id = print(
-    """
+        while True:
+            find_contract = input("| Enter the contacts ssn: ")
+            the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
+            the_country = self.logic.location(0, the_contract[0].name_of_airport, "name_of_airport", None)
+            reykjavik = self.logic.location(0, "reykjavík", "name_of_airport", None)
+            vehicle_class = self.logic.vehicle(0, the_contract[0].number_plate , "number_plate", None)
+            customer_class = self.logic.customer(0, find_contract,"ssn",None)
+            try:
+                contract = the_contract[0]
+                main_base = reykjavik[0]
+                location = the_country[0]
+                vehicle = vehicle_class[0]
+                customer = customer_class[0]
+            except IndexError:
+                print("| Contract not found, try again")
+                continue
+            customer_id = print("""
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-|      /|    / /          /|    / /       // | |                                                                                 |
-|     //|   / /  ___     //|   / /       //__| |    ( )  __                                                                      |
-|    // |  / / //   ) ) // |  / /       / ___  |   / / //  ) )                                                                   |
+|      /|    / /          /|    / /       // | |                                                     |                           |
+|     //|   / /  ___     //|   / /       //__| |    ( )  __                             --@--@---(Nan Air)---@--@--              |
+|    // |  / / //   ) ) // |  / /       / ___  |   / / //  ) )                                    o  o  o                        |
 |   //  | / / //   / / //  | / /       //    | |  / / //                                                                         |
 |  //   |/ / ((___( ( //   |/ /       //     | | / / //                                                                          |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
-| contract number : {}                                           |Date : {}                                                      |
+|Date : {:20s}                                                                                                     |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |NaN Air contact details:                                        |Rental location contact details:                               |
 |————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
-|NaN Air rentals Reykjavík (Iceland)                             |NaN Air rentals {}({})                                         |
-|Opening hours : {}                                              |Opening Hours : {}                                             |
-|Phone number : {}                                               |Phone number : {}                                              |
-|Renting employee : {}                                           |                                                               |
+|NaN Air rentals Reykjavík (Iceland)                             |NaN Air rentals {:5s} ({:10s})                           |
+|Opening hours : {:14s}                                  |Opening Hours : {:14s}                                 |
+|Phone number : {:15s}                                  |Phone number : {:15s}                                 |
+|Renting employee : {:20s}                         |                                                               |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |Personal details :                                              |Vehicle details :                                              |
 |————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
-|Name : {}                                                       |Vehicle type : {}                                              |
-|ssn : {}                                                        |Manifacturer : {}                                              |
-|Address : {}                                                    |Model : {}                                                     |
-|Phone number : {}                                               |Model year : {}                                                |
-|Email : {}                                                      |Color : {}                                                     |
-|Driving license{}                                               |Number plate : {}                                              |
-|                                                                |Required license : {}                                          |
+|Name : {:20s}                                     |Vehicle type : {:20s}                            |
+|ssn : {:10s}                                                |manufacturer : {:20s}                            |
+|Address : {:50s}    |Model : {:20s}                                   |
+|Phone number : {:15s}                                  |Model year : {:4s}                                              |
+|Email : {:50s}      |Color : {:20s}                                   |
+|License : {:50s}    |Number plate : {:20s}                            |
+|                                                                |Required license : {:44s}|
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |Payment details :                                                                                                               |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |rent duration : {}                                                                                                              |
-|Daily rate for  {} is {} therby the total cost will be {}                                                                       |
+|Daily rate for  {} vehicle is {} therby the total cost will be {}                                                  |
 |For late return ther will be charge an extraday with 20% markup                                                                 |
 |                                                                                                                                |
 |                                                                                                                                |
@@ -326,42 +342,10 @@ choice(Enter the number): ''')
 |   Employee signiture                                              Renter signiture                                             |
 |                                                                                                                                |
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————    
-""")
-# print(''' ------------- Print contract --------------
-
-#  """Contract Information"""
-#  Date:
-#  Duration:
-#  Country:
-#  City:
-#  Employee name:
-#  Paid:
-#  Final price:
-
-# """Customer Information"""
-#  Name:
-#  SSN:
-#  Phone:
-#  Email:
-#  Address:
-#  Drivers license:
-
-#  """Vehicle Information"""
-#  Manufacturer:
-#  Type:
-#  Color:
-#  Model
-#  Plate number:
-#  Vehicle rate:
-
-#  """Total cost"""
-#  Cost:
- 
-#  Enter Customer ID: ''')
-
-        printable_customer = self.logic.contract(4, customer_id, None, None)
-        for item in printable_customer:
-            print(item)
+""".format(contract.date, contract.name_of_airport, location.country, main_base.opening_hours, location.opening_hours, main_base.phone_number, location.phone_number, contract.employee_name, customer.name, vehicle.type_of_vehicle, customer.ssn, vehicle.manufacturer, customer.address, vehicle.model, customer.gsm_number, vehicle.model_year, customer.email, vehicle.color, customer.driving_license, vehicle.number_plate, vehicle.driving_license, contract.duration, vehicle.type_of_vehicle, vehicle.rate, contract.final_price))
+            input("| Press 'enter' to contiue ")
+            break
+    
 
     def charge_contact(self):
         pass

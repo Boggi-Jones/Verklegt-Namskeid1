@@ -187,9 +187,6 @@ class FleetUI():
         '''Takes vehicle name input from user, and compares it
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
-<<<<<<< HEAD
-        find_vehicle = input(" | Enter vehicle plate number: ").upper()
-=======
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
@@ -197,7 +194,6 @@ class FleetUI():
                 print(" | No vehicle with this number plate")
             else:
                 break
->>>>>>> 651e1af560bf5d2de0142e2de23add8e0d723db8
         remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
         if remove_choice == "y":
             self.logic.vehicle(3, find_vehicle, None, None)
@@ -317,15 +313,9 @@ class FleetUI():
         print('''\n ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  |  -> Manage vehicles -> All vehicles                                                                                                                                  |
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
- |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport | 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
- 
-=======
  |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport |
   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
 
->>>>>>> 651e1af560bf5d2de0142e2de23add8e0d723db8
         for vehicle in get_all:
             print(" | {:40s} | ".format(str(vehicle)))
         print(" ------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
