@@ -141,7 +141,7 @@ class EmployeeUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been added to the system:{:27s}|
+ |                "{}" has been added to the system:{:23s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -157,7 +157,7 @@ class EmployeeUI():
 |                                                                            |
 |                                                                            |
 |                                                                            |
-|               "{}" has not been added to the system:{:24}|
+|               "{}" has not been added to the system:{:20}|
 |                                                                            |
 |                                                                            |
 |                                                                            |
@@ -183,7 +183,7 @@ class EmployeeUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been removed from the system:{:23s}|
+ |                "{}" has been removed from the system:{:13s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
