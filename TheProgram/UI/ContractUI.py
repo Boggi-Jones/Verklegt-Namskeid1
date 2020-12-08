@@ -58,7 +58,7 @@ class ContractUI():
             choice = input('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
- |                      "Customer information"                           |
+ |                      "Customer information"                               |
  |Name:        {:59s}   |                                                  
  |SSN:         {:59s}   |
  |Email:       {:59s}   |
