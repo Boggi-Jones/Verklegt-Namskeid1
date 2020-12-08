@@ -86,9 +86,14 @@ class LocationUI():
  |                                                                           |
  -----------------------------------------------------------------------------''')
         country = input(" | Country: ")
+
         name_of_airport = input(" | Airport name: ")
         opening_hours = input(" | Opening hours: ")
+        while self.logic.input_checking(9, opening_hours) == False:
+            opening_hours = input(" | Opening hours")
         phone_number = input(" | Phone number: ")
+        while self.logic.input_checking(2, phone_number) == False:
+            phone_number = input(" | Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
         print('''\n -----------------------------------------------------------------------------
@@ -147,7 +152,9 @@ class LocationUI():
             return None
 
     def remove_location(self):
-        location_name = input(" | Enter name of airport: ")
+        location_name = input(" | Enter airport name: ")
+        while self.logic.input_checking(, location_name) == False:
+            location_name = input(" | Enter airport name: ")
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
@@ -189,6 +196,8 @@ class LocationUI():
     def update_location(self):
         while True:
             find_location = input(" | Enter airport name: ")
+            while self.logic.input_checking(, find_location) == False:
+                find_location = input(" | Enter airport name: ")
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
@@ -206,12 +215,18 @@ class LocationUI():
 
             if attribute == "1":
                 attribute = "opening_hours"
+                new_info = input(" | Enter new information: ")
+                while self.logic.input_checking(9, new_info) == False:
+                    new_info = input(" | Enter new information: ")
             elif attribute == "2":
                 attribute = "phone_number"
+                new_info = input(" | Enter new information: ")
+                while self.logic.input_checking(9, new_info) == False:
+                    new_info = input(" | Enter new information: ")
             else:
                 print(" | Wrong input")
                 continue
-            new_info = input(" | Enter new information: ")
+
             updated_airport = self.logic.location(3, find_location, attribute,  new_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
@@ -244,6 +259,8 @@ class LocationUI():
 
     def search_location(self):
         location = input(" | Enter airport name: ")
+        while self.logic.input_checking(, location) == False:
+            location = input(" | Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
         print("""\n -----------------------------------------------------------------------------
  | Rental Location information -> Search location                            |

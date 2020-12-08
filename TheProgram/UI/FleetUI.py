@@ -119,9 +119,15 @@ class FleetUI():
             manufacturer = input(" | Manufacturer: ")
             condition = "Good"
             model_year = input(" | Model year: ")
+            while self.logic.input_checking(8, model_year) == False:
+                model_year = input(" | Model year: ")
             color = input(" | Color: ")
             number_plate = input(" | Number plate: ").upper()
+            while self.logic.input_checking(10, number_plate) == False:
+                number_plate = input(" | Number plate: ").upper()
             driving_license = input(" | License required: ")
+            while self.logic.input_checking(4, driving_license) == False:
+                driving_license = input(" | License required: ")
             rent_counter = "0"
             name_of_airport = input(" | Airport: ").capitalize()
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
@@ -187,17 +193,15 @@ class FleetUI():
         '''Takes vehicle name input from user, and compares it
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
-<<<<<<< HEAD
-        find_vehicle = input(" | Enter vehicle plate number: ").upper()
-=======
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
+            while self.logic.input_checking(10, find_vehicle) == False:
+                find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
             if chosen_vehicle == []:
                 print(" | No vehicle with this number plate")
             else:
                 break
->>>>>>> 651e1af560bf5d2de0142e2de23add8e0d723db8
         remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
         if remove_choice == "y":
             self.logic.vehicle(3, find_vehicle, None, None)
@@ -241,6 +245,8 @@ class FleetUI():
     def update_vehicle_information(self):
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
+            while self.logic.input_checking(10, find_vehicle) == False:
+                find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
             if chosen_vehicle == []:
                 print(" | No vehicle with this number plate")
@@ -266,32 +272,62 @@ class FleetUI():
 
             if attribute == "1":
                 attribute = "status"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "2":
                 attribute = "type_of_vehicle"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "3":
                 attribute = "model"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "4":
                 attribute = "rate"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "5":
                 attribute = "manufacturer"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "6":
                 attribute = "condition"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "7":
                 attribute = "model_year"
+                new_vehicle_info = input(" | Enter new information: ")
+                while self.logic.input_checking(8, new_vehicle_info) == False:
+                    new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "8":
                 attribute = "color"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "9":
                 attribute = "number_plate"
+                new_vehicle_info = input(" | Enter new information: ")
+                while self.logic.input_checking(10, new_vehicle_info) == False:
+                    new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "10":
                 attribute = "driving_license"
+                new_vehicle_info = input(" | Enter new information: ")
+                while self.logic.input_checking(4, new_vehicle_info) == False:
+                    new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "11":
                 attribute = "rent_counter"
+                new_vehicle_info = input(" | Enter new information: ")
+
             elif attribute == "12":
                 attribute = "name_of_airport"
+                new_vehicle_info = input(" | Enter new information: ")
+
             else:
                 print("Wrong input")
                 continue
-            new_vehicle_info = input(" | Enter new information: ")
+            #new_vehicle_info = input(" | Enter new information: ")
             self.logic.vehicle(1, find_vehicle, attribute,  new_vehicle_info)
             print('''\n -----------------------------------------------------------------------------
  | -> Manage vehicles -> Remove vehicle                                      |
@@ -317,15 +353,9 @@ class FleetUI():
         print('''\n ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  |  -> Manage vehicles -> All vehicles                                                                                                                                  |
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
- |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport | 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
- 
-=======
  |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport |
   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
 
->>>>>>> 651e1af560bf5d2de0142e2de23add8e0d723db8
         for vehicle in get_all:
             print(" | {:40s} | ".format(str(vehicle)))
         print(" ------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
