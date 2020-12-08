@@ -155,8 +155,8 @@ class LocationUI():
 
     def remove_location(self):
         location_name = input(" | Enter airport name: ")
-        while self.logic.input_checking(, location_name) == False:
-            location_name = input(" | Enter airport name: ")
+        #while self.logic.input_checking(, location_name) == False:
+        #    location_name = input(" | Enter airport name: ")
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
@@ -198,9 +198,9 @@ class LocationUI():
     def update_location(self):
         while True:
             find_location = input(" | Enter airport name: ")
-            while self.logic.input_checking(, find_location) == False:
-                print("")
-                find_location = input(" | Enter airport name: ")
+            #while self.logic.input_checking(, find_location) == False:
+            #    print("")
+            #    find_location = input(" | Enter airport name: ")
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
@@ -225,7 +225,7 @@ class LocationUI():
             elif attribute == "2":
                 attribute = "phone_number"
                 new_info = input(" | Enter new information: ")
-                while self.logic.input_checking(9, new_info) == False:
+                while self.logic.input_checking(2, new_info) == False:
                     print("")
                     new_info = input(" | Enter new information: ")
             else:
@@ -264,19 +264,19 @@ class LocationUI():
 
     def search_location(self):
         location = input(" | Enter airport name: ")
-        while self.logic.input_checking(, location) == False:
-            print("")
-            location = input(" | Enter airport name: ")
+        #while self.logic.input_checking(, location) == False:
+        #    print("")
+        #    location = input(" | Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
         print("""\n -----------------------------------------------------------------------------
  | Rental Location information -> Search location                            |
  -----------------------------------------------------------------------------""")
         for airport in result:
             print(''' | 'Employee information'                                                    |
- | Airport name: {:54s}      |
- | Country:      {:54s}      |
- | Opening hours:{:54s}      |
- | Phone number: {:54s}      |
+ | Airport name:  {:53s}      |
+ | Country:       {:53s}      |
+ | Opening hours: {:53s}      |
+ | Phone number:  {:53s}      |
  |                                                                           |
  |                                                                           |
  |                                                                           |
