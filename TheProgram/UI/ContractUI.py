@@ -287,37 +287,77 @@ choice(Enter the number): ''')
         input(" | Press 'Enter' to continue")
 
     def print_contract(self):
-        customer_id = print(''' ------------- Print contract --------------
+        customer_id = print(
+    """
+——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+|      /|    / /          /|    / /       // | |                                                                                 |
+|     //|   / /  ___     //|   / /       //__| |    ( )  __                                                                      |
+|    // |  / / //   ) ) // |  / /       / ___  |   / / //  ) )                                                                   |
+|   //  | / / //   / / //  | / /       //    | |  / / //                                                                         |
+|  //   |/ / ((___( ( //   |/ /       //     | | / / //                                                                          |
+|————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
+| contract number : {}                                           |Date : {}                                                      |
+|————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
+|NaN Air contact details:                                        |Rental location contact details:                               |
+|————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
+|NaN Air rentals Reykjavík (Iceland)                             |NaN Air rentals {}({})                                         |
+|Opening hours : {}                                              |Opening Hours : {}                                             |
+|Phone number : {}                                               |Phone number : {}                                              |
+|Renting employee : {}                                           |                                                               |
+|————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
+|Personal details :                                              |Vehicle details :                                              |
+|————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
+|Name : {}                                                       |Vehicle type : {}                                              |
+|ssn : {}                                                        |Manifacturer : {}                                              |
+|Address : {}                                                    |Model : {}                                                     |
+|Phone number : {}                                               |Model year : {}                                                |
+|Email : {}                                                      |Color : {}                                                     |
+|Driving license{}                                               |Number plate : {}                                              |
+|                                                                |Required license : {}                                          |
+|————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
+|Payment details :                                                                                                               |
+|————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
+|rent duration : {}                                                                                                              |
+|Daily rate for  {} is {} therby the total cost will be {}                                                                       |
+|For late return ther will be charge an extraday with 20% markup                                                                 |
+|                                                                                                                                |
+|                                                                                                                                |
+|  X_____________________________                                  X____________________________                                 |
+|   Employee signiture                                              Renter signiture                                             |
+|                                                                                                                                |
+——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————    
+""")
+# print(''' ------------- Print contract --------------
 
- """Contract Information"""
- Date:
- Duration:
- Country:
- City:
- Employee name:
- Paid:
- Final price:
+#  """Contract Information"""
+#  Date:
+#  Duration:
+#  Country:
+#  City:
+#  Employee name:
+#  Paid:
+#  Final price:
 
-"""Customer Information"""
- Name:
- SSN:
- Phone:
- Email:
- Address:
- Drivers license:
+# """Customer Information"""
+#  Name:
+#  SSN:
+#  Phone:
+#  Email:
+#  Address:
+#  Drivers license:
 
- """Vehicle Information"""
- Manufacturer:
- Type:
- Color:
- Model
- Plate number:
- Vehicle rate:
+#  """Vehicle Information"""
+#  Manufacturer:
+#  Type:
+#  Color:
+#  Model
+#  Plate number:
+#  Vehicle rate:
 
- """Total cost"""
- Cost:
+#  """Total cost"""
+#  Cost:
  
- Enter Customer ID: ''')
+#  Enter Customer ID: ''')
 
         printable_customer = self.logic.contract(4, customer_id, None, None)
         for item in printable_customer:
