@@ -104,7 +104,7 @@ class LocationUI():
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
         print('''\n -----------------------------------------------------------------------------
- | -> -> Edit location -> Add location                                     |
+ | -> -> Edit location -> Add location                                       |
  -----------------------------------------------------------------------------
  |                     "New location information"                            |
  |                                                                           |
@@ -124,13 +124,13 @@ class LocationUI():
         choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if choice == "y":
             self.logic.location(1, None, None, the_location)
-            print('''\n -----------------------------------------------------------------------------
+            print('''\n ------------------------------------------------------------------------------
  | -> -> Edit location -> Add location                                        |
  ------------------------------------------------------------------------------
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been added to the system:{:22s}|
+ |                "{:50s}" has been added to the system:|
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -160,13 +160,17 @@ class LocationUI():
 
     def remove_location(self):
         location_name = input(" | Enter airport name: ")
+
         while self.logic.input_checking(10, location_name) == False:
             print(" | Only characters are viable for input!")
             location_name = input(" | Enter airport name: ")
-            if location_name == []:
-                print("This airport is not registered!")
-                input("Press 'Enter' to continue")
-                continue
+
+        result = self.logic.location(0, location_name, "name_of_airport", None)
+        while result == []:
+            print(" | This airport is not registered!")
+            location_name = input(" | Enter airport name: ")
+            result = self.logic.location(0, location_name, "name_of_airport", None)
+
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
@@ -279,13 +283,16 @@ class LocationUI():
 
     def search_location(self):
         location = input(" | Enter airport name: ")
+
         while self.logic.input_checking(10, location) == False:
             print(" | Only characters are viable for input!")
             location = input(" | Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
+
         if result == []:
             print(" | This airport is not registered!")
             input(" | Press 'Enter' to continue")
+
         else:
             print("""\n -----------------------------------------------------------------------------
  | Rental Location information -> Search location                            |
