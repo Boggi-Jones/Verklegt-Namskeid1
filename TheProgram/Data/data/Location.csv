@@ -1,6 +1,8 @@
 name_of_airport,country,opening_hours,phone_number
-þórshöfn,færeyjar,18:00,5761850
-reykjavík,iceland,18:00 - 21:00,5715583
-egilstaðir,iceland,08:00 - 23:00,4718932
-nuuk,greenland,7:00 - 17:00,7834254
-Kulusuk,Greenland,7:00 - 16:00,7831234
+þórshöfn,færeyjar,18:00-22:00,5761850
+reykjavík,iceland,18:00-21:00,5715583
+egilstaðir,iceland,08:00-23:00,4718932
+Kulusuk,Greenland,7:00-16:00,7831234
+nuuk,greenland,7:00-17:00,8885522
+Looploop,Kenya,16:00-17:00,6969696
+Looloo,Lala,10:10-11:11,1122334

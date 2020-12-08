@@ -303,7 +303,7 @@ class FleetUI():
                 attribute = "model_year"
                 new_vehicle_info = input(" | Enter new information: ")
                 while self.logic.input_checking(8, new_vehicle_info) == False:
-                    print("Model year has to be of length 4 and only numbers, fx: 1234")
+                    print(" | Model year has to be of length 4 and only numbers, fx: 1234")
                     new_vehicle_info = input(" | Enter new information: ")
 
             elif attribute == "8":
@@ -313,15 +313,15 @@ class FleetUI():
             elif attribute == "9":
                 attribute = "number_plate"
                 new_vehicle_info = input(" | Enter new information: ")
-                while self.logic.input_checking(10, new_vehicle_info) == False:
-                    print("")
+                while self.logic.input_checking(11, new_vehicle_info) == False:
+                    print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
                     new_vehicle_info = input(" | Enter new information: ")
 
             elif attribute == "10":
                 attribute = "driving_license"
                 new_vehicle_info = input(" | Enter new information: ")
                 while self.logic.input_checking(4, new_vehicle_info) == False:
-                    print("Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
+                    print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
                     new_vehicle_info = input(" | Enter new information: ")
 
             elif attribute == "11":
@@ -335,7 +335,7 @@ class FleetUI():
             else:
                 print("Wrong input")
                 continue
-            #new_vehicle_info = input(" | Enter new information: ")
+
             self.logic.vehicle(1, find_vehicle, attribute,  new_vehicle_info)
             print('''\n -----------------------------------------------------------------------------
  | -> Manage vehicles -> Remove vehicle                                      |
