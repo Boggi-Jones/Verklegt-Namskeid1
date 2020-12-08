@@ -58,7 +58,7 @@ class ContractLogic:
         # After user chooses vehicle
         # Driver license attribute is compared to vehicle driving license attribute
         # Vehicle class is then returned
-        vehicle_class = self.vehiclelogic.filtervehiclefleet(0, number_plate, "number_plate", None)
+        vehicle_class = self.vehiclelogic.filtervehiclefleet(number_plate, "number_plate")
         if customer_class.driving_license in vehicle_class[0].driving_license:
             return vehicle_class
 
