@@ -279,6 +279,7 @@ class LocationUI():
             print(''' |  {}|'''.format(str(location)))
         print(" ---------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
+        return results
 
 
     def search_location(self):

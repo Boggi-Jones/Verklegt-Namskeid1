@@ -1,9 +1,11 @@
 from Logic.LogicMain import LogicMain
 from Models.Vehicle import Vehicle
+from UI.LocationUI import LocationUI
 
 class FleetUI():
     def __init__(self):
         self.logic = LogicMain()
+        self.locationUI = LocationUI()
 
     def fleet_loop(self):
         ''' Here we go from the main menu to the main menu for the Vehicles '''
@@ -124,7 +126,7 @@ class FleetUI():
                 model_year = input(" | Model year: ")
             color = input(" | Color: ")
             number_plate = input(" | Number plate: ").upper()
-            while self.logic.input_checking(10, number_plate) == False:
+            while self.logic.input_checking(11, number_plate) == False:
                 print("Number plate has to be")
                 number_plate = input(" | Number plate: ").upper()
             driving_license = input(" | License required: ")
@@ -132,7 +134,13 @@ class FleetUI():
                 print("Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
                 driving_license = input(" | License required: ")
             rent_counter = "0"
-            name_of_airport = input(" | Airport: ").capitalize()
+            all_locations = self.locationUI.all_locations()
+            while all_locations != 0:
+                name_of_airport = input(" | Airport: ").capitalize()
+                for location in all_locations:
+                    if location.name_of_airport == name_of_airport:
+                        all_locations = 0
+                        break
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
 
             print('''\n -----------------------------------------------------------------------------
@@ -189,6 +197,7 @@ class FleetUI():
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(number_plate, ""))
                 input("Press 'Enter' to continue")
+                break
             else:
                 return None
 
@@ -198,7 +207,7 @@ class FleetUI():
         if the user wishes to do so'''
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            while self.logic.input_checking(10, find_vehicle) == False:
+            while self.logic.input_checking(11, find_vehicle) == False:
                 print("")
                 find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)

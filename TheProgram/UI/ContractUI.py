@@ -57,14 +57,14 @@ class ContractUI():
                 print(" | Email must be in the correct format: 'name@name.is' ")
                 email = input(" | Email: ")
             gsm_number = input(" | Phone: ")
-            while self.logic.input_checking(2, smart_phone) == False:
+            while self.logic.input_checking(2, gsm_number) == False:
                 print(" | Phone number must be in the correct format: '1234567' ")
                 gsm_number = input(" | Phone: ")
             address = input(" | Address: ").capitalize()
             driving_license = input(" | Drivers license: ").lower()
-            while self.logic.input_checking(4, new_vehicle_info) == False:
+            while self.logic.input_checking(4, driving_license) == False:
                 print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
-                new_vehicle_info = input(" | Enter new information: ")
+                driving_license = input(" | Enter new information: ")
             returned_late_before = input(" | Returned late before: ")
             new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
             choice = input('''\n -----------------------------------------------------------------------------
@@ -106,9 +106,10 @@ class ContractUI():
         vehicle_type = input("What type of vehicle does the customer want? ")
         list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
         for vehicle in list_of_vehicles:
-            print(vehicle)
+            if vehicle.status == "available":
+                print(vehicle)
         number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
-        while self.logic.input_checking(11, new_vehicle_info) == False:
+        while self.logic.input_checking(11, number_plate) == False:
             print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
             number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
 
@@ -145,8 +146,8 @@ class ContractUI():
         name_of_airport = input("Airport: ")
         employee_name = input("Employee name: ")
         duration = (datetime.strptime(return_date,'%d/%m/%Y') - datetime.strptime(date,'%d/%m/%Y')).days
-        paid = "not"
-        final_price = self.logic.contract(6, duration, None, None, vehicle_class)
+        paid = "no"
+        final_price = self.logic.contract(7, duration, None, None, vehicle_class)
         the_contract = Contracts(date, return_date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
         print('''----------- Contract information ------------------
 Date:                   {}
@@ -273,9 +274,10 @@ choice(Enter the number): ''')
                 vehicle_type = input("What type of vehicle does the customer want? ")
                 list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
                 for vehicle in list_of_vehicles:
-                    print(vehicle)
+                    if vehicle.status == "available":
+                        print(vehicle)
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
-                while self.logic.input_checking(11, new_vehicle_info) == False:
+                while self.logic.input_checking(11, number_plate) == False:
                     print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
                     number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
 
@@ -284,7 +286,7 @@ choice(Enter the number): ''')
                     if vehicle_class == None:
                         print("You don't have the required license for this vehicle.")
                         number_plate = input("Enter the number plate of the chosen vehicle: ")
-                        while self.logic.input_checking(11, new_vehicle_info) == False:
+                        while self.logic.input_checking(11, number_plate) == False:
                             print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
                             number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
 

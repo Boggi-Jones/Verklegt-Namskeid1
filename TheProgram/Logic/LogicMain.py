@@ -131,6 +131,9 @@ class LogicMain:
                 return True
 
         elif option == 6: #Date **/**/****
+            if len(user_input) != 10:
+                return False
+                
             seperator_list = [2, 5]
             for pos in seperator_list:
                 if user_input[pos] != "/":
@@ -151,6 +154,9 @@ class LogicMain:
                 return True
 
         elif option == 9: #Opening hours
+            if len(user_input) != 11:
+                return False
+
             seperator_list = [2, 5, 8]
             for pos in seperator_list:
                 if user_input[pos] != ":" and user_input[pos] != "-":
