@@ -1,6 +1,7 @@
-from Models.Employee import Employee
-#emp = Employee(f,f,f,f,f,f,f,f)
-tala = None
-far = 1
-tala = far
-print(tala)
+from Logic.LogicMain import LogicMain
+test = input()
+while test != "q":
+    print(LogicMain().input_checking(6, test))
+    
+    test = input()
+

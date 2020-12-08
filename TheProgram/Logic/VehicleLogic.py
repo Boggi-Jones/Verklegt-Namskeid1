@@ -43,7 +43,7 @@ class VehicleLogic:
             self.remove_vehicle(filter_or_id)
             self.registernewvehicle(vehicle)
 
-        return single_vehicle[0]
+        return single_vehicle
 
     def editrate(self, vehicle_type, current_rate, new_rate):
         # Cretes a list of vehicle by using information from type of vehicle

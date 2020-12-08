@@ -134,7 +134,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been added to the system:{:24s}|
+ |                "{}" has not been added to the system:{:23s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |

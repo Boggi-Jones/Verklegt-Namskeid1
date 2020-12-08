@@ -89,3 +89,50 @@ class LogicMain:
             results = self.customerlogic.edit_customer(ssn_or_customer_class, attribute, new_information)
 
         return results
+
+    def input_checking(self, option, user_input):
+        if option == 0: #Email checking
+            if ("@" in user_input) and ("." in user_input):
+                return True            
+        elif option == 1: #SSN checking
+            if len(user_input) == 11 and user_input[6] == "-":
+                for char in user_input:
+                    if char.isalpha():
+                        return False
+                return True
+        elif option == 2: #Phone checking
+            if len(user_input) == 7 and user_input.isdigit():
+                return True
+        elif option == 3: #Company role
+            if user_input == "ceo" or user_input == "fleet" or user_input == "base":
+                return True
+        elif option == 4: #Driving license
+            if len(user_input) < 4 and ("a" in user_input) or ("b" in user_input) or ("c" in user_input):
+                return True
+        elif option == 5: #Yes or no
+            if user_input == "yes" or user_input == "no":
+                return True
+        elif option == 6: #Date **/**/****
+            seperator_list = [2, 5]
+            for pos in seperator_list:
+                if user_input[pos] != "/":
+                    return False
+                
+            for idx, char in enumerate(user_input):
+                if not (char.isdigit() or idx in seperator_list):
+                    return False
+
+            return True
+
+        elif option == 7: #Numbers
+            if user_input.isnumeric():
+                return True
+        elif option == 8: # Model year
+            if user_input.isnumeric() and len(user_input) == 4:
+                return True
+        elif option == 9: #Opening hours
+            pass
+        else: #Number plate
+            pass
+
+        return False
