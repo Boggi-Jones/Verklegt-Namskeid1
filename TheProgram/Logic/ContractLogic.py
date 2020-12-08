@@ -1,9 +1,17 @@
 from Data.DataMain import DataMain
+from Logic.EmployeeLogic import EmployeeLogic
+from Logic.LocationLogic import LocationLogic
+from Logic.VehicleLogic import VehicleLogic
+from Logic.CustomerLogic import CustomerLogic
+from datetime import datetime
 
 class ContractLogic:
     def __init__(self):
         self.datamain = DataMain()
         self.position = "Contract"
+        self.locationlogic = LocationLogic()
+        self.vehiclelogic = VehicleLogic()
+        self.customerlogic = CustomerLogic()
 
     def filtercontract(self, filter_or_id, attribute):
         # Gets lists of contracts from datamain
@@ -46,13 +54,40 @@ class ContractLogic:
         self.makenewcontract(single_contract[0])
         return single_contract[0]
 
-    def checklicense(self, customer_class, vehicle_class):
+    def checklicense(self, customer_class, number_plate):
         # After user chooses vehicle
         # Driver license attribute is compared to vehicle driving license attribute
         # Vehicle class is then returned
+        vehicle_class = self.vehiclelogic.filtervehiclefleet(0, number_plate, "number_plate", None)
         if customer_class.driving_license in vehicle_class[0].driving_license:
             return vehicle_class
 
+    def changevehicle(self, number_plate, attribute, new_information):
+        new_vehicle = self.vehiclelogic.filtervehiclefleet(new_information, attribute)
+
+        if new_vehicle[0].status == "available":
+            self.vehiclelogic.editvehicleinfo(number_plate, "status", "available")
+            the_vehicle = self.vehiclelogic.editvehicleinfo(new_information, "status", "rented")
+            results = self.editcontractinfo(number_plate, attribute, new_information)
+            total_price = self.calculatefinalprice(results.duration, the_vehicle)
+            results = self.editcontractinfo(number_plate, "final_price", total_price)
+        else:
+            return False
+
+    def chargecontract(self, ssn, condition):
+        # contract paid í yes
+        # spyrja um ástand ef good þá gera hann available
+        # fá current date og bera saman við skiladag
+        # ef skilað seint bæta við 20% á verðið og breyta customer returned_late_before í yes
+        # skila til baka lokaverði
+        current_date = datetime.today()
+        the_contract = self.filtercontract(ssn, "ssn")
+        return_date = datetime.strptime(the_contract[0].return_date, '%d/%m/%Y')
+        self.editcontractinfo(ssn, "paid", "yes")
+        if current_date > return_date:
+            return True
+        else:
+            return False
 
     def calculatefinalprice(self, duration, vehicle_class):
         # After user has chosen vehicle
