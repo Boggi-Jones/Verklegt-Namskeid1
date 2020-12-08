@@ -213,7 +213,7 @@ Final price:            {}
     def update_contract(self):
         while True:
             find_contract = input("Enter the contacts ssn: ")
-            while self.logic.input_checking(1, ssn) == False:
+            while self.logic.input_checking(1, find_contract) == False:
                 print(" | SSN must be in the correct format: '123456-1234' ")
                 find_contract = input(" | SSN: ")
             the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
@@ -275,11 +275,19 @@ choice(Enter the number): ''')
                 for vehicle in list_of_vehicles:
                     print(vehicle)
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
+                while self.logic.input_checking(11, new_vehicle_info) == False:
+                    print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+                    number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
+
                 while True:
                     vehicle_class = self.logic.contract(4, the_contract[0], number_plate, None, None)
                     if vehicle_class == None:
                         print("You don't have the required license for this vehicle.")
                         number_plate = input("Enter the number plate of the chosen vehicle: ")
+                        while self.logic.input_checking(11, new_vehicle_info) == False:
+                            print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+                            number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
+
                     else:
                         choice = input("""------ You have chosen this car -----
         Type:             {}
