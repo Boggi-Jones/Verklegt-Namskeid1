@@ -90,9 +90,11 @@ class LocationUI():
         name_of_airport = input(" | Airport name: ")
         opening_hours = input(" | Opening hours: ")
         while self.logic.input_checking(9, opening_hours) == False:
+            print("")
             opening_hours = input(" | Opening hours")
         phone_number = input(" | Phone number: ")
         while self.logic.input_checking(2, phone_number) == False:
+            print("")
             phone_number = input(" | Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
@@ -197,6 +199,7 @@ class LocationUI():
         while True:
             find_location = input(" | Enter airport name: ")
             while self.logic.input_checking(, find_location) == False:
+                print("")
                 find_location = input(" | Enter airport name: ")
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
             attribute = input('''\n -----------------------------------------------------------------------------
@@ -217,11 +220,13 @@ class LocationUI():
                 attribute = "opening_hours"
                 new_info = input(" | Enter new information: ")
                 while self.logic.input_checking(9, new_info) == False:
+                    print("")
                     new_info = input(" | Enter new information: ")
             elif attribute == "2":
                 attribute = "phone_number"
                 new_info = input(" | Enter new information: ")
                 while self.logic.input_checking(9, new_info) == False:
+                    print("")
                     new_info = input(" | Enter new information: ")
             else:
                 print(" | Wrong input")
@@ -260,6 +265,7 @@ class LocationUI():
     def search_location(self):
         location = input(" | Enter airport name: ")
         while self.logic.input_checking(, location) == False:
+            print("")
             location = input(" | Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
         print("""\n -----------------------------------------------------------------------------

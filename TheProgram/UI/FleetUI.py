@@ -120,13 +120,16 @@ class FleetUI():
             condition = "Good"
             model_year = input(" | Model year: ")
             while self.logic.input_checking(8, model_year) == False:
+                print("Model year has to be of length 4 and only numbers, fx: 1234")
                 model_year = input(" | Model year: ")
             color = input(" | Color: ")
             number_plate = input(" | Number plate: ").upper()
             while self.logic.input_checking(10, number_plate) == False:
+                print("Number plate has to be")
                 number_plate = input(" | Number plate: ").upper()
             driving_license = input(" | License required: ")
             while self.logic.input_checking(4, driving_license) == False:
+                print("Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
                 driving_license = input(" | License required: ")
             rent_counter = "0"
             name_of_airport = input(" | Airport: ").capitalize()
@@ -196,6 +199,7 @@ class FleetUI():
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
             while self.logic.input_checking(10, find_vehicle) == False:
+                print("")
                 find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
             if chosen_vehicle == []:
@@ -246,6 +250,7 @@ class FleetUI():
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
             while self.logic.input_checking(10, find_vehicle) == False:
+                print("")
                 find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
             if chosen_vehicle == []:
@@ -298,6 +303,7 @@ class FleetUI():
                 attribute = "model_year"
                 new_vehicle_info = input(" | Enter new information: ")
                 while self.logic.input_checking(8, new_vehicle_info) == False:
+                    print("Model year has to be of length 4 and only numbers, fx: 1234")
                     new_vehicle_info = input(" | Enter new information: ")
 
             elif attribute == "8":
@@ -308,12 +314,14 @@ class FleetUI():
                 attribute = "number_plate"
                 new_vehicle_info = input(" | Enter new information: ")
                 while self.logic.input_checking(10, new_vehicle_info) == False:
+                    print("")
                     new_vehicle_info = input(" | Enter new information: ")
 
             elif attribute == "10":
                 attribute = "driving_license"
                 new_vehicle_info = input(" | Enter new information: ")
                 while self.logic.input_checking(4, new_vehicle_info) == False:
+                    print("Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
                     new_vehicle_info = input(" | Enter new information: ")
 
             elif attribute == "11":
