@@ -25,7 +25,7 @@ class DataMain():
                     vehicle = Vehicle(row["status"], row["type_of_vehicle"], row["model"], row["rate"], row["manufacturer"], row["condition"], row["model_year"], row["color"], row["number_plate"], row["driving_license"], row["rent_counter"], row["name_of_airport"])
                     retList.append(vehicle)
                 elif filename == "Contract":
-                    contract = Contracts(row["date"], row["duration"], row["name_of_airport"], row["employee_name"], row["paid"], row["final_price"], row["number_plate"], row["ssn"])
+                    contract = Contracts(row["date"], row["return_date"], row["duration"], row["name_of_airport"], row["employee_name"], row["paid"], row["final_price"], row["number_plate"], row["ssn"])
                     retList.append(contract)
                 elif filename == "Customer":
                     customer = Customer(row["name"], row["ssn"], row["email"], row["gsm_number"], row["address"], row["driving_license"], row["returned_late_before"])

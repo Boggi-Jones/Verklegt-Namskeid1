@@ -1,6 +1,7 @@
 from Logic.LogicMain import LogicMain
 from Models.Contract import Contracts
 from Models.Customer import Customer
+from datetime import datetime
 
 class ContractUI():
     def __init__(self):
@@ -118,15 +119,17 @@ class ContractUI():
 
     def add_contract(self):
         customer_class, vehicle_class = self.the_customer()
-        date = input("Date: ")
-        duration = input("Duration: ")
+        date = input("Pickup date: ")
+        return_date = input("Return date: ")
         name_of_airport = input("Airport: ")
         employee_name = input("Employee name: ")
+        duration = (datetime.strptime(return_date,'%d/%m/%Y') - datetime.strptime(date,'%d/%m/%Y')).days
         paid = "not"
         final_price = self.logic.contract(6, duration, None, None, vehicle_class)
-        the_contract = Contracts(date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
+        the_contract = Contracts(date, return_date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
         print('''----------- Contract information ------------------
 Date:                   {}
+Return date:            {}
 Duration:               {}
 Name of airport:        {}
 Employee name:          {}
@@ -148,7 +151,7 @@ Final price:            {}
         Manufacturer:     {}
         Model year:       {}
         Color:            {}        
---------------------------------------------'''.format(date, duration, name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
+--------------------------------------------'''.format(date, return_date, duration, name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input("ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, vehicle_class)
@@ -227,7 +230,7 @@ choice(Enter the number): ''')
                 if attribute == 1:
                     attribute = "date"
                 else:
-                    attribute = "duration"
+                    attribute = "return_date"
                 new_info = input("Enter new information: ")
                 finished_product = self.logic.contract(2, find_contract, attribute, new_info, None)
             elif attribute < 7 and attribute > 2: 
