@@ -1,11 +1,19 @@
-from datetime import datetime
-datetime_object = "01/12/2020"
-current_date = datetime.today()
-mydate = datetime.strptime(datetime_object,'%d/%m/%Y')
-mydate2 = datetime.strftime(current_date,'%d/%m/%Y')
-print(current_date)
-print(mydate)
-print((current_date-mydate).days)
+from Logic.LogicMain import LogicMain
+while True:
+    ssn = input("Enter the ssn for the contract: ")
+    the_contract = LogicMain().contract(0, ssn, "ssn", None, None)
+    if the_contract == []:
+        continue
 
-if current_date < mydate:
-    print("datetime1 is Greater")
+    condition = input("What is the condition of the car(1. Good or 2. Needs repairs): ")
+    if condition == "1":
+        condition = "good"
+    elif condition == "2":
+        condition = "needs repairs"
+    else:
+        print("Wrong input")
+        continue
+
+    new_total = LogicMain().contract(6, ssn, condition, None, None)
+    print(new_total)
+

@@ -80,7 +80,7 @@ class LogicMain:
             results = self.contractlogic.changevehicle(filter_or_id, attribute, new_information)
 
         elif option == 6: # Option 6 is used to charge the contract
-            results = self.contractlogic.chargecontract()
+            results = self.contractlogic.chargecontract(filter_or_id, attribute)
 
         else:
             results = self.contractlogic.calculatefinalprice(filter_or_id, vehicle_type)

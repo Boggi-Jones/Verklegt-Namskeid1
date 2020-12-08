@@ -249,7 +249,7 @@ class FleetUI():
     def update_vehicle_information(self):
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            while self.logic.input_checking(10, find_vehicle) == False:
+            while self.logic.input_checking(11, find_vehicle) == False:
                 print("")
                 find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
