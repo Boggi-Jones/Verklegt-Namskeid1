@@ -46,20 +46,31 @@ class ContractUI():
 
     def the_customer(self):
         ssn = input(" | Enter customer SSN: ")
+        while self.logic.input_checking(1, ssn) == False:
+            print(" | SSN must be in the correct format: '123456-1234' ")
+            ssn = input(" | SSN: ")
         ssn_val = self.logic.customer(0, ssn, "ssn", None)
         if ssn_val == []:
-            name = input(" | Name: ")
-            ssn = input(" | SSN: ")
+            name = input(" | Name: ").capitalize()
             email = input(" | Email: ")
+            while self.logic.input_checking(0, email) == False:
+                print(" | Email must be in the correct format: 'name@name.is' ")
+                email = input(" | Email: ")
             gsm_number = input(" | Phone: ")
-            address = input(" | Address: ")
-            driving_license = input(" | Drivers license: ")
+            while self.logic.input_checking(2, smart_phone) == False:
+                print(" | Phone number must be in the correct format: '1234567' ")
+                gsm_number = input(" | Phone: ")
+            address = input(" | Address: ").capitalize()
+            driving_license = input(" | Drivers license: ").lower()
+            while self.logic.input_checking(4, new_vehicle_info) == False:
+                print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
+                new_vehicle_info = input(" | Enter new information: ")
             returned_late_before = input(" | Returned late before: ")
             new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
             choice = input('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
- |                      "Customer information"                               |
+ |                      "New Customer information"                           |
  |Name:        {:59s}   |                                                  
  |SSN:         {:59s}   |
  |Email:       {:59s}   |
@@ -80,7 +91,7 @@ class ContractUI():
             choice = input("""\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
- |                      "New customer information"                           |
+ |                        "customer information"                             |
  |Name:        {:59s}   |                                                  
  |SSN:         {:59s}   |
  |Email:       {:59s}   |
@@ -96,12 +107,16 @@ class ContractUI():
         list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
         for vehicle in list_of_vehicles:
             print(vehicle)
-        number_plate = input("Enter the number plate of the chosen vehicle: ")
+        number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
+        while self.logic.input_checking(11, new_vehicle_info) == False:
+            print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+            number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
+
         while True:
             vehicle_class = self.logic.contract(4, ssn_val[0], number_plate, None, None)
             if vehicle_class == None:
                 print("You don't have the required license for this vehicle.")
-                number_plate = input("Enter the number plate of the chosen vehicle: ")
+                number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
             else:
                 choice = input("""------ You have chosen this car -----
         Type:             {}
@@ -120,7 +135,13 @@ class ContractUI():
     def add_contract(self):
         customer_class, vehicle_class = self.the_customer()
         date = input("Pickup date: ")
+        while self.logic.input_checking(6,date)== False:
+            print("Date must be in the cottect format: 'DD/MM/YYYY'")
+            date = input("Pickup date: ")
         return_date = input("Return date: ")
+        while self.logic.input_checking(6,date)== False:
+            print("Date must be in the cottect format: 'DD/MM/YYYY'")
+            return_date = input("Pickup date: ")
         name_of_airport = input("Airport: ")
         employee_name = input("Employee name: ")
         duration = (datetime.strptime(return_date,'%d/%m/%Y') - datetime.strptime(date,'%d/%m/%Y')).days
@@ -161,8 +182,8 @@ Final price:            {}
             return None
 
     def remove_contract(self):
-        contract_name = input(""" ------- Remove contract ---------
- Enter contractholder name: <- Insert contract name
+        contract_ssn = input(""" ------- Remove contract ---------
+ Enter contractholder ssn: <- Insert contract name
 
 
 
@@ -180,9 +201,9 @@ Final price:            {}
 
 
 
- --------------------------------------------""".format(contract_name)).lower()
+ --------------------------------------------""".format(contract_ssn)).lower()
         if choice == "y":
-            the_removed_contract = self.logic.contract(3, contract_name, None, None, None)
+            the_removed_contract = self.logic.contract(3, contract_ssn, None, None, None)
             print("{} has been removed!".format(the_removed_contract))
         elif choice == "n":
             return
@@ -192,6 +213,9 @@ Final price:            {}
     def update_contract(self):
         while True:
             find_contract = input("Enter the contacts ssn: ")
+            while self.logic.input_checking(1, find_contract) == False:
+                print(" | SSN must be in the correct format: '123456-1234' ")
+                find_contract = input(" | SSN: ")
             the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
             try:
                 print(the_contract[0])
@@ -251,11 +275,19 @@ choice(Enter the number): ''')
                 for vehicle in list_of_vehicles:
                     print(vehicle)
                 number_plate = input("Enter the number plate of the chosen vehicle: ")
+                while self.logic.input_checking(11, new_vehicle_info) == False:
+                    print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+                    number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
+
                 while True:
                     vehicle_class = self.logic.contract(4, the_contract[0], number_plate, None, None)
                     if vehicle_class == None:
                         print("You don't have the required license for this vehicle.")
                         number_plate = input("Enter the number plate of the chosen vehicle: ")
+                        while self.logic.input_checking(11, new_vehicle_info) == False:
+                            print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+                            number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
+
                     else:
                         choice = input("""------ You have chosen this car -----
         Type:             {}
@@ -280,13 +312,14 @@ choice(Enter the number): ''')
 
     def all_contracts(self):
         results = self.logic.contract(0, None, None, None, None)
-        print('''\n ---------------------------------------------------------------------------------------------------------------------------------
- | -> Contracts -> All Contracts                                                                                        |
- ---------------------------------------------------------------------------------------------------------------------------------
- |     Date      |    Duration     |   Name of airport    |  Employee name  |  Paid  |     Final price       |  Number plate  |  ssn  |''')
+        print('''\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> Contracts -> All Contracts                                                                                                              |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |     Date      | Return date |  Duration   | Name of airport |  Employee name  |  Paid  |  Final price  |  Number plate  |        ssn       |
+ ----------------------------------------------------------------------------------------------------------------------------------------------''')
         for contract in results:
             print(''' |  {}|'''.format(str(contract)))
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
         # name_of_airport,employee_name,paid,final_price,number_plate,ssn
 
@@ -315,7 +348,7 @@ choice(Enter the number): ''')
 |   //  | / / //   / / //  | / /       //    | |  / / //                                                                         |
 |  //   |/ / ((___( ( //   |/ /       //     | | / / //                                                                          |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
-|Date : {:20s}                                                                                                     |
+|Date : {:20s}                                     |Return Date : {:20s}                             |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |NaN Air contact details:                                        |Rental location contact details:                               |
 |————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
@@ -345,7 +378,7 @@ choice(Enter the number): ''')
 |   Employee signiture                                              Renter signiture                                             |
 |                                                                                                                                |
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————    
-""".format(contract.date, contract.name_of_airport, location.country, main_base.opening_hours, location.opening_hours, main_base.phone_number, location.phone_number, contract.employee_name, customer.name, vehicle.type_of_vehicle, customer.ssn, vehicle.manufacturer, customer.address, vehicle.model, customer.gsm_number, vehicle.model_year, customer.email, vehicle.color, customer.driving_license, vehicle.number_plate, vehicle.driving_license, contract.duration, vehicle.type_of_vehicle, vehicle.rate, contract.final_price))
+""".format(contract.date,contract.return_date, contract.name_of_airport, location.country, main_base.opening_hours, location.opening_hours, main_base.phone_number, location.phone_number, contract.employee_name, customer.name, vehicle.type_of_vehicle, customer.ssn, vehicle.manufacturer, customer.address, vehicle.model, customer.gsm_number, vehicle.model_year, customer.email, vehicle.color, customer.driving_license, vehicle.number_plate, vehicle.driving_license, contract.duration, vehicle.type_of_vehicle, vehicle.rate, contract.final_price))
             input("| Press 'enter' to contiue ")
             break
     
