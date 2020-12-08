@@ -86,15 +86,20 @@ class LocationUI():
  |                                                                           |
  -----------------------------------------------------------------------------''')
         country = input(" | Country: ")
-
+        while self.logic.input_checking(10, country) == False:
+            print(" | Only characters are viable for input!")
+            country = input(" | Country: ")
         name_of_airport = input(" | Airport name: ")
+        while self.logic.input_checking(10, name_of_airport) == False:
+            print(" | Only characters are viable for input!")
+            name_of_airport = input(" | Airport name: ")
         opening_hours = input(" | Opening hours: ")
         while self.logic.input_checking(9, opening_hours) == False:
-            print("")
+            print(" | Input must be of format, fx. 01:00-20:00.")
             opening_hours = input(" | Opening hours")
         phone_number = input(" | Phone number: ")
         while self.logic.input_checking(2, phone_number) == False:
-            print("")
+            print(" | Input must contain 7 digits.")
             phone_number = input(" | Phone number: ")
         the_location = Location(name_of_airport, country, opening_hours, phone_number)
 
@@ -125,7 +130,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been added to the system:{:27s}|
+ |                "{}" has been added to the system:{:22s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -141,7 +146,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has not been added to the system:{:23s}|
+ |                "{}" has not been added to the system:{:18s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -155,8 +160,13 @@ class LocationUI():
 
     def remove_location(self):
         location_name = input(" | Enter airport name: ")
-        #while self.logic.input_checking(, location_name) == False:
-        #    location_name = input(" | Enter airport name: ")
+        while self.logic.input_checking(10, location_name) == False:
+            print(" | Only characters are viable for input!")
+            location_name = input(" | Enter airport name: ")
+            if location_name == []:
+                print("This airport is not registered!")
+                input("Press 'Enter' to continue")
+                continue
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
@@ -166,7 +176,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been removed from the system:{:27s}|
+ |                "{}" has been removed from the system:{:20s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -198,10 +208,15 @@ class LocationUI():
     def update_location(self):
         while True:
             find_location = input(" | Enter airport name: ")
-            #while self.logic.input_checking(, find_location) == False:
-            #    print("")
-            #    find_location = input(" | Enter airport name: ")
+            while self.logic.input_checking(10, find_location) == False:
+                print(" | Only characters are viable for input!")
+                find_location = input(" | Enter airport name: ")
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
+            if the_airport == []:
+                print("This airport is not registered!")
+                input("Press 'Enter to continue")
+                continue
+
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
  |                                                                            |
@@ -220,16 +235,16 @@ class LocationUI():
                 attribute = "opening_hours"
                 new_info = input(" | Enter new information: ")
                 while self.logic.input_checking(9, new_info) == False:
-                    print("")
+                    print(" | Input must be of format, fx. 01:00-20:00.")
                     new_info = input(" | Enter new information: ")
             elif attribute == "2":
                 attribute = "phone_number"
                 new_info = input(" | Enter new information: ")
                 while self.logic.input_checking(2, new_info) == False:
-                    print("")
+                    print(" | Input must contain 7 digits.")
                     new_info = input(" | Enter new information: ")
             else:
-                print(" | Wrong input")
+                print(" | Wrong input!")
                 continue
 
             updated_airport = self.logic.location(3, find_location, attribute,  new_info)
@@ -264,11 +279,15 @@ class LocationUI():
 
     def search_location(self):
         location = input(" | Enter airport name: ")
-        #while self.logic.input_checking(, location) == False:
-        #    print("")
-        #    location = input(" | Enter airport name: ")
+        while self.logic.input_checking(10, location) == False:
+            print(" | Only characters are viable for input!")
+            location = input(" | Enter airport name: ")
         result = self.logic.location(0, location, "name_of_airport", None)
-        print("""\n -----------------------------------------------------------------------------
+        if result == []:
+            print(" | This airport is not registered!")
+            input(" | Press 'Enter' to continue")
+        else:
+            print("""\n -----------------------------------------------------------------------------
  | Rental Location information -> Search location                            |
  -----------------------------------------------------------------------------""")
         for airport in result:
@@ -285,5 +304,5 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  ----------------------------------------------------------------------------- '''.format(airport.name_of_airport, airport.country, airport.opening_hours, airport.phone_number))
-        input(" | Press 'Enter' to continue ")
+            input(" | Press 'Enter' to continue ")
 

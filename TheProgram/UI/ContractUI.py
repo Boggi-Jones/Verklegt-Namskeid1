@@ -53,9 +53,18 @@ class ContractUI():
         if ssn_val == []:
             name = input(" | Name: ").capitalize()
             email = input(" | Email: ")
+            while self.logic.input_checking(0, email) == False:
+                print(" | Email must be in the correct format: 'name@name.is' ")
+                email = input(" | Email: ")
             gsm_number = input(" | Phone: ")
+            while self.logic.input_checking(2, smart_phone) == False:
+                print(" | Phone number must be in the correct format: '1234567' ")
+                gsm_number = input(" | Phone: ")
             address = input(" | Address: ").capitalize()
             driving_license = input(" | Drivers license: ").lower()
+            while self.logic.input_checking(4, new_vehicle_info) == False:
+                print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
+                new_vehicle_info = input(" | Enter new information: ")
             returned_late_before = input(" | Returned late before: ")
             new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
             choice = input('''\n -----------------------------------------------------------------------------
@@ -99,8 +108,8 @@ class ContractUI():
         for vehicle in list_of_vehicles:
             print(vehicle)
         number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
-        while self.logic.input_checking(11, number_plate) ==False:
-            print("Number plate has to be in the format two char folowed by 3 numbers")
+        while self.logic.input_checking(11, new_vehicle_info) == False:
+            print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
             number_plate = input("Enter the number plate of the chosen vehicle: ").upper()
 
         while True:
@@ -126,7 +135,13 @@ class ContractUI():
     def add_contract(self):
         customer_class, vehicle_class = self.the_customer()
         date = input("Pickup date: ")
+        while self.logic.input_checking(6,date)== False:
+            print("Date must be in the cottect format: 'DD/MM/YYYY'")
+            date = input("Pickup date: ")
         return_date = input("Return date: ")
+        while self.logic.input_checking(6,date)== False:
+            print("Date must be in the cottect format: 'DD/MM/YYYY'")
+            return_date = input("Pickup date: ")
         name_of_airport = input("Airport: ")
         employee_name = input("Employee name: ")
         duration = (datetime.strptime(return_date,'%d/%m/%Y') - datetime.strptime(date,'%d/%m/%Y')).days
@@ -167,8 +182,8 @@ Final price:            {}
             return None
 
     def remove_contract(self):
-        contract_name = input(""" ------- Remove contract ---------
- Enter contractholder name: <- Insert contract name
+        contract_ssn = input(""" ------- Remove contract ---------
+ Enter contractholder ssn: <- Insert contract name
 
 
 
@@ -186,9 +201,9 @@ Final price:            {}
 
 
 
- --------------------------------------------""".format(contract_name)).lower()
+ --------------------------------------------""".format(contract_ssn)).lower()
         if choice == "y":
-            the_removed_contract = self.logic.contract(3, contract_name, None, None, None)
+            the_removed_contract = self.logic.contract(3, contract_ssn, None, None, None)
             print("{} has been removed!".format(the_removed_contract))
         elif choice == "n":
             return
@@ -198,6 +213,9 @@ Final price:            {}
     def update_contract(self):
         while True:
             find_contract = input("Enter the contacts ssn: ")
+            while self.logic.input_checking(1, ssn) == False:
+                print(" | SSN must be in the correct format: '123456-1234' ")
+                find_contract = input(" | SSN: ")
             the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
             try:
                 print(the_contract[0])
