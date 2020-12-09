@@ -91,9 +91,6 @@ class EmployeeUI():
  |                                                                           |
  -----------------------------------------------------------------------------''')
         name = input(" | Name: ")
-        while self.logic.input_checking(10, name) == False:
-            print(" | Name can only have letters: 'Jon Jonsson' ")
-            name = input(" | Name: ")
 
         ssn = input(" | SSN: ")
         while self.logic.input_checking(1, ssn) == False:
@@ -159,14 +156,14 @@ class EmployeeUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been added to the system:{:23s}|
+ |                "{:20s}" has been added to the system:|
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
- ------------------------------------------------------------------------------'''.format(name, ""))
+ ------------------------------------------------------------------------------'''.format(name, ))
             input(" | Push 'Enter' to continue")
         elif add_choice == "n":
             print('''\n -----------------------------------------------------------------------------

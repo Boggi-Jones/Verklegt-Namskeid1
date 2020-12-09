@@ -4,7 +4,6 @@ from Models.Location import Location
 class LocationUI():
     def __init__(self):
         self.logic = LogicMain()
-        #self.ui = UIMain()
 
     def location_loop(self):
         while True:
