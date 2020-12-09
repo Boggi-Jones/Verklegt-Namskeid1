@@ -166,6 +166,7 @@ class EmployeeUI():
             input(" | Push 'Enter' to continue")
             if len(name) > 12:
                 self.logic.employeelogic.change_employee_name(ssn, name)
+                
         elif add_choice == "n":
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |

@@ -57,7 +57,7 @@ class EmployeeLogic:
         if ' ' in emp_name:
             index = emp_name.index(' ')
             del emp_name[index+2:]
-            emp_name[-1] = emp_name[-1].capitalize()+"."
+            emp_name[-1] = emp_name[-1].capitalize()+"." 
             emp_name = ''.join(emp_name)
         self.edit_employee_info(filter_or_id, "name", emp_name)
             
