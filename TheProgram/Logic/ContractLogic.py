@@ -15,7 +15,7 @@ class ContractLogic:
 
     def filter_contract(self, filter_or_id, attribute):
         # Gets lists of contracts from datamain
-        # If filter or id doesn´t match none, it get added to newly made retlist
+        # If filter isn't none, we iterate through the list and add only thing that match the filter
         # Retlist is then returned
         # Else list of contract is returned 
         list_of_contracts = self.datamain.get_list(self.position)
