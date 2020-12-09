@@ -6,7 +6,6 @@ from Logic.CustomerLogic import CustomerLogic
 from Logic.EmployeeLogic import RoleLogic
 from Logic.ReportLogic import ReportLogic
 
-
 class LogicMain:
     def __init__(self):
         self.employeelogic = EmployeeLogic()
@@ -15,7 +14,6 @@ class LogicMain:
         self.contractlogic = ContractLogic()
         self.customerlogic = CustomerLogic()
         self.rolelogic = RoleLogic()
-        self.reportlogic = ReportLogic()
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0: # Option 0 is used to filter employees
