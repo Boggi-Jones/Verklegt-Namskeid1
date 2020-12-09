@@ -49,17 +49,30 @@ class EmployeeLogic:
         return single_employee[0]
 
     def change_employee_name(self, filter_or_id, emp_name):
-        '''When names added in the system are too long the surname/lastname are cut to first alpha'''
+        '''When names added in the system are too long the surname/lastname are cut to first alpha character'''
         the_emp = self.filter_employees(filter_or_id, "ssn")
+        # get a list of employee attributes and take name attribute
+        # then split every character by commas
         emp_name = str(the_emp[0])
         emp_name = tuple(emp_name)
-        emp_name = list(emp_name)
-        if ' ' in emp_name:
+        emp_name = list(emp_name) # name split into single char to list
+        if ' ' in emp_name: # Where first name is separated
             index = emp_name.index(' ')
             del emp_name[index+2:]
             emp_name[-1] = emp_name[-1].capitalize()+"." 
             emp_name = ''.join(emp_name)
-        self.edit_employee_info(filter_or_id, "name", emp_name)
+        self.edit_employee_info(filter_or_id, "name", emp_name) 
+        #employee is first added to the system from input and then checked 
+        
+class RoleLogic:
+    def __init__(self):
+        self.datamain = DataMain()
+        self.position = "Role"
+    
+    def role_list(self, role, attribute):
+        '''Get list of roles and associated employees with them'''
+        list_of_roles = self.datamain.get_list(self.position)
+        return list_of_roles
             
 
            
