@@ -108,10 +108,12 @@ class LogicMain:
 
         return results
     
-    def roles(self, option, role, name, emp_ssn):
+    def roles(self, option, emp_ssn, emp_object):
         '''logic for association between employees and roles'''
         if option == 0:
             results = self.rolelogic.role_list(emp_ssn)
+        elif option == 1:
+            results = self.rolelogic.add_employee(emp_object)
             
         return results
             

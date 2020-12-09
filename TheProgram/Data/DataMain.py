@@ -9,6 +9,7 @@ from Models.Employee import Role
 import os
 
 
+
 class DataMain():
 
     def get_list(self, filename):
@@ -20,7 +21,7 @@ class DataMain():
                     emp = Employee(row["name"], row["ssn"], row["address"], row["home_phone"], row["gsm_phone"], row["email"], row["location"], row["role"])
                     retList.append(emp)
                 elif filename == "Role":
-                    roles = Role(row["Role"], row["Employee"], row["SSN"])
+                    roles = Role(row["role"], row["name"], row["ssn"])
                     retList.append(roles)
                 elif filename == "Location":
                     loc = Location(row["name_of_airport"], row["country"], row["opening_hours"], row["phone_number"])

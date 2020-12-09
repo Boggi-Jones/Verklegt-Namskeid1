@@ -1,6 +1,7 @@
 #from UI.UIMain import UILoop
 from Logic.LogicMain import LogicMain
 from Models.Employee import Employee
+from Models.Employee import Role
 from Models.Location import Location
 
 class EmployeeUI():
@@ -127,7 +128,7 @@ class EmployeeUI():
             role = input(" | Company role: ")
 
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
-
+        employee_roles = Role(role, name, ssn)
         print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
@@ -146,6 +147,7 @@ class EmployeeUI():
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
+            self.logic.roles(1, None, employee_roles)
             print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |
  ------------------------------------------------------------------------------
