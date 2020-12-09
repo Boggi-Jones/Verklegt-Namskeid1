@@ -34,7 +34,8 @@ class CustomerLogic:
 
     def edit_customer(self, ssn, attribute, new_information):
         single_customer = self.get_list_of_customers(ssn, "ssn")
-        new_customer = single_customer[0].__setattr__(attribute, new_information)
-        self.remove_customer(ssn)
-        self.add_customer_to_the_system(new_customer)
-        return new_customer
+        for customer in single_customer:
+            customer.__setattr__(attribute, new_information)
+            self.remove_customer(ssn)
+            self.add_customer_to_the_system(customer)
+        return single_customer[0]
