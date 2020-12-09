@@ -51,13 +51,15 @@ class EmployeeLogic:
     def change_employee_name(self, filter_or_id, emp_name):
         '''When names added in the system are too long the surname/lastname are cut to first alpha'''
         the_emp = self.filter_employees(filter_or_id, "ssn")
-        emp_name = the_emp[0]
+        emp_name = str(the_emp[0])
         emp_name = tuple(emp_name)
         emp_name = list(emp_name)
         if ' ' in emp_name:
             index = emp_name.index(' ')
             del emp_name[index+2:]
-            del emp_name[index]
+            emp_name[-1] = emp_name[-1].capitalize()+"." 
+            emp_name = ''.join(emp_name)
         self.edit_employee_info(filter_or_id, "name", emp_name)
             
+
            
