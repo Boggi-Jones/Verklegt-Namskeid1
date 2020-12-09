@@ -115,7 +115,7 @@ class LogicMain:
                 for char in user_input:
                     if char.isalpha():
                         return False
-            return True
+                return True
 
         elif option == 2: #Phone checking
             if len(user_input) == 7 and user_input.isdigit():
