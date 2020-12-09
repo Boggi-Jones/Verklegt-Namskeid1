@@ -115,9 +115,9 @@ class EmployeeUI():
             email = input(" | Email: ")
 
         
-        location = input(" | Location: ")
+        location = input(" | Location: ").capitalize()
         while self.logic.input_checking(12,location) == False:
-            print("This airport is not registered!")
+            print(" | '{}' is not registered!".format(location))
             location = input(" | Location: ")
             
             
@@ -156,8 +156,13 @@ class EmployeeUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
+<<<<<<< HEAD
  |                "{:20s}" has been added to the system:|
  |                                                                            |
+=======
+ |                The following employee has been added:                      |
+ |                {:60s}|
+>>>>>>> f43010d3afb09ea6c8cde26e44ea1dc539b805ca
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -167,19 +172,19 @@ class EmployeeUI():
             input(" | Push 'Enter' to continue")
         elif add_choice == "n":
             print('''\n -----------------------------------------------------------------------------
- | -> -> Manage employee -> Add employee                                     |
- -----------------------------------------------------------------------------
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|               "{}" has not been added to the system:{:20}|
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-------------------------------------------------------------------------------'''.format(name, ""))
+ | -> -> Manage employee -> Add employee                                      |
+ ------------------------------------------------------------------------------
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                The following employee has not been added:                  |
+ |                {:60s}|
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(name, ""))
             input(" | Press 'Enter' to continue")
         else:
             return None
@@ -204,8 +209,8 @@ class EmployeeUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has been removed from the system:{:13s}|
- |                                                                            |
+ |                The following employee has been removed:                    |
+ |                {:60s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -216,19 +221,19 @@ class EmployeeUI():
                 break
             elif choice == "n":
                 print('''\n -----------------------------------------------------------------------------
- | -> -> Manage employee -> Remove employee                                  |
- -----------------------------------------------------------------------------
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                "{}" has not been removed from the system:{:20s}|
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-|                                                                            |
-------------------------------------------------------------------------------'''.format(find_employee, ""))
+ | -> -> Manage employee -> Remove employee                                   |
+ ------------------------------------------------------------------------------
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                The following employee has not been removed:                |
+ |                {:60s}|
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(find_employee, ""))
                 input(" | Press 'Enter' to continue")
                 return
             else:
