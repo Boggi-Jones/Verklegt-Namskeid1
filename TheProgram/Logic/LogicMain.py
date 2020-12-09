@@ -107,7 +107,7 @@ class LogicMain:
 
         return results
 
-    def reports(option, start_date, end_date):
+    def reports(self, option, start_date, end_date):
         if option == 0:
             results = self.reportlogic.most_popular_by_location()
 
