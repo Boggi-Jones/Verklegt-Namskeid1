@@ -1,6 +1,7 @@
 #from UI.UIMain import UILoop
 from Logic.LogicMain import LogicMain
 from Models.Employee import Employee
+from Models.Location import Location
 
 class EmployeeUI():
     def __init__(self):
@@ -110,17 +111,20 @@ class EmployeeUI():
         while self.logic.input_checking(2, smart_phone) == False:
             print(" | Smart phone must be in the correct format: '1234567' ")
             smart_phone = input(" | Smart phone: ")
+        
         email = input(" | Email: ")
-
         while self.logic.input_checking(0, email) == False:
             print(" | Email must be in the correct format: 'name@name.is' ")
             email = input(" | Email: ")
 
-        location = input(" | Location: ")
-        while self.logic.input_checking(10, name) == False:
-            print(" | Name can only have letters: 'Jon Jonsson' ")
-            name = input(" | Name: ")
         
+        location = input(" | Location: ")
+        while self.logic.input_checking(12,location) == False:
+            print("This airport is not registered!")
+            location = input(" | Location: ")
+            
+            
+                
         role = input(" | Company role: ")
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
@@ -187,24 +191,17 @@ class EmployeeUI():
         '''Takes employee name input from user, and compares it
         to list of all employee. If name exists it will delete
         if the user wishes to do so'''
-        find_employee = input(" | Enter employee ssn: ")
-
         while True:
             find_employee = input(" | Enter employee SSN: ")
-        while self.logic.input_checking(1, find_employee) == False:
-            print(" | SSN must be in the correct format: '123456-1234' ")
-            find_employee = input(" | Enter employee SSN: ")
-        result = self.logic.employee(0, find_employee, "ssn", None)
-        if result == []:
-            print(" | Employee with SSN: '{}' does not exist".format(find_employee))
-        else:
-            find_employee = input(" | Enter employee SSN: ")
-
-
-        choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(find_employee)).lower()
-        if choice == "y":
-            self.logic.employee(1, find_employee, None, None)
-            print('''\n ------------------------------------------------------------------------------
+            result = self.logic.employee(0, find_employee, "ssn", None)
+            if result == []:           
+                print(" | Employee with SSN: '{}' does not exist".format(find_employee))
+                continue
+               
+            choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(find_employee)).lower()
+            if choice == "y":
+                self.logic.employee(1, find_employee, None, None)
+                print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                   |
  ------------------------------------------------------------------------------
  |                                                                            |
@@ -218,9 +215,10 @@ class EmployeeUI():
  |                                                                            |
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(find_employee, ""))
-            input(" | Press 'Enter' to continue")
-        elif choice == "n":
-            print('''\n -----------------------------------------------------------------------------
+                input(" | Press 'Enter' to continue")
+                break
+            elif choice == "n":
+                print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                  |
  -----------------------------------------------------------------------------
 |                                                                            |
@@ -234,10 +232,10 @@ class EmployeeUI():
 |                                                                            |
 |                                                                            |
 ------------------------------------------------------------------------------'''.format(find_employee, ""))
-            input(" | Press 'Enter' to continue")
-            return
-        else:
-            return None
+                input(" | Press 'Enter' to continue")
+                return
+            else:
+                return None
 
     def update_employee(self):
         while True:
@@ -331,7 +329,7 @@ class EmployeeUI():
  |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     |""")
         print(" ---------------------------------------------------------------------------------------------------------------------------------")
         for employee in results:
-            print(''' |  {}|'''.format(str(employee)))
+            print(''' |  {}  |'''.format(str(employee)))
         print(" ---------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
 

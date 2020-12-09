@@ -207,18 +207,14 @@ class FleetUI():
         if the user wishes to do so'''
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            while self.logic.input_checking(11, find_vehicle) == False:
-                print("")
-                find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
-            if chosen_vehicle == []:
+            if self.logic.input_checking(11, find_vehicle) == False:
                 print(" | No vehicle with this number plate")
-            else:
-                break
-        remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
-        if remove_choice == "y":
-            self.logic.vehicle(3, find_vehicle, None, None)
-            print('''\n -----------------------------------------------------------------------------
+                continue
+
+            remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
+            if remove_choice == "y":
+                self.logic.vehicle(3, find_vehicle, None, None)
+                print('''\n -----------------------------------------------------------------------------
  | -> Manage vehicles -> Remove vehicle                                      |
  -----------------------------------------------------------------------------
  |                                                                           |
@@ -234,9 +230,10 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(find_vehicle))
-            input(" | Press 'Enter' to continue ")
-        elif remove_choice == "n":
-            print('''\n -----------------------------------------------------------------------------
+                input(" | Press 'Enter' to continue ")
+                break
+            elif remove_choice == "n":
+                print('''\n -----------------------------------------------------------------------------
  | -> Manage vehicles -> Remove vehicle                                      |
  -----------------------------------------------------------------------------
  |                                                                           |
@@ -252,19 +249,16 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(find_vehicle))
-        else:
-            return None
+    
 
     def update_vehicle_information(self):
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            while self.logic.input_checking(11, find_vehicle) == False:
-                print("")
-                find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
-            if chosen_vehicle == []:
+            if self.logic.input_checking(11, find_vehicle) == False:
                 print(" | No vehicle with this number plate")
                 continue
+            chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
+            
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Update vehicle information                         |
  -----------------------------------------------------------------------------
@@ -363,7 +357,19 @@ class FleetUI():
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(find_vehicle))
             input(" | Press 'Enter' to continue ")
-            break
+            if new_vehicle_info == "Stolen":
+                print(" | Would you like to report the grand theft auto? ") 
+                report_incident = input(" | Y/N: ")
+                if report_incident == "Y": 
+                    chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", new_vehicle_info)
+                    Incident_airport_filter = chosen_vehicle[11]
+                    Incident_country_list = self.logic.location(0, Incident_airport_filter, "country", None)
+                    Incident_country = Incident_country_list[1]
+                    print(" | Police department of {} has been alerted. Pending investigation. | ").format(Incident_country)
+                else: 
+                    break
+            else:
+                break
 
     def all_vehicles(self):
         get_all = self.logic.vehicle(0, None, None, None)

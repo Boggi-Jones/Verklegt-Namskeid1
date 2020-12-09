@@ -74,8 +74,8 @@ class LocationUI():
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
- | Country:                                                                  |
  | Airport Name(city):                                                       |
+ | Country:                                                                  |
  | Opening hours:                                                            |
  | Phone number:                                                             |
  |                                                                           |
@@ -85,18 +85,18 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-        country = input(" | Country: ")
-        while self.logic.input_checking(10, country) == False:
-            print(" | Only characters are viable for input!")
-            country = input(" | Country: ")
         name_of_airport = input(" | Airport name: ")
         while self.logic.input_checking(10, name_of_airport) == False:
             print(" | Only characters are viable for input!")
             name_of_airport = input(" | Airport name: ")
+        country = input(" | Country: ")
+        while self.logic.input_checking(10, country) == False:
+            print(" | Only characters are viable for input!")
+            country = input(" | Country: ")
         opening_hours = input(" | Opening hours: ")
         while self.logic.input_checking(9, opening_hours) == False:
             print(" | Input must be of format, fx. 01:00-20:00.")
-            opening_hours = input(" | Opening hours")
+            opening_hours = input(" | Opening hours: ")
         phone_number = input(" | Phone number: ")
         while self.logic.input_checking(2, phone_number) == False:
             print(" | Input must contain 7 digits.")
@@ -130,14 +130,14 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{:50s}" has been added to the system:|
+ | {:21s} {} {}                      |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
- ------------------------------------------------------------------------------'''.format(name_of_airport, ""))
+ ------------------------------------------------------------------------------'''.format("", name_of_airport,"has been added to the system"))
             input(" | Push 'Enter' to continue")
         elif choice =="n":
             print('''\n -----------------------------------------------------------------------------
@@ -146,14 +146,14 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                "{}" has not been added to the system:{:18s}|
+ | {:18s} {} {}                                                              {}                
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
- ------------------------------------------------------------------------------'''.format(name_of_airport, ""))
+ ------------------------------------------------------------------------------'''.format("", name_of_airport,"has not been added to the system", "|"))
             input(" | Push 'Enter' to continue")
         else:
             return None
@@ -299,7 +299,7 @@ class LocationUI():
  | Rental Location information -> Search location                            |
  -----------------------------------------------------------------------------""")
         for airport in result:
-            print(''' | 'Employee information'                                                    |
+            print(''' | 'Location information'                                                    |
  | Airport name:  {:53s}      |
  | Country:       {:53s}      |
  | Opening hours: {:53s}      |

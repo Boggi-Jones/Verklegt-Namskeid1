@@ -112,7 +112,7 @@ class LogicMain:
                 for char in user_input:
                     if char.isalpha():
                         return False
-                return True
+            return True
 
         elif option == 2: #Phone checking
             if len(user_input) == 7 and user_input.isdigit():
@@ -176,7 +176,24 @@ class LogicMain:
             if len(user_input) == 6:
                 first_part = user_input[0:2]
                 secondpart = user_input[5:]
+                checker = 0
+                
+                #if user_input in self.vehicle(0, None, None, None):
+                    #checker += 1
                 if user_input[2] == " " and first_part.isalpha() and secondpart.isdigit():
-                    return True
-
+                    checker = 2
+                
+                if checker == 2:
+                    return True  
+            
+        elif option == 12: #check for location in the system
+            location = self.location(0, user_input, "name_of_airport", None)
+            if location == []:
+                return False
+            if location != []:
+                return True
+            
+        elif option == 13: #employee name t.d Sigmundur F. J.
+            pass
+                
         return False
