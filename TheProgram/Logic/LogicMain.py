@@ -208,16 +208,28 @@ class LogicMain:
                 first_part = user_input[0:2]
                 secondpart = user_input[5:]
                 checker = 0
-                if not [] == self.vehicle(0, user_input, "number_plate", None):
+                if not [] == self.vehicle(0, user_input, "number_plate", None): #empty list if plate doesn´t exist
                     checker += 1
-                    
                 if user_input[2] == " " and first_part.isalpha() and secondpart.isdigit():
                     checker += 1
-                    
-                
                 if checker == 2:
                     return True  
-            
+                
+        elif option == 13: #number plate in add vehicle
+            if len(user_input) == 6:
+                first_part = user_input[0:2]
+                secondpart = user_input[5:]
+                if user_input[2] == " " and first_part.isalpha() and secondpart.isdigit():
+                    v_list = self.vehicle(0, user_input, "number_plate", None)
+                    if v_list != []: # if list isn´t empty then a vehicle with n_plate was found
+                        print(" | Number plate already exists!")
+                        return False
+                    return True    
+                else:
+                    print(" | Number plate has to be two letters and three numbers: 'AA 123'")
+            else:
+                print(" | Number plate has to be two letters and three numbers: 'AA 123'")    
+                   
         elif option == 12: #check for location in the system
             location = self.location(0, user_input, "name_of_airport", None)
             if location == []:
