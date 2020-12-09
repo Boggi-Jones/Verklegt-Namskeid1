@@ -95,7 +95,7 @@ Færsla 1: Fórum yfir kerfið. Ákváðum að skipta á milli okkar verkum upp 
 Færsal 2: Héldum fund klukkan 15.30 þar sem við fórum yfir öll happy path, þau voru meira og minna komin og 
 þ.a.l. eru A kröfurnar komnar ásamt nokkrum B kröfum. UI er líka komið langt þannig förum sáttir inn í helgina.
 
-
+-----Vika 3 -------------------------------------------------------------------------------------------------------
 07/12/20 - - - - - - - - - - - -
 Færsla 1: Skiptum okkur í tvo hópa. Annars hópurinn fór að gera "villu-check" á input hjá notendum á meðan hinn
 hópurinn hélt áfram að gera UI-ið. Það var einnig sett plan fyrir vikuna. Öll forritun yrði kláruð fyrir hádegi á
@@ -105,6 +105,20 @@ fimmt og eftir það yrði skírslan klárauð ásamt myndbandinu.
 08/12/20 - - - - - - - - - - - -
 Færsla 1: Sama verkskipulag og í gær. Halda áfram að búa til villu check og klára UI-ið.
 
+Færsla 2: Fórum yfir allt kerfið í heild sinni til að finna vandmál. Listi kominn fyrir næsta dag yfir hluti sem þarf
+að laga.
+
+
+09/12/20: - - - - - - - - - - - -
+Færsla 1: Fórum yfir listan frá því í gær og skiptum okkur upp til að laga þau vandamál.
+
 Færsla 2: 
+
+
+
+
+
+
+
 
 
