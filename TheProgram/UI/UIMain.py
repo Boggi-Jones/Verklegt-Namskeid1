@@ -2,6 +2,7 @@ from UI.ContractUI import ContractUI
 from UI.EmployeeUI import EmployeeUI
 from UI.LocationUI import LocationUI
 from UI.FleetUI import FleetUI
+from UI.ReportsUI import ReportsUI
 from Logic.LogicMain import LogicMain
 
 class UIMain():
@@ -37,7 +38,7 @@ class UIMain():
             elif choice == "4":
                 ContractUI().contract_loop()
             elif choice == "5":
-                pass            # Þurfum að bæta við klasa
+                ReportsUI().reports_loop()            # Þurfum að bæta við klasa
             elif choice == "q":
                 break
             else:

@@ -99,4 +99,4 @@ class ReportLogic:
                 the_customer = self.customerlogic.get_list_of_customers(contract.ssn, "ssn")
                 new_dict[the_customer.name] = contract.paid
 
-        return new_dict
+        return new_dict, 

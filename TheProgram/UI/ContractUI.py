@@ -67,7 +67,7 @@ class ContractUI():
                 driving_license = input(" | Enter new information: ")
             returned_late_before = input(" | Returned late before: ")
             new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
-            choice = input('''\n -----------------------------------------------------------------------------
+            print('''\n -----------------------------------------------------------------------------
  | -> -> Contracts -> Add customer                                           |
  -----------------------------------------------------------------------------
  |                      "New Customer information"                           |
@@ -141,7 +141,7 @@ class ContractUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Is the following information correct (Y / N)? :'''.format(vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color)).lower()
+ | Is the following information correct (Y / N)? : '''.format(vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color)).lower()
                 if choice == "y":
                     break
 
@@ -163,16 +163,16 @@ class ContractUI():
         paid = "no"
         final_price = self.logic.contract(7, duration, None, None, vehicle_class)
         the_contract = Contracts(date, return_date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
-        print('''-----------------------------------------------------------------------------
+        choice = input('''-----------------------------------------------------------------------------
  | -> -> Contracts -> Add contract                                           | 
  -----------------------------------------------------------------------------
  | "Contract information"                                                    | 
  | Date:                   {:50s}| 
  | Return date:            {:50s}| 
- | Duration:               {:50s}| 
+ | Duration:               {:50d}| 
  | Name of airport:        {:50s}| 
  | Employee name:          {:50s}| 
- | Final price:            {:50s}| 
+ | Final price:            {:50d}| 
  | "Customer information"                                                    | 
  |         Name:                   {:40s}| 
  |        SSN:                     {:40s}| 
@@ -189,7 +189,7 @@ class ContractUI():
  |         Model year:       {:42s}|
  |         Color:            {:42s}|        
  -----------------------------------------------------------------------------
- | Is the following information correct (Y / N)? :'''.format(date, return_date, duration, name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
+ | Is the following information correct (Y / N)? : '''.format(date, return_date, duration, name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input(" | ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, vehicle_class)
@@ -217,12 +217,19 @@ class ContractUI():
                 print(" | SSN must be in the correct format: '123456-1234' ")
                 find_contract = input(" | SSN: ")
             the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
+            customer = self.logic.customer(0, find_contract,"ssn",None)
             try:
-                print(the_contract[0])
+                print('''\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> Contracts -> All Contracts                                                                                                              |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |     Date      | Return date |  Duration   | Name of airport |  Employee name  |  Paid  |  Final price  |  Number plate  |        ssn       |
+ ----------------------------------------------------------------------------------------------------------------------------------------------''')
+                print(''' |  {}|'''.format(str(the_contract[0])))
+                print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
             except IndexError:
                 print(" | Contract not found, try again")
                 continue
-            choice = input(" | Is this the correct contract? Y/N").lower()
+            choice = input(" | Is this the correct contract? Y/N ").lower()
             if choice == "n":
                 continue
 
@@ -232,18 +239,19 @@ class ContractUI():
  | "What attribute would you like to change: "                               |
  |                                                                           |
  | 'Contract information                                                     |
- | 1. Pick up date:   {:52s}|
- | 2. Drop off date:  {:52s}|
+ | 1. Pick up date:   {:55s}|
+ | 2. Drop off date:  {:55s}|
  |                                                                           | 
- | 'Customer information'
- | 3. Phone:             {:48s}|
- | 4. Email:             {:48s}|
- | 5. Address:           {:48s}|
- | 6. Driving license:   {:48s}|
+ | 'Customer information'                                                    |
+ | 3. Phone:             {:52s}|
+ | 4. Email:             {:52s}|
+ | 5. Address:           {:52s}|
+ | 6. Driving license:   {:52s}|
  |                                                                           |
  | 'Vehicle information'                                                     |
- | 7. Choose another vehicle: {:44s}|
- -----------------------------------------------------------------------------''')
+ | 7. Choose another vehicle: {:47s}|
+ -----------------------------------------------------------------------------
+ | Choice: '''.format(the_contract[0].date, the_contract[0].return_date,customer[0].gsm_number,customer[0].email,customer[0].address,customer[0].driving_license,the_contract[0].number_plate))
 
             try:
                 attribute = int(attribute)
@@ -268,7 +276,9 @@ class ContractUI():
                 else:
                     attribute = "driving_license"
                 new_info = input(" | Enter new information: ")
-                finished_product = self.logic.customer(3, find_contract, attribute, new_info)
+                cont = self.logic.contract(0, find_contract, "ssn", None, None)
+                finished_product = cont[0]
+                self.logic.customer(3, find_contract, attribute, new_info)
             elif attribute == 7:
                 attribute = "number_plate"
                 vehicle_type = input(" | What type of vehicle does the customer want? ")
@@ -282,7 +292,7 @@ class ContractUI():
                     number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
 
                 while True:
-                    vehicle_class = self.logic.contract(4, the_contract[0], number_plate, None, None)
+                    vehicle_class = self.logic.contract(4, customer[0], number_plate, None, None)
                     if vehicle_class == None:
                         print(" | You don't have the required license for this vehicle.")
                         number_plate = input(" | Enter the number plate of the chosen vehicle: ")
@@ -313,13 +323,20 @@ class ContractUI():
                         if choice == "y":
                             break
                 
-                finished_product = self.logic.contract(5, the_contract[0].number_plate, "number_plate", number_plate, None)
+                finished_product = self.logic.contract(5, the_contract[0].ssn, "number_plate", number_plate, None)
 
             else:
                 print(" | Wrong input")
                 continue
             
-            print(finished_product)
+            print('''\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> Contracts -> All Contracts                                                                                                              |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |     Date      | Return date |  Duration   | Name of airport |  Employee name  |  Paid  |  Final price  |  Number plate  |        ssn       |
+ ----------------------------------------------------------------------------------------------------------------------------------------------''')
+            print(''' |  {}|'''.format(str(finished_product)))
+            print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
+            input(" | Press 'Enter' to continue")
             break
 
     def all_contracts(self):
@@ -364,7 +381,7 @@ class ContractUI():
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |NaN Air contact details:                                        |Rental location contact details:                               |
 |————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
-|NaN Air rentals Reykjavík (Iceland)                             |NaN Air rentals {:5s} ({:10s})                           |
+|NaN Air rentals Reykjavík (Iceland)                             |NaN Air rentals {:10s} ({:10s})                        |
 |Opening hours : {:14s}                                  |Opening Hours : {:14s}                                 |
 |Phone number : {:15s}                                  |Phone number : {:15s}                                 |
 |Renting employee : {:20s}                         |                                                               |
@@ -372,7 +389,7 @@ class ContractUI():
 |Personal details :                                              |Vehicle details :                                              |
 |————————————————————————————————————————————————————————————————+———————————————————————————————————————————————————————————————|
 |Name : {:20s}                                     |Vehicle type : {:20s}                            |
-|ssn : {:10s}                                                |manufacturer : {:20s}                            |
+|ssn : {:20s}                                      |manufacturer : {:20s}                            |
 |Address : {:50s}    |Model : {:20s}                                   |
 |Phone number : {:15s}                                  |Model year : {:4s}                                              |
 |Email : {:50s}      |Color : {:20s}                                   |
@@ -396,7 +413,47 @@ class ContractUI():
     
 
     def charge_contact(self):
-        pass
+        while True:
+            find_contract = input(" | Enter the contacts ssn: ")
+            while self.logic.input_checking(1, find_contract) == False:
+                print(" | SSN must be in the correct format: '123456-1234' ")
+                find_contract = input("| Enter the contacts ssn: ")
+            contract = self.logic.contract(0, find_contract, "ssn", None, None)
+            print('''\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> Contracts -> All Contracts                                                                                                              |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |     Date      | Return date |  Duration   | Name of airport |  Employee name  |  Paid  |  Final price  |  Number plate  |        ssn       |
+ ----------------------------------------------------------------------------------------------------------------------------------------------''')
+            print(''' |  {}|'''.format(contract[0]))
+            print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
+            choice = input(" | Is this the correct contract? Y/N").lower()
+            if choice == "n":
+                continue
+            new_condition = input("""| What is the condition of the returned car? ("Good" or "needs repair") """)
+            total = self.logic.contract(6, find_contract, new_condition, None, None)
+            print('''\n -----------------------------------------------------------------------------
+ | -> Manage vehicles -> Remove vehicle                                      |
+ -----------------------------------------------------------------------------
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                       The final price is {:20s}                   |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ |                                                                           |
+ -----------------------------------------------------------------------------'''.format(total))
+            paid= input("| Has the customer paid Y/N").lower()
+            if paid == "y":
+                self.logic.contract(2, find_contract, "paid", "yes", None)
+                break
+            else:
+                break
+
         # To get the new total:
         # total = self.logic.contract(6, contract_id, condition_of_the_car("good" or "needs_repairs"), None, None)
         # When confirmed that he has paid:
