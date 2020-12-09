@@ -3,11 +3,9 @@ from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
 from Logic.ContractLogic import ContractLogic
 from Logic.CustomerLogic import CustomerLogic
-<<<<<<< HEAD
 from Logic.EmployeeLogic import RoleLogic
-=======
 from Logic.ReportLogic import ReportLogic
->>>>>>> 88ced1ee121016af644422af1e4c4ebbef5888c9
+
 
 class LogicMain:
     def __init__(self):
@@ -16,11 +14,8 @@ class LogicMain:
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
         self.customerlogic = CustomerLogic()
-<<<<<<< HEAD
         self.rolelogic = RoleLogic()
-=======
         self.reportlogic = ReportLogic()
->>>>>>> 88ced1ee121016af644422af1e4c4ebbef5888c9
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0: # Option 0 is used to filter employees
