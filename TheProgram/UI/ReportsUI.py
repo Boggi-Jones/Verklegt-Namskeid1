@@ -1,4 +1,4 @@
-from Logic.LogicMaain import LogicMain
+from Logic.LogicMain import LogicMain
 from Models.Reports import Reports
 
 class ReportsUI():
