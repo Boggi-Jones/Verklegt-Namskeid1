@@ -142,9 +142,6 @@ class EmployeeUI():
  |Company role: {:58s}   |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
-        input(" | Push 'Enter' to continue")
-
-
 
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
@@ -323,11 +320,11 @@ class EmployeeUI():
     def get_all_employees(self):
         '''List all employess in appropriate columns below'''
         results = self.logic.employee(0, None, None, None)
-        print("""\n ---------------------------------------------------------------------------------------------------------------------------------
- | -> -> Manage employee -> All Employees                                                                                        |
- ---------------------------------------------------------------------------------------------------------------------------------
- |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     |""")
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print("""\n -----------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                          |
+ -----------------------------------------------------------------------------------------------------------------------------------
+ |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:       |""")
+        print(" -----------------------------------------------------------------------------------------------------------------------------------")
         
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
