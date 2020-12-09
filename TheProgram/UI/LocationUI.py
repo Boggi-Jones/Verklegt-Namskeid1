@@ -84,13 +84,6 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-<<<<<<< HEAD
-=======
-        name_of_airport = input(" | Airport name: ").lower()
-        while self.logic.input_checking(10, name_of_airport) == False:
-            print(" | Only characters are viable for input!")
-            name_of_airport = input(" | Airport name: ")
->>>>>>> d0936b2f76e58cec353c017284a2bd441f04c44f
         country = input(" | Country: ")
         while self.logic.input_checking(10, country) == False:
             print(" | Only characters are viable for input!")
@@ -217,10 +210,11 @@ class LocationUI():
 
     def update_location(self):
         while True:
-            find_location = input(" | Enter airport name: ").lower()
+            find_location = input(" | Enter airport name: ").capitalize()
+            print("----")
             while self.logic.input_checking(12, find_location) == False:
                 print(" | This airport is not registered!")
-                find_location = input(" | Enter airport name: ")
+                find_location = input(" | Enter airport name: ").capitalize()
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
             if the_airport == []:
                 print(" | This airport is not registered!")
@@ -318,6 +312,6 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- ----------------------------------------------------------------------------- '''.format( airport.country, airport.name_of_airport, airport.opening_hours, airport.phone_number))
+ ----------------------------------------------------------------------------- '''.format(airport.country, airport.name_of_airport, airport.opening_hours, airport.phone_number))
             input(" | Press 'Enter' to continue ")
 
