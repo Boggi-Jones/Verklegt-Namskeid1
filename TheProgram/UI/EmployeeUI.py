@@ -121,7 +121,6 @@ class EmployeeUI():
             location = input(" | Location: ")
             
             
-                
         role = input(" | Company role: ")
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
@@ -165,6 +164,9 @@ class EmployeeUI():
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(name))
             input(" | Push 'Enter' to continue")
+            if len(name) > 12:
+                self.logic.employeelogic.change_employee_name(ssn, name)
+                
         elif add_choice == "n":
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |
@@ -319,12 +321,14 @@ class EmployeeUI():
             break
 
     def get_all_employees(self):
+        '''List all employess in appropriate columns below'''
         results = self.logic.employee(0, None, None, None)
         print("""\n ---------------------------------------------------------------------------------------------------------------------------------
  | -> -> Manage employee -> All Employees                                                                                        |
  ---------------------------------------------------------------------------------------------------------------------------------
  |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     |""")
         print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
         print(" ---------------------------------------------------------------------------------------------------------------------------------")

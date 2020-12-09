@@ -9,7 +9,7 @@ class FleetUI():
 
     def fleet_loop(self):
         ''' Here we go from the main menu to the main menu for the Vehicles '''
-        while True:
+        while True: 
             fleet_choice = input('''\n -----------------------------------------------------------------------------
  | Welcome to NaN Air -> Manage vehicles                                     |
  -----------------------------------------------------------------------------
@@ -26,7 +26,7 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Choice: ''')
+ | Choice: ''') 
             if fleet_choice == "1":
                 self.edit_vehicle()
             elif fleet_choice == "2":
@@ -34,22 +34,7 @@ class FleetUI():
             elif fleet_choice == "3":
                 break
             else:
-                print('''\n -----------------------------------------------------------------------------
- | Welcome to NaN Air -> Manage vehicles                                     |
- -----------------------------------------------------------------------------
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                              "Invalid entry"                              |
- |                       "You need to choose one of the                      |
- |                         correct options available"                        |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- -----------------------------------------------------------------------------''')
+                print(" | Invalid choice !")
                 input(" | Press any key to continue")
 
     def edit_vehicle(self):
@@ -80,22 +65,7 @@ class FleetUI():
             elif edit_choice == "4":
                 break
             else:
-                print('''\n -----------------------------------------------------------------------------
- | Welcome to NaN Air -> Manage vehicles                                     |
- -----------------------------------------------------------------------------
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                              "Invalid entry"                              |
- |                       "You need to choose one of the                      |
- |                         correct options available"                        |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- |                                                                           |
- -----------------------------------------------------------------------------''')
+                print(" | Invalid choice !")
                 input(" | Press 'Enter' to continue")
 
     def add_vehicle(self):
@@ -114,29 +84,37 @@ class FleetUI():
  | Required license:                                                         |
  | Airport:                                                                  |
  -----------------------------------------------------------------------------''')
+            
             status = "available"
-            type_of_vehicle = input(" | Vehicle type: ")
-            model = input(" | Model: ")
+            type_of_vehicle = input(" | Vehicle type: ").capitalize()
+            model = input(" | Model: ").capitalize()
             rate = input(" | Rate: ")
-            manufacturer = input(" | Manufacturer: ")
+            manufacturer = input(" | Manufacturer: ").capitalize()
             condition = "Good"
             model_year = input(" | Model year: ")
+            
             while self.logic.input_checking(8, model_year) == False:
                 print("Model year has to be of length 4 and only numbers, fx: 1234")
                 model_year = input(" | Model year: ")
-            color = input(" | Color: ")
+
+            color = input(" | Color: ").capitalize()
+
             number_plate = input(" | Number plate: ").upper()
+            
             while self.logic.input_checking(11, number_plate) == False:
-                print("Number plate has to be")
+                print(" | Number plate has to be two letters and three numbers: 'AA 123'")
                 number_plate = input(" | Number plate: ").upper()
             driving_license = input(" | License required: ")
+            
             while self.logic.input_checking(4, driving_license) == False:
-                print("Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
+                print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!").upper()
                 driving_license = input(" | License required: ")
             rent_counter = "0"
+            
+            print(''' | Please select an airport from the following locations: ''')
             all_locations = self.locationUI.all_locations()
             while all_locations != 0:
-                name_of_airport = input(" | Airport: ").capitalize()
+                name_of_airport = input(" | Enter name of Airport: ").capitalize()
                 for location in all_locations:
                     if location.name_of_airport == name_of_airport:
                         all_locations = 0
@@ -165,20 +143,20 @@ class FleetUI():
             add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
             if add_choice == "y":
                 self.logic.vehicle(2, None, None, the_vehicle)
-                print('''\n -----------------------------------------------------------------------------
+                print('''\n ------------------------------------------------------------------------------
  | -> -> Edit vehicles -> Add vehicle                                         |
  ------------------------------------------------------------------------------
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                Vehicle "{}" has been added to the fleet:{:20s}|
+ |              The following vehicle has been added to the fleet:            |
+ |              {:62s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                                                                            |
- ------------------------------------------------------------------------------'''.format(number_plate, ""))
+ ------------------------------------------------------------------------------'''.format(number_plate))
                 input(" | Press 'Enter' to continue")
                 break
             elif add_choice == "n":
@@ -188,15 +166,17 @@ class FleetUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
- |                Vehicle "{}" has not been added to the fleet:{:16s}|
+ |            The following vehicle has not been added to the fleet:          |
+ |            {:64s}|
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
  |                                                                            |
- ------------------------------------------------------------------------------'''.format(number_plate, ""))
-                input("Press 'Enter' to continue")
+ |                                                                            |
+ ------------------------------------------------------------------------------'''.format(number_plate))
+                input(" | Press 'Enter' to continue")
                 break
             else:
                 return None
@@ -205,11 +185,12 @@ class FleetUI():
         '''Takes vehicle name input from user, and compares it
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
+
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
             if self.logic.input_checking(11, find_vehicle) == False:
                 print(" | No vehicle with this number plate")
-                continue
+                break
 
             remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
             if remove_choice == "y":
@@ -221,8 +202,8 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                                                                           |
- |                       "Vehicle {:6s} has been removed"                   |
+ |                  The following vehicle has been removed:                  |
+ |                  {:57s}|                                                  
  |                                                                           |
  |                                                                           |
  |                                                                           |
@@ -240,8 +221,8 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                                                                           |
- |                       "Vehicle {:6s} has not been removed"               |
+ |                 The following vehicle has not been removed:               |
+ |                 {:58s}|                                                  
  |                                                                           |
  |                                                                           |
  |                                                                           |
@@ -254,29 +235,35 @@ class FleetUI():
     def update_vehicle_information(self):
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            if self.logic.input_checking(11, find_vehicle) == False:
-                print(" | No vehicle with this number plate")
-                continue
+            print("----")
+            while self.logic.input_checking(11, find_vehicle) == False:
+                print(" | Input has to be of format, fx: AA 111")
+                find_vehicle = input(" | Enter vehicle plate number: ").upper()
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
-            
+            if chosen_vehicle == []:
+                print(" | No vehicle with this number plate")
+                input(" | Press 'Enter to continue")
+                continue
+
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Update vehicle information                         |
  -----------------------------------------------------------------------------
  | "Select attribute would you like to change: "                             |
- | 1. Status:                                                                |
- | 2. Vehicle type:                                                          |
- | 3. Model:                                                                 |
- | 4. Rate:                                                                  |
- | 5. Manufacturer:                                                          |
- | 6. Condition:                                                             |
- | 7. Model year:                                                            |
- | 8. Color:                                                                 |
- | 9. Number plate:                                                          |
- | 10. Required license:                                                     |
- | 11. Rent:                                                                 |
- | 12. Airport:                                                              |
+ |                                                                           |
+ | 1. Status:            {:52s}|
+ | 2. Vehicle type:      {:52s}|
+ | 3. Model:             {:52s}|
+ | 4. Rate:              {:52s}|
+ | 5. Manufacturer:      {:52s}|
+ | 6. Condition:         {:52s}|
+ | 7. Model year:        {:52s}|
+ | 8. Color:             {:52s}|
+ | 9. Number plate:      {:52s}|
+ | 10. Required license: {:52s}|
+ | 11. Rent:             {:52s}|
+ | 12. Airport:          {:52s}|
  -----------------------------------------------------------------------------
- | choice: ''')
+ | choice: '''.format(chosen_vehicle[0].status, chosen_vehicle[0].type_of_vehicle, chosen_vehicle[0].model, chosen_vehicle[0].rate, chosen_vehicle[0].manufacturer, chosen_vehicle[0].condition, chosen_vehicle[0].model_year, chosen_vehicle[0].color, chosen_vehicle[0].number_plate, chosen_vehicle[0].driving_license, chosen_vehicle[0].rent_counter, chosen_vehicle[0].name_of_airport))
 
             if attribute == "1":
                 attribute = "status"
@@ -373,13 +360,13 @@ class FleetUI():
 
     def all_vehicles(self):
         get_all = self.logic.vehicle(0, None, None, None)
-        print('''\n ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- |  -> Manage vehicles -> All vehicles                                                                                                                                  |
- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- |    Status    | Type of vehicle |   Model    | Rate | Manufacturer | Condition | Model year | Color | Number plate | Driving license | Rent counter | Name of airport |
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
+        print('''\n ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ |  -> Manage vehicles -> All vehicles                                                                                                                                |
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ |    Status    | Type of vehicle |     Model     | Rate |   Manufacturer  | Condition | Model year |   Color    | Number plate | License | Counter | Name of airport |
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
 
         for vehicle in get_all:
             print(" | {:40s} | ".format(str(vehicle)))
-        print(" ------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")

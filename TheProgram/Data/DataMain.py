@@ -4,6 +4,7 @@ from Models.Location import Location
 from Models.Vehicle import Vehicle
 from Models.Contract import Contracts
 from Models.Customer import Customer
+from Models.Employee import Role
 
 import os
 
@@ -18,6 +19,9 @@ class DataMain():
                 if filename == "Employee":
                     emp = Employee(row["name"], row["ssn"], row["address"], row["home_phone"], row["gsm_phone"], row["email"], row["location"], row["role"])
                     retList.append(emp)
+                elif filename == "Role":
+                    roles = Role(row["Role"], row["Employee"], row["SSN"])
+                    retList.append(roles)
                 elif filename == "Location":
                     loc = Location(row["name_of_airport"], row["country"], row["opening_hours"], row["phone_number"])
                     retList.append(loc)

@@ -21,4 +21,4 @@ class Vehicle():
     
     
     def __str__(self):
-        return "{:^13s}| {:^16s}|{:^12s}|{:^6s}|{:^14s}|{:^11s}|{:^12s}|{:^7s}|{:^14s}|{:^17s}|{:^14s}|{:^16s}".format(self.status, self.type_of_vehicle, self.model, self.rate, self.manufacturer, self.condition, self.model_year, self.color, self.number_plate, self.driving_license, self.rent_counter, self.name_of_airport)
+        return "{:^13s}| {:^16s}|{:^15s}|{:^6s}|{:^17s}|{:^11s}|{:^12s}|{:^12s}|{:^14s}|{:^9s}|{:^9s}|{:^16s}".format(self.status, self.type_of_vehicle, self.model, self.rate, self.manufacturer, self.condition, self.model_year, self.color, self.number_plate, self.driving_license, self.rent_counter, self.name_of_airport)

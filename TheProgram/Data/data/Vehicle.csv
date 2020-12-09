@@ -1,6 +1,16 @@
 status,type_of_vehicle,model,rate,manufacturer,condition,model_year,color,number_plate,driving_license,rent_counter,name_of_airport
+<<<<<<< HEAD
 f,f,f,f,f,f,,f,f,f,f,f
 unavailable,Light water,Crazy,850,Kayman Kayaks,OK,2020,Yellow,JL 321,abc,0,Kulusuk
 unavailable,Light water,Crazy HV,850,Kayman Kayaks,OK,2020,Yellow,RE 777,abc,0,Kulusuk
 unavailable,family car,corolla,1500,toyota,Good,2020,blá,UI 956,abcdefg,0,Looploop
 unavailable,Medium road,Free Fly II,1800,TAILG,OK,1900,White,AK 312,ab,0,Kulusuk
+=======
+available,Light water,Crazy HV,850,Kayman Kayaks,OK,2020,Yellow,RE 777,abc,0,Kulusuk
+available,Medium road,Free Fly II,1800,TAILG,OK,1900,White,AK 312,ab,0,Kulusuk
+unavailable,Light water,Crazy,850,Kayman Kayaks,OK,2020,Yellow,JL 321,abc,0,Kulusuk
+unavailable,Light water,Crazy,850,Kayman Kayaks,OK,2020,Orange,UI 956,abc,0,Kulusuk
+available,Heavy road,Land Cruiser,1000,TOyota,Good,2018,white,LC 101,b,0,Kulusuk
+available,Heavy road,Land cruiser,1000,Toyota,Good,2018,black,LC 102,b,0,Kulusuk
+available,Heavy,Land cruiser,1000,Toyota,Good,2018,gold,LC 103,b,0,Kulusuk
+>>>>>>> a13a42fc1fa9db5e5c03daae3d3d9e58f1b904bf
