@@ -116,6 +116,10 @@ class EmployeeUI():
             email = input(" | Email: ")
 
         
+        location_list = self.logic.locationlogic.filter_country(None, "airport_name")
+        print(" | Choose the location: ")
+        for row in location_list:
+            print(" | ",row)
         location = input(" | Location: ").capitalize()
         while self.logic.input_checking(12,location) == False:
             print(" | '{}' is not registered!".format(location))
