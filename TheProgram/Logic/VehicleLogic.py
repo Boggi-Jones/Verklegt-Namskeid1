@@ -5,7 +5,7 @@ class VehicleLogic:
         self.datamain = DataMain()
         self.position = "Vehicle"
 
-    def filtervehiclefleet(self, filter_or_id, attribute):
+    def filter_vehicle_fleet(self, filter_or_id, attribute):
         # Creates a variable called list of vehicles
         # if the filter or id is not in the list, they get appended
         # The retlist is then returned
@@ -41,7 +41,7 @@ class VehicleLogic:
         for vehicle in single_vehicle:
             vehicle.__setattr__(attribute, new_information)
             self.remove_vehicle(filter_or_id)
-            self.register_newvehicle(vehicle)
+            self.register_new_vehicle(vehicle)
 
         return single_vehicle
 

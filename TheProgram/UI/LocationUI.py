@@ -65,7 +65,7 @@ class LocationUI():
             elif choice == "4":
                 break
             else:
-                print("Invalid choice!")
+                print(" | Invalid choice!")
 
     def add_location(self):
         print('''\n -----------------------------------------------------------------------------
@@ -73,8 +73,8 @@ class LocationUI():
  -----------------------------------------------------------------------------
  | "Insert the following information"                                        |
  |                                                                           |
- | Airport Name(city):                                                       |
  | Country:                                                                  |
+ | Airport Name:                                                             |
  | Opening hours:                                                            |
  | Phone number:                                                             |
  |                                                                           |
@@ -84,14 +84,14 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-        name_of_airport = input(" | Airport name: ").capitalize()
-        while self.logic.input_checking(10, name_of_airport) == False:
-            print(" | Only characters are viable for input!")
-            name_of_airport = input(" | Airport name: ")
         country = input(" | Country: ")
         while self.logic.input_checking(10, country) == False:
             print(" | Only characters are viable for input!")
             country = input(" | Country: ")
+        name_of_airport = input(" | Airport name: ").capitalize()
+        while self.logic.input_checking(10, name_of_airport) == False:
+            print(" | Only characters are viable for input!")
+            name_of_airport = input(" | Airport name: ")
         opening_hours = input(" | Opening hours: ")
         while self.logic.input_checking(9, opening_hours) == False:
             print(" | Input must be of format, fx. 01:00-20:00.")
@@ -173,9 +173,9 @@ class LocationUI():
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(location_name)).lower()
         if choice == "y":
             self.logic.location(2, location_name, None, None)
-            print('''\n -----------------------------------------------------------------------------
+            print('''\n ------------------------------------------------------------------------------
  | -> -> Edit Location -> Remove location                                     |
- -----------------------------------------------------------------------------
+ ------------------------------------------------------------------------------
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -187,11 +187,11 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(location_name))
-            input("Press 'Enter' to continue")
+            input(" | Press 'Enter' to continue")
         elif choice == "n":
-            print('''\n -----------------------------------------------------------------------------
+            print('''\n ------------------------------------------------------------------------------
  | -> -> Edit Location -> Remove location                                     |
- -----------------------------------------------------------------------------
+ ------------------------------------------------------------------------------
  |                                                                            |
  |                                                                            |
  |                                                                            |
@@ -203,7 +203,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  ------------------------------------------------------------------------------'''.format(location_name))
-            input("Press 'Enter' to continue")
+            input(" | Press 'Enter' to continue")
             return
         else:
             return None
@@ -216,12 +216,13 @@ class LocationUI():
                 find_location = input(" | Enter airport name: ")
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
             if the_airport == []:
-                print("This airport is not registered!")
-                input("Press 'Enter to continue")
+                print(" | This airport is not registered!")
+                input(" | Press 'Enter to continue")
                 continue
 
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
+ ------------------------------------------------------------------------------
  |                                                                            |
  | What attribute would you like to change:                                   |
  | 1. Opening hours:           {:26s}                     |
@@ -253,6 +254,7 @@ class LocationUI():
             updated_airport = self.logic.location(3, find_location, attribute,  new_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Edit Location -> Update location                                     |
+ ------------------------------------------------------------------------------
  |                                                                            |
  | "New info"                                                                 |
  | 1. Aiport name:        {:31s}                     |
@@ -262,21 +264,20 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
-  ------------------------------------------------------------------------------
-  '''.format(updated_airport.name_of_airport, updated_airport.country, updated_airport.opening_hours, updated_airport.phone_number))
+  ------------------------------------------------------------------------------'''.format(updated_airport.name_of_airport, updated_airport.country, updated_airport.opening_hours, updated_airport.phone_number))
             input(" | Press 'Enter' to continue")
             break
 
     def all_locations(self):
         results = self.logic.location(0, None, None, None)
-        print('''\n -----------------------------------------------------------------------------
- | Rental Locations -> All location                                          |
- -----------------------------------------------------------------------------
+        print('''\n -------------------------------------------------------------------------------------------------------
+ | Rental Locations -> All location                                                                    |
+ -------------------------------------------------------------------------------------------------------
  |  Airport name:              | Country:                   | Opening hours:      | Phone number:      |''')
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print(" -------------------------------------------------------------------------------------------------------")
         for location in results:
             print(''' |  {}  |'''.format(str(location)))
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print(" -------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
         return results
 
@@ -299,8 +300,9 @@ class LocationUI():
  -----------------------------------------------------------------------------""")
         for airport in result:
             print(''' | 'Location information'                                                    |
- | Airport name:  {:53s}      |
+ |                                                                           |           
  | Country:       {:53s}      |
+ | Airport name:  {:53s}      |
  | Opening hours: {:53s}      |
  | Phone number:  {:53s}      |
  |                                                                           |
@@ -309,7 +311,6 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                                                                           |
- ----------------------------------------------------------------------------- '''.format(airport.name_of_airport, airport.country, airport.opening_hours, airport.phone_number))
+ ----------------------------------------------------------------------------- '''.format( airport.country, airport.name_of_airport, airport.opening_hours, airport.phone_number))
             input(" | Press 'Enter' to continue ")
 
