@@ -11,4 +11,4 @@ class Location(object):
         return {"name_of_airport" : self.name_of_airport, "country" : self.country, "opening_hours" : self.opening_hours, "phone_number": self.phone_number}
     
     def __str__(self):
-        return "{:^26s} | {:^15s} | {:^19s} | {:^17s}".format(self.name_of_airport, self.country, self.opening_hours, self.phone_number)
+        return "{:^26s} | {:^26s} | {:^19s} | {:^17s}".format(self.name_of_airport, self.country, self.opening_hours, self.phone_number)

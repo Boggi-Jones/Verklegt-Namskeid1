@@ -272,7 +272,7 @@ class LocationUI():
         print('''\n -----------------------------------------------------------------------------
  | Rental Locations -> All location                                          |
  -----------------------------------------------------------------------------
- |  Airport name:              | Country:        | Opening hours:      | Phone number:      |''')
+ |  Airport name:              | Country:                   | Opening hours:      | Phone number:      |''')
         print(" ---------------------------------------------------------------------------------------------------------------------------------")
         for location in results:
             print(''' |  {}  |'''.format(str(location)))
