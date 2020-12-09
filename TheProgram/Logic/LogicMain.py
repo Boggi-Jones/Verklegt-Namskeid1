@@ -14,76 +14,79 @@ class LogicMain:
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0: # Option 0 is used to filter employees
-            results = self.employeelogic.filteremployees(filter_or_id, attribute)
+            results = self.employeelogic.filter_employees(filter_or_id, attribute)
 
         elif option == 1: # Option 1 is used to remove employee
-            results = self.employeelogic.removeemployee(filter_or_id)
+            results = self.employeelogic.remove_employee(filter_or_id)
 
         elif option == 2: # Option 2 is used to add employee
-            results = self.employeelogic.addemployee(new_information)
+            results = self.employeelogic.add_employee(new_information)
 
         else: # Else is used for edit employee infi
-            results = self.employeelogic.editemployeeinfo(filter_or_id, attribute, new_information)
+            results = self.employeelogic.edit_employee_info(filter_or_id, attribute, new_information)
 
         return results
 
     def location(self, option, filter_or_id, attribute, new_information):
         if option == 0: # Option 0 is used to filter country
-            results = self.locationlogic.filtercountry(filter_or_id, attribute)
+            results = self.locationlogic.filter_country(filter_or_id, attribute)
 
         elif option == 1: # Option 1 is used to add location
-            results = self.locationlogic.addlocation(new_information)
+            results = self.locationlogic.add_location(new_information)
 
         elif option == 2: # Option 2 is used to remove location
-            results = self.locationlogic.removelocation(filter_or_id)
+            results = self.locationlogic.remove_location(filter_or_id)
 
         else: # Else is used to edit location info
-            results = self.locationlogic.editlocationinfo(filter_or_id, attribute, new_information)
+            results = self.locationlogic.edit_location_info(filter_or_id, attribute, new_information)
 
         return results
 
     def vehicle(self, option, filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate):
         if option == 0: # Option 0 is used to filter vehicle fleet
-            results = self.vehiclelogic.filtervehiclefleet(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate)
+            results = self.vehiclelogic.filter_vehicle_fleet(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate)
 
         elif option == 1: # Option 1 is used to edit vehjicle info
-            results = self.vehiclelogic.editvehicleinfo(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
+            results = self.vehiclelogic.edit_vehicle_info(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
 
         elif option == 2: # Option 2 is used to register new vehicle
-            results = self.vehiclelogic.registernewvehicle(new_vehicle_or_rate)
+            results = self.vehiclelogic.register_new_vehicle(new_vehicle_or_rate)
 
         elif option == 3: # Option 3 is used to remove vehicle
             results = self.vehiclelogic.remove_vehicle(filter_id_number_plate_or_vehicle_type)
 
         else: # Else is used to edit vehicle rate
-            results = self.vehiclelogic.editrate(filter_id_number_plate_or_vehicle_type, new_vehicle_or_rate, attribute_or_current_rate)
+            results = self.vehiclelogic.edit_rate(filter_id_number_plate_or_vehicle_type, new_vehicle_or_rate, attribute_or_current_rate)
 
         return results
 
     def contract(self, option, filter_or_id, attribute, new_information, vehicle_type):
         if option == 0: # Option 0 is used to filter contract
-            results = self.contractlogic.filtercontract(filter_or_id, attribute)
+            results = self.contractlogic.filter_contract(filter_or_id, attribute)
 
         elif option == 1: # Option 1 is used to make new contract
-            results = self.contractlogic.makenewcontract(new_information)
+            results = self.contractlogic.make_new_contract(new_information)
 
         elif option == 2: # Option 2 is used to edit contract information
-            results = self.contractlogic.editcontractinfo(filter_or_id, attribute, new_information)
+            results = self.contractlogic.edit_contract_info(filter_or_id, attribute, new_information)
 
         elif option == 3: # Option 3 is used to cancel contract 
-            results = self.contractlogic.cancelcontract(filter_or_id)
+            results = self.contractlogic.cancel_contract(filter_or_id)
 
         elif option == 4: # Option 4 is used to check if customer has valid licence for type for vehicle
-            results = self.contractlogic.checklicense(filter_or_id, attribute)
+            results = self.contractlogic.check_license(filter_or_id, attribute)
 
         elif option == 5: # Option 5 used to switch vehicle on a contract
-            results = self.contractlogic.changevehicle(filter_or_id, attribute, new_information)
+            results = self.contractlogic.change_vehicle(filter_or_id, attribute, new_information)
 
         elif option == 6: # Option 6 is used to charge the contract
-            results = self.contractlogic.chargecontract(filter_or_id, attribute)
+            results = self.contractlogic.charge_contract(filter_or_id, attribute)
+
+        elif option == 7:
+            results = self.contractlogic.calculate_final_price(filter_or_id, vehicle_type)
 
         else:
-            results = self.contractlogic.calculatefinalprice(filter_or_id, vehicle_type)
+            results = self.contractlogic.edit_contract_date(filter_or_id, attribute, new_information)
 
         return results
 
