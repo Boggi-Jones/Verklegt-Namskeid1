@@ -84,7 +84,7 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-        name_of_airport = input(" | Airport name: ").capitalize()
+        name_of_airport = input(" | Airport name: ").lower()
         while self.logic.input_checking(10, name_of_airport) == False:
             print(" | Only characters are viable for input!")
             name_of_airport = input(" | Airport name: ")
@@ -158,10 +158,10 @@ class LocationUI():
             return None
 
     def remove_location(self):
-        location_name = input(" | Enter airport name: ").capitalize()
+        location_name = input(" | Enter airport name: ").lower()
 
-        while self.logic.input_checking(10, location_name) == False:
-            print(" | Only characters are viable for input!")
+        while self.logic.input_checking(12, location_name) == False:
+            print(" | This airport is not registered!")
             location_name = input(" | Enter airport name: ")
 
         result = self.logic.location(0, location_name, "name_of_airport", None)
@@ -210,9 +210,9 @@ class LocationUI():
 
     def update_location(self):
         while True:
-            find_location = input(" | Enter airport name: ").capitalize()
-            while self.logic.input_checking(10, find_location) == False:
-                print(" | Only characters are viable for input!")
+            find_location = input(" | Enter airport name: ").lower()
+            while self.logic.input_checking(12, find_location) == False:
+                print(" | This airport is not registered!")
                 find_location = input(" | Enter airport name: ")
             the_airport = self.logic.location(0, find_location, "name_of_airport", None)
             if the_airport == []:
