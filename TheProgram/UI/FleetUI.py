@@ -235,16 +235,11 @@ class FleetUI():
     def update_vehicle_information(self):
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
-            print("----")
-            while self.logic.input_checking(11, find_vehicle) == False:
-                print(" | Input has to be of format, fx: AA 111")
-                find_vehicle = input(" | Enter vehicle plate number: ").upper()
+            if self.logic.input_checking(11, find_vehicle) == False:
+                    print(" | No vehicle with this number plate")
+                    continue
+        
             chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
-            if chosen_vehicle == []:
-                print(" | No vehicle with this number plate")
-                input(" | Press 'Enter to continue")
-                continue
-
             attribute = input('''\n -----------------------------------------------------------------------------
  | -> -> Edit vehicles -> Update vehicle information                         |
  -----------------------------------------------------------------------------

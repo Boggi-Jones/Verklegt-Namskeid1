@@ -208,11 +208,12 @@ class LogicMain:
                 first_part = user_input[0:2]
                 secondpart = user_input[5:]
                 checker = 0
-                
-                #if user_input in self.vehicle(0, None, None, None):
-                    #checker += 1
+                if not [] == self.vehicle(0, user_input, "number_plate", None):
+                    checker += 1
+                    
                 if user_input[2] == " " and first_part.isalpha() and secondpart.isdigit():
-                    checker = 2
+                    checker += 1
+                    
                 
                 if checker == 2:
                     return True  
