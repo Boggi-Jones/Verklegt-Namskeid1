@@ -1,8 +1,9 @@
 from Logic.LogicMain import LogicMain
-from Models.Reports import Reports
+#from Models.Reports import Reports
 
 class ReportsUI():
-    self.logic = LogicMain()
+    def __init__(self):
+        self.logic = LogicMain()
 
     def reports_loop(self):
         while True:

@@ -80,7 +80,7 @@ class ContractUI():
  |Late before: {:59s}   | 
  |                                                                           |
  |                                                                           |
- -----------------------------------------------------------------------------'''.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before)).lower()
+ -----------------------------------------------------------------------------'''.format(name, ssn, email, gsm_number, address, driving_license, returned_late_before))
             choice = input(" | Is the information correct (Y / N)? ")
             if choice == "y":
                 self.logic.customer(1, new_customer, None, None)
