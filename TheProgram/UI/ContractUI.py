@@ -257,7 +257,7 @@ class ContractUI():
                 else:
                     attribute = "return_date"
                 new_info = input(" | Enter new information: ")
-                finished_product = self.logic.contract(2, find_contract, attribute, new_info, None)
+                finished_product = self.logic.contract(8, find_contract, attribute, new_info, None)
             elif attribute < 7 and attribute > 2: 
                 if attribute == 3:
                     attribute = "phone_number"
@@ -397,3 +397,7 @@ class ContractUI():
 
     def charge_contact(self):
         pass
+        # To get the new total:
+        # total = self.logic.contract(6, contract_id, condition_of_the_car("good" or "needs_repairs"), None, None)
+        # When confirmed that he has paid:
+        # self.logic.contract(2, ssn, "paid", "yes", None)
