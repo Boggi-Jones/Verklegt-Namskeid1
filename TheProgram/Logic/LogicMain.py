@@ -3,6 +3,7 @@ from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
 from Logic.ContractLogic import ContractLogic
 from Logic.CustomerLogic import CustomerLogic
+from Logic.EmployeeLogic import RoleLogic
 
 class LogicMain:
     def __init__(self):
@@ -11,6 +12,7 @@ class LogicMain:
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
         self.customerlogic = CustomerLogic()
+        self.rolelogic = RoleLogic()
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0: # Option 0 is used to filter employees
@@ -104,6 +106,15 @@ class LogicMain:
             results = self.customerlogic.edit_customer(ssn_or_customer_class, attribute, new_information)
 
         return results
+    
+    def roles(self, option, role, attribute, emp_ssn):
+        '''logic for association between employees and roles'''
+        if option == 0:
+            results = self.rolelogic.role_list(role, attribute)
+            
+        return results
+            
+            
 
     def input_checking(self, option, user_input):
         if option == 0: #Email checking

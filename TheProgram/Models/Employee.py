@@ -17,3 +17,18 @@ class Employee(object):
     
     def __str__(self):
         return "{:^18s} | {:^11s} | {:^13s} | {:^12s} | {:^12s} | {:^18s} | {:^10s} | {:^10s}".format(self.name, self.ssn, self.address, self.home_phone, self.gsm_phone, self.email, self.location, self.role)
+
+class Role(object):
+    def __init__(self, role, employee, ssn):
+        self.role = role
+        self.emp = employee
+        self.SSN = ssn
+    
+    def fieldnames(self):
+        return ["Role", "Employee", "SSN"]
+    
+    def add_to_dict(self):
+        return {"Role" : self.role, "Employee" : self.emp, "SSN" : self.SSN}
+    
+    def __str__(self):
+        return "{:^25s} | {:^25s} | {:^25s}".format(self.role, self.emp, self.SSN)
