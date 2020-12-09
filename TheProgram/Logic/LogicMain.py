@@ -3,7 +3,11 @@ from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
 from Logic.ContractLogic import ContractLogic
 from Logic.CustomerLogic import CustomerLogic
+<<<<<<< HEAD
 from Logic.EmployeeLogic import RoleLogic
+=======
+from Logic.ReportLogic import ReportLogic
+>>>>>>> 88ced1ee121016af644422af1e4c4ebbef5888c9
 
 class LogicMain:
     def __init__(self):
@@ -12,7 +16,11 @@ class LogicMain:
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
         self.customerlogic = CustomerLogic()
+<<<<<<< HEAD
         self.rolelogic = RoleLogic()
+=======
+        self.reportlogic = ReportLogic()
+>>>>>>> 88ced1ee121016af644422af1e4c4ebbef5888c9
 
     def employee(self, option, filter_or_id, attribute, new_information):
         if option == 0: # Option 0 is used to filter employees
@@ -115,6 +123,22 @@ class LogicMain:
         return results
             
             
+
+    def reports(option, start_date, end_date):
+        if option == 0:
+            results = self.reportlogic.most_popular_by_location()
+
+        elif option == 1:
+            total, location_dict, type_dict = self.reportlogic.overview_of_income(start_date, end_date)
+            return total, location_dict, type_dict
+
+        elif option == 2:
+            results = self.reportlogic.type_usage_by_location()
+
+        else:
+            results = self.reportlogic.overview_of_payment_status(start_date, end_date)
+
+        return results
 
     def input_checking(self, option, user_input):
         if option == 0: #Email checking

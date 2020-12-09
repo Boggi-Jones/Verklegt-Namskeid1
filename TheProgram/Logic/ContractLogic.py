@@ -15,7 +15,7 @@ class ContractLogic:
 
     def filter_contract(self, filter_or_id, attribute):
         # Gets lists of contracts from datamain
-        # If filter or id doesn´t match none, it get added to newly made retlist
+        # If filter isn't none, we iterate through the list and add only thing that match the filter
         # Retlist is then returned
         # Else list of contract is returned 
         list_of_contracts = self.datamain.get_list(self.position)
@@ -91,6 +91,7 @@ class ContractLogic:
             new_total = self.calculate_final_price(duration, the_vehicle)
             self.edit_contract_info(ssn, "return_date", datetime.strftime(current_date,'%d/%m/%Y'))
             self.edit_contract_info(ssn, "duration", duration)
+            self.vehiclelogic.edit_vehicle_info(the_contract[0].number_plate, "rent_counter", (int(the_vehicle[0].rent_counter) + int(duration)))
             
             if current_date > return_date:    
                 new_total = new_total * 1.2
