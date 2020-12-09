@@ -195,8 +195,5 @@ class LogicMain:
                 return False
             if location != []:
                 return True
-            
-        elif option == 13: #employee name t.d Sigmundur F. J.
-            pass
                 
         return False
