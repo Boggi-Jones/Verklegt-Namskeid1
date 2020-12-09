@@ -91,24 +91,25 @@ class FleetUI():
             rate = input(" | Rate: ")
             manufacturer = input(" | Manufacturer: ").capitalize()
             condition = "Good"
-            model_year = input(" | Model year: ")
             
+            model_year = input(" | Model year: ")
             while self.logic.input_checking(8, model_year) == False:
-                print("Model year has to be of length 4 and only numbers, fx: 1234")
+                print(" | Model year has to be of length 4 and only numbers, fx: 1234")
                 model_year = input(" | Model year: ")
 
             color = input(" | Color: ").capitalize()
 
             number_plate = input(" | Number plate: ").upper()
-            
-            while self.logic.input_checking(11, number_plate) == False:
-                print(" | Number plate has to be two letters and three numbers: 'AA 123'")
+            while self.logic.input_checking(13, number_plate) == False:
                 number_plate = input(" | Number plate: ").upper()
+                
+                
+                
             driving_license = input(" | License required: ")
-            
             while self.logic.input_checking(4, driving_license) == False:
                 print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!").upper()
                 driving_license = input(" | License required: ")
+                
             rent_counter = "0"
             
             print(''' | Please select an airport from the following locations: ''')
@@ -118,7 +119,9 @@ class FleetUI():
                 for location in all_locations:
                     if location.name_of_airport == name_of_airport:
                         all_locations = 0
-                        break
+                if all_locations != 0:                        
+                    print(" | Airport is not on the list! ")
+                    
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
 
             print('''\n -----------------------------------------------------------------------------
