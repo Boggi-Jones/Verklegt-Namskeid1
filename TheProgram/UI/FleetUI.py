@@ -342,13 +342,13 @@ class FleetUI():
             elif attribute == "12":
                 attribute = "name_of_airport"
                 print(" | Choose new airport from this list: ")
+                location_list = self.logic.locationlogic.filter_country(None, "airport_name")
                 for row in location_list:
                     print(" | ",row)
-                location = input(" | Airport: ").capitalize()
-                location_list = self.logic.locationlogic.filter_country(None, "airport_name")
-                while self.logic.input_checking(12,location) == False:
-                    print(" | '{}' is not registered!".format(location))
-                    location = input(" | Airport: ")
+                new_vehicle_info = input(" | Airport: ").capitalize()
+                while self.logic.input_checking(12,new_vehicle_info) == False:
+                    print(" | '{}' is not registered!".format(new_vehicle_info))
+                    new_vehicle_info = input(" | Airport: ")
 
             else:
                 print("Wrong input")
