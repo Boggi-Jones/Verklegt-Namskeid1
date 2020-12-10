@@ -18,10 +18,21 @@ class UIMain():
             employees = self.logic.roles(0, None, None)
             for emp in employees:
                 print(emp)
-        username = input(" |Enter username: ")
+                
+        username = input(" | Enter ssn: ")
+        while self.logic.input_checking(14, username) == False:
+            print(" | user not found! ssn must be in the correct format: 123456-1234")
+            username = input(" | Enter ssn: ")
+            
         #logic something username
-        password = input(" |Enter password): ")
-        #logic something password
+        password = input(" | Enter password: ")
+        while self.logic.input_checking(15, password) == False:
+            print(" | Incorrect password!")
+            password = input(" | Enter password: ")
+        
+        the_user = self.logic.roles(0, username, "ssn")
+        role_of_user = the_user[0].role
+            
         while True:
             choice = input('''\n ---------------------------------------------------------------------------------------------------------------------
  |                             Welcome to NaN Air                                                                    | 
@@ -41,14 +52,34 @@ class UIMain():
  ---------------------------------------------------------------------------------------------------------------------
  | Choice: ''').lower()
             if choice == "1":
+                if role_of_user != "ceo":
+                    print(" | Permission denied! ")
+                    input(" | Press 'Enter' to continue ")
+                    continue
                 EmployeeUI().employee_loop()
             elif choice == "2":
+                if role_of_user == "base":
+                    print(" | Permission denied! ")
+                    input(" | Press 'Enter' to continue ")
+                    continue
                 FleetUI().fleet_loop()
             elif choice == "3":
+                if role_of_user != "ceo":
+                    print(" | Permission denied! ")
+                    input(" | Press 'Enter' to continue ")
+                    continue
                 LocationUI().location_loop()
             elif choice == "4":
+                if role_of_user == "fleet":
+                    print(" | Permission denied! ")
+                    input(" | Press 'Enter' to continue ")
+                    continue
                 ContractUI().contract_loop()
             elif choice == "5":
+                if role_of_user != "ceo":
+                    print(" | Permission denied! ")
+                    input(" | Press 'Enter' to continue ")
+                    continue
                 ReportsUI().reports_loop()
             elif choice == "q":
                 break

@@ -1,7 +1,7 @@
 role,name,ssn
 CEO, Chuck Norris, 999999-9999
-Book-keeper, Mathilda, 121201-090910
-On-site, Fred, 011111-0000
+base, Mathilda, 121201-090910
+fleet, Fred, 011111-0000
 ceo,asdrrh hassan,191919-8881
 fleet,Herkúles TheGreekGod,121212-9090
 base,Herkúles the GreekGod,181818-9191
@@ -13,3 +13,4 @@ Ceo,Odinn,001100-0001
 Fleet,Harnaldur ugluson,191919-0000
 Fleet,Harnaldur jonsonirue,119199-1919
 Fleet,Sasdhas,121212-1212
+ceo,Andri,210292-2929
