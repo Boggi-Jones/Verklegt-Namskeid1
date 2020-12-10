@@ -7,7 +7,6 @@ from Models.Customer import Customer
 from Models.Employee import Role
 
 import os
-os.chdir("TheProgram/Data/data")
 
 
 
