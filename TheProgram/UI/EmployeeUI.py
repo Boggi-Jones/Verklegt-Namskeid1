@@ -155,7 +155,7 @@ class EmployeeUI():
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
-            self.logic.roles(1, employee_roles, the_employee)
+            self.logic.roles(1, None, employee_roles)
             print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |
  ------------------------------------------------------------------------------
