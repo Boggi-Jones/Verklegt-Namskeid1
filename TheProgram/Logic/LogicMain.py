@@ -152,7 +152,7 @@ class LogicMain:
                 return True
 
         elif option == 3: #Company role
-            if user_input == "ceo" or user_input == "fleet" or user_input == "base":
+            if user_input == "Ceo" or user_input == "Fleet" or user_input == "Base":
                 return True
 
         elif option == 4: #Driving license

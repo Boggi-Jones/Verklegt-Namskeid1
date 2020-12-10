@@ -91,14 +91,14 @@ class EmployeeUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-        name = input(" | Name: ")
+        name = input(" | Name: ").capitalize()
 
         ssn = input(" | SSN: ")
         while self.logic.input_checking(1, ssn) == False:
             print(" | SSN must be in the correct format: '123456-1234' ")
             ssn = input(" | SSN: ")
 
-        address = input(" | Address: ")
+        address = input(" | Address: ").capitalize()
 
         home_phone = input(" | Home phone: ")
         while self.logic.input_checking(2, home_phone) == False:
@@ -117,19 +117,21 @@ class EmployeeUI():
 
         
         location_list = self.logic.locationlogic.filter_country(None, "airport_name")
-        print(" | Choose the location: ")
+        print(''' | Choose the location: 
+ -----------------------------------------------------------------------------------------------''')
         for row in location_list:
             print(" | ",row)
+        print("-------------------------------------------------------------------------------------------------")
         location = input(" | Location: ").capitalize()
         while self.logic.input_checking(12,location) == False:
             print(" | '{}' is not registered!".format(location))
-            location = input(" | Location: ")
+            location = input(" | Location: ").capitalize()
             
             
-        role = input(" | Company role: ")
+        role = input(" | Company role: ").capitalize()
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
-            role = input(" | Company role: ")
+            role = input(" | Company role: ").capitalize()
 
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
         employee_roles = Role(role, name, ssn)
@@ -220,7 +222,7 @@ class EmployeeUI():
                 input(" | Press 'Enter' to continue")
                 break
             elif choice == "n":
-                print('''\n -----------------------------------------------------------------------------
+                print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                   |
  ------------------------------------------------------------------------------
  |                                                                            |
@@ -288,15 +290,16 @@ class EmployeeUI():
 
             elif attribute == "5":
                 attribute = "location"
-                new_employee_info = input(" | Enter new information: ")
+                new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(10, new_employee_info) == False:
                     print(" | Locations must only contain letters: 'Place' ")
 
             elif attribute == "6":
-                attribute = "role"
-                new_employee_info = input(" | Enter new information: ")
+                attribute = "role"            
+                new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(3, new_employee_info) == False:
-                    print(" | company role is either 'ceo', 'fleet' or 'base'!")
+                    print(" | company role is either 'Ceo', 'Fleet' or 'Base'!")
+                    role = input(" | Company role: ").capitalize()
 
             else:
                 print(" | Wrong input")
@@ -326,11 +329,11 @@ class EmployeeUI():
     def get_all_employees(self):
         '''List all employess in appropriate columns below'''
         results = self.logic.employee(0, None, None, None)
-        print("""\n -----------------------------------------------------------------------------------------------------------------------------------
- | -> -> Manage employee -> All Employees                                                                                          |
- -----------------------------------------------------------------------------------------------------------------------------------
- |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:       |""")
-        print(" -----------------------------------------------------------------------------------------------------------------------------------")
+        print("""\n ---------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                        |
+ ---------------------------------------------------------------------------------------------------------------------------------
+ |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     |""")
+        print(" ---------------------------------------------------------------------------------------------------------------------------------")
         
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
