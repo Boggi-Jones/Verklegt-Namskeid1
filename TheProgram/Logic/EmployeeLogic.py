@@ -7,11 +7,8 @@ class EmployeeLogic:
         self.position = "Employee"
 
     def filter_employees(self, filter_or_id, attribute):
-        # List of employees is gathered from get list function in data main
-        # If filter or id doesn´t match None if loop is used to iterate through lit of employees
-        # If emp matches with filter or id they are added to retlist
-        # Retlist is then returned
-        # Else List of employees is returned
+        ''' Gets a list of all employees from data. If there is no filter it just returns the full list.
+        If there is a filter then it iterates through the list. It adds everything to a new list that has the filter in the chosen attribute.'''
         list_of_employees = self.datamain.get_list(self.position)
         retlist = []
         if filter_or_id != None:
@@ -23,10 +20,8 @@ class EmployeeLogic:
             return list_of_employees
 
     def remove_employee(self, filter_or_id):
-        # List of employees is gathered from filter employees function
-        # If ssn attribute for emp matches filter or id
-        # Employee is removed from list of employess
-        # List of employees is then overwritten with updated list
+        ''' Gets a list from filter employee of all employees. Then iterates through the list and removes the employee with the given ssn.
+        Then sends the rest of the list to data to rewrite everything without the removed employee.'''
         list_of_employees = self.filter_employees(None, None)
         for emp in list_of_employees:
             if emp.ssn == filter_or_id:
@@ -35,14 +30,13 @@ class EmployeeLogic:
         
 
     def add_employee(self, new_information):
-        # New employee is added to list
+        ''' Tells data to add this employee to the system'''
         self.datamain.add_to_list(self.position, new_information)
          
 
     def edit_employee_info(self, filter_or_id, attribute, new_information):
-        # Single employee variable is created using filteremployee funtiong and ssn attribute to identifie uniqr emploee)
-        # employee is then updated by using new_information attribute
-        # remove employee and add employee functions are then called and updated
+        ''' Gets a list of one employee by filtering with the ssn and then changes the chosen attribute.
+        Then it removes that employee from data and adds the updated one.'''
         single_employee = self.filter_employees(filter_or_id, "ssn")
         for emp in single_employee:
             emp.__setattr__(attribute, new_information)
@@ -74,23 +68,29 @@ class RoleLogic:
         self.datamain = DataMain()
         self.position = "Role"
     
-    def role_list(self, attribute):
+    def role_list(self, filter_or_id, attribute):
         '''Get list of roles and associated employees with them'''
         list_of_roles = self.datamain.get_list(self.position)
-        retList = [] 
-        for i in list_of_roles:
-            retList.append(i)
-        return retList
+        retList = []
+        if attribute != None:
+            for emp in list_of_roles:
+                if emp.__getattribute__(attribute) == filter_or_id:
+                    retList.append(emp)
+            return retList
+        else:
+            for i in list_of_roles:
+                retList.append(i)
+            return retList
     
     def add_employee(self, new_information):
         '''when employee is added to employees file, they also get added with their role in role file'''
         self.datamain.add_to_list(self.position, new_information)
         
-    def remove_employee(self, attribute):
+    def remove_employee(self, filter_or_id, attribute):
         '''removed employee is either fired or given a new role''' 
-        role_list_ssn = self.role_list(attribute)
+        role_list_ssn = self.role_list(None, None)
         for s in role_list_ssn:
-            if s.ssn == attribute:
+            if s.ssn == filter_or_id:
                 role_list_ssn.remove(s)
         self.datamain.overwrite(self.position, role_list_ssn)
 

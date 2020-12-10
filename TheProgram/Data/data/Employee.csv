@@ -1,7 +1,5 @@
 name,ssn,address,home_phone,gsm_phone,email,location,role,password
-Jón Steinar,170892-2679,Blómvellir 29,555-4321,777-4321,jonsteinar@ru.is,Nuuk,COO,asd
-Tom,220099-2222,Street 10,6668888,9990088,tom@nan.is,Kulusuk,base,asd
-Gauti,210997-2379,fífuhvammur 8,5531221,7886464,gauti@gmail.com,Reykjavik,ceo,asd
-Thor,122029-9292,Valhalla,6661111,7771111,thor@nan.is,Reykjavik,fleet,asd
-Steve,201090-2020,Gata 1,5550001,7770001,steve@nan.is,Kulusuk,Base,asd
-Andri,210292-2929,Vellir 10,5650011,7771122,andri@nan.is,Nuuk,ceo,asd
+Stjáni sigurðsson,130492-2149,Hafnargata 5,5577596,8723145,stjani@gmail.com,Reykjavik,Base,asdsadsad
+Chuk Norris,999999-9999,norris hill 2,4400000,0404444,chuck@norris.com,Helsinki,ceo,1234
+Valbarði G.,178890-9090,Seltjarnarnesi 102,1111111,2222222,valbi1@gmail.com,Helsinki,Fleet,1234
+Guðmundur Á,160299-2159,Laugardalnum,5665945,8208266,gummia@hot.is,Reykjavik,ceo,123

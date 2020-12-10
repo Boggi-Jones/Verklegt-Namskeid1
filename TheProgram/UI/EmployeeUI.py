@@ -155,7 +155,7 @@ class EmployeeUI():
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
-            self.logic.roles(1, employee_roles, None)
+            self.logic.roles(1, employee_roles, the_employee)
             print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |
  ------------------------------------------------------------------------------
@@ -207,7 +207,7 @@ class EmployeeUI():
             choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(find_employee)).lower()
             if choice == "y":
                 self.logic.employee(1, find_employee, None, None)
-                self.logic.roles(2, find_employee, None)
+                self.logic.roles(2, find_employee, "ssn")
                 print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                   |
  ------------------------------------------------------------------------------
@@ -294,8 +294,8 @@ class EmployeeUI():
             elif attribute == "5":
                 attribute = "location"
                 new_employee_info = input(" | Enter new information: ").capitalize()
-                while self.logic.input_checking(10, new_employee_info) == False:
-                    print(" | Locations must only contain letters: 'Place' ")
+                while self.logic.input_checking(11, new_employee_info) == False:
+                    print(" | Location {} does not exist! ").format(new_employee_info)
 
             elif attribute == "6":
                 attribute = "role"            

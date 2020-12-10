@@ -162,7 +162,7 @@ class ContractUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Is the following information correct (Y / N)? : '''.format(vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color)).lower()
+ | Is the following information correct (Y / N)? '''.format(vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color)).lower()
                 if choice == "y":
                     break
 
@@ -209,7 +209,7 @@ class ContractUI():
  |         Model year:       {:48s}|
  |         Color:            {:48s}|        
  -----------------------------------------------------------------------------
- | Is the following information correct (Y / N)? : '''.format(date, return_date, str(duration), vehicle_class[0].name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
+ | Is the following information correct (Y / N)? '''.format(date, return_date, str(duration), vehicle_class[0].name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input(" | ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, vehicle_class)
