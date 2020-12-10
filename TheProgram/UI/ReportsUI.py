@@ -59,7 +59,7 @@ class ReportsUI():
             for location in location_income[1]:
                 print(" | Income by location is: {}".format(str(location)))
         elif choice == "3":
-            location_income = self.logic.reports(1, income_period, None, None)
+            location_income = self.logic.reports(1, income_period, None)
             for vehicle in location_income[2]:
                 print(" | Income by vehicle is: {}".format(str(vehicle)))
         else:

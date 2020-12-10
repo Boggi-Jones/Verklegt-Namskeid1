@@ -279,16 +279,15 @@ class LocationUI():
         for location in results:
             print(''' |  {}  |'''.format(str(location)))
         print(" -------------------------------------------------------------------------------------------------------")
-        input(" | Press 'Enter' to continue")
         return results
 
 
     def search_location(self):
-        location = input(" | Enter airport name: ")
+        location = input(" | Enter airport name: ").capitalize()
 
         while self.logic.input_checking(10, location) == False:
             print(" | Only characters are viable for input!")
-            location = input(" | Enter airport name: ")
+            location = input(" | Enter airport name: ").capitalize()
         result = self.logic.location(0, location, "name_of_airport", None)
 
         if result == []:
