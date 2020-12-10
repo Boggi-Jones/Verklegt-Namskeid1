@@ -5,12 +5,23 @@ from UI.FleetUI import FleetUI
 from UI.ReportsUI import ReportsUI
 from Logic.LogicMain import LogicMain
 
+
 class UIMain():
     def __init__(self):
         self.logic = LogicMain()
         self.UILoop()
 
     def UILoop(self):
+        print(" | You must enter your credentials to login the system: ")
+        choice = input(" | Press 1 to continue or press 2 for the list of employees: ") 
+        if choice == "2":
+            employees = self.logic.roles(0, None, None)
+            for emp in employees:
+                print(emp)
+        username = input(" |Enter username: ")
+        #logic something username
+        password = input(" |Enter password): ")
+        #logic something password
         while True:
             choice = input('''\n ---------------------------------------------------------------------------------------------------------------------
  |                             Welcome to NaN Air                                                                    | 
@@ -38,7 +49,7 @@ class UIMain():
             elif choice == "4":
                 ContractUI().contract_loop()
             elif choice == "5":
-                ReportsUI().reports_loop()            # Þurfum að bæta við klasa
+                ReportsUI().reports_loop()            
             elif choice == "q":
                 break
             else:
