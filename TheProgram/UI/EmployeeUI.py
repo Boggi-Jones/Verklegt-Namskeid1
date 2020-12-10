@@ -294,9 +294,9 @@ class EmployeeUI():
             elif attribute == "5":
                 attribute = "location"
                 new_employee_info = input(" | Enter new information: ").capitalize()
-                while self.logic.input_checking(11, new_employee_info) == False:
-                    print(" | Location {} does not exist! ").format(new_employee_info)
-
+                while self.logic.input_checking(12, new_employee_info) == False:
+                    print(" | Location {} does not exist!".format(new_employee_info))
+                    new_employee_info = input(" | Enter new information: ").capitalize()
             elif attribute == "6":
                 attribute = "role"            
                 new_employee_info = input(" | Enter new information: ").capitalize()
@@ -312,7 +312,7 @@ class EmployeeUI():
                 print(" | Wrong input")
                 continue
 
-            new_employee_info = input(" | Enter new information: ")
+            
             updated_employee = self.logic.employee(3, find_employee, attribute,  new_employee_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Update employee                                  |
