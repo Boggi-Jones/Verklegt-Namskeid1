@@ -91,26 +91,26 @@ class FleetUI():
             rate = input(" | Rate: ")
             manufacturer = input(" | Manufacturer: ").capitalize()
             condition = "Good"
-            model_year = input(" | Model year: ")
             
+            model_year = input(" | Model year: ")
             while self.logic.input_checking(8, model_year) == False:
-                print("Model year has to be of length 4 and only numbers, fx: 1234")
+                print(" | Model year has to be of length 4 and only numbers, fx: 1234")
                 model_year = input(" | Model year: ")
 
             color = input(" | Color: ").capitalize()
 
             number_plate = input(" | Number plate: ").upper()
-            
-            while self.logic.input_checking(11, number_plate) == False:
-                print(" | Number plate has to be two letters and three numbers: 'AA 123'")
+            while self.logic.input_checking(13, number_plate) == False:
                 number_plate = input(" | Number plate: ").upper()
+                
+                
+                
             driving_license = input(" | License required: ")
-            
             while self.logic.input_checking(4, driving_license) == False:
                 print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!").upper()
                 driving_license = input(" | License required: ")
+                
             rent_counter = "0"
-            
             print(''' | Please select an airport from the following locations: ''')
             all_locations = self.locationUI.all_locations()
             while all_locations != 0:
@@ -118,7 +118,9 @@ class FleetUI():
                 for location in all_locations:
                     if location.name_of_airport == name_of_airport:
                         all_locations = 0
-                        break
+                if all_locations != 0:                        
+                    print(" | Airport is not on the list! ")
+                    
             the_vehicle = Vehicle(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport)
 
             print('''\n -----------------------------------------------------------------------------
@@ -138,7 +140,6 @@ class FleetUI():
  | Rent:                {:40s}             |
  | Airport:             {:40s}             |
  -----------------------------------------------------------------------------'''.format(status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter, name_of_airport))
-            input(" | Push 'Enter' to continue")
 
             add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
             if add_choice == "y":
@@ -186,11 +187,22 @@ class FleetUI():
         to list of all vehicles. If name exists it will delete
         if the user wishes to do so'''
 
+        print(''' | Vehicle list: 
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------''')
+        vehicle_list = self.logic.vehiclelogic.filter_vehicle_fleet(None, "number_plate")
+        for row in vehicle_list:
+            print(" | ",row)
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------------------------")
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
             if self.logic.input_checking(11, find_vehicle) == False:
                 print(" | No vehicle with this number plate")
-                break
+                continue
+
+            # find_vehicle = input(" | Enter vehicle plate number: ").upper()
+            # if self.logic.input_checking(11, find_vehicle) == False:
+            #     print(" | No vehicle with this number plate")
+            #     break
 
             remove_choice = input(" | Are you sure you want to remove '{}'? (Y / N): ".format(find_vehicle)).lower()
             if remove_choice == "y":
@@ -230,9 +242,16 @@ class FleetUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(find_vehicle))
-    
+                input(" | Press 'Enter' to continue ")
+                break   
 
     def update_vehicle_information(self):
+        print(''' | Vehicle list: 
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------''')
+        vehicle_list = self.logic.vehiclelogic.filter_vehicle_fleet(None, "number_plate")
+        for row in vehicle_list:
+            print(" | ",row)
+        print(" ------------------------------------------------------------------------------------------------------------------------------------------------------------------")
         while True:
             find_vehicle = input(" | Enter vehicle plate number: ").upper()
             if self.logic.input_checking(11, find_vehicle) == False:
@@ -315,7 +334,14 @@ class FleetUI():
 
             elif attribute == "12":
                 attribute = "name_of_airport"
-                new_vehicle_info = input(" | Enter new information: ")
+                print(" | Choose new airport from this list: ")
+                for row in location_list:
+                    print(" | ",row)
+                location = input(" | Airport: ").capitalize()
+                location_list = self.logic.locationlogic.filter_country(None, "airport_name")
+                while self.logic.input_checking(12,location) == False:
+                    print(" | '{}' is not registered!".format(location))
+                    location = input(" | Airport: ")
 
             else:
                 print("Wrong input")
@@ -343,9 +369,9 @@ class FleetUI():
                 print(" | Would you like to report the grand theft auto? ") 
                 report_incident = input(" | Y/N: ")
                 if report_incident == "Y": 
-                    chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", new_vehicle_info)
-                    Incident_airport_filter = chosen_vehicle[11]
-                    Incident_country_list = self.logic.location(0, Incident_airport_filter, "country", None)
+                    chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
+                    Incident_airport_filter = chosen_vehicle[-1]
+                    Incident_country_list = self.logic.location(0, Incident_airport_filter, "name_of_aiport", None)
                     Incident_country = Incident_country_list[1]
                     print(" | Police department of {} has been alerted. Pending investigation. | ").format(Incident_country)
                 else: 

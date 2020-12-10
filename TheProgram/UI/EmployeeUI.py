@@ -1,6 +1,7 @@
 #from UI.UIMain import UILoop
 from Logic.LogicMain import LogicMain
 from Models.Employee import Employee
+from Models.Employee import Role
 from Models.Location import Location
 
 class EmployeeUI():
@@ -90,14 +91,14 @@ class EmployeeUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------''')
-        name = input(" | Name: ")
+        name = input(" | Name: ").capitalize()
 
         ssn = input(" | SSN: ")
         while self.logic.input_checking(1, ssn) == False:
             print(" | SSN must be in the correct format: '123456-1234' ")
             ssn = input(" | SSN: ")
 
-        address = input(" | Address: ")
+        address = input(" | Address: ").capitalize()
 
         home_phone = input(" | Home phone: ")
         while self.logic.input_checking(2, home_phone) == False:
@@ -115,19 +116,25 @@ class EmployeeUI():
             email = input(" | Email: ")
 
         
+        location_list = self.logic.locationlogic.filter_country(None, "airport_name")
+        print(''' | Choose the location: 
+ -----------------------------------------------------------------------------------------------''')
+        for row in location_list:
+            print(" | ",row)
+        print("-------------------------------------------------------------------------------------------------")
         location = input(" | Location: ").capitalize()
         while self.logic.input_checking(12,location) == False:
             print(" | '{}' is not registered!".format(location))
-            location = input(" | Location: ")
+            location = input(" | Location: ").capitalize()
             
             
-        role = input(" | Company role: ")
+        role = input(" | Company role: ").capitalize()
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
-            role = input(" | Company role: ")
+            role = input(" | Company role: ").capitalize()
 
         the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
-
+        employee_roles = Role(role, name, ssn)
         print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
@@ -142,13 +149,11 @@ class EmployeeUI():
  |Company role: {:58s}   |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
-        input(" | Push 'Enter' to continue")
-
-
 
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
+            self.logic.roles(1, None, employee_roles)
             print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |
  ------------------------------------------------------------------------------
@@ -217,7 +222,7 @@ class EmployeeUI():
                 input(" | Press 'Enter' to continue")
                 break
             elif choice == "n":
-                print('''\n -----------------------------------------------------------------------------
+                print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                   |
  ------------------------------------------------------------------------------
  |                                                                            |
@@ -285,15 +290,16 @@ class EmployeeUI():
 
             elif attribute == "5":
                 attribute = "location"
-                new_employee_info = input(" | Enter new information: ")
+                new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(10, new_employee_info) == False:
                     print(" | Locations must only contain letters: 'Place' ")
 
             elif attribute == "6":
-                attribute = "role"
-                new_employee_info = input(" | Enter new information: ")
+                attribute = "role"            
+                new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(3, new_employee_info) == False:
-                    print(" | company role is either 'ceo', 'fleet' or 'base'!")
+                    print(" | company role is either 'Ceo', 'Fleet' or 'Base'!")
+                    role = input(" | Company role: ").capitalize()
 
             else:
                 print(" | Wrong input")

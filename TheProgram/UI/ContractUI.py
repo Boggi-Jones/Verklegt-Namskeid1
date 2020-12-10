@@ -169,27 +169,27 @@ class ContractUI():
  | "Contract information"                                                    | 
  | Date:                   {:50s}| 
  | Return date:            {:50s}| 
- | Duration:               {:50d}| 
+ | Duration:               {:50s}| 
  | Name of airport:        {:50s}| 
  | Employee name:          {:50s}| 
- | Final price:            {:50d}| 
+ | Final price:            {:50s}| 
  | "Customer information"                                                    | 
- |         Name:                   {:40s}| 
- |        SSN:                     {:40s}| 
- |         Email:                  {:40s}|
- |         Phone number:           {:40s}|
- |         Address:                {:40s}|
- |         Drivers license:        {:40s}|
- |         Returned late before:   {:40s}|
+ |         Name:                   {:42s}| 
+ |        SSN:                     {:42s}| 
+ |         Email:                  {:42s}|
+ |         Phone number:           {:42s}|
+ |         Address:                {:42s}|
+ |         Drivers license:        {:42s}|
+ |         Returned late before:   {:42s}|
  | "Vehicle information"                                                     |
- |         Type:             {:420s}|
- |         Model:            {:42s}|
- |         Rate:             {:42s}|
- |         Manufacturer:     {:42s}|
- |         Model year:       {:42s}|
- |         Color:            {:42s}|        
+ |         Type:             {:48s}|
+ |         Model:            {:48s}|
+ |         Rate:             {:48s}|
+ |         Manufacturer:     {:48s}|
+ |         Model year:       {:48s}|
+ |         Color:            {:48s}|        
  -----------------------------------------------------------------------------
- | Is the following information correct (Y / N)? : '''.format(date, return_date, duration, name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
+ | Is the following information correct (Y / N)? : '''.format(date, return_date, str(duration), name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input(" | ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, vehicle_class)
@@ -354,10 +354,10 @@ class ContractUI():
 
     def print_contract(self):
         while True:
-            find_contract = input("| Enter the contacts ssn: ")
+            find_contract = input(" | Enter the contacts ssn: ")
             the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
             the_country = self.logic.location(0, the_contract[0].name_of_airport, "name_of_airport", None)
-            reykjavik = self.logic.location(0, "reykjavík", "name_of_airport", None)
+            reykjavik = self.logic.location(0, "Reykjavik", "name_of_airport", None)
             vehicle_class = self.logic.vehicle(0, the_contract[0].number_plate , "number_plate", None)
             customer_class = self.logic.customer(0, find_contract,"ssn",None)
             try:
@@ -367,7 +367,7 @@ class ContractUI():
                 vehicle = vehicle_class[0]
                 customer = customer_class[0]
             except IndexError:
-                print("| Contract not found, try again")
+                print(" | Contract not found, try again")
                 continue
             customer_id = print("""
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -432,14 +432,14 @@ class ContractUI():
             new_condition = input("""| What is the condition of the returned car? ("Good" or "needs repair") """)
             total = self.logic.contract(6, find_contract, new_condition, None, None)
             print('''\n -----------------------------------------------------------------------------
- | -> Manage vehicles -> Remove vehicle                                      |
+ | -> Manage vehicles -> Charge contract                                     |
  -----------------------------------------------------------------------------
  |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                       The final price is {:20s}                   |
+ |                       The final price is {:20s}              |
  |                                                                           |
  |                                                                           |
  |                                                                           |

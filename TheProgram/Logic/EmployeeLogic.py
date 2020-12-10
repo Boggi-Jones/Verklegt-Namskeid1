@@ -32,12 +32,12 @@ class EmployeeLogic:
             if emp.ssn == filter_or_id:
                 list_of_employees.remove(emp)
         self.datamain.overwrite(self.position, list_of_employees)
-        self.rolelogic.remove_employee(emp)
+        
 
     def add_employee(self, new_information):
         # New employee is added to list
         self.datamain.add_to_list(self.position, new_information)
-        self.rolelogic.add_employee(new_information)
+         
 
     def edit_employee_info(self, filter_or_id, attribute, new_information):
         # Single employee variable is created using filteremployee funtiong and ssn attribute to identifie uniqr emploee)
@@ -67,6 +67,7 @@ class EmployeeLogic:
         self.edit_employee_info(filter_or_id, "name", emp_name) 
         #employee is first added to the system from input and then checked 
         
+
 class RoleLogic:
     
     def __init__(self):
@@ -81,10 +82,7 @@ class RoleLogic:
     
     def add_employee(self, new_information):
         '''when employee is added to employees file, they also get added with their role in role file'''
-        attributes = self.datamain.get_list(self.position)
-        for emp in new_information:
-            if emp.__getattribute__(attributes) == new_information: 
-                self.datamain.add_to_list(self.position, emp)
+        self.datamain.add_to_list(self.position, new_information)
         
     def remove_employee(self, attribute):
         '''removed employee is either fired or given a new role''' 
