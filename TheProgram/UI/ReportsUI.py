@@ -42,8 +42,17 @@ class ReportsUI():
         print('''\n -----------------------------------------------------------------------------
  | -> Buisness reports -> Income                                             |
  -----------------------------------------------------------------------------''')
+        
         start_date = input(" | Please select start date: ")
+        while self.logic.input_checking(6, start_date) ==  False:
+            print(" | Date must be in correct format: dd/mm/yyyy ")
+            start_date = input(" | Please enter start date again: ")
+
         end_date = input(" | Please select end date: ")
+        while self.logic.input_checking(6, end_date) ==  False:
+            print(" | Date must be in correct format: dd/mm/yyyy ")
+            end_date = input(" | Please enter end date again: ")
+
         print(" -----------------------------------------------------------------------------")
         total_income, location_income, vehicle_type_income = self.logic.reports(1, start_date, end_date)
 
@@ -76,7 +85,15 @@ class ReportsUI():
  | -> Buisness reports -> Contracts by specified period                      |
  -----------------------------------------------------------------------------''')
         start_date = input(" | Please select start date: ")
+        while self.logic.input_checking(6, start_date) ==  False:
+            print(" | Date must be in correct format: dd/mm/yyyy ")
+            start_date = input(" | Please enter start date again: ")
+
         end_date = input(" | Please select end date: ")
+        while self.logic.input_checking(6, end_date) ==  False:
+            print(" | Date must be in correct format: dd/mm/yyyy ")
+            end_date = input(" | Please enter end date again: ")        
+        
         print(" -----------------------------------------------------------------------------")
 
         results = self.logic.reports(3, start_date, end_date)
@@ -85,4 +102,3 @@ class ReportsUI():
             print(" | {} : {}".format(key, value))
         print(" -----------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")
-
