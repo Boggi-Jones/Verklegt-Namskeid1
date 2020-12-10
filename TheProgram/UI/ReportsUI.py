@@ -38,42 +38,37 @@ class ReportsUI():
                 print(" | Invalid choice!")
                 input(" | Push enter to continue")
 
-
     def income(self):
         print('''\n -----------------------------------------------------------------------------
  | -> Buisness reports -> Income                                             |
  -----------------------------------------------------------------------------''')
         start_date = input(" | Please select start date: ")
         end_date = input(" | Please select end date: ")
+        print(" -----------------------------------------------------------------------------")
+        total_income, location_income, vehicle_type_income = self.logic.reports(1, start_date, end_date)
 
-        choice = input(''' | Please select either income by location or vehicle: 
- | 
- | 1. Total income
- | 2. Income by location
- | 3. Income by vehicle ''')
-        if choice == "1":
-            location_income = self.logic.reports(1, start_date, end_date)
-            print(" | Total income is: {}".format(str(location_income[0])))
-        elif choice == "2":
-            location_income = self.logic.reports(1, start_date, end_date)
-            for location in location_income[1]:
-                print(" | Income by location is: {}".format(str(location)))
-        elif choice == "3":
-            location_income = self.logic.reports(1, income_period, None, None)
-            for vehicle in location_income[2]:
-                print(" | Income by vehicle is: {}".format(str(vehicle)))
-        else:
-            print(" | Invalid input, please choose again")
-
+        print(" | Total income over selected period is: ", total_income)
+        print(" | ")
+        for key, value in location_income.items():
+            print(" | {} : {}".format(key, value))
+        print(" | ")
+        for key, value in vehicle_type_income.items():
+            print(" | {} : {}".format(key, value))
+        print(" -----------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue ")
 
     def vehicle_usage(self):
         print('''\n -----------------------------------------------------------------------------
  | -> Buisness reports -> Usage of vehicles                                  |
  -----------------------------------------------------------------------------''')
-        vehicle_location = input(" | Please select location for vehicle overview: ")
         results = self.logic.reports(2, None, None)
-        for key, value in results:
-            print(key, value)
+
+        for result in results:
+            print(" | ",result[0].name_of_airport, ":")
+            for key, value in result[1].items():
+                print(" |     - {} : {}".format(key, value))
+        print(" -----------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue ")
 
 
     def contracts_period(self):
@@ -82,7 +77,12 @@ class ReportsUI():
  -----------------------------------------------------------------------------''')
         start_date = input(" | Please select start date: ")
         end_date = input(" | Please select end date: ")
+        print(" -----------------------------------------------------------------------------")
+
         results = self.logic.reports(3, start_date, end_date)
-        for key, value in results:
-            print(key, value)
+
+        for key, value in results.items():
+            print(" | {} : {}".format(key, value))
+        print(" -----------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue ")
 

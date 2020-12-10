@@ -38,7 +38,7 @@ class UIMain():
             elif choice == "4":
                 ContractUI().contract_loop()
             elif choice == "5":
-                ReportsUI().reports_loop()            # Þurfum að bæta við klasa
+                ReportsUI().reports_loop()
             elif choice == "q":
                 break
             else:
