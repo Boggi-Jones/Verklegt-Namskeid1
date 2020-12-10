@@ -39,6 +39,8 @@ class ContractLogic:
                 the_removed_contract = contract
                 list_of_contracts.remove(contract)
                 self.datamain.overwrite(self.position, list_of_contracts)
+                self.vehiclelogic.edit_vehicle_info(the_removed_contract.number_plate, "status", "available")
+
                 return the_removed_contract
 
     def make_new_contract(self, new_information):
@@ -63,15 +65,15 @@ class ContractLogic:
         if customer_class.driving_license in vehicle_class[0].driving_license:
             return vehicle_class
 
-    def change_vehicle(self, number_plate, attribute, new_information):
+    def change_vehicle(self, contract_class, attribute, new_information):
         new_vehicle = self.vehiclelogic.filter_vehicle_fleet(new_information, attribute)
 
         if new_vehicle[0].status == "available":
-            self.vehiclelogic.edit_vehicle_info(number_plate, "status", "available")
+            self.vehiclelogic.edit_vehicle_info(contract_class[0].number_plate, "status", "available")
             the_vehicle = self.vehiclelogic.edit_vehicle_info(new_information, "status", "unavailable")
-            results = self.edit_contract_info(number_plate, attribute, new_information)
-            total_price = self.calculate_final_price(results.duration, the_vehicle)
-            results = self.edit_contract_info(number_plate, "final_price", total_price)
+            results = self.edit_contract_info(contract_class[0].ssn, attribute, new_information)
+            total_price = self.calculate_final_price(results[0].duration, the_vehicle)
+            results = self.edit_contract_info(contract_class[0].ssn, "final_price", total_price)
         else:
             return False
 

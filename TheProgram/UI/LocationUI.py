@@ -283,11 +283,11 @@ class LocationUI():
 
 
     def search_location(self):
-        location = input(" | Enter airport name: ")
+        location = input(" | Enter airport name: ").capitalize()
 
         while self.logic.input_checking(10, location) == False:
             print(" | Only characters are viable for input!")
-            location = input(" | Enter airport name: ")
+            location = input(" | Enter airport name: ").capitalize()
         result = self.logic.location(0, location, "name_of_airport", None)
 
         if result == []:
