@@ -118,7 +118,6 @@ class LocationUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(country, name_of_airport, opening_hours, phone_number))
-        input(" | Push 'Enter' to continue")
 
         choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if choice == "y":
@@ -158,16 +157,16 @@ class LocationUI():
             return None
 
     def remove_location(self):
-        location_name = input(" | Enter airport name: ").lower()
+        location_name = input(" | Enter airport name: ").capitalize()
 
         while self.logic.input_checking(12, location_name) == False:
             print(" | This airport is not registered!")
-            location_name = input(" | Enter airport name: ")
+            location_name = input(" | Enter airport name: ").capitalize()
 
         result = self.logic.location(0, location_name, "name_of_airport", None)
         while result == []:
             print(" | This airport is not registered!")
-            location_name = input(" | Enter airport name: ")
+            location_name = input(" | Enter airport name: ").capitalize()
             result = self.logic.location(0, location_name, "name_of_airport", None)
 
         choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(location_name)).lower()
@@ -211,7 +210,6 @@ class LocationUI():
     def update_location(self):
         while True:
             find_location = input(" | Enter airport name: ").capitalize()
-            print("----")
             while self.logic.input_checking(12, find_location) == False:
                 print(" | This airport is not registered!")
                 find_location = input(" | Enter airport name: ").capitalize()
@@ -279,6 +277,7 @@ class LocationUI():
         for location in results:
             print(''' |  {}  |'''.format(str(location)))
         print(" -------------------------------------------------------------------------------------------------------")
+        input(" | Press 'Enter' to continue")
         return results
 
 

@@ -113,18 +113,18 @@ class LogicMain:
     def roles(self, option, emp_ssn, emp_object):
         '''logic for association between employees and roles'''
         if option == 0: # if a function wants to use only attributes from roles
-            results = self.rolelogic.role_list(None)
+            results = self.rolelogic.role_list(None, None)
         elif option == 1:
             results = self.rolelogic.add_employee(emp_object) # when new emp is added with logic.employee()
         elif option == 2:
-            results = self.rolelogic.remove_employee(emp_ssn) # when emp is removed or updated with logic.employee()
+            results = self.rolelogic.remove_employee(emp_ssn, emp_object) # when emp is removed or updated with logic.employee()
         return results
             
             
 
     def reports(self, option, start_date, end_date):
         if option == 0: # Returns list of the most used type of vehicle for every location
-            results = self.reportlogic.most_popular_by_location()
+            results = self.reportlogic.most_popular_type_by_location()
 
         elif option == 1: # Returns overview of income over a certain period
             total, location_dict, type_dict = self.reportlogic.overview_of_income(start_date, end_date)
@@ -226,7 +226,7 @@ class LogicMain:
                 return False
             if location != []:
                 return True
-
+              
         elif option == 13: #number plate in add vehicle
             if len(user_input) == 6:
                 first_part = user_input[0:2]
@@ -241,5 +241,15 @@ class LogicMain:
                     print(" | Number plate has to be two letters and three numbers: 'AA 123'")
             else:
                 print(" | Number plate has to be two letters and three numbers: 'AA 123'")            
+
+        elif option == 14: #username
+            if self.employee(0, user_input, "ssn", None) == []: 
+                return False
+            return True
+        
+        elif option == 15: #password
+            if self.employee(0, user_input, "password", None) == []:
+                return False
+            return True
 
         return False
