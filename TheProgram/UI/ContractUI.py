@@ -464,8 +464,8 @@ class ContractUI():
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
 |Payment details :                                                                                                               |
 |————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————|
-|rent duration : {}                                                                                                              |
-|Daily rate for  {} vehicle is {} therby the total cost will be {}                                                  |
+|rent duration : {}                                                                                                             |
+|Daily rate for  {} vehicle is {} therby the total cost will be {}                                               |
 |For late return ther will be charge an extraday with 20% markup                                                                 |
 |                                                                                                                                |
 |                                                                                                                                |
@@ -492,10 +492,10 @@ class ContractUI():
  ----------------------------------------------------------------------------------------------------------------------------------------------''')
             print(''' |  {}|'''.format(contract[0]))
             print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
-            choice = input(" | Is this the correct contract? Y/N").lower()
+            choice = input(" | Is this the correct contract? Y/N: ").lower()
             if choice == "n":
                 continue
-            new_condition = input(""" | What is the condition of the returned car? ("Good" or "needs repair") """).lower()
+            new_condition = input(""" | What is the condition of the returned car? ("Good" or "needs repair"): """).lower()
             if new_condition == "good":
                 new_condition = 1
             total = self.logic.contract(6, find_contract, new_condition, None, None)
