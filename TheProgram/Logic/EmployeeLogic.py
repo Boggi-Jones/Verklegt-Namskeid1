@@ -73,12 +73,14 @@ class RoleLogic:
     def __init__(self):
         self.datamain = DataMain()
         self.position = "Role"
-        #self.employee_logic = EmployeeLogic()
     
     def role_list(self, attribute):
         '''Get list of roles and associated employees with them'''
         list_of_roles = self.datamain.get_list(self.position)
-        return list_of_roles
+        retList = [] 
+        for i in list_of_roles:
+            retList.append(i)
+        return retList
     
     def add_employee(self, new_information):
         '''when employee is added to employees file, they also get added with their role in role file'''
@@ -87,8 +89,9 @@ class RoleLogic:
     def remove_employee(self, attribute):
         '''removed employee is either fired or given a new role''' 
         role_list_ssn = self.role_list(attribute)
-        for ssn in role_list_ssn:
-            if ssn.__getattribute__(attribute) == attribute:
-                self.datamain.overwrite(self.position, ssn)
+        for s in role_list_ssn:
+            if s.ssn == attribute:
+                role_list_ssn.remove(s)
+        self.datamain.overwrite(self.position, role_list_ssn)
 
            
