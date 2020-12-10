@@ -12,10 +12,11 @@ class UIMain():
         self.UILoop()
 
     def UILoop(self):
+        '''User must first login with credentials. Then that users permissions will depend on his role'''
         print(" | You must enter your credentials to login the system: ")
         choice = input(" | Press 1 to continue or press 2 for the list of employees: ") 
         if choice == "2":
-            employees = self.logic.roles(0, None, None)
+            employees = self.logic.roles(0, None, None) # print all employees with their ssn and role
             for emp in employees:
                 print(emp)
                 
@@ -24,14 +25,13 @@ class UIMain():
             print(" | user not found! ssn must be in the correct format: 123456-1234")
             username = input(" | Enter ssn: ")
             
-        #logic something username
         password = input(" | Enter password: ")
-        while self.logic.input_checking(15, password) == False:
+        while self.logic.input_checking(15, password) == False: # password in system check
             print(" | Incorrect password!")
             password = input(" | Enter password: ")
         
         the_user = self.logic.roles(0, username, "ssn")
-        role_of_user = the_user[0].role
+        role_of_user = the_user[0].role 
             
         while True:
             choice = input('''\n ---------------------------------------------------------------------------------------------------------------------
