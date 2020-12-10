@@ -13,6 +13,7 @@ class LogicMain:
         self.vehiclelogic = VehicleLogic()
         self.contractlogic = ContractLogic()
         self.customerlogic = CustomerLogic()
+        self.reportlogic = ReportLogic()
         self.rolelogic = RoleLogic()
 
     def employee(self, option, filter_or_id, attribute, new_information):
