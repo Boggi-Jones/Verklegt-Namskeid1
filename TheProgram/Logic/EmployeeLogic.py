@@ -32,11 +32,12 @@ class EmployeeLogic:
             if emp.ssn == filter_or_id:
                 list_of_employees.remove(emp)
         self.datamain.overwrite(self.position, list_of_employees)
-        self.rolelogic.remove_employee(emp)
+        
 
     def add_employee(self, new_information):
         # New employee is added to list
         self.datamain.add_to_list(self.position, new_information)
+         
 
     def edit_employee_info(self, filter_or_id, attribute, new_information):
         # Single employee variable is created using filteremployee funtiong and ssn attribute to identifie uniqr emploee)
@@ -66,25 +67,26 @@ class EmployeeLogic:
         self.edit_employee_info(filter_or_id, "name", emp_name) 
         #employee is first added to the system from input and then checked 
         
+
 class RoleLogic:
     
     def __init__(self):
         self.datamain = DataMain()
         self.position = "Role"
+        #self.employee_logic = EmployeeLogic()
     
-    def role_list(self, role, attribute):
+    def role_list(self, attribute):
         '''Get list of roles and associated employees with them'''
         list_of_roles = self.datamain.get_list(self.position)
         return list_of_roles
     
-    def add_employee(self, attributes):
+    def add_employee(self, new_information):
         '''when employee is added to employees file, they also get added with their role in role file'''
-        self.datamain.add_to_list(self.position, attributes)
-        
+        self.datamain.add_to_list(self.position, new_information)
         
     def remove_employee(self, attribute):
         '''removed employee is either fired or given a new role''' 
-        role_list_ssn = self.role_list(None, attribute)
+        role_list_ssn = self.role_list(attribute)
         for ssn in role_list_ssn:
             if ssn.__getattribute__(attribute) == attribute:
                 self.datamain.overwrite(self.position, ssn)

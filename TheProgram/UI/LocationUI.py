@@ -279,7 +279,6 @@ class LocationUI():
         for location in results:
             print(''' |  {}  |'''.format(str(location)))
         print(" -------------------------------------------------------------------------------------------------------")
-        input(" | Press 'Enter' to continue")
         return results
 
 
