@@ -31,7 +31,7 @@ class UIMain():
             password = input(" | Enter password: ")
         
         the_user = self.logic.roles(0, username, "ssn")
-        role_of_user = the_user[0].role 
+        role_of_user = the_user[0].role.lower()
             
         while True:
             choice = input('''\n ---------------------------------------------------------------------------------------------------------------------
