@@ -58,11 +58,13 @@ class ReportsUI():
 
         print(" | Total income over selected period is: ", total_income)
         print(" | ")
+        print(" | Income from location: ")
         for key, value in location_income.items():
-            print(" | {} : {}".format(key, value))
+            print(" |\t{} : {}".format(key, value))
         print(" | ")
+        print(" | Income from vehicle: ")
         for key, value in vehicle_type_income.items():
-            print(" | {} : {}".format(key, value))
+            print(" |\t{} : {}".format(key, value))
         print(" -----------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")
 
