@@ -39,20 +39,18 @@ class ContractLogic:
                 the_removed_contract = contract
                 list_of_contracts.remove(contract)
                 self.datamain.overwrite(self.position, list_of_contracts)
-                self.vehiclelogic.edit_vehicle_info(the_removed_contract.number_plate, "status", "available")
 
                 return the_removed_contract
 
     def make_new_contract(self, new_information):
         # New contract is added to list
         self.datamain.add_to_list(self.position, new_information)
-        self.vehiclelogic.edit_vehicle_info(new_information.number_plate, "status", "unavailable")
 
     def edit_contract_info(self, filter_or_id, attribute, new_information):
         # Single contract is created from the filtercontract function using the ssn attribute
         # Single contract is then updated with new information with cancel contract and make new contract funtions
         single_contract = self.filter_contract(filter_or_id, "ssn")
-        the_contract = single_contract[0].__setattr__(attribute, new_information)
+        single_contract[0].__setattr__(attribute, new_information)
         self.cancel_contract(filter_or_id)
         self.make_new_contract(single_contract[0])
         return self.filter_contract(filter_or_id, "ssn")

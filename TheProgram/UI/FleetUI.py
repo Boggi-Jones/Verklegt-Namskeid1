@@ -301,7 +301,14 @@ class FleetUI():
 
             elif attribute == "6":
                 attribute = "condition"
-                new_vehicle_info = input(" | Enter new information: ")
+                new_vehicle_info = input(""" | What is the condition of the car? ("Good" or "needs repair") """).lower()
+                if new_condition != "good":
+                    new_condition = "needs repair"
+                    status = "unavailable"
+                else:
+                    status = "available"
+                    
+                self.logic.vehicle(1, find_vehicle, "status",  status)
 
             elif attribute == "7":
                 attribute = "model_year"

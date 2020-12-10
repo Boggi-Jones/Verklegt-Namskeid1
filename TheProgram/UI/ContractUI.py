@@ -1,11 +1,13 @@
 from Logic.LogicMain import LogicMain
 from Models.Contract import Contracts
 from Models.Customer import Customer
+from UI.LocationUI import LocationUI
 from datetime import datetime
 
 class ContractUI():
     def __init__(self):
         self.logic = LogicMain()
+        self.locationUI = LocationUI()
 
     def contract_loop(self):
         while True:
@@ -106,12 +108,31 @@ class ContractUI():
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Is everything correct (Y / N)? '''.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
-        vehicle_type = input(" | What type of vehicle does the customer want? ")
-        list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
+ | Press "Enter" to continue '''.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
+        
+        print('''\n | Please select where you will pick up the vehicle: ''')
+        all_locations = self.locationUI.all_locations()
+        while all_locations != 0:
+            name_of_airport = input(" | Enter name of Airport: ").capitalize()
+            for location in all_locations:
+                if location.name_of_airport == name_of_airport:
+                    all_locations = 0
+            if all_locations != 0:                        
+                print(" | Airport is not on the list! ")
+
+        while True:
+            # Print out diffrent types to choose
+            vehicle_type = input(" | What type of vehicle does the customer want? ")
+            list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
+            if list_of_vehicles == []:
+                print(" | There are no vehicles of this type at that location")
+            else:
+                break
+
         for vehicle in list_of_vehicles:
-            if vehicle.status == "available":
-                print(vehicle)
+            if vehicle.name_of_airport == name_of_airport:
+                if vehicle.status == "available":
+                    print(vehicle)
         number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
         while self.logic.input_checking(11, number_plate) == False:
             print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
@@ -157,12 +178,11 @@ class ContractUI():
         while self.logic.input_checking(6,date)== False:
             print(" | Date must be in the cottect format: 'DD/MM/YYYY'")
             return_date = input(" | Pickup date: ")
-        name_of_airport = input(" | Airport: ")
         employee_name = input(" | Employee name: ")
         duration = (datetime.strptime(return_date,'%d/%m/%Y') - datetime.strptime(date,'%d/%m/%Y')).days
         paid = "no"
         final_price = self.logic.contract(7, duration, None, None, vehicle_class)
-        the_contract = Contracts(date, return_date, duration, name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
+        the_contract = Contracts(date, return_date, duration, vehicle_class[0].name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
         choice = input('''-----------------------------------------------------------------------------
  | -> -> Contracts -> Add contract                                           | 
  -----------------------------------------------------------------------------
@@ -189,10 +209,11 @@ class ContractUI():
  |         Model year:       {:48s}|
  |         Color:            {:48s}|        
  -----------------------------------------------------------------------------
- | Is the following information correct (Y / N)? : '''.format(date, return_date, str(duration), name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
+ | Is the following information correct (Y / N)? : '''.format(date, return_date, str(duration), vehicle_class[0].name_of_airport, employee_name, final_price, customer_class[0].name, customer_class[0].ssn, customer_class[0].email, customer_class[0].gsm_number, customer_class[0].address, customer_class[0].driving_license, customer_class[0].returned_late_before, vehicle_class[0].type_of_vehicle, vehicle_class[0].model, vehicle_class[0].rate, vehicle_class[0].manufacturer, vehicle_class[0].model_year, vehicle_class[0].color))
         choice = input(" | ARE YOU SURE YOU WANT TO SAVE INFO AND CONTINUE Y/N: ").lower()
         if choice == "y":
             self.logic.contract(1, None, None, the_contract, vehicle_class)
+            self.logic.vehicle(1, vehicle_class[0].number_plate, "status", "unavailable")
         elif choice =="n":
             return
         else:
@@ -209,6 +230,7 @@ class ContractUI():
             choice = input(" | Are you sure you want to remove the contract with this ssn '{}' ? (Y / N): ".format(find_contract)).lower()
             if choice == "y":
                 self.logic.contract(3, find_contract, None, None, None)
+                self.logic.vehicle(1, result[0].number_plate, "status", "available")
                 print('''\n ------------------------------------------------------------------------------
  | -> -> Contracts -> Remove contract                                         |
  ------------------------------------------------------------------------------
