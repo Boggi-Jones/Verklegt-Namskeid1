@@ -21,12 +21,15 @@ class UIMain():
                 print(emp)
                 
         username = input(" | Enter ssn: ")
-        while self.logic.input_checking(14, username) == False:
+        while self.logic.input_checking(16, username) == False:
             print(" | user not found! ssn must be in the correct format: 123456-1234")
             username = input(" | Enter ssn: ")
+        
+        user = self.logic.employee(0, username, "ssn", None) 
+        user_password = user[-1].password  
             
         password = input(" | Enter password: ")
-        while self.logic.input_checking(15, password) == False: # password in system check
+        while password != user_password: 
             print(" | Incorrect password!")
             password = input(" | Enter password: ")
         
