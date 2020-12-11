@@ -354,7 +354,7 @@ class ContractUI():
                             print(vehicle)
                     number_plate = input(" | Enter the number plate of the chosen vehicle: ")
                     while self.logic.input_checking(11, number_plate) == False:
-                        print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.\n or no vehicles with this number plate were found")
+                        print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.\n | or no vehicles with this number plate were found")
                         number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
 
                     while True:
@@ -363,7 +363,7 @@ class ContractUI():
                             print(" | You don't have the required license for this vehicle.")
                             number_plate = input(" | Enter the number plate of the chosen vehicle: ")
                             while self.logic.input_checking(11, number_plate) == False:
-                                print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+                                print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.\n | or no vehicles with this number plate were found")
                                 number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
 
                         else:

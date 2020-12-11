@@ -113,7 +113,7 @@ class LogicMain:
     def roles(self, option, emp_ssn, emp_object):
         '''logic for association between employees and roles'''
         if option == 0: # if a function wants to use only attributes from roles
-            results = self.rolelogic.role_list(None, None)
+            results = self.rolelogic.role_list(emp_ssn, emp_object)
         elif option == 1:
             results = self.rolelogic.add_employee(emp_object) # when new emp is added with logic.employee()
         elif option == 2:
@@ -247,8 +247,8 @@ class LogicMain:
                 return False
             return True
         
-        elif option == 15: #password
-            if self.employee(0, user_input, "password", None) == []:
+        elif option == 16: #username
+            if self.roles(0, user_input, "ssn") == []: 
                 return False
             return True
 
