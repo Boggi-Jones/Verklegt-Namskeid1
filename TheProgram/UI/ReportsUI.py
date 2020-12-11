@@ -99,8 +99,9 @@ class ReportsUI():
         print(" -----------------------------------------------------------------------------")
 
         results = self.logic.reports(3, start_date, end_date)
-
+            
+        print(" | Paid and unpaid contracts: ")
         for key, value in results.items():
-            print(" | {} : {}".format(key, value))
+            print(" | \t{} : {}".format(key, value))
         print(" -----------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")

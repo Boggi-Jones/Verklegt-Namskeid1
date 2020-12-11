@@ -144,7 +144,7 @@ class ContractUI():
                 print(" | You don't have the required license for this vehicle.")
                 number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
             else:
-                choice = input('''-----------------------------------------------------------------------------
+                choice = input('''\n -----------------------------------------------------------------------------
  | -> -> Contracts -> Add contract                                           | 
  -----------------------------------------------------------------------------
  | "You have chosen the following car: "                                     |
@@ -183,7 +183,7 @@ class ContractUI():
         paid = "no"
         final_price = self.logic.contract(7, duration, None, None, vehicle_class)
         the_contract = Contracts(date, return_date, duration, vehicle_class[0].name_of_airport, employee_name, paid, final_price, vehicle_class[0].number_plate, customer_class[0].ssn)
-        choice = input('''-----------------------------------------------------------------------------
+        choice = input('''\n -----------------------------------------------------------------------------
  | -> -> Contracts -> Add contract                                           | 
  -----------------------------------------------------------------------------
  | "Contract information"                                                    | 
