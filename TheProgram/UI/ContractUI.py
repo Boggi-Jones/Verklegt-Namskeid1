@@ -347,14 +347,14 @@ class ContractUI():
                     self.logic.customer(3, find_contract, attribute, new_info)
                 elif attribute == 7:
                     attribute = "number_plate"
-                    vehicle_type = input(" | What type of vehicle does the customer want? ")
-                    list_of_vehicles = self.logic.vehicle(0, vehicle_type, "type_of_vehicle", None)
+                    vehicle_type = "available"
+                    list_of_vehicles = self.logic.vehicle(0, vehicle_type, "status", None)
                     for vehicle in list_of_vehicles:
                         if vehicle.status == "available":
                             print(vehicle)
                     number_plate = input(" | Enter the number plate of the chosen vehicle: ")
                     while self.logic.input_checking(11, number_plate) == False:
-                        print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
+                        print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.\n or no vehicles with this number plate were found")
                         number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
 
                     while True:
@@ -390,6 +390,8 @@ class ContractUI():
                                 break
                     
                     the_contract = self.logic.contract(5, the_contract, "number_plate", number_plate, None)
+                    if the_contract == False:
+                        print(" | Unavailable vehicle ")
 
                 else:
                     print(" | Wrong input")
