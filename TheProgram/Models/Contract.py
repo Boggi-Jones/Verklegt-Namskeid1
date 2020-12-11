@@ -1,5 +1,5 @@
 class Contracts:
-    def __init__(self, date, return_date, duration, name_of_airport, employee_name, paid, final_price, number_plate, ssn):
+    def __init__(self, date = "", return_date = "", duration = "", name_of_airport = "", employee_name = "", paid = "", final_price = "", number_plate = "", ssn = ""):
         self.date = date
         self.return_date = return_date
         self.duration = duration

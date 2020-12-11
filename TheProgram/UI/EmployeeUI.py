@@ -1,7 +1,7 @@
 #from UI.UIMain import UILoop
 from Logic.LogicMain import LogicMain
 from Models.Employee import Employee
-from Models.Employee import Role
+from Models.Role import Role
 from Models.Location import Location
 
 class EmployeeUI():
@@ -10,9 +10,7 @@ class EmployeeUI():
         self.logic = LogicMain()
 
     def employee_loop(self):
-        ''' Skv. wireframe. Valmynd fyrir UIemployee - klasann. Út frá þessu er hægt
-        að fara í "Manage employee, All employees o.s.frv." '''
-
+        ''' Takes input from user and sends to one of the options within the employee window'''
         while True:
             employee_choice = input('''\n -----------------------------------------------------------------------------
  | Welcome to NaN Air  -> Employee accounts                                  |
@@ -44,6 +42,7 @@ class EmployeeUI():
                 input(" | Push enter to continue")
 
     def manage_employee(self):
+        ''' Takes input from user and sends to one of the options within the Manage employee window '''
         while True:
             employee_options = input('''\n -----------------------------------------------------------------------------
  | -> Employee accounts -> Manage employee                                   |
@@ -75,6 +74,7 @@ class EmployeeUI():
                 input(" | Push enter to continue")
 
     def add_employee(self):
+        ''' Takes multiple inputs from the user to create an "employee" within the system''' 
         print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
  -----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ class EmployeeUI():
  | Email:                                                                    |
  | Location:                                                                 |
  | Company role:                                                             |
- | Password :                                                                |
+ | Password:                                                                |
  |                                                                           |
  -----------------------------------------------------------------------------''')
         name = input(" | Name: ").capitalize()
@@ -115,7 +115,6 @@ class EmployeeUI():
             print(" | Email must be in the correct format: 'name@name.is' ")
             email = input(" | Email: ")
 
-        
         location_list = self.logic.locationlogic.filter_country(None, "airport_name")
         print(''' | Choose the location: 
  -------------------------------------------------------------------------------------------------------''')
@@ -126,8 +125,7 @@ class EmployeeUI():
         while self.logic.input_checking(12,location) == False:
             print(" | '{}' is not registered!".format(location))
             location = input(" | Location: ").capitalize()
-            
-            
+                       
         role = input(" | Company role: ").capitalize()
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
@@ -194,9 +192,8 @@ class EmployeeUI():
             return None
 
     def remove_employee(self):
-        '''Takes employee name input from user, and compares it
-        to list of all employee. If name exists it will delete
-        if the user wishes to do so'''
+        '''Takes employee name input from user, and compares it to list of all employee. If name 
+        exists it will delete if the user wishes to do so'''
         while True:
             find_employee = input(" | Enter employee SSN: ")
             result = self.logic.employee(0, find_employee, "ssn", None)
@@ -245,6 +242,7 @@ class EmployeeUI():
                 return None
 
     def update_employee(self):
+        ''' User can choose a field within the employee class and change the information '''
         while True:
             find_employee = input(" | Enter employee SSN: ")
             while self.logic.input_checking(1, find_employee) == False:
@@ -302,7 +300,7 @@ class EmployeeUI():
                 new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(3, new_employee_info) == False:
                     print(" | company role is either 'Ceo', 'Fleet' or 'Base'!")
-                    role = input(" | Company role: ").capitalize()
+                    new_employee_info = input(" | Company role: ").capitalize()
                     
             elif attribute == "7":
                 attribute = "password"  
@@ -334,8 +332,9 @@ class EmployeeUI():
             break
 
     def get_all_employees(self):
-        '''List all employess in appropriate columns below'''
+        '''List all employess in appropriate columns based on their attributes below'''
         results = self.logic.employee(0, None, None, None)
+<<<<<<< HEAD
         print("""\n ------------------------------------------------------------------------------------------------------------------------------------------
  | -> -> Manage employee -> All Employees                                                                                                     |
  ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -345,9 +344,21 @@ class EmployeeUI():
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
         print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
+=======
+        print("""\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                                     |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
+        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
+        
+        for employee in results:
+            print(''' |  {}  |'''.format(str(employee)))
+        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
+>>>>>>> a289c1aa38d6bc1e42219b972e6201b2dd2a0c4a
         input(" | Press 'Enter' to continue")
 
     def search_employee(self):
+        ''' Takes input from user and find the employee associated with that input and prints out the employees information '''
         employee = input(" | Enter employee SSN: ")
 
         while self.logic.input_checking(1, employee) == False:

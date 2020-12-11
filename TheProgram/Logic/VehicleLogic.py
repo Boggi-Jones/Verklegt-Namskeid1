@@ -1,14 +1,14 @@
 from Data.DataMain import DataMain
+from Models.Vehicle import Vehicle
 
 class VehicleLogic:
     def __init__(self):
         self.datamain = DataMain()
-        self.position = "Vehicle"
 
     def filter_vehicle_fleet(self, filter_or_id, attribute):
         ''' Gets a list of all vehicles from data. If there is no filter it just returns the full list.
         If there is a filter then it iterates through the list. It adds everything to a new list that has the filter in the chosen attribute.'''
-        list_of_vehicles = self.datamain.get_list(self.position)
+        list_of_vehicles = self.datamain.get_list(Vehicle())
         retlist = []
         if filter_or_id != None:
             for vehicle in list_of_vehicles:
@@ -25,11 +25,11 @@ class VehicleLogic:
         for vehicle in list_of_vehicles:
             if vehicle.__getattribute__("number_plate") == filter_or_id:
                 list_of_vehicles.remove(vehicle)
-        self.datamain.overwrite(self.position, list_of_vehicles) 
+        self.datamain.overwrite(list_of_vehicles, Vehicle()) 
 
     def register_new_vehicle(self, new_information):
         ''' Tells data to add this vehicle to the system'''
-        self.datamain.add_to_list(self.position, new_information)
+        self.datamain.add_to_list(new_information)
 
     def edit_vehicle_info(self, filter_or_id, attribute, new_information):
         ''' Gets a list of one vehicle by filtering with the number plate and then changes the chosen attribute.

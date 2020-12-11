@@ -1,14 +1,14 @@
 from Data.DataMain import DataMain
+from Models.Location import Location
 
 class LocationLogic:
     def __init__(self):
         self.datamain = DataMain()
-        self.position = "Location"
 
     def filter_country(self, filter_or_id, attribute):
         ''' Gets a list of all locations from data. If there is no filter it just returns the full list.
         If there is a filter then it iterates through the list. It adds everything to a new list that has the filter in the chosen attribute.'''
-        list_of_locations = self.datamain.get_list(self.position)
+        list_of_locations = self.datamain.get_list(Location())
         retlist = []
         if filter_or_id != None:
             for location in list_of_locations:
@@ -25,11 +25,11 @@ class LocationLogic:
         for location in list_of_locations:
             if location.__getattribute__("name_of_airport") == filter_or_id:
                 list_of_locations.remove(location)
-        self.datamain.overwrite(self.position, list_of_locations)
+        self.datamain.overwrite(list_of_locations, Location())
      
     def add_location(self, new_information):
         ''' Tells data to add this location to the system'''
-        self.datamain.add_to_list(self.position, new_information)
+        self.datamain.add_to_list(new_information)
     
     def edit_location_info(self, filter_or_id, attribute, new_information):
         ''' Gets a list of one location by filtering with the name of airport and then changes the chosen attribute.

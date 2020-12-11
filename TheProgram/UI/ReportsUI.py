@@ -6,6 +6,7 @@ class ReportsUI():
         self.logic = LogicMain()
 
     def reports_loop(self):
+        """ Main menu loop for the reports UI which gives the option of seeing Income, Usage of vehicles and Contract for specified periods """
         while True:
             choice = input('''\n -----------------------------------------------------------------------------
  | Welcome to NaN Air  -> Buisness reports                                   |
@@ -39,6 +40,7 @@ class ReportsUI():
                 input(" | Push enter to continue")
 
     def income(self):
+        """ Prints out total income, income from different locations, income from different vehicles """
         print('''\n -----------------------------------------------------------------------------
  | -> Buisness reports -> Income                                             |
  -----------------------------------------------------------------------------''')
@@ -69,6 +71,7 @@ class ReportsUI():
         input(" | Press 'Enter' to continue ")
 
     def vehicle_usage(self):
+        """ Prints out total count for how many times each vehicle which has been rented out """
         print('''\n -----------------------------------------------------------------------------
  | -> Buisness reports -> Usage of vehicles                                  |
  -----------------------------------------------------------------------------''')
@@ -83,6 +86,7 @@ class ReportsUI():
 
 
     def contracts_period(self):
+        """ Prints out person name and if they have paid or not for a specific period """
         print('''\n -----------------------------------------------------------------------------
  | -> Buisness reports -> Contracts by specified period                      |
  -----------------------------------------------------------------------------''')

@@ -1,4 +1,3 @@
-from Logic.EmployeeLogic import EmployeeLogic
 from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
 from Logic.CustomerLogic import CustomerLogic

@@ -1,5 +1,5 @@
 class Customer(object):
-    def __init__(self, name, ssn, email, gsm_number, address, driving_license, returned_late_before):
+    def __init__(self, name = "", ssn = "", email = "", gsm_number = "", address = "", driving_license = "", returned_late_before = ""):
         self.name = name
         self.ssn = ssn
         self.email = email
