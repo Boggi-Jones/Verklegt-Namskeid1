@@ -6,6 +6,7 @@ class LocationUI():
         self.logic = LogicMain()
 
     def location_loop(self):
+        """ Main menu loop for the location UI which gives you access to edit, all and search for locations """
         while True:
             choice = input("""\n -----------------------------------------------------------------------------
  | Welcome to NaN Air -> Rental Location information                         |
@@ -37,6 +38,7 @@ class LocationUI():
                 print("Invalid choice!")
 
     def edit_location(self):
+        """ Menu loop for the edit location tab which gives you options to add, remove and update locations """
         while True:
             choice = input('''\n -----------------------------------------------------------------------------
  | -> Rental Location information -> Edit rental location                    |
@@ -68,6 +70,7 @@ class LocationUI():
                 print(" | Invalid choice!")
 
     def add_location(self):
+        """ Creates a new location for the system """
         print('''\n -----------------------------------------------------------------------------
  | -> -> Edit rental location -> Add location                                |
  -----------------------------------------------------------------------------
@@ -157,6 +160,7 @@ class LocationUI():
             return None
 
     def remove_location(self):
+        """ Removes a location from the system """
         location_name = input(" | Enter airport name: ").capitalize()
 
         while self.logic.input_checking(12, location_name) == False:
@@ -208,6 +212,7 @@ class LocationUI():
             return None
 
     def update_location(self):
+        """ Updates a particular attribute of a location within the system """
         while True:
             find_location = input(" | Enter airport name: ").capitalize()
             while self.logic.input_checking(12, find_location) == False:
@@ -268,6 +273,7 @@ class LocationUI():
             break
 
     def all_locations(self):
+        """ Gives a list of all locations that are already in the system """
         results = self.logic.location(0, None, None, None)
         print('''\n -------------------------------------------------------------------------------------------------------
  | Rental Locations -> All location                                                                    |
