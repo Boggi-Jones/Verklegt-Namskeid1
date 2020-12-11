@@ -251,10 +251,5 @@ class LogicMain:
             if self.roles(0, user_input, "ssn") == []: 
                 return False
             return True
-        
-        elif option == 15: #password
-            if self.employee(0, user_input, "password", None) == []:
-                return False
-            return True
 
         return False
