@@ -3,3 +3,4 @@ date,return_date,duration,name_of_airport,employee_name,paid,final_price,number_
 12/12/2020,14/12/2020,3,Looploop,Andri,yes,3600,AK 312,250996-4039
 11/12/2020,14/12/2020,2,Kulusuk,Andri,no,2550,JL 321,250996-4039
 12/12/2021,10/12/2020,-367,Helsinki,Arnaldur,yes,-367000,LC 103,210997-2379
+13/12/2020,14/12/2020,1,Kulusuk,markhús,no,850,RE 777,123456-1234

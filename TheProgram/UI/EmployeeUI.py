@@ -118,10 +118,10 @@ class EmployeeUI():
         
         location_list = self.logic.locationlogic.filter_country(None, "airport_name")
         print(''' | Choose the location: 
- -----------------------------------------------------------------------------------------------''')
+ -------------------------------------------------------------------------------------------------------''')
         for row in location_list:
-            print(" | ",row)
-        print("-------------------------------------------------------------------------------------------------")
+            print(" | ",row," | ")
+        print(" -------------------------------------------------------------------------------------------------------")
         location = input(" | Location: ").capitalize()
         while self.logic.input_checking(12,location) == False:
             print(" | '{}' is not registered!".format(location))
@@ -345,15 +345,6 @@ class EmployeeUI():
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
         print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
-        print("""\n ----------------------------------------------------------------------------------------------------------------------------------------------
- | -> -> Manage employee -> All Employees                                                                                                     |
- ----------------------------------------------------------------------------------------------------------------------------------------------
- |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
-        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
-        
-        for employee in results:
-            print(''' |  {}  |'''.format(str(employee)))
-        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
 
     def search_employee(self):
@@ -382,7 +373,7 @@ class EmployeeUI():
  | Email:         {:54s}     |
  | Location:      {:54s}     |
  | Company role:  {:54s}     |
- | Password:      {:54s}                                                                          
+ | Password:      {:54s}     |                     
  |                                                                           |
  ----------------------------------------------------------------------------- '''.format(emp.name, emp.ssn, emp.address, emp.home_phone, emp.gsm_phone, emp.email, emp.location, emp.role, emp.password))
         input(" | Press 'Enter' to continue")
