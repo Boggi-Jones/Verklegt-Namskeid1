@@ -90,6 +90,10 @@ class ContractUI():
             else:
                 return None, None
         else:
+            if ssn_val[0].returned_late_before == "yes":
+                warning = ("WARNING! Customer has returned late before.")
+            else:
+                warning = ""
             choice = input('''\n -----------------------------------------------------------------------------
  | -> -> Contracts -> Add customer                                           |
  -----------------------------------------------------------------------------
@@ -103,12 +107,12 @@ class ContractUI():
  |License:     {:59s}   |
  |Late before: {:59s}   | 
  |                                                                           |
- |                                                                           |
+ |{:59s}                |
  |                                                                           |
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Press "Enter" to continue '''.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before)).lower()
+ | Press "Enter" to continue '''.format(ssn_val[0].name, ssn_val[0].ssn, ssn_val[0].email, ssn_val[0].gsm_number, ssn_val[0].address, ssn_val[0].driving_license, ssn_val[0].returned_late_before, warning)).lower()
         
         print('''\n | Please select where you will pick up the vehicle: ''')
         all_locations = self.locationUI.all_locations()

@@ -1,6 +1,5 @@
 from Data.DataMain import DataMain
-from Logic.EmployeeLogic import EmployeeLogic
-from Logic.LocationLogic import LocationLogic
+from Models.Contract import Contracts
 from Logic.VehicleLogic import VehicleLogic
 from Logic.CustomerLogic import CustomerLogic
 from datetime import datetime
@@ -8,15 +7,13 @@ from datetime import datetime
 class ContractLogic:
     def __init__(self):
         self.datamain = DataMain()
-        self.position = "Contract"
-        self.locationlogic = LocationLogic()
         self.vehiclelogic = VehicleLogic()
         self.customerlogic = CustomerLogic()
 
     def filter_contract(self, filter_or_id, attribute):
         ''' Gets a list of all contracts from data. If there is no filter it just returns the full list.
         If there is a filter then it iterates through the list. It adds everything to a new list that has the filter in the chosen attribute.'''
-        list_of_contracts = self.datamain.get_list(self.position)
+        list_of_contracts = self.datamain.get_list(Contracts())
         retlist = []
         if filter_or_id != None:
             for contract in list_of_contracts:
@@ -34,13 +31,13 @@ class ContractLogic:
             if contract.ssn == filter_or_id:
                 the_removed_contract = contract
                 list_of_contracts.remove(contract)
-                self.datamain.overwrite(self.position, list_of_contracts)
+                self.datamain.overwrite(list_of_contracts, Contracts())
 
                 return the_removed_contract
 
     def make_new_contract(self, new_information):
         ''' Tells data to add this contract to the system'''
-        self.datamain.add_to_list(self.position, new_information)
+        self.datamain.add_to_list(new_information)
 
     def edit_contract_info(self, filter_or_id, attribute, new_information):
         ''' Gets a list of one contract by filtering with the ssn and then changes the chosen attribute.

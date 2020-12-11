@@ -50,7 +50,7 @@ UIMain  <|-- ContractUI
 
 Logic Class Diagram:
 @startuml
-class LogicWrapper {
+class LogicMain {
 DATA wrapper
 }
 
@@ -81,10 +81,10 @@ ContractLogic : cancelcontract(id)
 ContractLogic : printcontract(id)
 ContractLogic : calculatefinalprice(id)
 
-LogicWrapper -- VehicleLogic
-LogicWrapper -- EmployeeLogic
-LogicWrapper -- ContractLogic
-LogicWrapper -- LocationLogic
+LogicMain -- VehicleLogic
+LogicMain -- EmployeeLogic
+LogicMain -- ContractLogic
+LogicMain -- LocationLogic
 
 ----------------------------------------------------------------------
 
@@ -148,7 +148,7 @@ Vehicle <|-- Contracts
 
 DATA Class Diagram:
 @startuml
-class DataWrapper{
+class DataMain{
 
 }
 
@@ -158,11 +158,11 @@ class EmployeeData
 class ContractData
 class CustomerData
 
-DataWrapper <|-- VehicleData
-DataWrapper <|-- LocationData
-DataWrapper <|-- EmployeeData
-DataWrapper <|-- ContractData
-DataWrapper <|-- CustomerData
+DataMain <|-- VehicleData
+DataMain <|-- LocationData
+DataMain <|-- EmployeeData
+DataMain <|-- ContractData
+DataMain <|-- CustomerData
 @enduml
 
 ---------------------------------------------------------------------------
@@ -224,23 +224,23 @@ UIMain  -- FleetUI
 UIMain  -- ContractUI
 UIMain  -- ReportsUI
 
-EmployeeUI -- LogicWrapper
-LocationUI -- LogicWrapper
-FleetUI -- LogicWrapper
-ContractUI -- LogicWrapper
-ReportsUI -- LogicWrapper
+EmployeeUI -- LogicMain
+LocationUI -- LogicMain
+FleetUI -- LogicMain
+ContractUI -- LogicMain
+ReportsUI -- LogicMain
 
-class LogicWrapper {
+class LogicMain {
 DATA wrapper
 }
 
-class ContractLogic
-class CustomerLogic
-class EmployeeLogic 
+class ContractLogic 
+class CustomerLogic 
+class EmployeeLogic
 class LocationLogic
-class ReportLogic
+class RoleLogic
+class ReportLogic 
 class VehicleLogic
-
 
 EmployeeLogic : filter_employees(filter, attribute)
 EmployeeLogic : remove_employee(ssn)
@@ -279,25 +279,29 @@ ReportLogic : overview_of_income(start_date, end_date)
 ReportLogic : type_usage_by_location()
 ReportLogic : overview_of_payment_status(start_date, end_date)
 
-LogicWrapper -- VehicleLogic
-LogicWrapper -- EmployeeLogic
-LogicWrapper -- ContractLogic
-LogicWrapper -- LocationLogic
-LogicWrapper -- CustomerLogic
-LogicWrapper -- ReportLogic
+RoleLogic : role_list(filter, attribute)
+RoleLogic : add_employee(role_class)
 
-VehicleLogic -- DataWrapper
-EmployeeLogic -- DataWrapper
-LocationLogic -- DataWrapper
-ContractLogic -- DataWrapper
-CustomerLogic -- DataWrapper
-ReportLogic -- DataWrapper
 
-class DataWrapper{
+LogicMain -- VehicleLogic
+LogicMain -- EmployeeLogic
+LogicMain -- ContractLogic
+LogicMain -- LocationLogic
+LogicMain -- CustomerLogic
+LogicMain -- ReportLogic
+
+VehicleLogic -- DataMain
+EmployeeLogic -- DataMain
+LocationLogic -- DataMain
+ContractLogic -- DataMain
+CustomerLogic -- DataMain
+ReportLogic -- DataMain
+
+class DataMain{
 
 }
 
-DataWrapper : get_list(filename)
-DataWrapper : add_to_list(filename, value)
-DataWrapper : overwrite(filename, list_of_items)
+DataMain : get_list(filename)
+DataMain : add_to_list(filename, value)
+DataMain : overwrite(filename, list_of_items)
 @enduml

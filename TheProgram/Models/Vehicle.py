@@ -1,5 +1,5 @@
 class Vehicle():
-    def __init__(self, status, type_of_vehicle, model, rate, manufacturer, condition, model_year, color, number_plate, driving_license, rent_counter , name_of_airport):
+    def __init__(self, status = "", type_of_vehicle = "", model = "", rate = "", manufacturer = "", condition = "", model_year = "", color = "", number_plate = "", driving_license = "", rent_counter = "", name_of_airport = ""):
         self.status = status
         self.type_of_vehicle = type_of_vehicle
         self.model = model

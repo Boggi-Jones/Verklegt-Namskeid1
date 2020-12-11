@@ -3,7 +3,7 @@ from Logic.LocationLogic import LocationLogic
 from Logic.VehicleLogic import VehicleLogic
 from Logic.ContractLogic import ContractLogic
 from Logic.CustomerLogic import CustomerLogic
-from Logic.EmployeeLogic import RoleLogic
+from Logic.RoleLogic import RoleLogic
 from Logic.ReportLogic import ReportLogic
 
 class LogicMain:
@@ -114,11 +114,12 @@ class LogicMain:
         '''logic for association between employees and roles'''
         if option == 0: # if a function wants to use only attributes from roles
             results = self.rolelogic.role_list(emp_ssn, emp_object)
+            return results
         elif option == 1:
-            results = self.rolelogic.add_employee(emp_object) # when new emp is added with logic.employee()
+            self.rolelogic.add_employee(emp_object) # when new emp is added with logic.employee()
         elif option == 2:
-            results = self.rolelogic.remove_employee(emp_ssn, emp_object) # when emp is removed or updated with logic.employee()
-        return results
+            self.rolelogic.remove_employee(emp_ssn, emp_object) # when emp is removed or updated with logic.employee()
+        
             
             
 

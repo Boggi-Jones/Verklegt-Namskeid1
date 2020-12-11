@@ -1,7 +1,7 @@
 #from UI.UIMain import UILoop
 from Logic.LogicMain import LogicMain
 from Models.Employee import Employee
-from Models.Employee import Role
+from Models.Role import Role
 from Models.Location import Location
 
 class EmployeeUI():
@@ -302,7 +302,7 @@ class EmployeeUI():
                 new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(3, new_employee_info) == False:
                     print(" | company role is either 'Ceo', 'Fleet' or 'Base'!")
-                    role = input(" | Company role: ").capitalize()
+                    new_employee_info = input(" | Company role: ").capitalize()
                     
             elif attribute == "7":
                 attribute = "password"  
@@ -336,15 +336,6 @@ class EmployeeUI():
     def get_all_employees(self):
         '''List all employess in appropriate columns below'''
         results = self.logic.employee(0, None, None, None)
-        print("""\n ------------------------------------------------------------------------------------------------------------------------------------------
- | -> -> Manage employee -> All Employees                                                                                                     |
- ---------------------------------------------------------------------------------------------------------------------------------------------
- |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
-        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
-        
-        for employee in results:
-            print(''' |  {}  |'''.format(str(employee)))
-        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
         print("""\n ----------------------------------------------------------------------------------------------------------------------------------------------
  | -> -> Manage employee -> All Employees                                                                                                     |
  ----------------------------------------------------------------------------------------------------------------------------------------------
