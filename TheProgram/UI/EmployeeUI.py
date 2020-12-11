@@ -312,10 +312,7 @@ class EmployeeUI():
                 print(" | Wrong input")
                 continue
 
-<<<<<<< HEAD
-=======
             
->>>>>>> ddc4707db5f5281bb832b1892d28f1575ed56ff5
             updated_employee = self.logic.employee(3, find_employee, attribute,  new_employee_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Update employee                                  |
