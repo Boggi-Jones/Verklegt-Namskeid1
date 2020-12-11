@@ -1,7 +1,7 @@
 status,type_of_vehicle,model,rate,manufacturer,condition,model_year,color,number_plate,driving_license,rent_counter,name_of_airport
-available,Light water,Crazy HV,850,Kayman Kayaks,OK,2020,Yellow,RE 777,abc,0,Kulusuk
-unavailable,Light water,Crazy,850,Kayman Kayaks,OK,2020,Orange,UI 956,abc,0,Kulusuk
-available,Family car,Corolla,1500,Toyota,Good,2020,Blue,FF 876,abc,46,Looploop
-available,Medium road,Free Fly II,1800,TAILG,OK,1900,White,AK 312,ab,7,Helsinki
 available,Heavy,Land cruiser,1000,Toyota,Good,1999,gold,LC 103,b,0,Kulusuk
-available,Light water,Crazy,850,Kayman Kayaks,OK,2020,Yellow,JL 321,abc,8,Kulusuk
+available,Light water,Crazy HV,850,Kayman Kayaks,OK,2020,Yellow,RE 777,abc,0,Kulusuk
+unavailable,Family car,Corolla,1500,Toyota,OK,2020,Blue,FF 876,abc,46,Looploop
+unavailable,Light water,Crazy,850,Kayman Kayaks,needs repair,2020,Yellow,JL 321,abc,8,Kulusuk
+available,Light water,Crazy,850,Kayman Kayaks,OK,2020,Orange,UI 956,abc,0,Kulusuk
+unavailable,Medium road,Free Fly II,1800,TAILG,OK,1900,White,AK 312,ab,7,Helsinki

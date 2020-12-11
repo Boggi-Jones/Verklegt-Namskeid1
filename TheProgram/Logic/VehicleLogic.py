@@ -47,6 +47,6 @@ class VehicleLogic:
         list_of_vehicles = self.filter_vehicle_fleet(vehicle_type, "type_of_vehicle")
         for vehicle in list_of_vehicles:
             vehicle.__setattr__("rate", new_rate)
-            self.remove_vehicle(vehicle)
+            self.remove_vehicle(vehicle.number_plate)
             self.register_new_vehicle(vehicle)
         return list_of_vehicles

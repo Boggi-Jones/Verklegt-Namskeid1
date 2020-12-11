@@ -46,21 +46,21 @@ class LogicMain:
 
         return results
 
-    def vehicle(self, option, filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate):
+    def vehicle(self, option, filter_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate):
         if option == 0: # Option 0 takes in filter and the attribute name for the filter. Then it gives back list of all vehicles with that filter.
-            results = self.vehiclelogic.filter_vehicle_fleet(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate)
+            results = self.vehiclelogic.filter_vehicle_fleet(filter_number_plate_or_vehicle_type, attribute_or_current_rate)
 
         elif option == 1: # Option 1 takes in the number plate, the attribute to edit and the new value for that attribute. Then it changes that location and returns the updated vehicle class.
-            results = self.vehiclelogic.edit_vehicle_info(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
+            results = self.vehiclelogic.edit_vehicle_info(filter_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
 
         elif option == 2: # Option 2 takes in vehicle class, tells data to save that vehicle and returns nothing.
             results = self.vehiclelogic.register_new_vehicle(new_vehicle_or_rate)
 
         elif option == 3: # Option 3 takes in number plate, removes that vehicle from the system and returns nothing.
-            results = self.vehiclelogic.remove_vehicle(filter_id_number_plate_or_vehicle_type)
+            results = self.vehiclelogic.remove_vehicle(filter_number_plate_or_vehicle_type)
 
         else: # Else takes in the vehicle type, current rate and the new rate. Then it gets a list of all these vehicle types and updates the rate for all of them.
-            results = self.vehiclelogic.edit_rate(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
+            results = self.vehiclelogic.edit_rate(filter_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
 
         return results
 

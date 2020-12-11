@@ -92,56 +92,78 @@ Models Class Diagram:
 @startuml
 class Employee {
 name
-id
-home adress
-home phone
-gsm phone
+ssn
+adress
+home_phone
+gsm_phone
 email
 location
 role
+password
 }
 class Vehicle {
 status
-type
+type_of_vehicle
+model
 rate
 manufacturer
 condition
-age
+model_year
 color
-number plate
-driving license
-rentcounter
+number_plate
+driving_license
+rent_counter
+name_of_airport
 }
 class Location {
-name of airport
+name_of_airport
 country
-opening hours
-phone number
+opening_hours
+phone_number
 }
 class Customer {
 name
-id
+ssn
 email
-gsm number
-home adress
-driving license
-returned late before
-loyalty customer
+gsm_number
+adress
+driving_license
+returned_late_before
 }
 class Contracts {
 date
+return_date
 duration
-country
-city
-name employee
+name_of_airport
+employee_name
 paid
-finalprice
+final_price
+number_plate
+ssn
+}
+class Role {
+role
+name
+ssn
 }
 
+Contracts : fieldnames()
+Contracts : add_to_dict() 
 
-Location <|-- Vehicle
-Customer  <|-- Contracts
-Vehicle <|-- Contracts
+Customer : fieldnames()
+Customer : add_to_dict() 
+
+Employee : fieldnames()
+Employee : add_to_dict() 
+
+Location : fieldnames()
+Location : add_to_dict() 
+
+Role : fieldnames()
+Role : add_to_dict() 
+
+Vehicle : fieldnames()
+Vehicle : add_to_dict()
 @enduml
 
 -------------------------------------------------------------------------
@@ -175,9 +197,13 @@ Logic layer wrapper
 
 UIMain : UILoop()
 
-class ContractUI
+class ContractUI {
+locationUI : LocationUI
+}
 class EmployeeUI
-class FleetUI
+class FleetUI {
+locationUI : LocationUI
+}
 class LocationUI
 class ReportsUI
 
@@ -224,6 +250,9 @@ UIMain  -- FleetUI
 UIMain  -- ContractUI
 UIMain  -- ReportsUI
 
+ContractUI --> LocationUI
+FleetUI --> LocationUI
+
 EmployeeUI -- LogicMain
 LocationUI -- LogicMain
 FleetUI -- LogicMain
@@ -234,13 +263,32 @@ class LogicMain {
 DATA wrapper
 }
 
-class ContractLogic 
+class ContractLogic {
+vehiclelogic : VehicleLogic
+customerlogic : CustomerLogic
+}
 class CustomerLogic 
-class EmployeeLogic
+class ReportLogic {
+locationlogic : LocationLogic
+vehiclelogic : VehicleLogic
+customerlogic : CustomerLogic
+contractlogic : ContractLogic
+}
+class EmployeeLogic {
+rolelogic : RoleLogic
+}
 class LocationLogic
 class RoleLogic
-class ReportLogic 
 class VehicleLogic
+
+LogicMain : employee(option, filter_or_id, attribute, new_information)
+LogicMain : location(option, filter_or_id, attribute, new_information)
+LogicMain : vehicle(option, filter_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
+LogicMain : contract(option, filter_or_id, attribute, new_information, vehicle_type)
+LogicMain : customer(option, ssn_or_customer_class, attribute, new_information)
+LogicMain : roles(option, emp_ssn, emp_object)
+LogicMain : reports(option, start_date, end_date)
+LogicMain : input_checking(option, user_input)
 
 EmployeeLogic : filter_employees(filter, attribute)
 EmployeeLogic : remove_employee(ssn)
@@ -281,7 +329,8 @@ ReportLogic : overview_of_payment_status(start_date, end_date)
 
 RoleLogic : role_list(filter, attribute)
 RoleLogic : add_employee(role_class)
-
+RoleLogic : remove_employee(ssn)
+RoleLogic : edit_company_role(
 
 LogicMain -- VehicleLogic
 LogicMain -- EmployeeLogic
@@ -289,6 +338,15 @@ LogicMain -- ContractLogic
 LogicMain -- LocationLogic
 LogicMain -- CustomerLogic
 LogicMain -- ReportLogic
+LogicMain -- RoleLogic
+
+ReportLogic --> LocationLogic
+ReportLogic --> VehicleLogic
+ReportLogic --> CustomerLogic
+EmployeeLogic --> RoleLogic
+ContractLogic --> VehicleLogic
+ContractLogic --> CustomerLogic
+ReportLogic --> ContractLogic
 
 VehicleLogic -- DataMain
 EmployeeLogic -- DataMain
@@ -296,9 +354,10 @@ LocationLogic -- DataMain
 ContractLogic -- DataMain
 CustomerLogic -- DataMain
 ReportLogic -- DataMain
+RoleLogic -- DataMain
 
 class DataMain{
-
+model_dict 
 }
 
 DataMain : get_list(filename)

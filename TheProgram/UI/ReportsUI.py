@@ -1,5 +1,4 @@
 from Logic.LogicMain import LogicMain
-#from Models.Reports import Reports
 
 class ReportsUI():
     def __init__(self):

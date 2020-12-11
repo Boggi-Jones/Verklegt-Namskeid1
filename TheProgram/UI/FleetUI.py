@@ -293,7 +293,8 @@ class FleetUI():
 
             elif attribute == "4":
                 attribute = "rate"
-                new_vehicle_info = input(" | Enter new information: ")
+                new_vehicle_info = input(" | Enter new information (this changes for all vehicles of that type): ")
+                self.logic.vehicle(4, chosen_vehicle[0].type_of_vehicle, chosen_vehicle[0].rate, new_vehicle_info)
 
             elif attribute == "5":
                 attribute = "manufacturer"
@@ -302,8 +303,8 @@ class FleetUI():
             elif attribute == "6":
                 attribute = "condition"
                 new_vehicle_info = input(""" | What is the condition of the car? ("Good" or "needs repair") """).lower()
-                if new_condition != "good":
-                    new_condition = "needs repair"
+                if new_vehicle_info != "good":
+                    new_vehicle_info = "needs repair"
                     status = "unavailable"
                 else:
                     status = "available"
@@ -372,19 +373,7 @@ class FleetUI():
  |                                                                           |
  -----------------------------------------------------------------------------'''.format(find_vehicle))
             input(" | Press 'Enter' to continue ")
-            if new_vehicle_info == "Stolen":
-                print(" | Would you like to report the grand theft auto? ") 
-                report_incident = input(" | Y/N: ")
-                if report_incident == "Y": 
-                    chosen_vehicle = self.logic.vehicle(0, find_vehicle, "number_plate", None)
-                    Incident_airport_filter = chosen_vehicle[-1]
-                    Incident_country_list = self.logic.location(0, Incident_airport_filter, "name_of_aiport", None)
-                    Incident_country = Incident_country_list[1]
-                    print(" | Police department of {} has been alerted. Pending investigation. | ").format(Incident_country)
-                else: 
-                    break
-            else:
-                break
+            break
 
     def all_vehicles(self):
         get_all = self.logic.vehicle(0, None, None, None)
