@@ -5,6 +5,7 @@ class RoleLogic:
     
     def __init__(self):
         self.datamain = DataMain()
+
     
     def role_list(self, filter_or_id, attribute):
         '''Get list of roles and associated employees with them'''
@@ -24,7 +25,7 @@ class RoleLogic:
         '''when employee is added to employees file, they also get added with their role in role file'''
         self.datamain.add_to_list(new_information)
         
-    def remove_employee(self, filter_or_id):
+    def remove_employee(self, filter_or_id, attribute):
         '''removed employee is either fired or given a new role''' 
         role_list_ssn = self.role_list(None, None)
         for s in role_list_ssn:
@@ -36,5 +37,10 @@ class RoleLogic:
         single_employee = self.role_list(filter_or_id, "ssn")
         for emp in single_employee:
             emp.__setattr__(attribute, new_information)
-            self.remove_employee(filter_or_id)
+            self.remove_employee(filter_or_id, attribute)
             self.add_employee(emp)
+
+    
+    
+
+           
