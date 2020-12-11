@@ -6,10 +6,8 @@ class VehicleLogic:
         self.position = "Vehicle"
 
     def filter_vehicle_fleet(self, filter_or_id, attribute):
-        # Creates a variable called list of vehicles
-        # if the filter or id is not in the list, they get appended
-        # The retlist is then returned
-        # If filter or id is in the list, list of vehicle is returned
+        ''' Gets a list of all vehicles from data. If there is no filter it just returns the full list.
+        If there is a filter then it iterates through the list. It adds everything to a new list that has the filter in the chosen attribute.'''
         list_of_vehicles = self.datamain.get_list(self.position)
         retlist = []
         if filter_or_id != None:
@@ -21,7 +19,8 @@ class VehicleLogic:
             return list_of_vehicles
     
     def remove_vehicle(self, filter_or_id):
-        # Removes vehicles from list using number_plate as identifier
+        ''' Gets a list from data of all vehicles. Then iterates through the list and removes the vehicle with the given number plate.
+        Then sends the rest of the list to data to rewrite everything without the removed vehicle.'''
         list_of_vehicles = self.filter_vehicle_fleet(None, None)
         for vehicle in list_of_vehicles:
             if vehicle.__getattribute__("number_plate") == filter_or_id:
@@ -29,14 +28,12 @@ class VehicleLogic:
         self.datamain.overwrite(self.position, list_of_vehicles) 
 
     def register_new_vehicle(self, new_information):
-        #self explanitory?
+        ''' Tells data to add this vehicle to the system'''
         self.datamain.add_to_list(self.position, new_information)
 
     def edit_vehicle_info(self, filter_or_id, attribute, new_information):
-        # Creates a variable called single vehicle by getting information from filter vehicle fleet
-        # Vehicle is identified using number plate
-        # Attribute is set using a for loop
-        # Old information is then removed and updated informations is added
+        ''' Gets a list of one vehicle by filtering with the number plate and then changes the chosen attribute.
+        Then it removes that vehicle from data and adds the updated one.'''
         single_vehicle = self.filter_vehicle_fleet(filter_or_id, "number_plate")
         for vehicle in single_vehicle:
             vehicle.__setattr__(attribute, new_information)
@@ -46,11 +43,7 @@ class VehicleLogic:
         return single_vehicle
 
     def edit_rate(self, vehicle_type, current_rate, new_rate):
-        # Cretes a list of vehicle by using information from type of vehicle
-        # New rate is set by using a for loop
-        # old vehicle is removed from the list
-        # new vehicle is registered through the registernewvehicle function with the new rate
-        # Returns updated list of vehicle with new rates.
+        ''' Gets a list of all vehicles of the chosen type. Then goes through the entire list doing the same as in edit_vehicle_info.'''
         list_of_vehicles = self.filter_vehicle_fleet(vehicle_type, "type_of_vehicle")
         for vehicle in list_of_vehicles:
             vehicle.__setattr__("rate", new_rate)

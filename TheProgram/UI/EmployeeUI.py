@@ -155,7 +155,7 @@ class EmployeeUI():
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
             self.logic.employee(2, None, None, the_employee)
-            self.logic.roles(1, employee_roles, None)
+            self.logic.roles(1, None, employee_roles)
             print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                      |
  ------------------------------------------------------------------------------
@@ -294,9 +294,9 @@ class EmployeeUI():
             elif attribute == "5":
                 attribute = "location"
                 new_employee_info = input(" | Enter new information: ").capitalize()
-                while self.logic.input_checking(11, new_employee_info) == False:
-                    print(" | Location {} does not exist! ").format(new_employee_info)
-
+                while self.logic.input_checking(12, new_employee_info) == False:
+                    print(" | Location {} does not exist!".format(new_employee_info))
+                    new_employee_info = input(" | Enter new information: ").capitalize()
             elif attribute == "6":
                 attribute = "role"            
                 new_employee_info = input(" | Enter new information: ").capitalize()
@@ -312,7 +312,7 @@ class EmployeeUI():
                 print(" | Wrong input")
                 continue
 
-            new_employee_info = input(" | Enter new information: ")
+            
             updated_employee = self.logic.employee(3, find_employee, attribute,  new_employee_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Update employee                                  |
@@ -336,15 +336,24 @@ class EmployeeUI():
     def get_all_employees(self):
         '''List all employess in appropriate columns below'''
         results = self.logic.employee(0, None, None, None)
-        print("""\n ---------------------------------------------------------------------------------------------------------------------------------
- | -> -> Manage employee -> All Employees                                                                                        |
- ---------------------------------------------------------------------------------------------------------------------------------
+        print("""\n ------------------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                                     |
+ ---------------------------------------------------------------------------------------------------------------------------------------------
  |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
         
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
+        print("""\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                                     |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
+        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
+        
+        for employee in results:
+            print(''' |  {}  |'''.format(str(employee)))
+        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
 
     def search_employee(self):
