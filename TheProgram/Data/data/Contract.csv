@@ -1,5 +1,5 @@
 date,return_date,duration,name_of_airport,employee_name,paid,final_price,number_plate,ssn
-06/12/2020,15,Kulusuk,Guðmundur,no,124750,UI 956,191292-7689,
+06/12/2020,15/12/2000,15,Kulusuk,Guðmundur,no,124750,UI 956,191292-7689
 12/12/2020,14/12/2020,3,Looploop,Andri,yes,3600,AK 312,250996-4039
 11/12/2020,14/12/2020,2,Kulusuk,Andri,no,2550,JL 321,250996-4039
-01/12/2020,10/12/2020,9,Kulusuk,Hjörtur,yes,16200,AK 312,210997-2379
+12/12/2021,10/12/2020,-367,Helsinki,Arnaldur,yes,-367000,LC 103,210997-2379

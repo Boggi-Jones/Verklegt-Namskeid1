@@ -263,7 +263,7 @@ class LocationUI():
  |                                                                            |
  |                                                                            |
  |                                                                            |
-  ------------------------------------------------------------------------------'''.format(updated_airport.name_of_airport, updated_airport.country, updated_airport.opening_hours, updated_airport.phone_number))
+ ------------------------------------------------------------------------------'''.format(updated_airport.name_of_airport, updated_airport.country, updated_airport.opening_hours, updated_airport.phone_number))
             input(" | Press 'Enter' to continue")
             break
 
