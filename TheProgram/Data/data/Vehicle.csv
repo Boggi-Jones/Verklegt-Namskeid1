@@ -1,7 +1,22 @@
 status,type_of_vehicle,model,rate,manufacturer,condition,model_year,color,number_plate,driving_license,rent_counter,name_of_airport
-available,Heavy,Land cruiser,1000,Toyota,Good,1999,gold,LC 103,b,0,Kulusuk
-available,Light water,Crazy HV,850,Kayman Kayaks,OK,2020,Yellow,RE 777,abc,0,Kulusuk
-unavailable,Family car,Corolla,1500,Toyota,OK,2020,Blue,FF 876,abc,46,Looploop
-unavailable,Light water,Crazy,850,Kayman Kayaks,needs repair,2020,Yellow,JL 321,abc,8,Kulusuk
-available,Light water,Crazy,850,Kayman Kayaks,OK,2020,Orange,UI 956,abc,0,Kulusuk
-unavailable,Medium road,Free Fly II,1800,TAILG,OK,1900,White,AK 312,ab,7,Helsinki
+available,Light water,Crazy HV,150,Kayman Kayaks,OK,2020,Yellow,RE 307,abc,0,Kulusuk
+unavailable,Light water,Crazy,150,Kayman Kayaks,OK,2020,Orange,UI 306,abc,0,Kulusuk
+available,Family car,Corolla,300,Toyota,Good,2020,Blue,FF 276,abc,46,Nuuk
+available,Medium road,Free Fly II,1800,TAILG,OK,1900,White,AK 212,abc,7,Nuuk
+available,Heavy,Land cruiser,1000,Toyota,Good,1999,gold,LC 303,b,0,Kulusuk
+available,Heavy road,Hilux,850,Toyota,OK,2018,White,HL 501,b,10,Longyearbyen
+available,Heavy road,Hilux,850,Toyota,OK,2018,Black,HL 502,b,17,Longyearbyen
+available,Heavy road,Hilux,850,Toyota,OK,2020,Grey,HL 503,b,3,Longyearbyen
+available,Medium road,Golf,450,VW,OK,2017,Black,VW 102,abc,78,Reykjavik
+available,Medium road,Golf,450,VW,OK,2017,Grey,VW 103,abc,138,Reykjavik
+available,Light water,Crazy HV,150,Kayman Kayaks,OK,2016,Red,KK 501,abc,5,Longyearbyen
+available,Light water,Crazy HV,150,Kayman Kayaks,OK,2016,Red,KK 101,abc,5,Reykjavik
+available,Light water,Crazy HV,150,Kayman Kayaks,OK,2016,Red,KK 102,abc,10,Reykjavik
+available,Light water,Crazy HV,150,Kayman Kayaks,OK,2016,Red,KK 102,abc,10,Reykjavik
+available,Light water,Crazy HV,150,Kayman Kayaks,OK,2016,Red,KK 102,abc,10,Reykjavik
+available,Light road,Adanac Sleds,1000,Tandam dog sled,OK,2008,Grey,DS 205,abc,10,Nuuk
+available,Light road,Adanac Sleds,1000,Tandam dog sled,OK,2009,Grey,DS 206,abc,10,Nuuk
+available,Light road,Adanac Sleds,1000,Tandam dog sled,OK,2010,White,DS 207,abc,10,Nuuk
+unavailable,Medium road,Golf,450,VW,OK,2017,White,VW 101,abc,100,Reykjavik
+unavailable,Light road,Alpine Gear,1200,White wolf sled,OK,2016,White,DS 507,abc,10,Longyearbyen
+unavailable,Light water,Crazy HV,150,Kayman Kayaks,OK,2016,Red,KK 502,abc,10,Longyearbyen

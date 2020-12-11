@@ -13,7 +13,11 @@ class UIMain():
 
     def UILoop(self):
         '''User must first login with credentials. Then that users permissions will depend on his role'''
-        print(" | You must enter your credentials to login the system. ")
+        print(''' ------------------------------------------------------------------------------
+ |                             Welcome to NaN Air - Rentals                   | 
+ ------------------------------------------------------------------------------ ''')
+        print(" | You must enter your credentials to login the system                        | ")
+        print(" ------------------------------------------------------------------------------ ")
         choice = input(" | Press 1 to continue or press 2 for the list of employees: ") 
         if choice == "2":
             employees = self.logic.roles(0, None, None) # print all employees with their ssn and role

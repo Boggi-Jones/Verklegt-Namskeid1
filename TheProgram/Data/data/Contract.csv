@@ -1,4 +1,6 @@
 date,return_date,duration,name_of_airport,employee_name,paid,final_price,number_plate,ssn
-12/12/2021,10/12/2020,-367,Helsinki,Arnaldur,yes,-367000,LC 103,210997-2379
+06/12/2020,15/12/2000,15,Kulusuk,Guðmundur,no,124750,UI 956,191292-7689
 03/12/2020,11/12/2020,8,Kulusuk,Andri,yes,8160.0,JL 321,250996-4039
-06/12/2020,15/12/2000,15,Kulusuk,Guðmundur,no,27000,AK 312,191292-7689
+12/12/2020,15/12/2020,3,Reykjavik,Árnfinnur H.,no,1350,VW 101,210292-2929
+11/12/2020,18/12/2020,7,Longyearbyen,Sigurfinnur Á.,no,8400,DS 507,100795-2219
+18/11/2020,23/11/2020,5,Longyearbyen,Sigurfinnur Á.,no,750,KK 502,170892-2679
