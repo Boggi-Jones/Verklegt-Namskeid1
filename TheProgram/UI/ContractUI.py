@@ -10,6 +10,7 @@ class ContractUI():
         self.locationUI = LocationUI()
 
     def contract_loop(self):
+        ''' Takes input from user and sends to one of the options within the contracts window'''
         while True:
             choice = input('''\n -----------------------------------------------------------------------------
  | Welcome to NaN Air  -> Contracts                                          |
@@ -47,27 +48,34 @@ class ContractUI():
                 print("Invalid choice!")
 
     def the_customer(self):
+        ''' Takes multiple inputs from the user to create a "customer" and stores inside the systems customer data-layer''' 
         ssn = input(" | Enter customer SSN: ")
+
         while self.logic.input_checking(1, ssn) == False:
             print(" | SSN must be in the correct format: '123456-1234' ")
             ssn = input(" | SSN: ")
+
         ssn_val = self.logic.customer(0, ssn, "ssn", None)
         if ssn_val == []:
             name = input(" | Name: ").capitalize()
             email = input(" | Email: ")
+
             while self.logic.input_checking(0, email) == False:
                 print(" | Email must be in the correct format: 'name@name.is' ")
                 email = input(" | Email: ")
             gsm_number = input(" | Phone: ")
+
             while self.logic.input_checking(2, gsm_number) == False:
                 print(" | Phone number must be in the correct format: '1234567' ")
                 gsm_number = input(" | Phone: ")
             address = input(" | Address: ").capitalize()
             driving_license = input(" | Drivers license: ").lower()
+
             while self.logic.input_checking(4, driving_license) == False:
                 print(" | Drivers license has to be 'a', 'b' or 'c' or a combination of any of the three!")
                 driving_license = input(" | Enter new information: ")
             returned_late_before = input(" | Returned late before: ")
+
             new_customer = Customer(name, ssn, email, gsm_number, address, driving_license, returned_late_before)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Contracts -> Add customer                                           |
@@ -112,6 +120,7 @@ class ContractUI():
         
         print('''\n | Please select where you will pick up the vehicle: ''')
         all_locations = self.locationUI.all_locations()
+
         while all_locations != 0:
             name_of_airport = input(" | Enter name of Airport: ").capitalize()
             for location in all_locations:
@@ -169,16 +178,20 @@ class ContractUI():
         return ssn_val, vehicle_class
 
     def add_contract(self):
+        ''' Takes multiple inputs from user and creates date information for the contract '''
         customer_class, vehicle_class = self.the_customer()
         date = input(" | Pickup date: ")
+
         while self.logic.input_checking(6,date)== False:
             print(" | Date must be in the cottect format: 'DD/MM/YYYY'")
             date = input(" | Pickup date: ")
         return_date = input(" | Return date: ")
+
         while self.logic.input_checking(6,date)== False:
             print(" | Date must be in the cottect format: 'DD/MM/YYYY'")
             return_date = input(" | Pickup date: ")
         employee_name = input(" | Employee name: ")
+
         duration = (datetime.strptime(return_date,'%d/%m/%Y') - datetime.strptime(date,'%d/%m/%Y')).days
         paid = "no"
         final_price = self.logic.contract(7, duration, None, None, vehicle_class)
@@ -220,9 +233,12 @@ class ContractUI():
             return None
 
     def remove_contract(self):
+        ''' Takes input from user and compares to ssn within the contract date layer and if contract 
+        exists the user can remove said contract'''
         while True:
             find_contract = input(" | Enter contract holder SSN: ")
             result = self.logic.contract(0, find_contract, "ssn", None, None)
+
             if result == []:           
                 print(" | Contract with SSN: '{}' does not exist".format(find_contract))
                 continue
@@ -268,6 +284,7 @@ class ContractUI():
                 return None
 
     def update_contract(self):
+        ''' User can choose a field within the contract class and change the information based on input'''
         while True:
             find_contract = input(" | Enter the contacts ssn: ")
             while self.logic.input_checking(1, find_contract) == False:
@@ -334,6 +351,7 @@ class ContractUI():
                     if the_contract == False:
                         print(" | Not valid date ")
                         continue
+                
                 elif attribute < 7 and attribute > 2: 
                     if attribute == 3:
                         attribute = "gsm_number"
@@ -345,6 +363,7 @@ class ContractUI():
                         attribute = "driving_license"
                     new_info = input(" | Enter new information: ")
                     self.logic.customer(3, find_contract, attribute, new_info)
+                
                 elif attribute == 7:
                     attribute = "number_plate"
                     vehicle_type = "available"
@@ -408,6 +427,7 @@ class ContractUI():
             break
 
     def all_contracts(self):
+        ''' Shows all contracts'''
         results = self.logic.contract(0, None, None, None, None)
         print('''\n ----------------------------------------------------------------------------------------------------------------------------------------------
  | -> Contracts -> All Contracts                                                                                                              |
@@ -421,6 +441,8 @@ class ContractUI():
         # name_of_airport,employee_name,paid,final_price,number_plate,ssn
 
     def print_contract(self):
+        ''' Takes user input and compares to specific contract "ssn" and if it exists the user can choose to
+        show the contract in a printable format'''
         while True:
             find_contract = input(" | Enter the contacts ssn: ")
             the_contract = self.logic.contract(0, find_contract, "ssn", None, None)
@@ -481,6 +503,9 @@ class ContractUI():
     
 
     def charge_contact(self):
+        ''' Takes user input and compares to specific contract "ssn" and if it exists the user can fill in additional 
+        information about the contract such as vehicle condition and weather the customer has paid the contract. Depending
+        on the input from the user when the information is stored it will update the data layer '''
         while True:
             find_contract = input(" | Enter the contacts ssn: ")
             while self.logic.input_checking(1, find_contract) == False:
