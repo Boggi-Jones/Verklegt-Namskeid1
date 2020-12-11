@@ -88,7 +88,7 @@ class EmployeeUI():
  | Email:                                                                    |
  | Location:                                                                 |
  | Company role:                                                             |
- | Password :                                                                |
+ | Password:                                                                |
  |                                                                           |
  -----------------------------------------------------------------------------''')
         name = input(" | Name: ").capitalize()
