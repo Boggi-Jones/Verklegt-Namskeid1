@@ -173,78 +173,131 @@ class UIMain {
 Logic layer wrapper
 }
 
-UIMain : listobject()
-UIMain : addobject()
+UIMain : UILoop()
 
-class EmployeesUI 
-class LocationUI 
-class FleetUI 
-class ContractUI 
+class ContractUI
+class EmployeeUI
+class FleetUI
+class LocationUI
+class ReportsUI
 
-UIMain  <|-- EmployeesUI
-UIMain  <|-- LocationUI
-UIMain  <|-- FleetUI
-UIMain  <|-- ContractUI
+EmployeeUI : employee_loop()
+EmployeeUI : manage_employee()
+EmployeeUI : add_employee()
+EmployeeUI : remove_employee()
+EmployeeUI : update_employee()
+EmployeeUI : get_all_employees()
+EmployeeUI : search_employee()
 
-EmployeesUI -- LogicWrapper
+LocationUI : location_loop()
+LocationUI : edit_location()
+LocationUI : add_location()
+LocationUI : remove_location()
+LocationUI : update_location()
+LocationUI : all_locations()
+LocationUI : search_location()
+
+ContractUI : contract_loop()
+ContractUI : the_customer()
+ContractUI : add_contract()
+ContractUI : remove_contract()
+ContractUI : update_contract()
+ContractUI : all_contracts()
+ContractUI : print_contract()
+ContractUI : charge_contract()
+
+FleetUI : fleet_loop()
+FleetUI : edit_vehicle()
+FleetUI : add_vehicle()
+FleetUI : remove_vehicle()
+FleetUI : update_vehicle_information()
+FleetUI : all_vehicles()
+
+ReportsUI : reports_loop()
+ReportsUI : income()
+ReportsUI : vehicle_usage()
+ReportsUI : contracts_period()
+
+UIMain  -- EmployeeUI
+UIMain  -- LocationUI
+UIMain  -- FleetUI
+UIMain  -- ContractUI
+UIMain  -- ReportsUI
+
+EmployeeUI -- LogicWrapper
 LocationUI -- LogicWrapper
 FleetUI -- LogicWrapper
 ContractUI -- LogicWrapper
+ReportsUI -- LogicWrapper
 
 class LogicWrapper {
 DATA wrapper
 }
 
+class ContractLogic
+class CustomerLogic
 class EmployeeLogic 
 class LocationLogic
+class ReportLogic
 class VehicleLogic
-class ContractLogic
 
-EmployeeLogic : filteremployees()
-EmployeeLogic : removeemployee(id)
-EmployeeLogic : addemployee()
-EmployeeLogic : editemployeeinfo(id)
 
-LocationLogic : filtercountry()
-LocationLogic : addlocation()
-LocationLogic : removelocation()
-LocationLogic : editlocationinfo(name of airport)
+EmployeeLogic : filter_employees(filter, attribute)
+EmployeeLogic : remove_employee(ssn)
+EmployeeLogic : add_employee(employee_class)
+EmployeeLogic : edit_employee_info(ssn, attribute, new_information)
+EmployeeLogic : change_employee_info(ssn, emp_name)
 
-VehicleLogic : filtervehiclefleet()
-VehicleLogic : editvehicleinfo(number plate)
-VehicleLogic : registernewvehicle()
-VehicleLogic : editrate(type)
+LocationLogic : filter_country(filter, attribute)
+LocationLogic : add_location(location_class)
+LocationLogic : remove_location(name_of_airport)
+LocationLogic : edit_location_info(name_of_airport, attribute, new_information)
 
-ContractLogic : filtercontract()
-ContractLogic : makenewcontract()
-ContractLogic : editcontractinfo(id)
-ContractLogic : cancelcontract(id)
-ContractLogic : printcontract(id)
-ContractLogic : calculatefinalprice(id)
+VehicleLogic : filter_vehicle_fleet(filter, attribute)
+VehicleLogic : edit_vehicle_info(number_plate, attribute, new_information)
+VehicleLogic : registernewvehicle(vehicle_class)
+VehicleLogic : remove_vehicle(number_plate)
+VehicleLogic : editrate(vehicle_type, current_rate, new_rate)
+
+ContractLogic : filter_contract(filter, attribute)
+ContractLogic : make_new_contract(contract_class)
+ContractLogic : edit_contract_info(ssn, attribute, new_information)
+ContractLogic : cancel_contract(ssn)
+ContractLogic : check_license(customer_class, number_plate)
+ContractLogic : change_vehicle(contract_class, attribute, new_number_plate)
+ContractLogic : charge_contract(ssn, condition)
+ContractLogic : calculate_final_price(duration, vehicle_class)
+ContractLogic : edit_contract_date(ssn, attribute, new_date)
+
+CustomerLogic : get_list_of_customers(filter, attribute)
+CustomerLogic : add_customer_to_the_system(customer_class)
+CustomerLogic : remove_customer(ssn)
+CustomerLogic : edit_customer(ssn, attribute, new_information)
+
+ReportLogic : most_popular_type_by_location()
+ReportLogic : overview_of_income(start_date, end_date)
+ReportLogic : type_usage_by_location()
+ReportLogic : overview_of_payment_status(start_date, end_date)
 
 LogicWrapper -- VehicleLogic
 LogicWrapper -- EmployeeLogic
 LogicWrapper -- ContractLogic
 LogicWrapper -- LocationLogic
+LogicWrapper -- CustomerLogic
+LogicWrapper -- ReportLogic
 
 VehicleLogic -- DataWrapper
 EmployeeLogic -- DataWrapper
 LocationLogic -- DataWrapper
 ContractLogic -- DataWrapper
+CustomerLogic -- DataWrapper
+ReportLogic -- DataWrapper
 
 class DataWrapper{
 
 }
 
-class VehicleData
-class LocationData
-class EmployeeData
-class ContractData
-class CustomerData
-
-DataWrapper <|-- VehicleData
-DataWrapper <|-- LocationData
-DataWrapper <|-- EmployeeData
-DataWrapper <|-- ContractData
-DataWrapper <|-- CustomerData
+DataWrapper : get_list(filename)
+DataWrapper : add_to_list(filename, value)
+DataWrapper : overwrite(filename, list_of_items)
 @enduml

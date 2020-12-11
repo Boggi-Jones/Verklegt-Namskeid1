@@ -29,9 +29,9 @@ class EmployeeLogic:
         self.datamain.overwrite(self.position, list_of_employees)
         
 
-    def add_employee(self, new_information):
+    def add_employee(self, employee_class):
         ''' Tells data to add this employee to the system'''
-        self.datamain.add_to_list(self.position, new_information)
+        self.datamain.add_to_list(self.position, employee_class)
          
 
     def edit_employee_info(self, filter_or_id, attribute, new_information):
