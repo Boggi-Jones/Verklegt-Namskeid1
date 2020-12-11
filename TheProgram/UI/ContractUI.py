@@ -146,10 +146,13 @@ class ContractUI():
             if vehicle.name_of_airport == name_of_airport:
                 if vehicle.status == "available":
                     print(vehicle)
-        number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
+
+        number_plate = input(" | Enter the number plate of the chosen vehicle or press 'q' to go back: ").upper()
         while self.logic.input_checking(11, number_plate) == False:
             print(" | First 2 entrys must be a character then a space then 3 digits, fx. DA 123.")
-            number_plate = input(" | Enter the number plate of the chosen vehicle: ").upper()
+            number_plate = input(" | Enter the number plate of the chosen vehicle or press 'q' to go back: ").upper()
+            if number_plate == "Q":
+                break
 
         while True:
             vehicle_class = self.logic.contract(4, ssn_val[0], number_plate, None, None)

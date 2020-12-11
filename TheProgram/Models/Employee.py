@@ -17,4 +17,4 @@ class Employee(object):
         return {"name" : self.name, "ssn" : self.ssn, "address" : self.address, "home_phone": self.home_phone, "gsm_phone": self.gsm_phone, "email" : self.email, "location":self.location, "role": self.role, "password" : self.password}
     
     def __str__(self):
-        return "{:^18s} | {:^11s} | {:^13s} | {:^12s} | {:^12s} | {:^18s} | {:^10s} | {:^8s} | {:^10s}".format(self.name, self.ssn, self.address, self.home_phone, self.gsm_phone, self.email, self.location, self.role, self.password)
+        return "{:^18s} | {:^11s} | {:^13s} | {:^12s} | {:^12s} | {:^18s} | {:^12s} | {:^8s} | {:^10s}".format(self.name, self.ssn, self.address, self.home_phone, self.gsm_phone, self.email, self.location, self.role, self.password)
