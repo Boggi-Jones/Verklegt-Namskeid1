@@ -13,8 +13,11 @@ class ReportLogic:
         self.contractlogic = ContractLogic()
 
     def most_popular_type_by_location(self):
-        list_of_all_vehicles = self.vehiclelogic.filtervehiclefleet(None, None)
-        list_of_all_locations = self.locationlogic.filtercountry(None, None)
+        ''' Starts by getting a list of all locations and vehicles. Then it iterates through all locations and for each location it:
+        Makes a list of all vehicles in that location, takes that list and counts how many days each vehicle type has been rented for and then finds out
+        what is the most popular type in that location.'''
+        list_of_all_vehicles = self.vehiclelogic.filter_vehicle_fleet(None, None)
+        list_of_all_locations = self.locationlogic.filter_country(None, None)
         return_list = []
         for location in list_of_all_locations:
             list_of_all_vehicle_by_location = []
@@ -42,6 +45,8 @@ class ReportLogic:
         return return_list
 
     def overview_of_income(self, start_date, end_date):
+        ''' Starts by getting a list of all contracts that are paid. Then it checks if the return date is witin the given time gap.
+        If it is the final price is added to the total sum, dictionary that has the total for each location and the same for vehicle types.'''
         list_of_contracts = self.contractlogic.filter_contract("yes", "paid")
         start_date = datetime.strptime(start_date, "%d/%m/%Y")
         end_date = datetime.strptime(end_date, "%d/%m/%Y")
@@ -67,6 +72,7 @@ class ReportLogic:
         return total, location_dict, type_dict
 
     def type_usage_by_location(self):
+        ''' Does the same as the most_popular_type_by_location but returns every vehicle type at each location.'''
         list_all_vehicle = self.vehiclelogic.filter_vehicle_fleet(None, None)
         list_of_all_locations = self.locationlogic.filter_country(None, None)
         return_list = []
@@ -89,6 +95,8 @@ class ReportLogic:
         return return_list
 
     def overview_of_payment_status(self, start_date, end_date):
+        ''' Gets a list of all contracts. Then iterates through the contracts looking for ones within the time given.
+        Then add the name and if it is paid to a dictionary.'''  
         list_of_contracts = self.contractlogic.filter_contract(None, None)
         start_date = datetime.strptime(start_date, "%d/%m/%Y")
         end_date = datetime.strptime(end_date, "%d/%m/%Y")

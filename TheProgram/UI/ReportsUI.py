@@ -58,11 +58,13 @@ class ReportsUI():
 
         print(" | Total income over selected period is: ", total_income)
         print(" | ")
+        print(" | Income from location: ")
         for key, value in location_income.items():
-            print(" | {} : {}".format(key, value))
+            print(" |\t{} : {}".format(key, value))
         print(" | ")
+        print(" | Income from vehicle: ")
         for key, value in vehicle_type_income.items():
-            print(" | {} : {}".format(key, value))
+            print(" |\t{} : {}".format(key, value))
         print(" -----------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")
 
@@ -97,8 +99,9 @@ class ReportsUI():
         print(" -----------------------------------------------------------------------------")
 
         results = self.logic.reports(3, start_date, end_date)
-
+            
+        print(" | Paid and unpaid contracts: ")
         for key, value in results.items():
-            print(" | {} : {}".format(key, value))
+            print(" | \t{} : {}".format(key, value))
         print(" -----------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue ")

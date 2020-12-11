@@ -88,7 +88,7 @@ class EmployeeUI():
  | Email:                                                                    |
  | Location:                                                                 |
  | Company role:                                                             |
- |                                                                           |
+ | Password :                                                                |
  |                                                                           |
  -----------------------------------------------------------------------------''')
         name = input(" | Name: ").capitalize()
@@ -132,8 +132,10 @@ class EmployeeUI():
         while self.logic.input_checking(3, role) == False:
             print(" | company role is either 'ceo', 'fleet' or 'base'!")
             role = input(" | Company role: ").capitalize()
+            
+        password = input(" | Password: ")
 
-        the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role)
+        the_employee = Employee(name, ssn, address, home_phone, smart_phone, email, location, role, password)
         employee_roles = Role(role, name, ssn)
         print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Add employee                                     |
@@ -147,8 +149,8 @@ class EmployeeUI():
  |Email:        {:58s}   |
  |Location:     {:58s}   |
  |Company role: {:58s}   |
- |                                                                           |
- -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role))
+ |Password:     {:58s}   |                                                                        
+ -----------------------------------------------------------------------------'''.format(name, ssn, address, home_phone, smart_phone, email, location, role, password))
 
         add_choice = input(" | Do you want to save and continue? (Y / N): ").lower()
         if add_choice == "y":
@@ -205,6 +207,7 @@ class EmployeeUI():
             choice = input(" | Are you sure you want to remove '{}' ? (Y / N): ".format(find_employee)).lower()
             if choice == "y":
                 self.logic.employee(1, find_employee, None, None)
+                self.logic.roles(2, find_employee, "ssn")
                 print('''\n ------------------------------------------------------------------------------
  | -> -> Manage employee -> Remove employee                                   |
  ------------------------------------------------------------------------------
@@ -259,12 +262,12 @@ class EmployeeUI():
  | 4. Email:             {:52s}|
  | 5. Location:          {:52s}|
  | 6. Company role:      {:52s}|
- |                                                                           |
+ | 7. Password:          {:52s}|                                                                         
  |                                                                           |
  |                                                                           |
  |                                                                           |
  -----------------------------------------------------------------------------
- | Choice: '''.format(the_employee[0].address, the_employee[0].home_phone, the_employee[0].gsm_phone, the_employee[0].email, the_employee[0].location, the_employee[0].role))
+ | Choice: '''.format(the_employee[0].address, the_employee[0].home_phone, the_employee[0].gsm_phone, the_employee[0].email, the_employee[0].location, the_employee[0].role, the_employee[0].password))
             new_employee_info = "0"
             if attribute == "1":
                 attribute = "address"
@@ -291,21 +294,25 @@ class EmployeeUI():
             elif attribute == "5":
                 attribute = "location"
                 new_employee_info = input(" | Enter new information: ").capitalize()
-                while self.logic.input_checking(10, new_employee_info) == False:
-                    print(" | Locations must only contain letters: 'Place' ")
-
+                while self.logic.input_checking(12, new_employee_info) == False:
+                    print(" | Location {} does not exist!".format(new_employee_info))
+                    new_employee_info = input(" | Enter new information: ").capitalize()
             elif attribute == "6":
                 attribute = "role"            
                 new_employee_info = input(" | Enter new information: ").capitalize()
                 while self.logic.input_checking(3, new_employee_info) == False:
                     print(" | company role is either 'Ceo', 'Fleet' or 'Base'!")
                     role = input(" | Company role: ").capitalize()
+                    
+            elif attribute == "7":
+                attribute = "password"  
+                new_employee_info = input(" | Enter new information: ")
 
             else:
                 print(" | Wrong input")
                 continue
 
-            #new_employee_info = input(" | Enter new information: ")
+            
             updated_employee = self.logic.employee(3, find_employee, attribute,  new_employee_info)
             print('''\n -----------------------------------------------------------------------------
  | -> -> Manage employee -> Update employee                                  |
@@ -318,26 +325,35 @@ class EmployeeUI():
  | 4. Email:               {:50s}|
  | 5. Location:            {:50s}|
  | 6. Company role:        {:50s}|
+ | 7. Password:            {:50s}|                                                          
  |                                                                           |
  |                                                                           |
  |                                                                           |
- |                                                                           |
- -----------------------------------------------------------------------------'''.format(updated_employee.address, updated_employee.home_phone, updated_employee.gsm_phone, updated_employee.email, updated_employee.location, updated_employee.role))
+ -----------------------------------------------------------------------------'''.format(updated_employee.address, updated_employee.home_phone, updated_employee.gsm_phone, updated_employee.email, updated_employee.location, updated_employee.role, updated_employee.password))
             input(" | Press 'Enter' to continue")
             break
 
     def get_all_employees(self):
         '''List all employess in appropriate columns below'''
         results = self.logic.employee(0, None, None, None)
-        print("""\n ---------------------------------------------------------------------------------------------------------------------------------
- | -> -> Manage employee -> All Employees                                                                                        |
- ---------------------------------------------------------------------------------------------------------------------------------
- |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     |""")
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print("""\n ------------------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                                     |
+ ---------------------------------------------------------------------------------------------------------------------------------------------
+ |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
         
         for employee in results:
             print(''' |  {}  |'''.format(str(employee)))
-        print(" ---------------------------------------------------------------------------------------------------------------------------------")
+        print(" ----------------------------------------------------------------------------------------------------------------------------------------------")
+        print("""\n ----------------------------------------------------------------------------------------------------------------------------------------------
+ | -> -> Manage employee -> All Employees                                                                                                     |
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ |  Name:              | SSN:        | Address:      | Home number: | Cell number: | Email:             | Location:  | Role:     | Password:  |""")
+        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
+        
+        for employee in results:
+            print(''' |  {}  |'''.format(str(employee)))
+        print(" ---------------------------------------------------------------------------------------------------------------------------------------------")
         input(" | Press 'Enter' to continue")
 
     def search_employee(self):
@@ -366,7 +382,7 @@ class EmployeeUI():
  | Email:         {:54s}     |
  | Location:      {:54s}     |
  | Company role:  {:54s}     |
+ | Password:      {:54s}                                                                          
  |                                                                           |
- |                                                                           |
- ----------------------------------------------------------------------------- '''.format(emp.name, emp.ssn, emp.address, emp.home_phone, emp.gsm_phone, emp.email, emp.location, emp.role))
+ ----------------------------------------------------------------------------- '''.format(emp.name, emp.ssn, emp.address, emp.home_phone, emp.gsm_phone, emp.email, emp.location, emp.role, emp.password))
         input(" | Press 'Enter' to continue")

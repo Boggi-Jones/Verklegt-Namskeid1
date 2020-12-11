@@ -17,154 +17,156 @@ class LogicMain:
         self.rolelogic = RoleLogic()
 
     def employee(self, option, filter_or_id, attribute, new_information):
-        if option == 0: # Option 0 is used to filter employees
+        if option == 0: # Option 0 gives back list of employees with a filter, if it gets None in filter it returns list of all employees.
             results = self.employeelogic.filter_employees(filter_or_id, attribute)
 
-        elif option == 1: # Option 1 is used to remove employee
+        elif option == 1: # Option 1 takes in employee ssn, removes that employee from the system and returns nothing.
             results = self.employeelogic.remove_employee(filter_or_id)
 
-        elif option == 2: # Option 2 is used to add employee
+        elif option == 2: # Option 2 takes in employee class, tells data to save that employee and returns nothing.
             results = self.employeelogic.add_employee(new_information)
 
-        else: # Else is used for edit employee infi
+        else: # Else takes in the employees ssn, the attribute to edit and the new value for that attribute. Then it changes that employee and returns the updated employee class.
             results = self.employeelogic.edit_employee_info(filter_or_id, attribute, new_information)
 
         return results
 
     def location(self, option, filter_or_id, attribute, new_information):
-        if option == 0: # Option 0 is used to filter country
+        if option == 0: # Option 0 takes in filter and the attribute name for the filter. Then it gives back list of all locations with that filter.
             results = self.locationlogic.filter_country(filter_or_id, attribute)
 
-        elif option == 1: # Option 1 is used to add location
+        elif option == 1: # Option 1 takes in location class, tells data to save that location and returns nothing.
             results = self.locationlogic.add_location(new_information)
 
-        elif option == 2: # Option 2 is used to remove location
+        elif option == 2: # Option 2 takes in airport name, removes that location from the system and returns nothing.
             results = self.locationlogic.remove_location(filter_or_id)
 
-        else: # Else is used to edit location info
+        else: # Else takes in the airport name, the attribute to edit and the new value for that attribute. Then it changes that location and returns the updated location class.
             results = self.locationlogic.edit_location_info(filter_or_id, attribute, new_information)
 
         return results
 
     def vehicle(self, option, filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate):
-        if option == 0: # Option 0 is used to filter vehicle fleet
+        if option == 0: # Option 0 takes in filter and the attribute name for the filter. Then it gives back list of all vehicles with that filter.
             results = self.vehiclelogic.filter_vehicle_fleet(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate)
 
-        elif option == 1: # Option 1 is used to edit vehjicle info
+        elif option == 1: # Option 1 takes in the number plate, the attribute to edit and the new value for that attribute. Then it changes that location and returns the updated vehicle class.
             results = self.vehiclelogic.edit_vehicle_info(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
 
-        elif option == 2: # Option 2 is used to register new vehicle
+        elif option == 2: # Option 2 takes in vehicle class, tells data to save that vehicle and returns nothing.
             results = self.vehiclelogic.register_new_vehicle(new_vehicle_or_rate)
 
-        elif option == 3: # Option 3 is used to remove vehicle
+        elif option == 3: # Option 3 takes in number plate, removes that vehicle from the system and returns nothing.
             results = self.vehiclelogic.remove_vehicle(filter_id_number_plate_or_vehicle_type)
 
-        else: # Else is used to edit vehicle rate
-            results = self.vehiclelogic.edit_rate(filter_id_number_plate_or_vehicle_type, new_vehicle_or_rate, attribute_or_current_rate)
+        else: # Else takes in the vehicle type, current rate and the new rate. Then it gets a list of all these vehicle types and updates the rate for all of them.
+            results = self.vehiclelogic.edit_rate(filter_id_number_plate_or_vehicle_type, attribute_or_current_rate, new_vehicle_or_rate)
 
         return results
 
     def contract(self, option, filter_or_id, attribute, new_information, vehicle_type):
-        if option == 0: # Option 0 is used to filter contract
+        if option == 0: # Option 0 takes in filter and the attribute name for the filter. Then it gives back list of all contracts with that filter.
             results = self.contractlogic.filter_contract(filter_or_id, attribute)
 
-        elif option == 1: # Option 1 is used to make new contract
+        elif option == 1: # Option 1 takes in contract class, tells data to save that contract and returns nothing.
             results = self.contractlogic.make_new_contract(new_information)
 
-        elif option == 2: # Option 2 is used to edit contract information
+        elif option == 2: # Option 2 takes in the customers ssn, the attribute to edit and the new value for that attribute. Then it changes that contract and returns the updated contract class.
             results = self.contractlogic.edit_contract_info(filter_or_id, attribute, new_information)
 
-        elif option == 3: # Option 3 is used to cancel contract 
+        elif option == 3: # Option 3 takes in customers ssn, removes that contract from the system and returns the removed contract.
             results = self.contractlogic.cancel_contract(filter_or_id)
 
-        elif option == 4: # Option 4 is used to check if customer has valid licence for type for vehicle
+        elif option == 4: # Option 4 takes in customer class and a number plate. Then it compares the license on both things and either returns the vehicle class or empty list.
             results = self.contractlogic.check_license(filter_or_id, attribute)
 
-        elif option == 5: # Option 5 used to switch vehicle on a contract
+        elif option == 5: # Option 5 takes in the contract class, "number_plate" and the number plate of the new vehicle. 
+            # Then it changes everything that has to change and returns the updated contract or false if the new vehicle is occupied.
             results = self.contractlogic.change_vehicle(filter_or_id, attribute, new_information)
 
-        elif option == 6: # Option 6 is used to charge the contract
+        elif option == 6: # Option 6 takes in the customers ssn and the condition. Then it updates everything that needs to be updated and returns new calculated price.
             results = self.contractlogic.charge_contract(filter_or_id, attribute)
 
-        elif option == 7:
+        elif option == 7: # Option 7 takes in the duration and vehicle class. Then it calculates the final price and returns it.
             results = self.contractlogic.calculate_final_price(filter_or_id, vehicle_type)
 
-        else:
+        else: # Else takes in value and attribute of either pickup date or return date and the new value. Then it changes the date, duration and final price and returns the updated contract.
             results = self.contractlogic.edit_contract_date(filter_or_id, attribute, new_information)
 
         return results
 
     def customer(self, option, ssn_or_customer_class, attribute, new_information):
-        if option == 0: # Option 0 is used to get list of customers
+        if option == 0: # Option 0 takes in filter and the attribute name for the filter. Then it gives back list of all customers with that filter.
             results = self.customerlogic.get_list_of_customers(ssn_or_customer_class, attribute)
 
-        elif option == 1: # Option 1 is used to add customers to the system
+        elif option == 1: # Option 1 takes in customer class, tells data to save that customer and returns nothing.
             results = self.customerlogic.add_customer_to_the_system(ssn_or_customer_class)
 
-        elif option == 2: # Option 2 is used to remove customers from system
+        elif option == 2: # Option 2 takes in customers ssn, removes that customer from the system and returns the removed customer.
             results = self.customerlogic.remove_customer(ssn_or_customer_class)
 
-        else: # Else is used to edit customers information
+        else: # Else takes in the customers ssn, the attribute to edit and the new value for that attribute. Then it changes that customer and returns the updated customer class.
             results = self.customerlogic.edit_customer(ssn_or_customer_class, attribute, new_information)
 
         return results
     
     def roles(self, option, emp_ssn, emp_object):
         '''logic for association between employees and roles'''
-        if option == 0:
-            results = self.rolelogic.role_list(emp_ssn)
+        if option == 0: # if a function wants to use only attributes from roles
+            results = self.rolelogic.role_list(emp_ssn, emp_object)
         elif option == 1:
-            results = self.rolelogic.add_employee(emp_object)
-            
+            results = self.rolelogic.add_employee(emp_object) # when new emp is added with logic.employee()
+        elif option == 2:
+            results = self.rolelogic.remove_employee(emp_ssn, emp_object) # when emp is removed or updated with logic.employee()
         return results
             
             
 
     def reports(self, option, start_date, end_date):
-        if option == 0:
-            results = self.reportlogic.most_popular_by_location()
+        if option == 0: # Returns list of the most used type of vehicle for every location
+            results = self.reportlogic.most_popular_type_by_location()
 
-        elif option == 1:
+        elif option == 1: # Returns overview of income over a certain period
             total, location_dict, type_dict = self.reportlogic.overview_of_income(start_date, end_date)
             return total, location_dict, type_dict
 
-        elif option == 2:
+        elif option == 2:  # Returns list of all types of vehicle and how many days they have been driven for all locations
             results = self.reportlogic.type_usage_by_location()
 
-        else:
+        else: # Returns a list of all contracts over a period and shows if they are paid or not
             results = self.reportlogic.overview_of_payment_status(start_date, end_date)
 
         return results
 
     def input_checking(self, option, user_input):
-        if option == 0: #Email checking
+        if option == 0: #Email checking *****@**.***
             if ("@" in user_input) and ("." in user_input):
                 return True       
 
-        elif option == 1: #SSN checking
+        elif option == 1: #SSN checking ******-****
             if len(user_input) == 11 and user_input[6] == "-":
                 for char in user_input:
                     if char.isalpha():
                         return False
                 return True
 
-        elif option == 2: #Phone checking
+        elif option == 2: #Phone checking 
             if len(user_input) == 7 and user_input.isdigit():
                 return True
 
-        elif option == 3: #Company role
+        elif option == 3: #Company role checking
             if user_input == "Ceo" or user_input == "Fleet" or user_input == "Base":
                 return True
 
-        elif option == 4: #Driving license
+        elif option == 4: #Driving license checking
             if len(user_input) < 4 and ("a" in user_input) or ("b" in user_input) or ("c" in user_input):
                 return True
 
-        elif option == 5: #Yes or no
+        elif option == 5: #Yes or no checking
             if user_input == "yes" or user_input == "no":
                 return True
 
-        elif option == 6: #Date **/**/****
+        elif option == 6: #Date checking **/**/****
             if len(user_input) != 10:
                 return False
                 
@@ -179,15 +181,15 @@ class LogicMain:
 
             return True
 
-        elif option == 7: #Numbers
+        elif option == 7: #Numbers checking
             if user_input.isnumeric():
                 return True
 
-        elif option == 8: # Model year
+        elif option == 8: # Model year checking
             if user_input.isnumeric() and len(user_input) == 4:
                 return True
 
-        elif option == 9: #Opening hours
+        elif option == 9: #Opening hours checking **:**-**:**
             if len(user_input) != 11:
                 return False
 
@@ -202,11 +204,11 @@ class LogicMain:
 
             return True
 
-        elif option == 10: #Letters
+        elif option == 10: #Letters checking
             if user_input.isalpha():
                 return True
 
-        elif option == 11: #Number plate
+        elif option == 11: #Number plate checking ** ***
             if len(user_input) == 6:
                 first_part = user_input[0:2]
                 secondpart = user_input[5:]
@@ -218,6 +220,13 @@ class LogicMain:
                 if checker == 2:
                     return True  
                 
+        elif option == 12: # For checking if the location exists in the system
+            location = self.location(0, user_input, "name_of_airport", None)
+            if location == []:
+                return False
+            if location != []:
+                return True
+              
         elif option == 13: #number plate in add vehicle
             if len(user_input) == 6:
                 first_part = user_input[0:2]
@@ -231,13 +240,16 @@ class LogicMain:
                 else:
                     print(" | Number plate has to be two letters and three numbers: 'AA 123'")
             else:
-                print(" | Number plate has to be two letters and three numbers: 'AA 123'")    
-                   
-        elif option == 12: #check for location in the system
-            location = self.location(0, user_input, "name_of_airport", None)
-            if location == []:
+                print(" | Number plate has to be two letters and three numbers: 'AA 123'")            
+
+        elif option == 14: #username
+            if self.employee(0, user_input, "ssn", None) == []: 
                 return False
-            if location != []:
-                return True
-                
+            return True
+        
+        elif option == 16: #username
+            if self.roles(0, user_input, "ssn") == []: 
+                return False
+            return True
+
         return False

@@ -6,10 +6,8 @@ class LocationLogic:
         self.position = "Location"
 
     def filter_country(self, filter_or_id, attribute):
-        #Gets list of location from data main
-        # If filter or Id == None, iterate through list of locations and appends if location.attribute == filter or id
-        # Then return retlist
-        #If filter or id == None, return list oflocations
+        ''' Gets a list of all locations from data. If there is no filter it just returns the full list.
+        If there is a filter then it iterates through the list. It adds everything to a new list that has the filter in the chosen attribute.'''
         list_of_locations = self.datamain.get_list(self.position)
         retlist = []
         if filter_or_id != None:
@@ -21,10 +19,8 @@ class LocationLogic:
             return list_of_locations
 
     def remove_location(self, filter_or_id):
-        # Creates a viariable calles list of location
-        # iterates through list of locations
-        # if name of airport attribute == filter or id, remove it from location
-        #overwrite a list of new location with updated list
+        ''' Gets a list from filter country with all locations. Then iterates through the list and removes the location with the given name of airport.
+        Then sends the rest of the list to data to rewrite everything without the removed location.'''
         list_of_locations = self.filter_country(None, None)
         for location in list_of_locations:
             if location.__getattribute__("name_of_airport") == filter_or_id:
@@ -32,14 +28,12 @@ class LocationLogic:
         self.datamain.overwrite(self.position, list_of_locations)
      
     def add_location(self, new_information):
-        # Add new location to list with new information
+        ''' Tells data to add this location to the system'''
         self.datamain.add_to_list(self.position, new_information)
     
     def edit_location_info(self, filter_or_id, attribute, new_information):
-        # Creates new variable called single location with info from filtercountry
-        # Iterates through single location looking for location attribute
-        # Removes location from list
-        # updates location information
+        ''' Gets a list of one location by filtering with the name of airport and then changes the chosen attribute.
+        Then it removes that location from data and adds the updated one.'''
         single_location = self.filter_country(filter_or_id, "name_of_airport")
         for location in single_location:
             location.__setattr__(attribute, new_information)
